@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist gettext-domain="masvisgtk">
+
+  <enum id="io.github.itprojects.MasVisGtk.AppStyle">
+    <value nick="system" value="0"/>
+    <value nick="light" value="1"/>
+    <value nick="dark" value="2"/>
+   </enum>
+
+  <enum id="io.github.itprojects.MasVisGtk.ImageFormats">
+    <value nick="PNG" value="0"/>
+    <value nick="JPEG" value="1"/>
+    <value nick="SVG" value="2"/>
+    <value nick="WEBP" value="3"/>
+    <value nick="TIFF" value="4"/>
+    <value nick="PDF" value="5"/>
+    <value nick="EPS" value="6"/>
+  </enum>
+
+  <schema id="io.github.itprojects.MasVisGtk" path="/io/github/itprojects/MasVisGtk/">
+
+    <key name="language-locale" type="s">
+      <default>'en_GB.utf8'</default>
+      <summary>Language of the application.</summary>
+      <description>The language of the application, if the translation exists.</description>
+    </key>
+
+    <key name="custom-background" type="b">
+      <default>false</default>
+    </key>
+
+    <key name="custom-background-value" type="s">
+      <default>'#FDF6E3'</default>
+    </key>
+
+    <key name="app-style" enum="io.github.itprojects.MasVisGtk.AppStyle">
+      <default>'system'</default>
+      <summary>Application style.</summary>
+      <description>Application style, follow system 0, light 1, dark 2.</description>
+    </key>
+
+    <key name="matplotlib-style" type="s">
+      <default>'fast'</default>
+      <summary>Matplotlib style.</summary>
+      <description>Matplotlib visual style. 'Solarize_Light2', 'bmh', 'classic', 'dark_background', 'fast', 'fivethirtyeight', 'ggplot', 'grayscale'</description>
+    </key>
+
+    <key name="custom-font" type="b">
+      <default>false</default>
+    </key>
+
+    <key name="custom-font-value" type="s">
+      <default>'FreeMono Bold 16'</default>
+      <summary>Custom font.</summary>
+      <description>Custom font preferences, by using the font button.</description>
+    </key>
+
+    <key name="save-format" enum="io.github.itprojects.MasVisGtk.ImageFormats">
+      <default>'PNG'</default>
+      <summary>Save format.</summary>
+    </key>
+
+    <key name="dpi-application" type="i">
+      <default>100</default>
+      <summary>DPI for plots.</summary>
+    </key>
+
+    <key name="dpi-image" type="i">
+      <default>200</default>
+      <summary>DPI for saved images.</summary>
+    </key>
+
+  </schema>
+</schemalist>

@@ -1,0 +1,977 @@
+'''
+Copyright 2024 ITProjects
+Copyright 2012 Joakim Fors
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+'''
+
+import logging
+import time
+
+import gi
+gi.require_version('Gtk', '4.0')
+from gi.repository import Gtk, Gio, GLib, Pango
+
+import numpy as np
+import matplotlib
+matplotlib.use('Agg') # non-GUI
+#matplotlib.use('GTK4Agg') # interactive
+import matplotlib.pyplot as plt
+from matplotlib.backends.backend_gtk4agg import FigureCanvasGTK4Agg as FigureCanvasGTK4
+from matplotlib.backends.backend_gtk4 import NavigationToolbar2GTK4 as NavigationToolbar
+from matplotlib import gridspec, rc
+from matplotlib.pyplot import (
+    plot,
+    semilogx,
+    semilogy,
+    setp,
+    subplot,
+    text,
+    title,
+    xlabel,
+    xlim,
+    xticks,
+    ylabel,
+    ylim,
+    yticks,
+)
+from matplotlib.ticker import FormatStrFormatter, MaxNLocator, ScalarFormatter
+
+from . import __version__
+from .utils import Steps, Timer
+from .params import c_color
+from .params import channel_layouts_names
+from .params import channel_layouts_params
+
+log = logging.getLogger(__package__)
+
+VERSION = __version__
+R128_OFFSET = 23
+STYLE = None
+FONT = False
+
+# Displays time format MM:SS
+TIME_FMT = matplotlib.ticker.FuncFormatter(lambda sec, x: time.strftime('%M:%S', time.gmtime(sec)))
+
+matplotlib.rcParams['legend.fontsize'] = 'medium'
+matplotlib.rcParams['figure.titlesize'] = 'large'
+matplotlib.rcParams['lines.linewidth'] = 1.0
+matplotlib.rcParams['lines.dashed_pattern'] = [6, 6]
+matplotlib.rcParams['lines.dashdot_pattern'] = [3, 5, 1, 5]
+matplotlib.rcParams['lines.dotted_pattern'] = [1, 3]
+matplotlib.rcParams['lines.scale_dashes'] = False
+matplotlib.rcParams['xtick.direction'] = 'in'
+matplotlib.rcParams['ytick.direction'] = 'in'
+
+class MaxNLocatorMod(MaxNLocator):
+    def __init__(self, *args, **kwargs):
+        super(MaxNLocatorMod, self).__init__(*args, **kwargs)
+
+    def tick_values(self, vmin, vmax):
+        ticks = super(MaxNLocatorMod, self).tick_values(vmin, vmax)
+        span = vmax - vmin
+        if ticks[-1] > vmax - 0.05 * span:
+            ticks = ticks[0:-1]
+        return ticks
+
+def positions(nc=1):
+    w = 606.0
+    h = 1060.0
+    h_single = 81.976010101
+    h_sep = 31.61931818181818181240
+    h = round(h + (nc - 2) * (h_single + h_sep))
+    left = 45.450
+    right = 587.82
+    top = 95.40
+    bottom = 37.100
+    header_y = 8.480
+    subheader_y = 26.500
+    footer_y = 7.420
+    hr = [1] * nc + [1, 2, 2, 1, 1]
+    n = len(hr)
+    return {
+        'w': w,
+        'h': h,
+        'left': left / w,
+        'right': right / w,
+        'top': (h - top) / h,
+        'bottom': bottom / h,
+        'header_y': (h - header_y) / h,
+        'subheader_y': (h - subheader_y) / h,
+        'footer_y': footer_y / h,
+        'hspace': (h_sep * n) / (h - top - bottom - h_sep * (n - 1)),
+        'hr': hr,
+        'hn': n,
+    }
+
+def render(
+    track, analysis, header, r128_unit='LUFS', overview_mode=None, callback=None, tab_page=None, win=None,
+):
+    # Set matplotlib style.
+    global STYLE
+    if not STYLE:
+        STYLE = win.app.pref_matplotlib_style
+        plt.style.use([STYLE])
+
+    # Set matplotlib font, if enabled.
+    if win.app.pref_custom_font:
+        global FONT
+        if not FONT:
+            font_desc = Pango.FontDescription.from_string(win.app.pref_custom_font_value)
+            matplotlib.rcParams['font.family'] = font_desc.get_family()
+            matplotlib.rcParams['font.size'] = f'{int(font_desc.get_size() / Pango.SCALE)}'
+            font_weight = 'bold'
+            match font_desc.get_weight():
+                case 100:
+                    font_weight = 'thin'
+                case 200:
+                    font_weight = 'ultralight'
+                case 300:
+                    font_weight = 'light'
+                case 350:
+                    font_weight = 'semilight'
+                case 380:
+                    font_weight = 'book'
+                case 400:
+                    font_weight = 'normal'
+                case 500:
+                    font_weight = 'medium'
+                case 600:
+                    font_weight = 'semibold'
+                case 700:
+                    font_weight = 'bold'
+                case 800:
+                    font_weight = 'ultrabold'
+                case 900:
+                    font_weight = 'heavy'
+                case 100:
+                    font_weight = 'ultraheavy'
+                case _:
+                    pass
+            matplotlib.rcParams['font.weight'] = font_weight
+            FONT = True
+
+    subplot_background_color = None
+    if win.app.pref_custom_background:
+        subplot_background_color = win.app.pref_custom_background_value
+
+    DPI = win.app.pref_dpi_application
+
+    #
+    # Plot
+    #
+    nc = track['channels']
+    c_name = None # Channel [layout] names.
+    c_layout = track['channel_layout']
+    if c_layout == None:
+        if nc == 0: # no audio
+            str_error = f'Input file has no audio stream: {track["metadata"]["filename"]}'
+            log.warning(str_error)
+            raise Exception(str_error)
+            return
+        elif nc == 1:
+            c_layout = 'mono'
+        elif nc == 2:
+            c_layout = 'stereo'
+        else:
+            pass
+    if (c_layout != None) and (c_layout in channel_layouts_names): # Assign channel layout names.
+        c_name = channel_layouts_names[c_layout]
+    else:
+        c_name = []
+        for i in range(35):
+            c_name.append(f'#{i+1}')
+
+    fs = track['samplerate']
+    crest_db = analysis['crest_db']
+    crest_total_db = analysis['crest_total_db']
+    dr = analysis['dr']
+    l_kg = analysis['l_kg']
+    lra = analysis['lra']
+    plr = analysis['plr_lu']
+    checksum = analysis['checksum']
+    lufs_to_lu = 23.0
+    if r128_unit == 'LUFS':
+        r128_offset = 0
+    else:
+        r128_offset = R128_OFFSET
+    nc_max = len(c_color)
+    data = track['data']['float']
+    pos = positions(nc)
+    peak_dbfs = analysis['peak_dbfs']
+
+    if win.app.check_cancellations():
+        return
+
+    if overview_mode == None:# Detailed one track plot.
+        with Timer('Drawing plot...', Steps.draw_plot, callback):
+            subtitle_analysis = (
+                'Crest: %.2f dB,  DR: %s,  L$_K$: %.1f %s,  ' 'LRA: %.1f LU,  PLR: %.1f LU'
+            ) % (crest_total_db, dr, l_kg + r128_offset, r128_unit, lra, plr)
+            subtitle_source = (
+                'Encoding: %s,  Channels: %d,  Layout: %s,  Bits: %d,  \n'
+                'Sample rate: %d Hz,  Bitrate: %s kbps, Duration: %s, Source: %s'
+            ) % (
+                track['metadata']['encoding'],
+                track['channels'],
+                c_layout,
+                track['bitdepth'],
+                fs,
+                int(round(track['metadata']['bps'] / 1000.0)),
+                time.strftime('%M:%S', time.gmtime(track['duration'])),
+                track['metadata']['source'],
+            )
+            subtitle_meta = []
+            if track['metadata']['album']:
+                subtitle_meta.append('Album: %.*s' % (50, track['metadata']['album']))
+            if track['metadata']['track']:
+                subtitle_meta.append('Track: %s' % track['metadata']['track'])
+            if track['metadata']['date']:
+                subtitle_meta.append('Date: %s' % track['metadata']['date'])
+            subtitle_meta = ',  '.join(subtitle_meta)
+            subtitle = '\n'.join([subtitle_analysis, subtitle_source, subtitle_meta])
+            win.n_figures += 1
+            fig_d = plt.figure(win.n_figures)
+            fig_d.dpi = DPI
+            fig_d.figsize = (pos['w'] / DPI, pos['h'] / DPI)
+            #fig_d.facecolor = 'white'
+            fig_d.suptitle(header, fontweight='bold', fontsize='large', y=pos['header_y'])
+            fig_d.text(
+                0.5,
+                pos['subheader_y'],
+                subtitle,
+                fontsize='small',
+                horizontalalignment='center',
+                verticalalignment='top',
+                linespacing=1.6,
+            )
+            fig_d.text(
+                pos['left'],
+                pos['footer_y'],
+                ('Checksum (energy): %d' % checksum),
+                fontsize='small',
+                va='bottom',
+                ha='left',
+            )
+            fig_d.text(
+                pos['right'],
+                pos['footer_y'],
+                ('MasVisGtk %s' % (VERSION)),
+                fontsize='small',
+                va='bottom',
+                ha='right',
+            )
+            rc('lines', linewidth=0.5, antialiased=True)
+            gs = gridspec.GridSpec(
+                pos['hn'],
+                2,
+                width_ratios=[2, 1],
+                height_ratios=pos['hr'],
+                hspace=pos['hspace'],
+                wspace=0.2,
+                left=pos['left'],
+                right=pos['right'],
+                bottom=pos['bottom'],
+                top=pos['top'],
+            )
+
+        if win.app.check_cancellations():
+            return
+
+        # Channels
+        data = track['data']['float']
+        sec = track['duration']
+        rms_dbfs = analysis['rms_dbfs']
+        true_peak_dbtp = analysis['true_peak_dbtp']
+        c_max = analysis['c_max']
+        w_max = analysis['w_max']
+        with Timer('Drawing channels...', Steps.draw_ch, callback):
+            ax_ch = []
+            c = 0
+            while c < nc and c < nc_max:
+                if c == 0:
+                    ax_ch.append(subplot(gs[c, :]))
+                else:
+                    ax_ch.append(subplot(gs[c, :], sharex=ax_ch[0]))
+                new_data, new_ns, new_range = pixelize(
+                    data[c], ax_ch[c], which='both', oversample=2
+                )
+                new_fs = new_ns / sec
+                new_range = np.arange(0.0, new_ns, 1) / new_fs
+                plot(new_range, new_data, color=c_color[c], linestyle='-')
+                xlim(0, round(sec))
+                ylim(-1.0, 1.0)
+                title(
+                    (
+                        u'%s:  Crest=%0.2f dB / RMS = %0.2f dBFS / Peak = %0.2f dBFS / '
+                        u'True Peak ≈ %0.2f dBTP'
+                    )
+                    % (
+                        c_name[c].capitalize(),
+                        crest_db[c],
+                        rms_dbfs[c],
+                        peak_dbfs[c],
+                        true_peak_dbtp[c],
+                    ),
+                    fontsize='small',
+                    loc='left',
+                )
+                yticks([1, -0.5, 0, 0.5, 1], ('', -0.5, 0, '', ''))
+                if c_max == c:
+                    mark_span(ax_ch[c], (w_max[0] / float(fs), w_max[1] / float(fs)))
+                if c + 1 == nc or c + 1 == nc_max:
+                    #ax_ch[c].xaxis.set_major_locator(MaxNLocatorMod(prune='both'))
+                    #ax_ch[c].xaxis.set_major_formatter(ScalarFormatter(useOffset=False))
+                    ax_ch[c].xaxis.set_major_formatter(TIME_FMT)
+                    xlabel(':sec', fontsize='small')
+                else:
+                    setp(ax_ch[c].get_xticklabels(), visible=False)
+                axis_defaults(ax_ch[c])
+                c += 1
+            for axia in ax_ch:
+                if subplot_background_color:
+                    axia.set_facecolor((subplot_background_color)) # plot background
+                axia.yaxis.grid(True, which='major', linestyle=':', color='k', linewidth=0.5)
+        spi = c - 1
+
+        if win.app.check_cancellations():
+            return
+
+        # Loudest
+        s_max = analysis['s_max']
+        ns_max = analysis['ns_max']
+        with Timer('Drawing loudest...', Steps.draw_loud, callback):
+            ax_max = subplot(gs[spi + 1, :])
+            if subplot_background_color:
+                ax_max.set_facecolor((subplot_background_color)) # plot background
+            plot(
+                np.arange(*w_max) / float(fs),
+                data[c_max][np.arange(*w_max)],
+                c_color[c_max],
+            )
+            ylim(-1.0, 1.0)
+            xlim(w_max[0] / float(fs), w_max[1] / float(fs))
+            title(
+                ('Loudest part (%s ch, %d samples > 95%% ' 'during 20 ms at %0.2f s)')
+                % (c_name[c_max], ns_max, s_max / float(fs)),
+                fontsize='small',
+                loc='left',
+            )
+            yticks([1, -0.5, 0, 0.5, 1], ('', -0.5, 0, '', ''))
+            #ax_max.xaxis.set_major_locator(MaxNLocatorMod(nbins=5, prune='both'))
+            #ax_max.xaxis.set_major_formatter(FormatStrFormatter('%0.2f'))
+            ax_max.xaxis.set_major_formatter(TIME_FMT)
+            xlabel(':sec', fontsize='small')
+            axis_defaults(ax_max)
+
+        if win.app.check_cancellations():
+            return
+
+        # Spectrum
+        norm_spec = analysis['norm_spec']
+        frames = analysis['frames']
+        with Timer('Drawing spectrum...', Steps.draw_spec, callback):
+            ax_norm = subplot(gs[spi + 2, 0])
+            if subplot_background_color:
+                ax_norm.set_facecolor((subplot_background_color)) # plot background
+            semilogx(
+                [0.02, 0.06],
+                [-80, -90],
+                'k-',
+                [0.02, 0.2],
+                [-70, -90],
+                'k-',
+                [0.02, 0.6],
+                [-60, -90],
+                'k-',
+                [0.02, 2.0],
+                [-50, -90],
+                'k-',
+                [0.02, 6.0],
+                [-40, -90],
+                'k-',
+                [0.02, 20.0],
+                [-30, -90],
+                'k-',
+                [0.02, 20.0],
+                [-20, -80],
+                'k-',
+                [0.02, 20.0],
+                [-10, -70],
+                'k-',
+                [0.06, 20.0],
+                [-10, -60],
+                'k-',
+                [0.20, 20.0],
+                [-10, -50],
+                'k-',
+                [0.60, 20.0],
+                [-10, -40],
+                'k-',
+                [2.00, 20.0],
+                [-10, -30],
+                'k-',
+                [6.00, 20.0],
+                [-10, -20],
+                'k-',
+                base=10,
+            )
+            for c in range(nc):
+                new_spec, new_n, new_r = pixelize(
+                    norm_spec[c],
+                    ax_norm,
+                    which='max',
+                    oversample=1,
+                    method='log10',
+                    span=(20, 20000),
+                )
+                semilogx(new_r / 1000.0, new_spec, color=c_color[c], linestyle='-', base=10)
+            ylim(-90, -10)
+            xlim(0.02, 20)
+            ax_norm.yaxis.grid(True, which='major', linestyle=':', color='k', linewidth=0.5)
+            ax_norm.xaxis.grid(True, which='both', linestyle='-', color='k', linewidth=0.5)
+            ylabel('dB', fontsize='small', verticalalignment='top', rotation=0)
+            xlabel('kHz', fontsize='small', horizontalalignment='right')
+            title(
+                'Normalized average spectrum, %d frames' % (frames),
+                fontsize='small',
+                loc='left',
+            )
+            ax_norm.set_xticks([0.05, 0.1, 0.2, 0.5, 1, 2, 3, 4, 5, 7], minor=False)
+            ax_norm.set_xticks(
+                [
+                    0.03,
+                    0.04,
+                    0.06,
+                    0.07,
+                    0.08,
+                    0.09,
+                    0.3,
+                    0.4,
+                    0.6,
+                    0.7,
+                    0.8,
+                    0.9,
+                    6,
+                    8,
+                    9,
+                    10,
+                ],
+                minor=True,
+            )
+            ax_norm.set_xticklabels([0.05, 0.1, 0.2, 0.5, 1, 2, 3, 4, 5, 7], minor=False)
+            ax_norm.set_xticklabels([], minor=True)
+            yticks(np.arange(-90, 0, 10), ('', -80, -70, -60, -50, -40, -30, '', ''))
+            axis_defaults(ax_norm)
+
+        if win.app.check_cancellations():
+            return
+
+        # Allpass
+        ap_freqs = analysis['ap_freqs']
+        ap_crest = analysis['ap_crest']
+        with Timer('Drawing allpass...', Steps.draw_ap, callback):
+            ax_ap = subplot(gs[spi + 2, 1])
+            if subplot_background_color:
+                ax_ap.set_facecolor((subplot_background_color)) # plot background
+            for c in range(nc):
+                semilogx(
+                    ap_freqs / 1000.0,
+                    crest_db[c] * np.ones(len(ap_freqs)),
+                    color=c_color[c],
+                    linestyle='--',
+                    base=10,
+                )
+                semilogx(
+                    ap_freqs / 1000.0,
+                    ap_crest.swapaxes(0, 1)[c],
+                    color=c_color[c],
+                    linestyle='-',
+                    base=10,
+                )
+            ylim(0, 30)
+            xlim(0.02, 20)
+            title('Allpassed crest factor', fontsize='small', loc='left')
+            yticks(np.arange(0, 30, 5), ('', 5, 10, 15, 20, ''))
+            xticks([0.1, 1, 2], (0.1, 1, 2))
+            xlabel('kHz', fontsize='small')
+            ylabel('dB', fontsize='small', rotation=0)
+            axis_defaults(ax_ap)
+
+        if win.app.check_cancellations():
+            return
+
+        # Histogram
+        hist = analysis['hist']
+        hist_bits = analysis['hist_bits']
+        hist_title_bits = []
+        with Timer('Drawing histogram...', Steps.draw_hist, callback):
+            ax_hist = subplot(gs[spi + 3, 0])
+            if subplot_background_color:
+                ax_hist.set_facecolor((subplot_background_color)) # plot background
+            for c in range(nc):
+                new_hist, new_n, new_range = pixelize(
+                    hist[c], ax_hist, which='max', oversample=2
+                )
+                new_hist[(new_hist == 1.0)] = 1.3
+                new_hist[(new_hist < 1.0)] = 1.0
+                semilogy(
+                    np.arange(new_n) * 2.0 / new_n - 1.0,
+                    new_hist,
+                    color=c_color[c],
+                    linestyle='-',
+                    base=10,
+                    drawstyle='steps',
+                )
+                hist_title_bits.append('%0.1f' % hist_bits[c])
+            xlim(-1.1, 1.1)
+            ylim(1, 50000)
+            xticks(
+                np.arange(-1.0, 1.2, 0.2),
+                (-1, -0.8, -0.6, -0.4, -0.2, 0, 0.2, 0.4, 0.6, 0.8, 1),
+            )
+            yticks([10, 100, 1000], (10, 100, 1000))
+            hist_title = 'Histogram, \'bits\': %s' % '/'.join(hist_title_bits)
+            title(hist_title, fontsize='small', loc='left')
+            ylabel('n', fontsize='small', rotation=0)
+            axis_defaults(ax_hist)
+
+        if win.app.check_cancellations():
+            return
+
+        # Peak vs RMS
+        rms_1s_dbfs = analysis['rms_1s_dbfs']
+        peak_1s_dbfs = analysis['peak_1s_dbfs']
+        with Timer('Drawing peak vs RMS...', Steps.draw_pvsr, callback):
+            ax_pr = subplot(gs[spi + 3, 1])
+            if subplot_background_color:
+                ax_pr.set_facecolor((subplot_background_color)) # plot background
+            plot(
+                [-50, 0],
+                [-50, 0],
+                'k-',
+                [-50, -10],
+                [-40, 0],
+                'k-',
+                [-50, -20],
+                [-30, 0],
+                'k-',
+                [-50, -30],
+                [-20, 0],
+                'k-',
+                [-50, -40],
+                [-10, 0],
+                'k-',
+            )
+            text_style = {
+                'fontsize': 'x-small',
+                'rotation': 45,
+                'va': 'bottom',
+                'ha': 'left',
+            }
+            text(-48, -45, '0 dB', **text_style)
+            text(-48, -35, '10', **text_style)
+            text(-48, -25, '20', **text_style)
+            text(-48, -15, '30', **text_style)
+            text(-48, -5, '40', **text_style)
+            for c in range(nc):
+                plot(
+                    rms_1s_dbfs[c],
+                    peak_1s_dbfs[c],
+                    linestyle='',
+                    marker='o',
+                    markerfacecolor='w',
+                    markeredgecolor=c_color[c],
+                    markeredgewidth=0.7,
+                )
+            xlim(-50, 0)
+            ylim(-50, 0)
+            title('Peak vs RMS level', fontsize='small', loc='left')
+            xlabel('dBFS', fontsize='small')
+            ylabel('dBFS', fontsize='small', rotation=0)
+            xticks([-50, -40, -30, -20, -10, 0], ('', -40, -30, -20, '', ''))
+            yticks([-50, -40, -30, -20, -10, 0], ('', -40, -30, -20, -10, ''))
+            axis_defaults(ax_pr)
+
+        if win.app.check_cancellations():
+            return
+
+        # Shortterm crest
+        crest_1s_db = analysis['crest_1s_db']
+        n_1s = analysis['n_1s']
+        with Timer('Drawing short term crest...', Steps.draw_stc, callback):
+            ax_1s = subplot(gs[spi + 4, :])
+            if subplot_background_color:
+                ax_1s.set_facecolor((subplot_background_color)) # plot background
+            for c in range(nc):
+                plot(
+                    np.arange(n_1s) + 0.5,
+                    crest_1s_db[c],
+                    linestyle='',
+                    marker='o',
+                    markerfacecolor='w',
+                    markeredgecolor=c_color[c],
+                    markeredgewidth=0.7,
+                )
+            ylim(0, 30)
+            xlim(0, n_1s)
+            yticks([10, 20], (10, ''))
+            ax_1s.yaxis.grid(True, which='major', linestyle=':', color='k', linewidth=0.5)
+            title('Short term (1 s) crest factor', fontsize='small', loc='left')
+            xlabel(':sec', fontsize='small')
+            ylabel('dB', fontsize='small', rotation=0)
+            #ax_1s.xaxis.set_major_locator(MaxNLocatorMod(prune='both'))
+            #ax_1s.xaxis.set_major_formatter(ScalarFormatter(useOffset=False))
+            ax_1s.xaxis.set_major_formatter(TIME_FMT)
+            axis_defaults(ax_1s)
+
+        if win.app.check_cancellations():
+            return
+
+        # EBU R 128
+        stl = analysis['stl']
+        stplr = analysis['stplr_lu']
+        with Timer('Drawing EBU R 128 loudness...', Steps.draw_ebur128, callback):
+            ax_ebur128 = subplot(gs[spi + 5, :])
+            if subplot_background_color:
+                ax_ebur128.set_facecolor((subplot_background_color)) # plot background
+            plot(
+                np.arange(stl.size) + 1.5,
+                stl + r128_offset,
+                'ko',
+                markerfacecolor='w',
+                markeredgecolor='k',
+                markeredgewidth=0.7,
+            )
+            ylim(-41 + r128_offset, -5 + r128_offset)
+            xlim(0, n_1s)
+            yticks(
+                [-33 + r128_offset, -23 + r128_offset, -13 + r128_offset],
+                (-33 + r128_offset, -23 + r128_offset, ''),
+            )
+            title('EBU R 128 Short term loudness', fontsize='small', loc='left')
+            title('Short term PLR', fontsize='small', loc='right', color='grey')
+            xlabel(':sec', fontsize='small')
+            ylabel('%s' % r128_unit, fontsize='small', rotation=0)
+            ax_ebur128.yaxis.grid(
+                True, which='major', linestyle=':', color='k', linewidth=0.5
+            )
+            ax_ebur128_stplr = ax_ebur128.twinx()
+            plot(
+                np.arange(stplr.size) + 1.5,
+                stplr,
+                'o',
+                markerfacecolor='w',
+                markeredgecolor='grey',
+                markeredgewidth=0.7,
+            )
+            xlim(0, n_1s)
+            ylim(0, 36)
+            yticks([0, 18], (0, 18))
+            for tl in ax_ebur128_stplr.get_yticklabels():
+                tl.set_color('grey')
+            #ax_ebur128.xaxis.set_major_locator(MaxNLocatorMod(prune='both'))
+            #ax_ebur128.xaxis.set_major_formatter(ScalarFormatter(useOffset=False))
+            ax_ebur128.xaxis.set_major_formatter(TIME_FMT)
+            axis_defaults(ax_ebur128)
+            axis_defaults(ax_ebur128_stplr)
+            ax_ebur128_stplr.tick_params(
+                axis='y', which='major', labelsize='xx-small', length=0
+            )
+
+        #
+        # Plot/Paint/Draw detailed track analysis on GTK canvas.
+        #
+        canvas = FigureCanvasGTK4(fig_d)
+        canvas.set_hexpand(True)
+        canvas.set_vexpand(True)
+
+        # Keep pyplot canvas works best with a fixed aspect ratio.
+        aspect_frame = Gtk.AspectFrame()
+        aspect_ratio = pos['w']/pos['h']
+        aspect_frame.set_ratio(aspect_ratio)
+        aspect_frame.set_child(canvas)
+
+        tab_page.get_child().scrolled.set_child(aspect_frame)
+
+        top_tab_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, vexpand=False)
+        top_tab_box.append(NavigationToolbar(canvas))
+
+        # Resize button to scale canvas to window width.
+        btn_scale_to_win = Gtk.Button(label='⇤ ⇥', tooltip_text=_('Scale to Window Width'))
+        btn_scale_to_win.set_name('btn_scale_to_win')
+        btn_scale_to_win.connect('clicked', on_scale_to_win)
+        btn_scale_to_win.win = win
+        btn_scale_to_win.canvas = canvas
+        btn_scale_to_win.aspect_ratio = aspect_ratio
+
+        adjustment = Gtk.Adjustment(
+            value=0,
+            lower=0,
+            upper=100,
+            step_increment=1,
+            page_increment=10,
+            page_size=0
+        )
+
+        # Gtk.Scale to zoom-in/rescale the plot size.
+        scale = Gtk.Scale(adjustment=adjustment, orientation=Gtk.Orientation.HORIZONTAL)
+
+        scale.canvas = canvas
+        scale.aspect_ratio = aspect_ratio
+
+        scale.set_digits(0)
+        scale.set_has_origin(True)
+        scale.set_margin_end(20)
+        scale.set_size_request(100, -1)
+
+        scale.connect("value-changed", on_value_changed)
+
+        top_tab_box.append(scale)
+        top_tab_box.append(btn_scale_to_win)
+
+        tab_page.get_child().prepend(top_tab_box)
+
+        if win.app.check_cancellations():
+            return
+
+        # Set initial canvas size to be window width.
+        new_canvas_width = 1080
+        canvas.set_size_request(new_canvas_width, new_canvas_width//aspect_ratio)
+    else:# Overview plot.
+        w_o = 1212 # originally 606
+        h_o = 128 # originally 64
+
+        # Overview started?
+        overview_pre_existing = tab_page.get_child().scrolled.get_child() != None
+
+        n_axes = 1
+
+        box_as_frame = None
+        canvas = None
+        fig_d = None
+        ax_o = None
+        if not overview_pre_existing:
+            win.n_figures += 1
+            fig_d = plt.figure(win.n_figures)
+            fig_d.dpi = DPI
+            fig_d.figsize = (w_o / DPI, h_o / DPI)
+
+            # Make subplot for current file.
+            ax_o = fig_d.add_subplot(111)
+            canvas = FigureCanvasGTK4(fig_d)
+            canvas.set_hexpand(True)
+
+            # Hold canvas.
+            box_as_frame = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
+            box_as_frame.append(canvas)
+
+            # Feature, not bug. Prevents expansion in width.
+            box_as_frame.set_halign(Gtk.Align.CENTER)
+
+            tab_page.get_child().scrolled.set_child(box_as_frame)
+
+            top_tab_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, vexpand=False)
+            top_tab_box.append(NavigationToolbar(canvas))
+
+            tab_page.get_child().prepend(top_tab_box)
+        else:
+            # Find canvas. backend_gtk4agg.FigureCanvasGTK4Agg
+            canvas = tab_page.get_child().scrolled.get_child().get_child().get_last_child()
+
+            fig_d = canvas.figure
+
+            # Update figure size.
+            n_axes = len(fig_d.get_axes())
+            n_axes += 1
+
+        if win.app.check_cancellations():
+            return
+
+        # Set new canvas height.
+        new_height = (64 + 128) * n_axes
+
+        if not box_as_frame:
+            box_as_frame = canvas.get_parent()
+
+        # Resize figure's canvas.
+        fig_d.figsize = (w_o / DPI, new_height / DPI)
+        canvas.set_size_request(1212, new_height)
+        box_as_frame.set_size_request(1212, new_height)
+
+        # Add subplot, refresh grid, which maintains axes spacing.
+        if ax_o == None:
+            gs = gridspec.GridSpec(n_axes, 1)
+            for i, ax in enumerate(fig_d.axes):
+                ax.set_position(gs[i].get_position(fig_d))
+                ax.set_subplotspec(gs[i])
+            ax_o = fig_d.add_subplot(gs[n_axes - 1])
+
+        # Adjust borders, to gain space.
+        plt.subplots_adjust(left=0.04, right=0.82, top=1, bottom=0)
+
+        # Set Y-axis label, to display audio info.
+        info_o = (
+            u'DR = %s\nPeak = %0.1f dBFS\nCrest = %0.1f dB\n' u'L$_k$ = %.1f LU'
+        ) % (dr, peak_dbfs.max(), crest_total_db, l_kg + lufs_to_lu)
+
+        ax_o.set_ylabel(info_o, fontsize='12', horizontalalignment='left', rotation=0)
+        ax_o.yaxis.set_label_position("right")
+        ax_o.yaxis.set_label_coords(1.01, 0.8, transform=None)
+        ax_o.set_xticks([])
+        ax_o.set_yticks([])
+        header_o = '%s  [%s, %d ch, %d bits, %d Hz, %d kbps]' % (
+            header,
+            track['metadata']['encoding'],
+            track['channels'],
+            track['bitdepth'],
+            fs,
+            int(round(track['metadata']['bps'] / 1000.0)),
+        )
+        ax_o.set_title(header_o, fontsize='12', loc='left')
+        fig_buf = plt.figure(
+            'buffer', figsize=(w_o / DPI, h_o / DPI), dpi=DPI
+        )
+        w, h = fig_buf.canvas.get_width_height()
+        fig_buf.patch.set_visible(False)
+        ax_buf = plt.gca()
+
+        img_buf = np.zeros((h, w, 4), np.uint8)
+        img_buf[:, :, 0:3] = 255
+
+        if win.app.check_cancellations():
+            return
+
+        for i, ch in enumerate(data):
+            ax_buf.clear()
+            ax_buf.axis('off')
+            ax_buf.set_position([0, 0, 1, 1])
+            ax_buf.set_ylim(-1, 1)
+            ax_buf.set_xticks([])
+            ax_buf.set_yticks([])
+            new_ch, new_n, new_r = pixelize(ch, ax_buf, which='both', oversample=2)
+            ax_buf.plot(range(len(new_ch)), new_ch, color=c_color[i])
+            ax_buf.set_xlim(0, len(new_ch))
+            fig_buf.canvas.draw()
+            img = np.frombuffer(fig_buf.canvas.buffer_rgba(), np.uint8).reshape(
+                h, w, -1
+            )
+            img_buf[:, :, 0:3] = img[:, :, 0:3] * (img_buf[:, :, 0:3] / 255.0)
+            img_buf[:, :, -1] = np.maximum(img[:, :, -1], img_buf[:, :, -1])
+        img_buf[:, :, 0:3] = (img_buf[:, :, 3:4] / 255.0) * img_buf[:, :, 0:3] + (
+            255 - img_buf[:, :, 3:4]
+        )
+        img_buf[:, :, -1] = 255
+
+        if win.app.check_cancellations():
+            return
+
+        plt.figure(fig_d.number)
+        plt.imshow(img_buf, aspect='1', interpolation='none')
+        canvas.draw()
+        canvas.flush_events()
+
+# Save canvas figure to image on disk.
+# Format 0=png, 1=jpeg, 2=svg, 3=webp, 4=tiff, 5=pdf, 6=eps
+def save_figure(fig, path, save_format, dpi):
+    # select image source figure
+    plt.figure(fig.number)
+
+    # If params are different than canvas plot,
+    # there will be a flicker, during saving.
+    plt.savefig(
+        path, format=save_format, bbox_inches='tight', dpi=dpi
+    )
+
+# Set new canvas size. Maximum width is 4096 px (4K).
+def on_value_changed(scale):
+    new_canvas_width = int((scale.get_value() * 3016 * 0.01) + 1080)
+    scale.canvas.set_size_request(new_canvas_width, new_canvas_width//scale.aspect_ratio)
+
+# Set new canvas size, equal to window width.
+def on_scale_to_win(btn):
+    new_canvas_width = btn.win.get_allocated_width()
+    btn.canvas.set_size_request(new_canvas_width, new_canvas_width//btn.aspect_ratio)
+
+def list_styles():
+    return plt.style.available
+
+def xpixels(ax):
+    return np.round(ax.bbox.bounds[2])
+
+def pixelize(x, ax, method='linear', which='both', oversample=1, span=None):
+    if not span:
+        span = (0, len(x))
+        if method == 'log10':
+            span = (1, len(x) + 1)
+    pixels = xpixels(ax)
+    minmax = 1
+    if which == 'both':
+        minmax = 2
+    nw = int(pixels * oversample)
+    w = (span[1] - span[0]) / (pixels * oversample)
+    n = nw * minmax
+    y = np.zeros(n)
+    r = np.zeros(n)
+    for i in range(nw):
+        if method == 'linear':
+            j = int(np.round(i * w + span[0]))
+            k = int(np.round(j + w + span[0]))
+        elif method == 'log10':
+            a = np.log10(span[1]) - np.log10(span[0])
+            b = np.log10(span[0])
+            j = int(np.round(10 ** (i / float(nw) * a + b)) - 1)
+            k = int(np.round(10 ** ((i + 1) / float(nw) * a + b)))
+        if i == nw - 1 and k != span[1]:
+            log.debug('pixelize tweak k')
+            k = span[1]
+        r[i] = k
+        if which == 'max':
+            y[i] = x[j:k].max()
+        elif which == 'min':
+            y[i] = x[j:k].min()
+        elif which == 'both':
+            y[i * minmax] = x[j:k].max()
+            y[i * minmax + 1] = x[j:k].min()
+    return (y, n, r)
+
+def mark_span(ax, span):
+    ax.axvspan(
+        *span,
+        edgecolor='0.2',
+        facecolor='0.98',
+        fill=False,
+        linestyle='dotted',
+        linewidth=0.8,
+        zorder=10,
+    )
+
+def axis_defaults(ax):
+    ax.tick_params(direction='in', top='off', right='off')
+    ax.tick_params(axis='both', which='major', labelsize='small')
+    ax.tick_params(axis='both', which='minor', labelsize='small')
+    xpad = ax.xaxis.labelpad
+    ypad = ax.yaxis.labelpad
+    xpos = ax.transAxes.transform((1.0, 0.0))
+    xpos[1] -= xpad
+    xpos = ax.transAxes.inverted().transform(xpos)
+    ypos = ax.transAxes.transform((0.0, 1.0))
+    ypos[0] -= ypad
+    ypos = ax.transAxes.inverted().transform(ypos)
+    ax.xaxis.set_label_coords(*xpos)
+    ax.yaxis.set_label_coords(*ypos)
+    ax.xaxis.get_label().set_ha('right')
+    ax.xaxis.get_label().set_va('top')
+    ax.yaxis.get_label().set_ha('right')
+    ax.yaxis.get_label().set_va('top')

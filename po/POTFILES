@@ -1,0 +1,14 @@
+data/io.github.itprojects.MasVisGtk.desktop.in
+data/io.github.itprojects.MasVisGtk.metainfo.xml.in
+data/io.github.itprojects.MasVisGtk.gschema.xml
+src/gtk/help-overlay.ui
+src/gtk/manual-overlay.ui
+src/gtk/preferences-overlay.ui
+src/analysis.py
+src/async_render.py
+src/input.py
+src/main.py
+src/main_gtk_window.py
+src/output_gtk.py
+src/params.py
+src/utils.py

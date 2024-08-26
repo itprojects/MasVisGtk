@@ -1,0 +1,231 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<interface>
+  <object class="AdwPreferencesWindow" id="preferences_overlay">
+    <property name="can-navigate-back">True</property>
+    <child>
+      <object class="AdwPreferencesPage">
+        <child>
+          <object class="AdwPreferencesGroup">
+            <property name="title" translatable="yes">Language</property>
+            <child>
+              <object class="AdwActionRow">
+                <property name="title" translatable="yes">Language and locale</property>
+                <child>
+                  <object class="GtkDropDown" id="dropdown_language">
+                    <property name="vexpand">false</property>
+                    <property name="valign">center</property>
+                    <property name="model">
+                      <object class="GtkStringList" id="model_language">
+                        <items>
+                          <item>Belarusian</item>
+                          <item>Bulgarian</item>
+                          <item>Czech</item>
+                          <item>Danish</item>
+                          <item>German</item>
+                          <item>Greek</item>
+                          <item>English (Canada)</item>
+                          <item>English (Britain)</item>
+                          <item>English (America)</item>
+                          <item>Spanish</item>
+                          <item>Estonian</item>
+                          <item>Farsi</item>
+                          <item>Finnish</item>
+                          <item>French</item>
+                          <item>Hebrew</item>
+                          <item>Hindi</item>
+                          <item>Croatian</item>
+                          <item>Hungarian</item>
+                          <item>Icelandic</item>
+                          <item>Italian</item>
+                          <item>Japanese</item>
+                          <item>Georgian</item>
+                          <item>Kazakh</item>
+                          <item>Korean</item>
+                          <item>Lithuanian</item>
+                          <item>Latvian</item>
+                          <item>Norwegian (Bokmål)</item>
+                          <item>Nepali</item>
+                          <item>Dutch</item>
+                          <item>Polish</item>
+                          <item>Portugues (Brazil)</item>
+                          <item>Portugues</item>
+                          <item>Romanian</item>
+                          <item>Russian</item>
+                          <item>Slovakian</item>
+                          <item>Slovenian</item>
+                          <item>Serbian (Cyrillic)</item>
+                          <item>Swedish</item>
+                          <item>Turkish</item>
+                          <item>Ukrainian</item>
+                          <item>Vietnamese</item>
+                          <item>Chinese (Mainland)</item>
+                          <item>Chinese (Taiwan)</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="AdwPreferencesGroup">
+            <property name="title" translatable="yes">Theme and Style</property>
+            <child>
+              <object class="AdwActionRow">
+                <property name="title" translatable="yes">Application style</property>
+                <child>
+                  <object class="GtkDropDown" id="dropdown_app_style">
+                    <property name="vexpand">false</property>
+                    <property name="valign">center</property>
+                    <property name="model">
+                      <object class="GtkStringList">
+                        <items>
+                          <item>Follow System Style</item>
+                          <item>Light Style</item>
+                          <item>Dark Style</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="AdwActionRow">
+                <property name="title" translatable="yes">Matplotlib built-in style</property>
+                <child>
+                  <object class="GtkDropDown" id="dropdown_matplotlib_style">
+                    <property name="vexpand">false</property>
+                    <property name="valign">center</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="AdwActionRow">
+                <property name="title" translatable="yes">Matplotlib custom background</property>
+                <child>
+                  <object class="GtkColorDialogButton" id="background_button">
+                    <property name="hexpand">false</property>
+                    <property name="vexpand">false</property>
+                    <property name="halign">center</property>
+                    <property name="valign">center</property>
+                    <property name="dialog">
+                      <object class="GtkColorDialog" id="clr_dialog_xml"/>
+                    </property>
+                  </object>
+                </child>
+                <child>
+                  <object class="AdwSwitchRow" id="background_button_switch">
+                    <property name="hexpand">false</property>
+                    <property name="vexpand">false</property>
+                    <property name="halign">center</property>
+                    <property name="valign">center</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="AdwActionRow">
+                <property name="title" translatable="yes">Matplotlib custom font</property>
+                <child>
+                  <object class="GtkFontDialogButton" id="font_button">
+                    <property name="hexpand">false</property>
+                    <property name="vexpand">false</property>
+                    <property name="halign">center</property>
+                    <property name="valign">center</property>
+                    <property name="dialog">
+                      <object class="GtkFontDialog" id="font_dialog_xml"/>
+                    </property>
+                  </object>
+                </child>
+                <child>
+                  <object class="AdwSwitchRow" id="font_button_switch">
+                    <property name="hexpand">false</property>
+                    <property name="vexpand">false</property>
+                    <property name="halign">center</property>
+                    <property name="valign">center</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="AdwPreferencesGroup">
+            <property name="title" translatable="yes">Save Image</property>
+            <child>
+              <object class="AdwActionRow">
+                <property name="title" translatable="yes">Default saved image format</property>
+                <child>
+                  <object class="GtkDropDown" id="dropdown_format">
+                    <property name="vexpand">false</property>
+                    <property name="valign">center</property>
+                    <property name="model">
+                      <object class="GtkStringList" id="model_format">
+                        <items>
+                          <item>PNG</item>
+                          <item>JPEG</item>
+                          <item>SVG</item>
+                          <item>WEBP</item>
+                          <item>TIFF</item>
+                          <item>PDF</item>
+                          <item>EPS</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="AdwPreferencesGroup">
+            <property name="title" translatable="yes">Visual Quality</property>
+            <child>
+              <object class="AdwActionRow">
+                <property name="title" translatable="yes">DPI of plots</property>
+                <child>
+                  <object class="AdwSpinRow" id="dpi_application">
+                    <property name="vexpand">false</property>
+                    <property name="valign">center</property>
+                    <property name="adjustment">
+                      <object class="GtkAdjustment">
+                        <property name="lower">75</property>
+                        <property name="upper">400</property>
+                        <property name="step-increment">5</property>
+                        <property name="page-increment">5</property>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="AdwActionRow">
+                <property name="title" translatable="yes">DPI of saved files</property>
+                <child>
+                  <object class="AdwSpinRow" id="dpi_image">
+                    <property name="vexpand">false</property>
+                    <property name="valign">center</property>
+                    <property name="adjustment">
+                      <object class="GtkAdjustment">
+                        <property name="lower">75</property>
+                        <property name="upper">400</property>
+                        <property name="step-increment">5</property>
+                        <property name="page-increment">5</property>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>

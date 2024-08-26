@@ -1,0 +1,555 @@
+# Bulgarian translations for masvisgtk package
+# Български превод за пакет masvisgtk.
+# Copyright (C) 2024 THE masvisgtk'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the masvisgtk package.
+# Automatically generated, 2024.
+#
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: masvisgtk\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-08-29 21:08+0300\n"
+"PO-Revision-Date: 2024-08-29 21:08+0300\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: bg\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: data/io.github.itprojects.MasVisGtk.desktop.in:3
+#: data/io.github.itprojects.MasVisGtk.metainfo.xml.in:6 src/main.py:57
+msgid "MasVisGtk"
+msgstr "МасВисГтк"
+
+#: data/io.github.itprojects.MasVisGtk.desktop.in:9
+msgid "Audio analysis"
+msgstr "Звуков анализ"
+
+#: data/io.github.itprojects.MasVisGtk.desktop.in:10
+#: data/io.github.itprojects.MasVisGtk.metainfo.xml.in:7
+msgid "Audio analysis tool for your music"
+msgstr "Звуко-анализиращ прибор за вашата музика"
+
+#: data/io.github.itprojects.MasVisGtk.desktop.in:12
+msgid "Audio;Loudness;Analysis;"
+msgstr "Звук;Шумност;Анализ;"
+
+#: data/io.github.itprojects.MasVisGtk.metainfo.xml.in:9
+msgid ""
+"Detect audio mastering defects. Based on pymasvis app/module, using numpy, "
+"scipy, pyplot (matplotlib)."
+msgstr ""
+"Засечете звукови дефекти във файлове. Основано на ПайМасВис приложението/"
+"модул, ползвайки нъмпи, сайпи, пайплот (матплотлиб)."
+
+#: data/io.github.itprojects.MasVisGtk.metainfo.xml.in:10
+#: data/io.github.itprojects.MasVisGtk.metainfo.xml.in:11
+msgid "Waveform plotting"
+msgstr "Изобразяване на звукови вълни"
+
+#: data/io.github.itprojects.MasVisGtk.metainfo.xml.in:11
+#: data/io.github.itprojects.MasVisGtk.metainfo.xml.in:12
+msgid "Overview of files (by-folder support)"
+msgstr "Преглед на файлове (по-папкова поддръжка)"
+
+#: data/io.github.itprojects.MasVisGtk.metainfo.xml.in:12
+#: data/io.github.itprojects.MasVisGtk.metainfo.xml.in:13
+msgid "Frequency plot"
+msgstr "Изобразяване на звукови честоти"
+
+#: data/io.github.itprojects.MasVisGtk.metainfo.xml.in:13
+#: data/io.github.itprojects.MasVisGtk.metainfo.xml.in:14
+msgid "Dynamic Range estimation"
+msgstr "Изчисление на звуков обхват"
+
+#: data/io.github.itprojects.MasVisGtk.metainfo.xml.in:14
+#: data/io.github.itprojects.MasVisGtk.metainfo.xml.in:15
+msgid "Peak estimation"
+msgstr "Изчисление на връх"
+
+#: data/io.github.itprojects.MasVisGtk.metainfo.xml.in:15
+#: data/io.github.itprojects.MasVisGtk.metainfo.xml.in:16
+msgid "Crest Factor estimation"
+msgstr "Изчисление на вълнови параметри"
+
+#: data/io.github.itprojects.MasVisGtk.metainfo.xml.in:16
+#: data/io.github.itprojects.MasVisGtk.metainfo.xml.in:17
+msgid "Histogram plot"
+msgstr "Изобразяване на хистограма"
+
+#: data/io.github.itprojects.MasVisGtk.metainfo.xml.in:17
+#: data/io.github.itprojects.MasVisGtk.metainfo.xml.in:18
+msgid "Peak vs. RMS plot"
+msgstr "Изобразяване на Връх срещу. RMS"
+
+#: data/io.github.itprojects.MasVisGtk.metainfo.xml.in:18
+#: data/io.github.itprojects.MasVisGtk.metainfo.xml.in:19
+msgid "Loudness analysis, EBU R128 plot"
+msgstr "Анализ на звукови нива, EBU R128 чертеж"
+
+#: data/io.github.itprojects.MasVisGtk.metainfo.xml.in:19
+#: data/io.github.itprojects.MasVisGtk.metainfo.xml.in:20
+msgid "Multi-channel audio support"
+msgstr "Многоканална звукова поддръжка"
+
+#: data/io.github.itprojects.MasVisGtk.metainfo.xml.in:49
+msgid "ITProjects"
+msgstr ""
+
+#: data/io.github.itprojects.MasVisGtk.metainfo.xml.in:54
+msgid "Initial release for GTK user interface."
+msgstr "Начално издание за ГТК потребителска среда."
+
+#: data/io.github.itprojects.MasVisGtk.metainfo.xml.in:56
+msgid "Adds UI to pymasvis."
+msgstr "Добави потребителска среда към пайМасВис."
+
+#: data/io.github.itprojects.MasVisGtk.metainfo.xml.in:57
+msgid "Adds multiple save options for analysis."
+msgstr "Добави множество възможности за запазване на анализа."
+
+#: data/io.github.itprojects.MasVisGtk.gschema.xml:24
+msgid "Language of the application."
+msgstr "Език на приложението."
+
+#: data/io.github.itprojects.MasVisGtk.gschema.xml:25
+msgid "The language of the application, if the translation exists."
+msgstr "Езикът на приложението, ако преводът съществува."
+
+#: data/io.github.itprojects.MasVisGtk.gschema.xml:38
+msgid "Application style."
+msgstr "Външният вид на приложението."
+
+#: data/io.github.itprojects.MasVisGtk.gschema.xml:39
+msgid "Application style, follow system 0, light 1, dark 2."
+msgstr "Външният вид на приложението, следва системата 0, светъл 1, тъмен 2."
+
+#: data/io.github.itprojects.MasVisGtk.gschema.xml:44
+msgid "Matplotlib style."
+msgstr "Външният вид на Матплотлиб."
+
+#: data/io.github.itprojects.MasVisGtk.gschema.xml:45
+msgid ""
+"Matplotlib visual style. 'Solarize_Light2', 'bmh', 'classic', "
+"'dark_background', 'fast', 'fivethirtyeight', 'ggplot', 'grayscale'"
+msgstr ""
+"Външният вид на МАтплотлиб. 'Solarize_Light2', 'bmh', 'classic', "
+"'dark_background', 'fast', 'fivethirtyeight', 'ggplot', 'grayscale'"
+
+#: data/io.github.itprojects.MasVisGtk.gschema.xml:54
+msgid "Custom font."
+msgstr "Персонализиран фонт."
+
+#: data/io.github.itprojects.MasVisGtk.gschema.xml:55
+msgid "Custom font preferences, by using the font button."
+msgstr "Предпочитание за персонализиран фонт, използвайки фонтовия бутон."
+
+#: data/io.github.itprojects.MasVisGtk.gschema.xml:60
+msgid "Save format."
+msgstr "Формат за запазване"
+
+#: data/io.github.itprojects.MasVisGtk.gschema.xml:65
+msgid "DPI for plots."
+msgstr "DPI за чертежи"
+
+#: data/io.github.itprojects.MasVisGtk.gschema.xml:70
+msgid "DPI for saved images."
+msgstr "DPI за запазени изображения"
+
+#: src/gtk/help-overlay.ui:11
+msgid "Window Actions"
+msgstr "Действия в Прозореца"
+
+#: src/gtk/help-overlay.ui:15
+msgid "Help Manual"
+msgstr "Помощен Наръчник"
+
+#: src/gtk/help-overlay.ui:21
+msgid "Open Menu"
+msgstr "Отвори Меню"
+
+#: src/gtk/help-overlay.ui:27
+msgid "Fullscreen"
+msgstr "На Цял Екран"
+
+#: src/gtk/help-overlay.ui:33
+msgid "Shortcuts"
+msgstr "Клавишни Комбинации"
+
+#: src/gtk/help-overlay.ui:39
+msgid "Quit"
+msgstr "Изключи"
+
+#: src/gtk/help-overlay.ui:46
+msgid "File Actions"
+msgstr "Файлови Действия"
+
+#: src/gtk/help-overlay.ui:50
+msgid "Simple File(s) Open"
+msgstr "Просто отваряне на Файл(ове)"
+
+#: src/gtk/help-overlay.ui:56
+msgid "Advance Open / Overview"
+msgstr "Разширено отваряне / Преглед"
+
+#: src/gtk/help-overlay.ui:62
+msgid "Save Current Tab"
+msgstr "Запази Видимия Раздел"
+
+#: src/gtk/help-overlay.ui:68
+msgid "Save All Tabs"
+msgstr "Запази Всички Раздели"
+
+#: src/gtk/manual-overlay.ui:4
+msgid "Understanding Graphs"
+msgstr "Представа за Чертежите"
+
+#: src/gtk/preferences-overlay.ui:9
+msgid "Language"
+msgstr "Език"
+
+#: src/gtk/preferences-overlay.ui:12
+msgid "Language and locale"
+msgstr "Език и Обстоятелства"
+
+#: src/gtk/preferences-overlay.ui:74
+msgid "Theme and Style"
+msgstr "Външен Вид"
+
+#: src/gtk/preferences-overlay.ui:77
+msgid "Application style"
+msgstr "Външният вид на приложението"
+
+#: src/gtk/preferences-overlay.ui:97
+msgid "Matplotlib built-in style"
+msgstr "Вграден външният вид на Матплотлиб."
+
+#: src/gtk/preferences-overlay.ui:108
+msgid "Matplotlib custom background"
+msgstr "Персонализиран чертежен фон на Матплотлиб"
+
+#: src/gtk/preferences-overlay.ui:132
+msgid "Matplotlib custom font"
+msgstr "Персонализиран чертежен фонт на Матплотлиб"
+
+#: src/gtk/preferences-overlay.ui:158
+msgid "Save Image"
+msgstr "Запазено Изображение"
+
+#: src/gtk/preferences-overlay.ui:161
+msgid "Default saved image format"
+msgstr "Формат за запазване, по подразбиране"
+
+#: src/gtk/preferences-overlay.ui:187
+msgid "Visual Quality"
+msgstr "Качество на Изображенито"
+
+#: src/gtk/preferences-overlay.ui:190
+msgid "DPI of plots"
+msgstr "DPI за чертежи в приложението"
+
+#: src/gtk/preferences-overlay.ui:209
+msgid "DPI of saved files"
+msgstr "DPI за запазени фаилове"
+
+#: src/main.py:141
+msgid "No gschema file for preferences. Using defaults."
+msgstr "Няма схема файл за предпочитания. Ползваме по подразбиране."
+
+#: src/main.py:148
+msgid "Cannot set locale "
+msgstr "Не може да се приложи език "
+
+#: src/main.py:151
+msgid "FILES/FOLDERS"
+msgstr "ФАЙЛОВЕ/ПАПКИ"
+
+#: src/main.py:153
+msgid ""
+"  FILE(S) and/or FOLDER(S) paths to process inside the application\n"
+"\n"
+"  MasVisGtk is an audio file analysis application."
+msgstr ""
+"  ФАИЛ(ОВЕ) и/или ПАПКОВИ местоположения за обработка в приложението\n"
+"\n"
+"  МасВисГтк е приложение за звуков анализ."
+
+#: src/main.py:156
+msgid ""
+"The original python module is also available with this package.\n"
+"The command line options are different from the original.\n"
+"Large file are always slow to render."
+msgstr ""
+"Първоначалният питонов модул е също така достъпен с това приложение.\n"
+"Командите са различни от първоначалния.\n"
+"Големите файлове винаги са бавни за изобразяване."
+
+#: src/main.py:165
+msgid "Version of MasVisGtk."
+msgstr "Версия на МасВисГтк"
+
+#: src/main.py:174
+msgid "Show Verbose Messages."
+msgstr "Покажи Mногословените Надписи."
+
+#: src/main.py:183
+msgid "Show Debug Messages."
+msgstr "Покажи Mногословените Надписи."
+
+#: src/main.py:192
+msgid "Show Supported [FFMPEG] Formats."
+msgstr "Покажи Поддържаните [FFMPEG] Формати"
+
+#: src/main.py:201
+msgid ""
+"Use [LU], instead of [LUFS], when displaying R128 values, (default: LUFS)."
+msgstr ""
+"Ползвай [LU] единици, вместо [LUFS], когато показваш R128 стойности, (по "
+"подразбиране: LUFS)."
+
+#: src/main.py:210
+msgid ""
+"flat, generate one overview tab for all, or dir, for one tab for folders, "
+"(default: flat)."
+msgstr ""
+"flat, създай един прегледен раздел за всички, или dir, един раздел на папка, "
+"(по подразбиране: dir)."
+
+#: src/main.py:219
+msgid "If input is a folder, process subfolders, too."
+msgstr "Ако входните данни са папка, обработи и под-папките, също."
+
+#: src/main.py:228
+msgid "FILE(S) or FOLDER(S)"
+msgstr "ФАЙЛ(ОВЕ) или ПАПКИ"
+
+#: src/main.py:333
+msgid "MasVisGtk Version "
+msgstr "МасВисГтк Версия "
+
+#: src/main.py:341
+msgid "FFMPEG Formats: "
+msgstr "FFMPEG Формати: "
+
+#: src/main.py:352
+msgid "is not possible with option -o. Try dir or flat."
+msgstr "не е възможен с -o. Пробвайте dir или flat."
+
+#: src/main.py:373
+msgid "No input files or folders supplied."
+msgstr "Няма входни файлове или папки."
+
+#: src/main.py:387
+msgid "Bad permisions for file. "
+msgstr "Неприемливи разрешения за файл. "
+
+#: src/main.py:395
+msgid "This file is not an audio or video file."
+msgstr "Този файл не е звуков или видео файл."
+
+#: src/main.py:397
+msgid "Cannot process file."
+msgstr "Не може да се обработи файл."
+
+#: src/main.py:409
+msgid "Bad input: "
+msgstr "Лоши входни данни: "
+
+#: src/main.py:412
+msgid "Error processing files: "
+msgstr "Грешка при отваряне: "
+
+#: src/main.py:419
+msgid "Bad input files: "
+msgstr "Лоши входни данни: "
+
+#: src/main.py:421
+msgid "Problem Files"
+msgstr "Проблемни Файлове"
+
+#: src/main.py:421
+msgid "Ignoring bad input files:"
+msgstr "Пренебрегваме лошите входни файлове:"
+
+#: src/main.py:425
+msgid "No valid files found!"
+msgstr "Няма намерени действителни файлове!"
+
+#: src/main.py:427
+msgid "No Files"
+msgstr "Няма Файлове"
+
+#: src/main.py:450
+msgid "Unknown mimetype: "
+msgstr "Неизвестен mimetype: "
+
+#: src/main.py:451
+msgid "Unknown Mimetype"
+msgstr "Неизвестен Mimetype"
+
+#: src/main.py:451
+msgid "Skipping file: "
+msgstr "Пропускаме файл: "
+
+#: src/main.py:490
+msgid "AsyncWorkerError"
+msgstr "АсинхроннаРаботнаГрешка"
+
+#: src/main.py:518
+msgid "Duplicate path: "
+msgstr "Повторено местоположение: "
+
+#: src/main.py:524
+msgid "Error in Opening"
+msgstr "Грешка при отваряне"
+
+#: src/main.py:540 src/main.py:576
+msgid "Cannot detect save file format, defaulting to png."
+msgstr ""
+"Не е възможно да се засече формата за записване на файлове, използване по "
+"подразбиране png."
+
+#: src/main.py:547
+msgid "is not writeable."
+msgstr "не може да се записва."
+
+#: src/main.py:549 src/main.py:585
+msgid "Permissions"
+msgstr "Разрешения"
+
+#: src/main.py:583
+msgid " is not writeable."
+msgstr " не може да се записва."
+
+#: src/main.py:837 src/main_gtk_window.py:421 src/main_gtk_window.py:432
+msgid "Close"
+msgstr "Затвори"
+
+#: src/main.py:901
+msgid "Opening File Error"
+msgstr "Грешка при отваряне"
+
+#: src/main.py:903
+msgid "Errors in Processing!"
+msgstr "Грешка при отваряне"
+
+#: src/main.py:919 src/main.py:930
+msgid "Unable to open input "
+msgstr "Не могат да се отворят данни "
+
+#: src/main.py:920
+msgid "Cannot Open File"
+msgstr "Не може да се отвори"
+
+#: src/main.py:929
+msgid "The minimum file duration is 3 seconds."
+msgstr "Най-малката продължителност е 3 секунди."
+
+#: src/main.py:931
+msgid "File Error"
+msgstr "Файлова Грешка"
+
+#: src/main_gtk_window.py:124
+msgid "Save All"
+msgstr "Запази Всички"
+
+#: src/main_gtk_window.py:128
+msgid "Preferences"
+msgstr "Предпочитания"
+
+#: src/main_gtk_window.py:129
+msgid "Formats"
+msgstr "Формати"
+
+#: src/main_gtk_window.py:130
+msgid "Keyboard Shortcuts"
+msgstr "Клавишни Комбинации"
+
+#: src/main_gtk_window.py:131
+msgid "Help"
+msgstr "Помощ"
+
+#: src/main_gtk_window.py:132
+msgid "About"
+msgstr "Относно"
+
+#: src/main_gtk_window.py:145 src/main_gtk_window.py:201
+#: src/main_gtk_window.py:205
+msgid "Open Files"
+msgstr "Отвори Файлове"
+
+#: src/main_gtk_window.py:150 src/main_gtk_window.py:215
+msgid "Advanced Open"
+msgstr "Разширено Отваряне"
+
+#: src/main_gtk_window.py:155 src/main_gtk_window.py:327
+#: src/main_gtk_window.py:349
+msgid "Save"
+msgstr "Запази"
+
+#: src/main_gtk_window.py:155
+msgid "Save Tab"
+msgstr "Запази Раздел"
+
+#: src/main_gtk_window.py:208
+msgid "Open Folders"
+msgstr "Отвори Папки"
+
+#: src/main_gtk_window.py:221
+msgid "Add Files"
+msgstr "Добави Файлове"
+
+#: src/main_gtk_window.py:223
+msgid "Add Folders"
+msgstr "Добави Папки"
+
+#: src/main_gtk_window.py:250
+msgid "use LUFS units"
+msgstr "ползвай LUFS единици"
+
+#: src/main_gtk_window.py:254
+msgid "recursive (search sub-folders)"
+msgstr "претърси (търси в под-папки)"
+
+#: src/main_gtk_window.py:260
+msgid "overview mode"
+msgstr "прегледен разадел"
+
+#: src/main_gtk_window.py:270
+msgid "Open"
+msgstr "Отвори"
+
+#: src/main_gtk_window.py:295
+msgid "Failed Open"
+msgstr "Провалено отваряне"
+
+#: src/main_gtk_window.py:328
+msgid "Save in Folder"
+msgstr "Запази в Папка"
+
+#: src/main_gtk_window.py:350
+msgid "Save All in Folder"
+msgstr "Запази Всички в Папка"
+
+#: src/main_gtk_window.py:406
+msgid "Supported Formats"
+msgstr "Поддържани Формати"
+
+#: src/main_gtk_window.py:406
+msgid "No Supported Formats"
+msgstr "Няма Поддържани Формати"
+
+#: src/main_gtk_window.py:451
+msgid "Original PyMasVis module development."
+msgstr "Първоначално разработване на пайМасВис модул."
+
+#: src/main_gtk_window.py:453
+msgid "GTK version of PyMasVis, originally base on commit #657196."
+msgstr "ГТК версия на ПайМасВис, първоначално основана на #657196."
+
+#: src/output_gtk.py:712
+msgid "Scale to Window Width"
+msgstr "Разшири размер до края на прозореца"

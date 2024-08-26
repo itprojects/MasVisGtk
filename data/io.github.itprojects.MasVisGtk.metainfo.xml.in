@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop">
+  <id>io.github.itprojects.MasVisGtk</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-2.0-or-later</project_license>
+  <name translate="no">MasVisGtk</name>
+  <summary translate="no">Audio analysis tool for your music</summary>
+  <description>
+    <p>Detect audio mastering defects. Based on pymasvis app/module, using numpy, scipy, pyplot (matplotlib).</p>
+      <ul>
+        <li>Waveform plotting</li>
+        <li>Overview of files (by-folder support)</li>
+        <li>Frequency plot</li>
+        <li>Dynamic Range estimation</li>
+        <li>Peak estimation</li>
+        <li>Crest Factor estimation</li>
+        <li>Histogram plot</li>
+        <li>Peak vs. RMS plot</li>
+        <li>Loudness analysis, EBU R128 plot</li>
+        <li>Multi-channel audio support</li>
+      </ul>
+  </description>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://raw.githubusercontent.com/itprojects/MasVisGtk/main/img/1.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/itprojects/MasVisGtk/main/img/2.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/itprojects/MasVisGtk/main/img/3.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/itprojects/MasVisGtk/main/img/4.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/itprojects/MasVisGtk/main/img/5.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/itprojects/MasVisGtk/main/img/6.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/itprojects/MasVisGtk/main/img/7.png</image>
+    </screenshot>
+  </screenshots>
+  <launchable type="desktop-id">io.github.itprojects.MasVisGtk.desktop</launchable>
+  <url type="homepage">https://github.com/itprojects/MasVisGtk</url>
+  <url type="bugtracker">https://github.com/itprojects/MasVisGtk/issues</url>
+  <url type="vcs-browser">https://github.com/itprojects/MasVisGtk/issues</url>
+  <url type="translate">https://github.com/itprojects/MasVisGtk/pulls</url>
+  <developer_name translate="no">ITProjects</developer_name>
+  <translation type="gettext">masvisgtk</translation>
+  <releases>
+    <release version="3.0.0" date="2024-08-27">
+      <description translate="no">
+        <p>Initial release for GTK user interface.</p>
+        <ul>
+          <li>Adds UI to pymasvis.</li>
+          <li>Adds multiple save options for analysis.</li>
+        </ul>
+      </description>
+    </release>
+  </releases>
+  <content_rating type="oars-1.1"/>
+  <provides>io.github.itprojects.MasVisGtk.desktop</provides>
+</component>

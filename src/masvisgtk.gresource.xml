@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+  <gresource prefix="/io/github/itprojects/MasVisGtk">
+    <file preprocess="xml-stripblanks">gtk/preferences-overlay.ui</file>
+    <file preprocess="xml-stripblanks">gtk/help-overlay.ui</file>
+    <file preprocess="xml-stripblanks">gtk/manual-overlay.ui</file>
+    <file alias="style.css">gtk/style.css</file>
+  </gresource>
+</gresources>

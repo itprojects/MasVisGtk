@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=MasVisGtk
+Exec=masvisgtk
+Icon=io.github.itprojects.MasVisGtk
+Terminal=false
+Type=Application
+StartupNotify=true
+GenericName=Audio analysis
+Comment=Audio analysis tool for your music
+Categories=Music;Audio;AudioVideo;
+Keywords=Audio;Loudness;Analysis;
+MimeType=audio/*;video/*;
