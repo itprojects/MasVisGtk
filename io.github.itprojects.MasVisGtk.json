@@ -1,17 +1,17 @@
 {
-    "id" : "io.github.itprojects.MasVisGtk",
-    "runtime" : "org.gnome.Platform",
-    "runtime-version" : "46",
-    "sdk" : "org.gnome.Sdk",
-    "command" : "masvisgtk",
-    "finish-args" : [
+    "id": "io.github.itprojects.MasVisGtk",
+    "runtime": "org.gnome.Platform",
+    "runtime-version": "46",
+    "sdk": "org.gnome.Sdk",
+    "command": "masvisgtk",
+    "finish-args": [
         "--share=ipc",
         "--socket=fallback-x11",
         "--device=dri",
         "--socket=wayland",
         "--filesystem=home"
     ],
-    "cleanup" : [
+    "cleanup": [
         "/include",
         "/lib/pkgconfig",
         "/man",
@@ -22,11 +22,11 @@
         "*.la",
         "*.a"
     ],
-    "modules" : [
+    "modules": [
         {
             "name":"openblas",
             "no-autogen":true,
-            "make-args":[
+            "make-args": [
                 "DYNAMIC_ARCH=1",
                 "FC=gfortran",
                 "NO_CBLAS=1",
@@ -36,40 +36,40 @@
             "make-install-args": [
                 "PREFIX=/app"
             ],
-            "sources":[
+            "sources": [
                 {
-                "type":"archive",
-                "url":"https://github.com/OpenMathLib/OpenBLAS/archive/refs/tags/v0.3.28.tar.gz",
-                "sha256":"f1003466ad074e9b0c8d421a204121100b0751c96fc6fcf3d1456bd12f8a00a1"
+                    "type": "archive",
+                    "url": "https://github.com/OpenMathLib/OpenBLAS/archive/refs/tags/v0.3.28.tar.gz",
+                    "sha256": "f1003466ad074e9b0c8d421a204121100b0751c96fc6fcf3d1456bd12f8a00a1"
                 }
             ]
         },
         {
-            "name":"lapack",
-            "buildsystem":"cmake-ninja",
-            "builddir":true,
-            "cleanup":[
+            "name": "lapack",
+            "buildsystem": "cmake-ninja",
+            "builddir": true,
+            "cleanup": [
                 "/lib/cmake"
             ],
-            "config-opts":[
+            "config-opts": [
                 "-DCMAKE_BUILD_TYPE=RelWithDebInfo",
                 "-DBUILD_SHARED_LIBS=ON",
                 "-DBUILD_TESTING=OFF",
                 "-DLAPACKE=ON",
                 "-DCBLAS=ON"
             ],
-            "sources":[
+            "sources": [
                 {
-                    "type":"archive",
-                    "url":"https://github.com/Reference-LAPACK/lapack/archive/refs/tags/v3.12.0.tar.gz",
-                    "sha256":"eac9570f8e0ad6f30ce4b963f4f033f0f643e7c3912fc9ee6cd99120675ad48b"
+                    "type": "archive",
+                    "url": "https://github.com/Reference-LAPACK/lapack/archive/refs/tags/v3.12.0.tar.gz",
+                    "sha256": "eac9570f8e0ad6f30ce4b963f4f033f0f643e7c3912fc9ee6cd99120675ad48b"
                 }
             ]
         },
         {
             "name": "qhull",
             "buildsystem": "cmake-ninja",
-            "config-opts":[
+            "config-opts": [
                 "-DBUILD_STATIC_LIBS=OFF"
             ],
             "sources": [
@@ -79,7 +79,7 @@
                     "sha256": "59356b229b768e6e2b09a701448bfa222c37b797a84f87f864f97462d8dbc7c5"
                 }
             ],
-            "cleanup":[
+            "cleanup": [
                 "/bin",
                 "/share/man",
                 "/share/doc"
@@ -182,8 +182,8 @@
                     "sources": [
                         {
                             "type": "file",
-                            "url": "https://files.pythonhosted.org/packages/54/a4/f8188c4f3e07f7737683588210c073478abcb542048cf4ab6fedad0b458a/numpy-2.1.0.tar.gz",
-                            "sha256": "7dc90da0081f7e1da49ec4e398ede6a8e9cc4f5ebe5f9e06b443ed889ee9aaa2",
+                            "url": "https://files.pythonhosted.org/packages/59/5f/9003bb3e632f2b58f5e3a3378902dcc73c5518070736c6740fe52454e8e1/numpy-2.1.1.tar.gz",
+                            "sha256": "d0cf7d55b1051387807405b3898efafa862997b4cba8aa5dbe657be794afeafd",
                             "x-checker-data": {
                                 "type": "pypi",
                                 "name": "numpy"
@@ -205,8 +205,8 @@
                             "sources": [
                                 {
                                     "type": "archive",
-                                    "url": "https://files.pythonhosted.org/packages/8d/9e/e4786569b319847ffd98a8326802d5cf8a5500860dbfc2df1f0f4883ed99/contourpy-1.2.1.tar.gz",
-                                    "sha256": "4d8908b3bee1c889e547867ca4cdc54e5ab6be6d3e078556814a22457f49423c",
+                                    "url": "https://files.pythonhosted.org/packages/f5/f6/31a8f28b4a2a4fa0e01085e542f3081ab0588eff8e589d39d775172c9792/contourpy-1.3.0.tar.gz",
+                                    "sha256": "7ffa0db17717a8ffb127efd0c95a4362d996b892c2904db72428d5b52e1938a4",
                                     "x-checker-data": {
                                         "type": "pypi",
                                         "name": "contourpy"
@@ -385,12 +385,11 @@
                         "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"scipy\" --no-build-isolation"
                     ],
                     "sources": [
-
                         {
                             "type": "file",
                             "url": "https://files.pythonhosted.org/packages/62/11/4d44a1f274e002784e4dbdb81e0ea96d2de2d1045b2132d5af62cc31fd28/scipy-1.14.1.tar.gz",
                             "sha256": "5a275584e726026a5699459aa72f828a610821006228e841b94275c4a7c08417",
-                            "x-checker-data" : {
+                            "x-checker-data": {
                                 "type": "pypi",
                                 "name": "scipy"
                             }
@@ -428,14 +427,14 @@
             ]
         },
         {
-            "name" : "masvisgtk",
-            "builddir" : true,
-            "buildsystem" : "meson",
-            "sources" : [
+            "name": "masvisgtk",
+            "builddir": true,
+            "buildsystem": "meson",
+            "sources": [
                 {
-                    "type" : "git",
-                    "url" : "https://github.com/itprojects/MasVisGtk.git",
-                    "tag": "v3.0.0"
+                    "type": "git",
+                    "url": "https://github.com/itprojects/MasVisGtk.git",
+                    "tag": "v3.0.1"
                 }
             ]
         }

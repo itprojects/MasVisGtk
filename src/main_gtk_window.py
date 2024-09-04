@@ -450,6 +450,6 @@ class PyPlotWindow(Adw.ApplicationWindow):
         self.about.set_version(self.app.VERSION)
         self.about.add_acknowledgement_section(_('Original PyMasVis module development.'), ['Joakim Fors'])
         self.about.set_application_name(self.app.app_name)
-        self.about.set_comments(_('GTK version of PyMasVis, originally base on commit #657196.'))
+        self.about.set_comments(_('GTK application, originally based on PyMasVis commit #657196.'))
         self.about.set_application_icon('io.github.itprojects.MasVisGtk')
         self.about.present()

@@ -24,7 +24,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 '''
 
-import gi, os, sys, time
+import gi, os, sys, time, gc
 
 gi.require_version('Gtk', '4.0')
 gi.require_version('Adw', '1')
@@ -950,9 +950,10 @@ class MasVisGtk(Adw.Application):
                     win=self.win,
                 )
         Steps.report()
-
+        '''
         # Immediately render on canvas.
         # Required, otherwise risks saveing low-resolution image.
+        # This may cause the spinning dialog to show/hide on random.
         scrolled_contents = tab.get_child().scrolled.get_child()
         if scrolled_contents != None:
             if overview_mode == None:
@@ -960,6 +961,8 @@ class MasVisGtk(Adw.Application):
             else:
                 scrolled_contents = scrolled_contents.get_child().get_last_child()
             scrolled_contents.draw()
+        '''
+        gc.collect() # free RAM
 
 def main(VERSION, SETTINGS_in):
     if len(sys.argv) > 1 and sys.argv[1] == '--pymasvis':

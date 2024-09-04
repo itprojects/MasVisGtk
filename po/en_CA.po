@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: masvisgtk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-29 21:08+0300\n"
+"POT-Creation-Date: 2024-09-04 17:01+0300\n"
 "PO-Revision-Date: 2024-08-29 21:08+0300\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -549,3 +549,7 @@ msgstr "GTK version of PyMasVis, originally base on commit #657196."
 #: src/output_gtk.py:712
 msgid "Scale to Window Width"
 msgstr "Scale to Window Width"
+
+#: src/main_gtk_window.py:453
+msgid "GTK application, originally based on PyMasVis commit #657196."
+msgstr "GTK application, originally based on PyMasVis commit #657196."

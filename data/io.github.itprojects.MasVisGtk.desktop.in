@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=MasVisGtk
-Exec=masvisgtk
+Exec=masvisgtk %F %D
 Icon=io.github.itprojects.MasVisGtk
 Terminal=false
 Type=Application

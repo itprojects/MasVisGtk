@@ -46,7 +46,8 @@ WebP | WebP Image Format
 Flatpaks
 --------
 
-Flatpak is the recommended type of installation.
+Flatpak from [flathub](https://flathub.org/apps/io.github.itprojects.MasVisGtk), or to build, see instructions below.
+
 
 Build flatpak
 -------------
@@ -173,6 +174,13 @@ The application is intended for UTF-8 systems.
 Saving in `PostScript`, `PGF code for LaTeX`, `Raw RGBA bitmap` (Adobe Photoshop Color swatch) is only possible through the in-app matplotlib toolbar.
 
 
+The application is RAM hungry.
+
+**DO NOT** try to open more than 10 files simulataneously on a computer with low resources (RAM>=8GB), or on a computer, where the resources are already allocated (in other applications).
+
+**DO NOT** try to open files >=20 minutes, unless you have lots of free RAM available (RAM>=16GB).
+
+
 Useful Links
 ------------
 
@@ -180,10 +188,7 @@ Useful Links
 
 [Practical guidelines for EBU R 128 Loudness](https://tech.ebu.ch/publications/tech3343), general idea of loudness mastering.
 
-Original `pymasvis` [source code](https://github.com/joakimfors/PyMasVis) by *Joakim Fors*.
-
-
-For more details on the [original MasVis](https://www.lts.a.se/ljudteknik/masvis).
+Original `pymasvis` [source code](https://github.com/joakimfors/PyMasVis) by *Joakim Fors*. [Earlier MasVis collaboration](https://www.lts.a.se/ljudteknik/masvis).
 
 Copyright and licensing
 -----------------------
