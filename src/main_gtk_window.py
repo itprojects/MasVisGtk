@@ -202,6 +202,7 @@ class PyPlotWindow(Adw.ApplicationWindow):
         open_dialog.list_store_paths = list_store_paths
         open_dialog.files_or_folders = files_or_folders
         if files_or_folders:
+            self.app.overview_mode = None
             open_dialog.set_title(_('Open Files'))
             open_dialog.open_multiple(self, None, self.app.on_open_dialog_cb)
         else:

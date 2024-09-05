@@ -630,7 +630,7 @@ class MasVisGtk(Adw.Application):
             # Set plot page, and wait for plot to display.
             if pyplot_canvas.figure.get_figwidth() * self.pref_dpi_application < 1080:
                 self.win.tab_view.set_selected_page(t)
-                time.sleep(2)
+                time.sleep(2.0)
 
             n_th_file += 1
 
@@ -950,18 +950,6 @@ class MasVisGtk(Adw.Application):
                     win=self.win,
                 )
         Steps.report()
-        '''
-        # Immediately render on canvas.
-        # Required, otherwise risks saveing low-resolution image.
-        # This may cause the spinning dialog to show/hide on random.
-        scrolled_contents = tab.get_child().scrolled.get_child()
-        if scrolled_contents != None:
-            if overview_mode == None:
-                scrolled_contents = scrolled_contents.get_child().get_child()
-            else:
-                scrolled_contents = scrolled_contents.get_child().get_last_child()
-            scrolled_contents.draw()
-        '''
         gc.collect() # free RAM
 
 def main(VERSION, SETTINGS_in):

@@ -754,7 +754,7 @@ def render(
         h_o = 128 # originally 64
 
         # Overview started?
-        overview_pre_existing = tab_page.get_child().scrolled.get_child() != None
+        overview_not_started = tab_page.get_child().scrolled.get_child() == None
 
         n_axes = 1
 
@@ -762,7 +762,7 @@ def render(
         canvas = None
         fig_d = None
         ax_o = None
-        if not overview_pre_existing:
+        if overview_not_started:
             win.n_figures += 1
             fig_d = plt.figure(win.n_figures)
             fig_d.dpi = DPI
@@ -879,9 +879,11 @@ def render(
 
         plt.figure(fig_d.number)
         plt.imshow(img_buf, aspect='1', interpolation='none')
-        canvas.draw()
-        canvas.flush_events()
-        del data # free RAM
+        plt.close(fig_buf) # close buffer
+
+    canvas.draw()
+    canvas.flush_events()
+    del data # free RAM
 
 # Save canvas figure to image on disk.
 # Format 0=png, 1=jpeg, 2=svg, 3=webp, 4=tiff, 5=pdf, 6=eps

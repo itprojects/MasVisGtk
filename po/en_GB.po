@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: masvisgtk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-04 17:01+0300\n"
+"POT-Creation-Date: 2024-09-06 00:30+0300\n"
 "PO-Revision-Date: 2024-08-29 21:08+0300\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -422,6 +422,7 @@ msgid " is not writeable."
 msgstr " is not writeable."
 
 #: src/main.py:837 src/main_gtk_window.py:421 src/main_gtk_window.py:432
+#: src/main_gtk_window.py:422 src/main_gtk_window.py:433
 msgid "Close"
 msgstr "Close"
 
@@ -474,16 +475,18 @@ msgid "About"
 msgstr "About"
 
 #: src/main_gtk_window.py:145 src/main_gtk_window.py:201
-#: src/main_gtk_window.py:205
+#: src/main_gtk_window.py:205 src/main_gtk_window.py:206
 msgid "Open Files"
 msgstr "Open Files"
 
 #: src/main_gtk_window.py:150 src/main_gtk_window.py:215
+#: src/main_gtk_window.py:216
 msgid "Advanced Open"
 msgstr "Advanced Open"
 
 #: src/main_gtk_window.py:155 src/main_gtk_window.py:327
-#: src/main_gtk_window.py:349
+#: src/main_gtk_window.py:349 src/main_gtk_window.py:328
+#: src/main_gtk_window.py:350
 msgid "Save"
 msgstr "Save"
 
@@ -491,55 +494,55 @@ msgstr "Save"
 msgid "Save Tab"
 msgstr "Save Tab"
 
-#: src/main_gtk_window.py:208
+#: src/main_gtk_window.py:208 src/main_gtk_window.py:209
 msgid "Open Folders"
 msgstr "Open Folders"
 
-#: src/main_gtk_window.py:221
+#: src/main_gtk_window.py:221 src/main_gtk_window.py:222
 msgid "Add Files"
 msgstr "Add Files"
 
-#: src/main_gtk_window.py:223
+#: src/main_gtk_window.py:223 src/main_gtk_window.py:224
 msgid "Add Folders"
 msgstr "Add Folders"
 
-#: src/main_gtk_window.py:250
+#: src/main_gtk_window.py:250 src/main_gtk_window.py:251
 msgid "use LUFS units"
 msgstr "use LUFS units"
 
-#: src/main_gtk_window.py:254
+#: src/main_gtk_window.py:254 src/main_gtk_window.py:255
 msgid "recursive (search sub-folders)"
 msgstr "recursive (search sub-folders)"
 
-#: src/main_gtk_window.py:260
+#: src/main_gtk_window.py:260 src/main_gtk_window.py:261
 msgid "overview mode"
 msgstr "overview mode"
 
-#: src/main_gtk_window.py:270
+#: src/main_gtk_window.py:270 src/main_gtk_window.py:271
 msgid "Open"
 msgstr "Open"
 
-#: src/main_gtk_window.py:295
+#: src/main_gtk_window.py:295 src/main_gtk_window.py:296
 msgid "Failed Open"
 msgstr "Failed Open"
 
-#: src/main_gtk_window.py:328
+#: src/main_gtk_window.py:328 src/main_gtk_window.py:329
 msgid "Save in Folder"
 msgstr "Save in Folder"
 
-#: src/main_gtk_window.py:350
+#: src/main_gtk_window.py:350 src/main_gtk_window.py:351
 msgid "Save All in Folder"
 msgstr "Save All in Folder"
 
-#: src/main_gtk_window.py:406
+#: src/main_gtk_window.py:406 src/main_gtk_window.py:407
 msgid "Supported Formats"
 msgstr "Supported Formats"
 
-#: src/main_gtk_window.py:406
+#: src/main_gtk_window.py:406 src/main_gtk_window.py:407
 msgid "No Supported Formats"
 msgstr "No Supported Formats"
 
-#: src/main_gtk_window.py:451
+#: src/main_gtk_window.py:451 src/main_gtk_window.py:452
 msgid "Original PyMasVis module development."
 msgstr "Original PyMasVis module development."
 
@@ -551,6 +554,6 @@ msgstr "GTK version of PyMasVis, originally base on commit #657196."
 msgid "Scale to Window Width"
 msgstr "Scale to Window Width"
 
-#: src/main_gtk_window.py:453
+#: src/main_gtk_window.py:453 src/main_gtk_window.py:454
 msgid "GTK application, originally based on PyMasVis commit #657196."
 msgstr "GTK application, originally based on PyMasVis commit #657196."

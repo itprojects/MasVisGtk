@@ -51,6 +51,11 @@
   <developer_name translate="no">ITProjects</developer_name>
   <translation type="gettext">masvisgtk</translation>
   <releases>
+    <release version="3.0.2" date="2024-09-06">
+      <description translate="no">
+        <p>Fix overlapping plot in buffer related to imshow().</p>
+      </description>
+    </release>
     <release version="3.0.1" date="2024-09-04">
       <description translate="no">
         <p>Added calls to python gc, to release RAM, fix a dialog bug.</p>
