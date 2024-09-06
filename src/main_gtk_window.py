@@ -49,7 +49,6 @@ class SpinBox(Gtk.Box):
     win = None
 
     str_counter = '<span font="FreeMono" size="large" weight="bold">  {} / {}  </span>'
-    str_label = '<span font="Sans italic">{}</span>'
 
     def __init__(self, win):
         super().__init__(orientation=Gtk.Orientation.VERTICAL)
@@ -61,13 +60,13 @@ class SpinBox(Gtk.Box):
         self.spinner.set_name('spinng_box_spinner')
         self.spin_counter = Gtk.Label(use_markup=True, hexpand=True)
         self.append(self.spin_counter)
-        self.spin_file_label = Gtk.Label(use_markup=True, hexpand=True, ellipsize=Pango.EllipsizeMode.END)
+        self.spin_file_label = Gtk.Label(hexpand=True, ellipsize=Pango.EllipsizeMode.END)
         self.spin_file_label.set_name('spinng_box_file_label')
         self.append(self.spin_file_label)
 
     def set_label(self, n_current, n_total, track):
         self.spin_counter.set_label(self.str_counter.format(n_current, n_total))
-        self.spin_file_label.set_markup(self.str_label.format(GLib.markup_escape_text(track, len(track))))
+        self.spin_file_label.set_label(track)
 
     def start(self, n_current, n_total, track):
         self.set_label(n_current, n_total, track)
@@ -186,12 +185,12 @@ class PyPlotWindow(Adw.ApplicationWindow):
 
         if overview_mode == 'dir':
             page.set_title(a_file.file_name)
-            page.set_tooltip(GLib.markup_escape_text(a_file.file_path, len(a_file.file_path)))
+            page.set_tooltip(a_file.file_path)
         elif overview_mode == 'flat':
             page.set_title('Overview')
         else:
             page.set_title(a_file.file_name)
-            page.set_tooltip(GLib.markup_escape_text(a_file.file_name, len(a_file.file_name)))
+            page.set_tooltip(a_file.file_name)
         return page
 
     # Simple files open, or add to opening list.

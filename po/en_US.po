@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: masvisgtk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-06 00:30+0300\n"
+"POT-Creation-Date: 2024-09-06 22:10+0300\n"
 "PO-Revision-Date: 2024-08-29 21:08+0300\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -449,47 +449,48 @@ msgstr "The minimum file duration is 3 seconds."
 msgid "File Error"
 msgstr "File Error"
 
-#: src/main_gtk_window.py:124
+#: src/main_gtk_window.py:124 src/main_gtk_window.py:123
 msgid "Save All"
 msgstr "Save All"
 
-#: src/main_gtk_window.py:128
+#: src/main_gtk_window.py:128 src/main_gtk_window.py:127
 msgid "Preferences"
 msgstr "Preferences"
 
-#: src/main_gtk_window.py:129
+#: src/main_gtk_window.py:129 src/main_gtk_window.py:128
 msgid "Formats"
 msgstr "Formats"
 
-#: src/main_gtk_window.py:130
+#: src/main_gtk_window.py:130 src/main_gtk_window.py:129
 msgid "Keyboard Shortcuts"
 msgstr "Keyboard Shortcuts"
 
-#: src/main_gtk_window.py:131
+#: src/main_gtk_window.py:131 src/main_gtk_window.py:130
 msgid "Help"
 msgstr "Help"
 
-#: src/main_gtk_window.py:132
+#: src/main_gtk_window.py:132 src/main_gtk_window.py:131
 msgid "About"
 msgstr "About"
 
 #: src/main_gtk_window.py:145 src/main_gtk_window.py:201
 #: src/main_gtk_window.py:205 src/main_gtk_window.py:206
+#: src/main_gtk_window.py:144 src/main_gtk_window.py:200
 msgid "Open Files"
 msgstr "Open Files"
 
 #: src/main_gtk_window.py:150 src/main_gtk_window.py:215
-#: src/main_gtk_window.py:216
+#: src/main_gtk_window.py:216 src/main_gtk_window.py:149
 msgid "Advanced Open"
 msgstr "Advanced Open"
 
 #: src/main_gtk_window.py:155 src/main_gtk_window.py:327
 #: src/main_gtk_window.py:349 src/main_gtk_window.py:328
-#: src/main_gtk_window.py:350
+#: src/main_gtk_window.py:350 src/main_gtk_window.py:154
 msgid "Save"
 msgstr "Save"
 
-#: src/main_gtk_window.py:155
+#: src/main_gtk_window.py:155 src/main_gtk_window.py:154
 msgid "Save Tab"
 msgstr "Save Tab"
 
@@ -556,3 +557,7 @@ msgstr "Scale to Window Width"
 #: src/main_gtk_window.py:453 src/main_gtk_window.py:454
 msgid "GTK application, originally based on PyMasVis commit #657196."
 msgstr "GTK application, originally based on PyMasVis commit #657196."
+
+#: data/io.github.itprojects.MasVisGtk.desktop.in:12
+msgid "Audio;Loudness;Analysis;Music;Media;"
+msgstr "Audio;Loudness;Analysis;Music;Media;"
