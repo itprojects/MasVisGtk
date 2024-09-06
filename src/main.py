@@ -639,7 +639,7 @@ class MasVisGtk(Adw.Application):
             save_file = f'{n_th_file}. {a_file_name}'
 
             if n_th_file == 1:
-                self.spinbox.start(n_th_file, n_tabs, a_file_name)
+                GLib.idle_add(self.spinbox.start, n_th_file, n_tabs, a_file_name)
             else:
                 if self.spinbox != None:
                     self.spinbox.set_label(n_th_file, n_tabs, a_file_name)
@@ -881,9 +881,9 @@ class MasVisGtk(Adw.Application):
                         return
 
                     if n_th_file == 1:
-                        self.spinbox.start(n_th_file, n_infiles, audio_file.file_name)
+                        GLib.idle_add(self.spinbox.start, n_th_file, n_infiles, audio_file.file_name)
                     else:
-                        self.spinbox.set_label(n_th_file, n_infiles, audio_file.file_name)
+                        GLib.idle_add(self.spinbox.set_label, n_th_file, n_infiles, audio_file.file_name)
 
                     # Add new detailed tab.
                     if overview_mode == None:
