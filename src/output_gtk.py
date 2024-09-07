@@ -21,7 +21,7 @@ import time
 
 import gi
 gi.require_version('Gtk', '4.0')
-from gi.repository import Gtk, Gio, GLib, Pango
+from gi.repository import Gtk, Gio, GLib, Pango, Gdk
 
 import numpy as np
 import matplotlib
@@ -738,6 +738,11 @@ def render(
 
         scale.connect("value-changed", on_value_changed)
 
+        # Dynamic Range indicator widget.
+        btn_dr = Gtk.Button()
+        btn_dr.set_name('btn_dr')
+
+        top_tab_box.prepend(btn_dr)
         top_tab_box.append(scale)
         top_tab_box.append(btn_scale_to_win)
 
@@ -749,6 +754,37 @@ def render(
         # Set initial canvas size to be window width.
         new_canvas_width = 1080
         canvas.set_size_request(new_canvas_width, new_canvas_width//aspect_ratio)
+
+        # Paint the Dynamic Range widget.
+        dr_val = int(dr) if dr.isdigit() else '??'
+
+        match dr_val:
+            case 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7:
+                btn_dr.add_css_class("dr_style07")
+            case 8:
+                btn_dr.add_css_class('dr_style08')
+            case 9:
+                btn_dr.add_css_class('dr_style09')
+            case 10:
+                btn_dr.add_css_class('dr_style10')
+            case 11:
+                btn_dr.add_css_class('dr_style11')
+            case 12:
+                btn_dr.add_css_class('dr_style12')
+            case 13:
+                btn_dr.add_css_class('dr_style13')
+            case 14:
+                btn_dr.add_css_class('dr_style14')
+            case _:
+                pass
+
+        if dr_val == '??':
+            btn_dr.set_label('??')
+            btn_dr.set_tooltip_text(_(f'Unknown Dynamic Range'))
+        else:
+            str_dr = f'{dr_val:0>2d}'
+            btn_dr.set_label(str_dr)
+            btn_dr.set_tooltip_text(_('Dynamic Range'))
     else:# Overview plot.
         w_o = 1212 # originally 606
         h_o = 128 # originally 64

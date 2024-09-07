@@ -1,5 +1,3 @@
-#btn_scale_to_win { background-color: transparent; margin-right: 20px;}
-#manual_text_view { background-color: transparent; margin: 15px; }
 #spinng_box { margin: 15px; }
 #spinng_box_spinner { margin-left: 15px; }
 #spinng_box_file_label { margin: 15px; }
@@ -8,3 +6,17 @@
 #dialog_advanced_cb_margin { margin-left: 30px; }
 #dialog_advanced_round_delete { border-radius: 30px; }
 #dialog_advanced_listview { background-color: transparent; }
+#manual_text_view { background-color: transparent; margin: 15px; }
+#btn_scale_to_win { background-color: transparent; margin-right: 20px;}
+#btn_dr {
+  margin-left: 6px; margin-top: 10px; margin-bottom: 10px;
+  color: white; font-family: monospace;  text-shadow: -1px -1px 0 #808080, 1px -1px 0 #808080, -1px  1px 0 #808080, 1px  1px 0 #808080;
+}
+.dr_style07 { margin-left: 6px; background-color: #ff0000; border-color: mix(#000000, #ff0000, 0.85); }
+.dr_style08 { margin-left: 6px; background-color: #ff4800; border-color: mix(#000000, #ff4800, 0.85); }
+.dr_style09 { margin-left: 6px; background-color: #ff9100; border-color: mix(#000000, #ff9100, 0.85); }
+.dr_style10 { margin-left: 6px; background-color: #ffd900; border-color: mix(#000000, #ffd900, 0.85); }
+.dr_style11 { margin-left: 6px; background-color: #d9ff00; border-color: mix(#000000, #d9ff00, 0.85); }
+.dr_style12 { margin-left: 6px; background-color: #90ff00; border-color: mix(#000000, #90ff00, 0.85); }
+.dr_style13 { margin-left: 6px; background-color: #48ff00; border-color: mix(#000000, #48ff00, 0.85); }
+.dr_style14 { margin-left: 6px; background-color: #00ff00; border-color: mix(#000000, #00ff00, 0.85); }

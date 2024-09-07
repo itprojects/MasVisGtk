@@ -51,6 +51,12 @@
   <developer_name translate="no">ITProjects</developer_name>
   <translation type="gettext">masvisgtk</translation>
   <releases>
+    <release version="3.1.0" date="2024-09-07">
+      <description translate="no">
+        <p>Added Dynamic Range indicator.</p>
+        <p>Added path to tooltip, in tabs.</p>
+      </description>
+    </release>
     <release version="3.0.4" date="2024-09-06">
       <description translate="no">
         <p>Removed label markup, to prevent crashes.</p>

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: masvisgtk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-06 22:10+0300\n"
+"POT-Creation-Date: 2024-09-07 18:10+0300\n"
 "PO-Revision-Date: 2024-08-29 21:08+0300\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -562,3 +562,11 @@ msgstr "GTK application, originally based on PyMasVis commit #657196."
 #: data/io.github.itprojects.MasVisGtk.desktop.in:12
 msgid "Audio;Loudness;Analysis;Music;Media;"
 msgstr "Audio;Loudness;Analysis;Music;Media;"
+
+#: src/output_gtk.py:783
+msgid "Unknown Dynamic Range"
+msgstr "Unknown Dynamic Range"
+
+#: src/output_gtk.py:787
+msgid "Dynamic Range"
+msgstr "Dynamic Range"

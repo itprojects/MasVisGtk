@@ -190,7 +190,7 @@ class PyPlotWindow(Adw.ApplicationWindow):
             page.set_title('Overview')
         else:
             page.set_title(a_file.file_name)
-            page.set_tooltip(a_file.file_name)
+            page.set_tooltip(a_file.file_name + '\n\n' + a_file.file_path)
         return page
 
     # Simple files open, or add to opening list.
