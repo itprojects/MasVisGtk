@@ -332,7 +332,7 @@ def render(
                 which='max',
                 oversample=1,
                 method='log10',
-                span=(20, 20000),
+                span=(20, int(fs * 0.5)), # Nyquist-Shannon, originally span=(20, 20000)
             )
             semilogx(new_r / 1000.0, new_spec, color=c_color[c], linestyle='-', base=10)
         ylim(-90, -10)

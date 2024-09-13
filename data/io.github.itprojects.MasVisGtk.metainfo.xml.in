@@ -51,6 +51,14 @@
   <developer_name translate="no">ITProjects</developer_name>
   <translation type="gettext">masvisgtk</translation>
   <releases>
+    <release version="3.2.0" date="2024-09-14">
+      <description translate="no">
+        <p>Added File Information dialog.</p>
+        <p>Fixed FFMPEG Formats dialog.</p>
+        <p>Fixed lower than 20 kHz sample rates crashing application.</p>
+        <p>Replaced (deprecation) '-print_format' with '-of' for FFPROBE.</p>
+      </description>
+    </release>
     <release version="3.1.0" date="2024-09-07">
       <description translate="no">
         <p>Added Dynamic Range indicator.</p>

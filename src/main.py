@@ -284,6 +284,10 @@ class MasVisGtk(Adw.Application):
         self.fullscreen_action.connect('activate', self.on_action_start, 100)
         self.add_action(self.fullscreen_action)
 
+        self.file_information_action = Gio.SimpleAction.new('file_information_action', None)
+        self.file_information_action.connect('activate', self.on_action_start, 110)
+        self.add_action(self.file_information_action)
+
         #
         # Shortcut keys.
         #
@@ -297,6 +301,7 @@ class MasVisGtk(Adw.Application):
         self.set_accels_for_action('app.advanced_open_action', ['<Shift>o'])
         self.set_accels_for_action('app.save_action', ['<Control>s'])
         self.set_accels_for_action('app.save_all_action', ['<Shift>s'])
+        self.set_accels_for_action('app.file_information_action', ['<Control>i'])
 
     def on_change_app_style(self):
         match self.pref_app_style:
@@ -327,7 +332,7 @@ class MasVisGtk(Adw.Application):
         options = options.end().unpack()
 
         recursive_scan = False
-        self.formats = file_formats()
+        self.formats = None
 
         if 'version' in options:
             print(_('MasVisGtk Version ') + str(VERSION))
@@ -338,6 +343,7 @@ class MasVisGtk(Adw.Application):
             self.DEBUG = True
             log.setLevel(logging.DEBUG)
         if 'formats' in options:
+            self.formats = file_formats()
             print(_('FFMPEG Formats: ') + str(self.formats))
             return 0
         if 'LU' in options:
@@ -390,9 +396,8 @@ class MasVisGtk(Adw.Application):
                         list_file_mimetype = self.guess_mimetype(f)
                         if not list_file_mimetype:
                             continue
-                        if (not list_file_mimetype.lower().startswith('video/') and
-                            not list_file_mimetype.lower().startswith('audio/')):
-                            error = 'Mimetype {list_file_mimetype}.\n' + _('This file is not an audio or video file.') + f'\n[{f}]'
+                        if not list_file_mimetype.lower().startswith('audio/'):
+                            error = str(list_file_mimetype) + '\n' + _('This file is not an audio file.') + f'\n[{f}]'
                             log.warning(error)
                             self.on_error_dialog(_('Cannot process file.'), error)
                             continue
@@ -455,7 +460,7 @@ class MasVisGtk(Adw.Application):
     def spinning_dialog(self):
         self.dialog_spinner = Adw.Dialog()
         self.dialog_spinner.set_follows_content_size(True) # Adw size problems.
-        self.dialog_spinner.set_title('Processing')
+        self.dialog_spinner.set_title(_('Processing'))
         self.dialog_spinner.set_can_close(False)
         self.dialog_spinner.connect('close-attempt', self.spinning_dialog_response)
 
@@ -816,11 +821,13 @@ class MasVisGtk(Adw.Application):
                     self.win.on_show_formats_dialog()
                 case 90: # about
                     self.win.on_show_about_dialog()
-                case 100: # about
+                case 100: # fullscreen
                     if self.win.is_fullscreen():
                         self.win.unfullscreen()
                     else:
                         self.win.fullscreen()
+                case 110: # file information
+                    self.win.on_file_information()
                 case _:
                     pass
 
@@ -930,6 +937,9 @@ class MasVisGtk(Adw.Application):
             log.warning(_('Unable to open input '), audio_file.file_path)
             self.on_error_dialog(_('File Error'), err_duration)
             return
+
+        # File output from FFMPEG.
+        audio_file.track = track['raw_meta']
 
         if not header:
             header = '%s' % (track['metadata']['name'])

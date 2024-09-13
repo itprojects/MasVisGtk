@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: masvisgtk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-07 18:10+0300\n"
+"POT-Creation-Date: 2024-09-13 03:13+0300\n"
 "PO-Revision-Date: 2024-08-29 21:08+0300\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -181,19 +181,19 @@ msgstr ""
 msgid "File Actions"
 msgstr ""
 
-#: src/gtk/help-overlay.ui:50
+#: src/gtk/help-overlay.ui:50 src/gtk/help-overlay.ui:56
 msgid "Simple File(s) Open"
 msgstr ""
 
-#: src/gtk/help-overlay.ui:56
+#: src/gtk/help-overlay.ui:56 src/gtk/help-overlay.ui:62
 msgid "Advance Open / Overview"
 msgstr ""
 
-#: src/gtk/help-overlay.ui:62
+#: src/gtk/help-overlay.ui:62 src/gtk/help-overlay.ui:68
 msgid "Save Current Tab"
 msgstr ""
 
-#: src/gtk/help-overlay.ui:68
+#: src/gtk/help-overlay.ui:68 src/gtk/help-overlay.ui:74
 msgid "Save All Tabs"
 msgstr ""
 
@@ -310,23 +310,23 @@ msgstr ""
 msgid "FILE(S) or FOLDER(S)"
 msgstr ""
 
-#: src/main.py:333
+#: src/main.py:333 src/main.py:338
 msgid "MasVisGtk Version "
 msgstr ""
 
-#: src/main.py:341
+#: src/main.py:341 src/main.py:347
 msgid "FFMPEG Formats: "
 msgstr ""
 
-#: src/main.py:352
+#: src/main.py:352 src/main.py:358
 msgid "is not possible with option -o. Try dir or flat."
 msgstr ""
 
-#: src/main.py:373
+#: src/main.py:373 src/main.py:379
 msgid "No input files or folders supplied."
 msgstr ""
 
-#: src/main.py:387
+#: src/main.py:387 src/main.py:393
 msgid "Bad permisions for file. "
 msgstr ""
 
@@ -334,189 +334,213 @@ msgstr ""
 msgid "This file is not an audio or video file."
 msgstr ""
 
-#: src/main.py:397
+#: src/main.py:397 src/main.py:402
 msgid "Cannot process file."
 msgstr ""
 
-#: src/main.py:409
+#: src/main.py:409 src/main.py:414
 msgid "Bad input: "
 msgstr ""
 
-#: src/main.py:412
+#: src/main.py:412 src/main.py:417
 msgid "Error processing files: "
 msgstr ""
 
-#: src/main.py:419
+#: src/main.py:419 src/main.py:424
 msgid "Bad input files: "
 msgstr ""
 
-#: src/main.py:421
+#: src/main.py:421 src/main.py:426
 msgid "Problem Files"
 msgstr ""
 
-#: src/main.py:421
+#: src/main.py:421 src/main.py:426
 msgid "Ignoring bad input files:"
 msgstr ""
 
-#: src/main.py:425
+#: src/main.py:425 src/main.py:430
 msgid "No valid files found!"
 msgstr ""
 
-#: src/main.py:427
+#: src/main.py:427 src/main.py:432
 msgid "No Files"
 msgstr ""
 
-#: src/main.py:450
+#: src/main.py:450 src/main.py:455
 msgid "Unknown mimetype: "
 msgstr ""
 
-#: src/main.py:451
+#: src/main.py:451 src/main.py:456
 msgid "Unknown Mimetype"
 msgstr ""
 
-#: src/main.py:451
+#: src/main.py:451 src/main.py:456
 msgid "Skipping file: "
 msgstr ""
 
-#: src/main.py:490
+#: src/main.py:490 src/main.py:495
 msgid "AsyncWorkerError"
 msgstr ""
 
-#: src/main.py:518
+#: src/main.py:518 src/main.py:523
 msgid "Duplicate path: "
 msgstr ""
 
-#: src/main.py:524
+#: src/main.py:524 src/main.py:529
 msgid "Error in Opening"
 msgstr ""
 
-#: src/main.py:540 src/main.py:576
+#: src/main.py:540 src/main.py:576 src/main.py:545 src/main.py:581
 msgid "Cannot detect save file format, defaulting to png."
 msgstr ""
 
-#: src/main.py:547
+#: src/main.py:547 src/main.py:552
 msgid "is not writeable."
 msgstr ""
 
-#: src/main.py:549 src/main.py:585
+#: src/main.py:549 src/main.py:585 src/main.py:554 src/main.py:590
 msgid "Permissions"
 msgstr ""
 
-#: src/main.py:583
+#: src/main.py:583 src/main.py:588
 msgid " is not writeable."
 msgstr ""
 
 #: src/main.py:837 src/main_gtk_window.py:421 src/main_gtk_window.py:432
-#: src/main_gtk_window.py:422 src/main_gtk_window.py:433
+#: src/main_gtk_window.py:422 src/main_gtk_window.py:433 src/main.py:844
+#: src/main_gtk_window.py:429 src/main_gtk_window.py:453
+#: src/main_gtk_window.py:464
 msgid "Close"
 msgstr ""
 
-#: src/main.py:901
+#: src/main.py:901 src/main.py:908
 msgid "Opening File Error"
 msgstr ""
 
-#: src/main.py:903
+#: src/main.py:903 src/main.py:910
 msgid "Errors in Processing!"
 msgstr ""
 
-#: src/main.py:919 src/main.py:930
+#: src/main.py:919 src/main.py:930 src/main.py:926 src/main.py:937
 msgid "Unable to open input "
 msgstr ""
 
-#: src/main.py:920
+#: src/main.py:920 src/main.py:927
 msgid "Cannot Open File"
 msgstr ""
 
-#: src/main.py:929
+#: src/main.py:929 src/main.py:936
 msgid "The minimum file duration is 3 seconds."
 msgstr ""
 
-#: src/main.py:931
+#: src/main.py:931 src/main.py:938
 msgid "File Error"
 msgstr ""
 
 #: src/main_gtk_window.py:124 src/main_gtk_window.py:123
+#: src/main_gtk_window.py:126
 msgid "Save All"
 msgstr ""
 
 #: src/main_gtk_window.py:128 src/main_gtk_window.py:127
+#: src/main_gtk_window.py:130
 msgid "Preferences"
 msgstr ""
 
 #: src/main_gtk_window.py:129 src/main_gtk_window.py:128
+#: src/main_gtk_window.py:131
 msgid "Formats"
 msgstr ""
 
 #: src/main_gtk_window.py:130 src/main_gtk_window.py:129
+#: src/main_gtk_window.py:132
 msgid "Keyboard Shortcuts"
 msgstr ""
 
 #: src/main_gtk_window.py:131 src/main_gtk_window.py:130
+#: src/main_gtk_window.py:133
 msgid "Help"
 msgstr ""
 
 #: src/main_gtk_window.py:132 src/main_gtk_window.py:131
+#: src/main_gtk_window.py:134
 msgid "About"
 msgstr ""
 
 #: src/main_gtk_window.py:145 src/main_gtk_window.py:201
 #: src/main_gtk_window.py:205 src/main_gtk_window.py:206
 #: src/main_gtk_window.py:144 src/main_gtk_window.py:200
+#: src/main_gtk_window.py:147 src/main_gtk_window.py:203
+#: src/main_gtk_window.py:208
 msgid "Open Files"
 msgstr ""
 
 #: src/main_gtk_window.py:150 src/main_gtk_window.py:215
 #: src/main_gtk_window.py:216 src/main_gtk_window.py:149
+#: src/main_gtk_window.py:152 src/main_gtk_window.py:218
 msgid "Advanced Open"
 msgstr ""
 
 #: src/main_gtk_window.py:155 src/main_gtk_window.py:327
 #: src/main_gtk_window.py:349 src/main_gtk_window.py:328
 #: src/main_gtk_window.py:350 src/main_gtk_window.py:154
+#: src/main_gtk_window.py:157 src/main_gtk_window.py:330
+#: src/main_gtk_window.py:352
 msgid "Save"
 msgstr ""
 
 #: src/main_gtk_window.py:155 src/main_gtk_window.py:154
+#: src/main_gtk_window.py:157
 msgid "Save Tab"
 msgstr ""
 
 #: src/main_gtk_window.py:208 src/main_gtk_window.py:209
+#: src/main_gtk_window.py:211
 msgid "Open Folders"
 msgstr ""
 
 #: src/main_gtk_window.py:221 src/main_gtk_window.py:222
+#: src/main_gtk_window.py:224
 msgid "Add Files"
 msgstr ""
 
 #: src/main_gtk_window.py:223 src/main_gtk_window.py:224
+#: src/main_gtk_window.py:226
 msgid "Add Folders"
 msgstr ""
 
 #: src/main_gtk_window.py:250 src/main_gtk_window.py:251
+#: src/main_gtk_window.py:253
 msgid "use LUFS units"
 msgstr ""
 
 #: src/main_gtk_window.py:254 src/main_gtk_window.py:255
+#: src/main_gtk_window.py:257
 msgid "recursive (search sub-folders)"
 msgstr ""
 
 #: src/main_gtk_window.py:260 src/main_gtk_window.py:261
+#: src/main_gtk_window.py:263
 msgid "overview mode"
 msgstr ""
 
 #: src/main_gtk_window.py:270 src/main_gtk_window.py:271
+#: src/main_gtk_window.py:273
 msgid "Open"
 msgstr ""
 
 #: src/main_gtk_window.py:295 src/main_gtk_window.py:296
+#: src/main_gtk_window.py:298
 msgid "Failed Open"
 msgstr ""
 
 #: src/main_gtk_window.py:328 src/main_gtk_window.py:329
+#: src/main_gtk_window.py:331
 msgid "Save in Folder"
 msgstr ""
 
 #: src/main_gtk_window.py:350 src/main_gtk_window.py:351
+#: src/main_gtk_window.py:353
 msgid "Save All in Folder"
 msgstr ""
 
@@ -529,6 +553,7 @@ msgid "No Supported Formats"
 msgstr ""
 
 #: src/main_gtk_window.py:451 src/main_gtk_window.py:452
+#: src/main_gtk_window.py:483
 msgid "Original PyMasVis module development."
 msgstr ""
 
@@ -541,6 +566,7 @@ msgid "Scale to Window Width"
 msgstr ""
 
 #: src/main_gtk_window.py:453 src/main_gtk_window.py:454
+#: src/main_gtk_window.py:485
 msgid "GTK application, originally based on PyMasVis commit #657196."
 msgstr ""
 
@@ -554,4 +580,28 @@ msgstr ""
 
 #: src/output_gtk.py:787
 msgid "Dynamic Range"
+msgstr ""
+
+#: src/gtk/help-overlay.ui:50
+msgid "Show File Information"
+msgstr ""
+
+#: src/main.py:400
+msgid "This file is not an audio file."
+msgstr ""
+
+#: src/main.py:463
+msgid "Processing"
+msgstr ""
+
+#: src/main_gtk_window.py:125 src/main_gtk_window.py:415
+msgid "File Information"
+msgstr ""
+
+#: src/main_gtk_window.py:438
+msgid "FFMPEG Formats"
+msgstr ""
+
+#: src/main_gtk_window.py:438
+msgid "No FFMPEG Formats"
 msgstr ""

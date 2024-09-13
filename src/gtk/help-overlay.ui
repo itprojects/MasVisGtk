@@ -46,6 +46,12 @@
             <property name="title" translatable="yes">File Actions</property>
             <child>
               <object class="GtkShortcutsShortcut">
+                <property name="accelerator">&lt;Control&gt;i</property>
+                <property name="title" translatable="yes">Show File Information</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
                 <property name="accelerator">&lt;Control&gt;o</property>
                 <property name="title" translatable="yes">Simple File(s) Open</property>
               </object>

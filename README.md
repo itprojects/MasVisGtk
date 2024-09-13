@@ -22,7 +22,9 @@ Based on `pymasvis` python app/module, using `numpy`, `scipy`, `pyplot` (`matplo
 * **Loudness** analysis, **EBU R128** plot
 * Multi-channel audio support
 
-Local installation of `FFMPEG` and `FFPROBE` is required.
+Local installation of **FFMPEG and FFPROBE is required**.
+
+Supported formats **WAV**, **FLAC**, **MP3**, **M4A**, **OGG**, **OPUS**, **AAC**, **AC3**, **AIFF**, **AMR**, **ALAC**, **PCM**, **WMA**.
 
 You can save the analysis in the following formats:
 ```
@@ -178,7 +180,7 @@ The application is RAM hungry.
 
 **DO NOT** try to open more than 10 files simulataneously on a computer with low resources (RAM>=8GB), or on a computer, where the resources are already allocated (in other applications).
 
-**DO NOT** try to open files >=20 minutes, unless you have lots of free RAM available (RAM>=16GB).
+**DO NOT** try to open files >=20 minutes, unless you have lots of free RAM available (RAM>=16GB). The same is valid for files that are >=100MB each.
 
 
 Useful Links

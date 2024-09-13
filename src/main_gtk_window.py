@@ -20,8 +20,10 @@ gi.require_version('Gtk', '4.0')
 gi.require_version('Adw', '1')
 from gi.repository import Adw, Gtk, GLib, GObject, Gio, Pango
 
+from .input import file_formats
 from .params import understanding_graphs
 
+import json
 import logging
 
 log = logging.getLogger(__package__)
@@ -120,6 +122,7 @@ class PyPlotWindow(Adw.ApplicationWindow):
         # Menu
         menu = Gio.Menu.new()
         submenu_general = Gio.Menu.new()
+        submenu_general.append(_('File Information'), 'app.file_information_action')
         submenu_general.append(_('Save All'), 'app.save_all_action')
         menu.append_section(None, submenu_general)
 
@@ -399,11 +402,40 @@ class PyPlotWindow(Adw.ApplicationWindow):
         save_dialog.set_filters(filters_store)
         save_dialog.set_default_filter(filters_store.get_item(self.app.pref_save_format))
 
+    def on_file_information(self):
+        page = self.tab_view.get_selected_page()
+        if not page:
+            return
+
+        body = page.get_child().a_file.track
+        body = json.dumps(body, indent=4)
+
+        dialog_information = Adw.MessageDialog(
+            transient_for = self,
+            heading = _('File Information'),
+        )
+
+        scrolled_textview = Gtk.ScrolledWindow()
+        scrolled_textview.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
+        text_buffer = Gtk.TextBuffer()
+        text_buffer.insert_markup(text_buffer.get_end_iter(), body, -1)
+        text_view = Gtk.TextView(buffer=text_buffer, editable=False, justification=Gtk.Justification.FILL)
+        text_view.set_name('text_view')
+        text_view.set_wrap_mode(Gtk.WrapMode.WORD)
+        scrolled_textview.set_child(text_view)
+        scrolled_textview.set_size_request(640, 480)
+        dialog_information.set_extra_child(scrolled_textview)
+
+        dialog_information.add_response('cancel',  _('Close'))
+        dialog_information.present()
+
     def on_show_formats_dialog(self):
+        if self.app.formats == None:
+            self.app.formats = file_formats()
         n_formats = 0 if not self.app.formats else len(self.app.formats)
         dialog_formats= Adw.MessageDialog(
             transient_for = self,
-            heading = _('Supported Formats') + f'\n{n_formats}' if n_formats > 0 else _('No Supported Formats'),
+            heading = _('FFMPEG Formats') + f'\n{n_formats}' if n_formats > 0 else _('No FFMPEG Formats'),
         )
 
         if n_formats > 0:

@@ -10,4 +10,3 @@ Comment=Audio analysis tool for your music
 Categories=Music;Audio;AudioVideo;
 Keywords=Audio;Loudness;Analysis;Music;Media;
 MimeType=audio/*;application/ogg;application/x-ogg;audio/aac;audio/flac;audio/m4a;audio/mp4;audio/mpeg3;audio/ogg;audio/opus;audio/vorbis;audio/wav;audio/webm;audio/x-aac;audio/x-m4a;audio/x-mp3;audio/x-vorbis+ogg;audio/x-vorbis;audio/x-wav;
-

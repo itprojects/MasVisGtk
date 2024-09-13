@@ -71,11 +71,12 @@ def load_file(infile, inbuffer=None):
     _infile = infile
     if inbuffer:
         _infile = '-'
+    output_save_txt = None # raw ffmpeg track metadata
     try:
         ffprobe = subprocess.Popen(
             [
                 ffprobe_bin,
-                '-print_format',
+                '-of',
                 'json',
                 '-show_format',
                 '-show_streams',
@@ -97,6 +98,7 @@ def load_file(infile, inbuffer=None):
         log.debug(error)
         return ffprobe.returncode
     probe = json.loads(output)
+    output_save_txt = probe
     if 'streams' not in probe:
         log.warning("No streams found in %s", infile)
         return 2
@@ -109,7 +111,6 @@ def load_file(infile, inbuffer=None):
         tags = {k.lower(): v for k, v in container['tags'].items()}
     else:
         tags = {}
-
     if 'format_name' in container:
         fmts = container['format_name'].split(',')
         if ext in fmts:
@@ -211,6 +212,7 @@ def load_file(infile, inbuffer=None):
             'date': date,
             'bps': bps,
         },
+        'raw_meta': output_save_txt
     }
     return output
 
