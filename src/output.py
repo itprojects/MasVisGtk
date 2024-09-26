@@ -136,7 +136,7 @@ def render(
         subtitle_source = (
             'Encoding: %s,  Channels: %d,  Bits: %d,  '
             'Sample rate: %d Hz,  Bitrate: %s kbps,  '
-            'Duration: %s, Source: %s'
+            'Duration: %s, Size: %.2f MB'
         ) % (
             track['metadata']['encoding'],
             track['channels'],
@@ -144,7 +144,7 @@ def render(
             fs,
             int(round(track['metadata']['bps'] / 1000.0)),
             time.strftime('%M:%S', time.gmtime(track['duration'])),
-            track['metadata']['source'],
+            track['metadata']['size'] / (1024 * 1024), # MB file size
         )
         subtitle_meta = []
         if track['metadata']['album']:
@@ -346,7 +346,7 @@ def render(
             fontsize='small',
             loc='left',
         )
-        ax_norm.set_xticks([0.05, 0.1, 0.2, 0.5, 1, 2, 3, 4, 5, 7], minor=False)
+        ax_norm.set_xticks([0.05, 0.1, 0.2, 0.5, 1, 2, 3, 4, 5, 7, 10, 20], minor=False)
         ax_norm.set_xticks(
             [
                 0.03,
@@ -368,7 +368,7 @@ def render(
             ],
             minor=True,
         )
-        ax_norm.set_xticklabels([0.05, 0.1, 0.2, 0.5, 1, 2, 3, 4, 5, 7], minor=False)
+        ax_norm.set_xticklabels([0.05, 0.1, 0.2, 0.5, 1, 2, 3, 4, 5, 7, 10, 20], minor=False)
         ax_norm.set_xticklabels([], minor=True)
         yticks(np.arange(-90, 0, 10), ('', -80, -70, -60, -50, -40, -30, '', ''))
         axis_defaults(ax_norm)

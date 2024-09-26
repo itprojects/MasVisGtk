@@ -26,6 +26,8 @@ Local installation of **FFMPEG and FFPROBE is required**.
 
 Supported formats **WAV**, **FLAC**, **MP3**, **M4A**, **OGG**, **OPUS**, **AAC**, **AC3**, **AIFF**, **AMR**, **ALAC**, **PCM**, **WMA**.
 
+Minimum System Requirements – 2 physical CPU cores, 4 threads, 8 GB RAM.
+
 You can save the analysis in the following formats:
 ```
 PNG  | Portable Network Graphics
@@ -40,10 +42,12 @@ WebP | WebP Image Format
 ![Detailed View Light Theme](./img/1.png)
 ![Detailed View Dark Theme](./img/2.png)
 ![Detailed View Dark Theme Continued](./img/3.png)
-![Overview](./img/4.png)
-![Advanced Options](./img/5.png)
+![Advanced Options](./img/4.png)
+![Overview](./img/5.png)
 ![Preferences](./img/6.png)
-![Comparison](./img/7.png)
+![Comparison Tabs Dialog](./img/7.png)
+![Comparison Tabs Window](./img/8.png)
+![Comparison Output File](./img/9.png)
 
 Flatpaks
 --------

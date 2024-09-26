@@ -276,16 +276,22 @@ def dynamic_range(data, fs, ns, nc):
     dr_rms.sort()
     dr_peak.sort()
     dr_20 = int(round(dr_rms.shape[1] * 0.2))
-    if dr_20 < 1:
-        log.warning('WARNING: Too few DR blocks, DR set to 0 and \'??\'.')
-        dr_20 = 1
-        return 0 # Crash prevention.
-    dr_ch = -20 * np.log10(
-        np.sqrt((dr_rms[:, -dr_20:] ** 2).mean(1, keepdims=True)) / dr_peak[:, [-2]]
-    )
-    dr = int(round(dr_ch.mean()))
+    dr = 0
+    try:
+        if dr_20 < 1:
+            log.warning('WARNING: Too few DR blocks')
+            dr_20 = 1
+        dr_ch = -20 * np.log10(
+            np.sqrt((dr_rms[:, -dr_20:] ** 2).mean(1, keepdims=True)) / dr_peak[:, [-2]]
+        )
+        dr = int(round(dr_ch.mean()))
+    except:
+        return 0 # crash prevention
 
-    return dr
+    if dr < 0:
+        return 0
+    else:
+        return dr
 
 
 def energy_checksum(raw_data):

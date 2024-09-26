@@ -223,6 +223,25 @@
                 </child>
               </object>
             </child>
+            <child>
+              <object class="AdwActionRow">
+                <property name="title" translatable="yes">One audio plot width in comparison window</property>
+                <child>
+                  <object class="AdwSpinRow" id="comparison_plot_width">
+                    <property name="vexpand">false</property>
+                    <property name="valign">center</property>
+                    <property name="adjustment">
+                      <object class="GtkAdjustment">
+                        <property name="lower">606</property>
+                        <property name="upper">1080</property>
+                        <property name="step-increment">10</property>
+                        <property name="page-increment">10</property>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+              </object>
+            </child>
           </object>
         </child>
       </object>

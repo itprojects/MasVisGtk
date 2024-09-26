@@ -21,6 +21,7 @@ import json
 import logging
 import os
 import re
+import gc
 import subprocess
 from os.path import basename
 from subprocess import CalledProcessError
@@ -33,6 +34,7 @@ log = logging.getLogger(__package__)
 
 ffprobe_bin = None # FFPROBE binary location
 ffmpeg_bin = None # FFMPEG binary location
+file_information = None # temporary metadata storage
 
 
 def load_file(infile, inbuffer=None):
@@ -42,7 +44,7 @@ def load_file(infile, inbuffer=None):
         24: {'format': 's32le', 'codec': 'pcm_s32le', 'dtype': np.dtype('<i4')},
         32: {'format': 's32le', 'codec': 'pcm_s32le', 'dtype': np.dtype('<i4')},
     }
-    src = 'file'
+    size = -1
     name = os.path.splitext(basename(infile))[0]
     ext = os.path.splitext(infile)[1][1:].strip().lower()
     fmt = None
@@ -71,7 +73,6 @@ def load_file(infile, inbuffer=None):
     _infile = infile
     if inbuffer:
         _infile = '-'
-    output_save_txt = None # raw ffmpeg track metadata
     try:
         ffprobe = subprocess.Popen(
             [
@@ -91,14 +92,21 @@ def load_file(infile, inbuffer=None):
         output, error = ffprobe.communicate(inbuffer)
         log.debug(output)
     except CalledProcessError as e:
-        log.warning('Could not probe %s', src)
+        log.warning('Could not probe %s')
         return e.returncode
     if ffprobe.returncode > 0:
         log.warning("Failed to probe file %s", infile)
         log.debug(error)
         return ffprobe.returncode
     probe = json.loads(output)
-    output_save_txt = probe
+
+    # Parse and clarify json.
+    global file_information
+    file_information = []
+    print_values(probe)
+    output_save_txt = '\n'.join(file_information) # raw ffmpeg track metadata
+    file_information = []
+
     if 'streams' not in probe:
         log.warning("No streams found in %s", infile)
         return 2
@@ -111,6 +119,8 @@ def load_file(infile, inbuffer=None):
         tags = {k.lower(): v for k, v in container['tags'].items()}
     else:
         tags = {}
+    if 'size' in container:
+        size = int(container['size'])
     if 'format_name' in container:
         fmts = container['format_name'].split(',')
         if ext in fmts:
@@ -178,6 +188,8 @@ def load_file(infile, inbuffer=None):
         log.warning('Could not convert %s', infile)
         return e.returncode
     raw_data = np.frombuffer(outbuf, dtype=conv['dtype'])
+    del outbuf # clean
+    gc.collect() # free RAM
     raw_data = raw_data.reshape((nc, -1), order='F').copy(order='C')
     log.debug(raw_data.shape)
     ns = raw_data[0].shape[0]
@@ -200,7 +212,7 @@ def load_file(infile, inbuffer=None):
         'duration': sec,
         'format': fmt,
         'metadata': {
-            'source': src,
+            'size': size,
             'filename': basename(infile),
             'extension': ext,
             'encoding': enc,
@@ -235,3 +247,16 @@ def file_formats():
         if foo in formats:
             formats.remove(foo)
     return formats
+
+# Format json audio file metadata.
+def print_values(obj, indent=0):
+    global file_information
+    if isinstance(obj, dict):
+        for key, value in obj.items():
+            file_information.append(' ' * indent + f'{key}:')
+            print_values(value, indent + 8)
+    elif isinstance(obj, list):
+        for item in obj:
+            print_values(item, indent)
+    else:
+        file_information.append(' ' * indent + str(obj))

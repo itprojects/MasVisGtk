@@ -42,6 +42,12 @@
     <screenshot>
       <image>https://raw.githubusercontent.com/itprojects/MasVisGtk/main/img/7.png</image>
     </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/itprojects/MasVisGtk/main/img/8.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/itprojects/MasVisGtk/main/img/9.png</image>
+    </screenshot>
   </screenshots>
   <launchable type="desktop-id">io.github.itprojects.MasVisGtk.desktop</launchable>
   <url type="homepage">https://github.com/itprojects/MasVisGtk</url>
@@ -51,6 +57,18 @@
   <developer_name translate="no">ITProjects</developer_name>
   <translation type="gettext">masvisgtk</translation>
   <releases>
+    <release version="3.3.0" date="2024-09-26">
+      <description translate="no">
+        <p>Added detailed analysis comparision window, for two or more files.</p>
+        <p>Added labels for 10 kHz, and 20 kHz, for the Gtk plot.</p>
+        <p>Fixed pyplot scale button to update scale, display measurements.</p>
+        <p>Fixed Dynamic Range >=14 not painted corretly.</p>
+        <p>Set Dynamic Range smaller or equal to 0 values to display as ??.</p>
+        <p>Replaced file type (source) display, with file size.</p>
+        <p>Updated File Information window.</p>
+        <p>Fixed Preferences window not saving values, unless + or - pressed.</p>
+      </description>
+    </release>
     <release version="3.2.0" date="2024-09-14">
       <description translate="no">
         <p>Added File Information dialog.</p>

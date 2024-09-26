@@ -79,6 +79,7 @@ class MasVisGtk(Adw.Application):
     pref_save_format = GObject.Property(type=int, default=0) # 0=png, 1=jpeg, 2=svg, 3=webp, 4=tiff, 5=pdf, 6=eps
     pref_dpi_application = GObject.Property(type=int, default=100)
     pref_dpi_image = GObject.Property(type=int, default=200)
+    pref_comparison_plot_width = GObject.Property(type=int, default=606)
 
     settings = None # holds Gio.Settings for schema
 
@@ -116,6 +117,7 @@ class MasVisGtk(Adw.Application):
             self.pref_save_format = self.settings.get_enum('save-format')
             self.pref_dpi_application = self.settings.get_int('dpi-application')
             self.pref_dpi_image = self.settings.get_int('dpi-image')
+            self.pref_comparison_plot_width = self.settings.get_int('comparison-plot-width')
 
             self.settings.bind('language-locale', self, 'pref_language_locale', Gio.SettingsBindFlags.DEFAULT)
             self.settings.bind('matplotlib-style', self, 'pref_matplotlib_style', Gio.SettingsBindFlags.DEFAULT)
@@ -125,6 +127,7 @@ class MasVisGtk(Adw.Application):
             self.settings.bind('custom-font-value', self, 'pref_custom_font_value', Gio.SettingsBindFlags.DEFAULT)
             self.settings.bind('dpi-application', self, 'pref_dpi_application', Gio.SettingsBindFlags.DEFAULT)
             self.settings.bind('dpi-image', self, 'pref_dpi_image', Gio.SettingsBindFlags.DEFAULT)
+            self.settings.bind('comparison-plot-width', self, 'pref_comparison_plot_width', Gio.SettingsBindFlags.DEFAULT)
 
             # Debug information.
             log.debug(f'schema language-locale: { self.pref_language_locale }')
@@ -137,6 +140,7 @@ class MasVisGtk(Adw.Application):
             log.debug(f'schema save-format: { self.pref_save_format }')
             log.debug(f'schema dpi-application: { self.pref_dpi_application }')
             log.debug(f'schema dpi-image: { self.pref_dpi_image }')
+            log.debug(f'schema comparison-plot-width: { self.pref_comparison_plot_width }')
         else:
             print(_('No gschema file for preferences. Using defaults.'))
 
@@ -288,6 +292,10 @@ class MasVisGtk(Adw.Application):
         self.file_information_action.connect('activate', self.on_action_start, 110)
         self.add_action(self.file_information_action)
 
+        self.go_compare_action = Gio.SimpleAction.new('go_compare_action', None)
+        self.go_compare_action.connect('activate', self.on_action_start, 120)
+        self.add_action(self.go_compare_action)
+
         #
         # Shortcut keys.
         #
@@ -302,6 +310,7 @@ class MasVisGtk(Adw.Application):
         self.set_accels_for_action('app.save_action', ['<Control>s'])
         self.set_accels_for_action('app.save_all_action', ['<Shift>s'])
         self.set_accels_for_action('app.file_information_action', ['<Control>i'])
+        self.set_accels_for_action('app.go_compare_action', ['<Control>g'])
 
     def on_change_app_style(self):
         match self.pref_app_style:
@@ -737,10 +746,13 @@ class MasVisGtk(Adw.Application):
         obj.get_object('dropdown_format').connect('notify::selected', self.on_schema_changed_save_format)
 
         obj.get_object('dpi_application').set_value(self.pref_dpi_application)
-        obj.get_object('dpi_application').connect('changed', self.on_schema_changed_dpi_application)
+        obj.get_object('dpi_application').get_adjustment().connect('value-changed', self.on_schema_changed_dpi_application)
 
         obj.get_object('dpi_image').set_value(self.pref_dpi_image)
-        obj.get_object('dpi_image').connect('changed', self.on_schema_changed_dpi_image)
+        obj.get_object('dpi_image').get_adjustment().connect('value-changed', self.on_schema_changed_dpi_image)
+
+        obj.get_object('comparison_plot_width').set_value(self.pref_comparison_plot_width)
+        obj.get_object('comparison_plot_width').get_adjustment().connect('value-changed', self.on_schema_changed_comparison_plot_width)
 
     def on_schema_changed_language_locale(self, gtk_dropdown, param):
         value = self.language_dict[gtk_dropdown.get_selected_item().get_string()]
@@ -793,6 +805,11 @@ class MasVisGtk(Adw.Application):
         self.settings.set_int('dpi-image', value)
         self.pref_dpi_image = value
 
+    def on_schema_changed_comparison_plot_width(self, adw_spinrow):
+        value = adw_spinrow.get_value()
+        self.settings.set_int('comparison-plot-width', value)
+        self.pref_comparison_plot_width = value
+
     def rgba_to_text(self, rgba):
         r = int(rgba.red * 255)
         g = int(rgba.green * 255)
@@ -828,6 +845,8 @@ class MasVisGtk(Adw.Application):
                         self.win.fullscreen()
                 case 110: # file information
                     self.win.on_file_information()
+                case 120: # go compare
+                    self.win.on_go_compare_init()
                 case _:
                     pass
 

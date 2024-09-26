@@ -221,7 +221,7 @@ def render(
             ) % (crest_total_db, dr, l_kg + r128_offset, r128_unit, lra, plr)
             subtitle_source = (
                 'Encoding: %s,  Channels: %d,  Layout: %s,  Bits: %d,  \n'
-                'Sample rate: %d Hz,  Bitrate: %s kbps, Duration: %s, Source: %s'
+                'Sample rate: %d Hz,  Bitrate: %s kbps, Duration: %s, Size: %.2f MB'
             ) % (
                 track['metadata']['encoding'],
                 track['channels'],
@@ -230,7 +230,7 @@ def render(
                 fs,
                 int(round(track['metadata']['bps'] / 1000.0)),
                 time.strftime('%M:%S', time.gmtime(track['duration'])),
-                track['metadata']['source'],
+                track['metadata']['size'] / (1024 * 1024), # MB file size
             )
             subtitle_meta = []
             if track['metadata']['album']:
@@ -448,7 +448,7 @@ def render(
                 fontsize='small',
                 loc='left',
             )
-            ax_norm.set_xticks([0.05, 0.1, 0.2, 0.5, 1, 2, 3, 4, 5, 7], minor=False)
+            ax_norm.set_xticks([0.05, 0.1, 0.2, 0.5, 1, 2, 3, 4, 5, 7, 10, 20], minor=False)
             ax_norm.set_xticks(
                 [
                     0.03,
@@ -470,7 +470,7 @@ def render(
                 ],
                 minor=True,
             )
-            ax_norm.set_xticklabels([0.05, 0.1, 0.2, 0.5, 1, 2, 3, 4, 5, 7], minor=False)
+            ax_norm.set_xticklabels([0.05, 0.1, 0.2, 0.5, 1, 2, 3, 4, 5, 7, 10, 20], minor=False)
             ax_norm.set_xticklabels([], minor=True)
             yticks(np.arange(-90, 0, 10), ('', -80, -70, -60, -50, -40, -30, '', ''))
             axis_defaults(ax_norm)
@@ -708,15 +708,7 @@ def render(
         top_tab_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, vexpand=False)
         top_tab_box.append(NavigationToolbar(canvas))
 
-        # Resize button to scale canvas to window width.
-        btn_scale_to_win = Gtk.Button(label='⇤ ⇥', tooltip_text=_('Scale to Window Width'))
-        btn_scale_to_win.set_name('btn_scale_to_win')
-        btn_scale_to_win.connect('clicked', on_scale_to_win)
-        btn_scale_to_win.win = win
-        btn_scale_to_win.canvas = canvas
-        btn_scale_to_win.aspect_ratio = aspect_ratio
-
-        adjustment = Gtk.Adjustment(
+        scale_adjustment = Gtk.Adjustment(
             value=0,
             lower=0,
             upper=100,
@@ -726,7 +718,7 @@ def render(
         )
 
         # Gtk.Scale to zoom-in/rescale the plot size.
-        scale = Gtk.Scale(adjustment=adjustment, orientation=Gtk.Orientation.HORIZONTAL)
+        scale = Gtk.Scale(adjustment=scale_adjustment, orientation=Gtk.Orientation.HORIZONTAL)
 
         scale.canvas = canvas
         scale.aspect_ratio = aspect_ratio
@@ -735,8 +727,17 @@ def render(
         scale.set_has_origin(True)
         scale.set_margin_end(20)
         scale.set_size_request(100, -1)
+        scale.set_tooltip_text('⇤ 1080 ⇥')
 
         scale.connect("value-changed", on_value_changed)
+
+        # Resize button to scale canvas to window width.
+        btn_scale_to_win = Gtk.Button(label='⇤ ⇥', tooltip_text=_('Scale to Window Width'))
+        btn_scale_to_win.set_name('btn_scale_to_win')
+        btn_scale_to_win.connect('clicked', on_scale_to_win, scale_adjustment)
+        btn_scale_to_win.win = win
+        btn_scale_to_win.canvas = canvas
+        btn_scale_to_win.aspect_ratio = aspect_ratio
 
         # Dynamic Range indicator widget.
         btn_dr = Gtk.Button()
@@ -756,7 +757,13 @@ def render(
         canvas.set_size_request(new_canvas_width, new_canvas_width//aspect_ratio)
 
         # Paint the Dynamic Range widget.
-        dr_val = int(dr) if dr.isdigit() else '??'
+        dr_val = None
+        try:
+            dr_val = int(dr)
+            if dr_val < 0:
+                dr_val = '??'
+        except:
+            dr_val = '??'
 
         match dr_val:
             case 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7:
@@ -773,10 +780,9 @@ def render(
                 btn_dr.add_css_class('dr_style12')
             case 13:
                 btn_dr.add_css_class('dr_style13')
-            case 14:
-                btn_dr.add_css_class('dr_style14')
             case _:
-                pass
+                if dr_val != '??' and dr_val > 13:
+                    btn_dr.add_css_class('dr_style14')
 
         if dr_val == '??':
             btn_dr.set_label('??')
@@ -919,7 +925,7 @@ def render(
 
     canvas.draw()
     canvas.flush_events()
-    del data # free RAM
+    del data # clean
 
 # Save canvas figure to image on disk.
 # Format 0=png, 1=jpeg, 2=svg, 3=webp, 4=tiff, 5=pdf, 6=eps
@@ -933,15 +939,24 @@ def save_figure(fig, path, save_format, dpi):
         path, format=save_format, bbox_inches='tight', dpi=dpi
     )
 
-# Set new canvas size. Maximum width is 4096 px (4K).
+# Set new canvas size. [1080 px, 4096 px]
+# Maximum width is artificially set to 4096 px (4K).
 def on_value_changed(scale):
     new_canvas_width = int((scale.get_value() * 3016 * 0.01) + 1080)
+    scale.set_tooltip_text('⇤' + str(new_canvas_width) + '⇥')
     scale.canvas.set_size_request(new_canvas_width, new_canvas_width//scale.aspect_ratio)
 
-# Set new canvas size, equal to window width.
-def on_scale_to_win(btn):
+# Set new canvas size (and scale), equal to window width.
+def on_scale_to_win(btn, scale_adjustment):
     new_canvas_width = btn.win.get_allocated_width()
-    btn.canvas.set_size_request(new_canvas_width, new_canvas_width//btn.aspect_ratio)
+    print
+    if new_canvas_width <= 1080: # minimum
+        scale_adjustment.set_value(0.0)
+    elif new_canvas_width >= 4096: # maximum
+        scale_adjustment.set_value(100.0)
+    else: # calculate exact scale change.
+        new_canvas_width = (new_canvas_width - 1080) / 30.16
+        scale_adjustment.set_value(new_canvas_width)
 
 def list_styles():
     return plt.style.available

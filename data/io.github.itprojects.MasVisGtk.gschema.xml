@@ -70,5 +70,10 @@
       <summary>DPI for saved images.</summary>
     </key>
 
+    <key name="comparison-plot-width" type="i">
+      <default>606</default>
+      <summary>One audio plot width in comparison window.</summary>
+    </key>
+
   </schema>
 </schemalist>
