@@ -57,6 +57,13 @@
   <developer_name translate="no">ITProjects</developer_name>
   <translation type="gettext">masvisgtk</translation>
   <releases>
+    <release version="3.4.0" date="2024-10-04">
+      <description translate="no">
+        <p>Added all tabs option to comparison window.</p>
+        <p>Added event controller for F11, ESC key-pressed.</p>
+        <p>Fixed missing tab after processing.</p>
+      </description>
+    </release>
     <release version="3.3.0" date="2024-09-26">
       <description translate="no">
         <p>Added detailed analysis comparision window, for two or more files.</p>

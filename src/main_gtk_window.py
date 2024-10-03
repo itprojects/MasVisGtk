@@ -180,15 +180,11 @@ class PyPlotWindow(Adw.ApplicationWindow):
         tabbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
         tabbox.a_file = a_file
         tabbox.overview_or_detailed = overview_mode
-
         tabbox.scrolled = Gtk.ScrolledWindow(vexpand=True)
         tabbox.scrolled.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
         tabbox.append(tabbox.scrolled)
 
         page = self.tab_view.append(tabbox)
-
-        # Required, otherwise risks low-resolution image.
-        self.tab_view.set_selected_page(page)
 
         if overview_mode == 'dir':
             page.set_title(a_file.file_name)
@@ -198,7 +194,13 @@ class PyPlotWindow(Adw.ApplicationWindow):
         else:
             page.set_title(a_file.file_name)
             page.set_tooltip(a_file.file_name + '\n\n' + a_file.file_path)
+
         return page
+
+    # Change highlighting of new tabs.
+    def on_attention_changed(self, tab_view, selected_page):
+        if tab_view.get_selected_page().get_needs_attention():
+            tab_view.get_selected_page().set_needs_attention(False)
 
     # Simple files open, or add to opening list.
     def on_open_dialog(self, btn_open, list_store_paths, files_or_folders):
@@ -471,11 +473,15 @@ class PyPlotWindow(Adw.ApplicationWindow):
         listview_canvas.set_name('dialog_compare_listview')
         listview_canvas.set_enable_rubberband(False)
 
-        btn_go = Gtk.Button(label=_('Go!'), tooltip_text=_('Go!'))
-        btn_go.connect('clicked', self.on_go_compare, dialog_compare, listview_canvas_selction)
+        btn_go = Gtk.Button(label=_('Go!'), tooltip_text=_('Compare tabs in separate window'))
+        btn_go.connect('clicked', self.on_go_compare, dialog_compare, listview_canvas_selction, False)
+
+        btn_go_all = Gtk.Button(label=_('☑ All!'), tooltip_text=_('Compare ALL tabs in separate window'))
+        btn_go_all.connect('clicked', self.on_go_compare, dialog_compare, listview_canvas_selction, True)
 
         headerbar = Adw.HeaderBar()
         headerbar.pack_start(btn_go)
+        headerbar.pack_end(btn_go_all)
         box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
         box.append(headerbar)
 
@@ -511,12 +517,16 @@ class PyPlotWindow(Adw.ApplicationWindow):
             data_item.checked = not data_item.checked
 
     # Start tabs' comparision.
-    def on_go_compare(self, button, dialog_compare, listview_canvas_selction):
+    def on_go_compare(self, button, dialog_compare, listview_canvas_selction, all):
         # Create and check selection of data to compare.
         comparable_items = []
-        for item in listview_canvas_selction.get_model():
-            if item.checked:
+        if all:
+            for item in listview_canvas_selction.get_model():
                 comparable_items.append(item)
+        else:
+            for item in listview_canvas_selction.get_model():
+                if item.checked:
+                    comparable_items.append(item)
 
         if len(comparable_items) < 2:
             self.app.on_error_dialog(_('Cannot Compare'), _('Too few tabs.'))
@@ -579,7 +589,7 @@ class PyPlotWindow(Adw.ApplicationWindow):
         scrolled_comparison.set_child(box_frame)
         box.append(scrolled_comparison)
 
-        # F11 Fullscreen shortcut key.
+        # Shortcut key actions, F11, ESC.
         key_controller = Gtk.EventControllerKey.new()
         key_controller.connect("key-pressed", self.fullscreen_comparison_window, win)
         win.add_controller(key_controller)

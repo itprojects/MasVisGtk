@@ -24,7 +24,13 @@
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="accelerator">F11</property>
-                <property name="title" translatable="yes">Fullscreen</property>
+                <property name="title" translatable="yes">Fullscreen/Unfullscreen</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="accelerator">Escape</property>
+                <property name="title" translatable="yes">Unfullscreen</property>
               </object>
             </child>
             <child>

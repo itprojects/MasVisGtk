@@ -284,16 +284,12 @@ class MasVisGtk(Adw.Application):
         self.about_action.connect('activate', self.on_action_start, 90)
         self.add_action(self.about_action)
 
-        self.fullscreen_action = Gio.SimpleAction.new('fullscreen_action', None)
-        self.fullscreen_action.connect('activate', self.on_action_start, 100)
-        self.add_action(self.fullscreen_action)
-
         self.file_information_action = Gio.SimpleAction.new('file_information_action', None)
-        self.file_information_action.connect('activate', self.on_action_start, 110)
+        self.file_information_action.connect('activate', self.on_action_start, 100)
         self.add_action(self.file_information_action)
 
         self.go_compare_action = Gio.SimpleAction.new('go_compare_action', None)
-        self.go_compare_action.connect('activate', self.on_action_start, 120)
+        self.go_compare_action.connect('activate', self.on_action_start, 110)
         self.add_action(self.go_compare_action)
 
         #
@@ -302,7 +298,6 @@ class MasVisGtk(Adw.Application):
 
         self.set_accels_for_action('app.help_action',  ['F1'])
         self.set_accels_for_action('app.open_menu_action', ['F10'])
-        self.set_accels_for_action('app.fullscreen_action', ['F11'])
         self.set_accels_for_action('app.shortcuts_action', ['<Control>question'])
         self.set_accels_for_action('app.quit_action', ['<Control>q'])
         self.set_accels_for_action('app.simple_open_action', ['<Control>o'])
@@ -334,6 +329,11 @@ class MasVisGtk(Adw.Application):
                 css_provider,
                 Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
             )
+
+            # Shortcut key actions, F11, ESC.
+            key_controller = Gtk.EventControllerKey.new()
+            key_controller.connect("key-pressed", self.win.fullscreen_comparison_window, self.win)
+            self.win.add_controller(key_controller)
         self.win.present()
 
     def do_command_line(self, command_line):
@@ -838,14 +838,9 @@ class MasVisGtk(Adw.Application):
                     self.win.on_show_formats_dialog()
                 case 90: # about
                     self.win.on_show_about_dialog()
-                case 100: # fullscreen
-                    if self.win.is_fullscreen():
-                        self.win.unfullscreen()
-                    else:
-                        self.win.fullscreen()
-                case 110: # file information
+                case 100: # file information
                     self.win.on_file_information()
-                case 120: # go compare
+                case 110: # go compare
                     self.win.on_go_compare_init()
                 case _:
                     pass
@@ -916,6 +911,9 @@ class MasVisGtk(Adw.Application):
                         tab = self.win.add_tab(audio_file, None)
                     log.debug('Opening file %s', infile)
                     self.masvis_process_file(audio_file, self.r128_unit, overview_mode, tab)
+
+            # Remove attention/highlighting from selected (already visible) tab.
+            self.win.tab_view.get_selected_page().set_needs_attention(False)
         except Exception as e:
             trace = traceback.format_exc()
             error = f'{e}\n{infile}\n{trace}'
@@ -932,7 +930,7 @@ class MasVisGtk(Adw.Application):
             box = self.dialog_spinner.get_child()
             box.append(error_label)
 
-    def masvis_process_file(self, audio_file, r128_unit, overview_mode=False, tab=None):
+    def masvis_process_file(self, audio_file, r128_unit, overview_mode=False, tab=None, attention=True):
         header = None
         loader = None
         loader_args = []
@@ -980,6 +978,11 @@ class MasVisGtk(Adw.Application):
                 )
         Steps.report()
         gc.collect() # free RAM
+
+        # Required, otherwise risks low-resolution image, or not tab.
+        self.win.tab_view.set_selected_page(tab)
+        tab.set_needs_attention(True) # new tabs need attention
+        self.win.tab_view.connect_after("notify::selected-page", self.win.on_attention_changed)
 
 def main(VERSION, SETTINGS_in):
     if len(sys.argv) > 1 and sys.argv[1] == '--pymasvis':

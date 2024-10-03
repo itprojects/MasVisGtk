@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: masvisgtk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-26 18:09+0300\n"
+"POT-Creation-Date: 2024-10-04 00:52+0300\n"
 "PO-Revision-Date: 2024-08-29 21:08+0300\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -174,35 +174,36 @@ msgstr "Open Menu"
 msgid "Fullscreen"
 msgstr "Fullscreen"
 
-#: src/gtk/help-overlay.ui:33
+#: src/gtk/help-overlay.ui:33 src/gtk/help-overlay.ui:39
 msgid "Shortcuts"
 msgstr "Shortcuts"
 
-#: src/gtk/help-overlay.ui:39
+#: src/gtk/help-overlay.ui:39 src/gtk/help-overlay.ui:45
 msgid "Quit"
 msgstr "Quit"
 
 #: src/gtk/help-overlay.ui:46 src/gtk/help-overlay.ui:47
+#: src/gtk/help-overlay.ui:52
 msgid "File Actions"
 msgstr "File Actions"
 
 #: src/gtk/help-overlay.ui:50 src/gtk/help-overlay.ui:56
-#: src/gtk/help-overlay.ui:57
+#: src/gtk/help-overlay.ui:57 src/gtk/help-overlay.ui:62
 msgid "Simple File(s) Open"
 msgstr "Simple File(s) Open"
 
 #: src/gtk/help-overlay.ui:56 src/gtk/help-overlay.ui:62
-#: src/gtk/help-overlay.ui:63
+#: src/gtk/help-overlay.ui:63 src/gtk/help-overlay.ui:68
 msgid "Advance Open / Overview"
 msgstr "Advance Open / Overview"
 
 #: src/gtk/help-overlay.ui:62 src/gtk/help-overlay.ui:68
-#: src/gtk/help-overlay.ui:81
+#: src/gtk/help-overlay.ui:81 src/gtk/help-overlay.ui:86
 msgid "Save Current Tab"
 msgstr "Save Current Tab"
 
 #: src/gtk/help-overlay.ui:68 src/gtk/help-overlay.ui:74
-#: src/gtk/help-overlay.ui:87
+#: src/gtk/help-overlay.ui:87 src/gtk/help-overlay.ui:92
 msgid "Save All Tabs"
 msgstr "Save All Tabs"
 
@@ -430,32 +431,33 @@ msgstr " is not writeable."
 #: src/main_gtk_window.py:422 src/main_gtk_window.py:433 src/main.py:844
 #: src/main_gtk_window.py:429 src/main_gtk_window.py:453
 #: src/main_gtk_window.py:464 src/main.py:863 src/main_gtk_window.py:627
-#: src/main_gtk_window.py:638
+#: src/main_gtk_window.py:638 src/main.py:858 src/main_gtk_window.py:434
+#: src/main_gtk_window.py:637 src/main_gtk_window.py:648
 msgid "Close"
 msgstr "Close"
 
-#: src/main.py:901 src/main.py:908 src/main.py:927
+#: src/main.py:901 src/main.py:908 src/main.py:927 src/main.py:925
 msgid "Opening File Error"
 msgstr "Opening File Error"
 
-#: src/main.py:903 src/main.py:910 src/main.py:929
+#: src/main.py:903 src/main.py:910 src/main.py:929 src/main.py:927
 msgid "Errors in Processing!"
 msgstr "Errors in Processing!"
 
 #: src/main.py:919 src/main.py:930 src/main.py:926 src/main.py:937
-#: src/main.py:945 src/main.py:956
+#: src/main.py:945 src/main.py:956 src/main.py:943 src/main.py:954
 msgid "Unable to open input "
 msgstr "Unable to open input "
 
-#: src/main.py:920 src/main.py:927 src/main.py:946
+#: src/main.py:920 src/main.py:927 src/main.py:946 src/main.py:944
 msgid "Cannot Open File"
 msgstr "Cannot Open File"
 
-#: src/main.py:929 src/main.py:936 src/main.py:955
+#: src/main.py:929 src/main.py:936 src/main.py:955 src/main.py:953
 msgid "The minimum file duration is 3 seconds."
 msgstr "The minimum file duration is 3 seconds."
 
-#: src/main.py:931 src/main.py:938 src/main.py:957
+#: src/main.py:931 src/main.py:938 src/main.py:957 src/main.py:955
 msgid "File Error"
 msgstr "File Error"
 
@@ -495,6 +497,7 @@ msgstr "About"
 #: src/main_gtk_window.py:147 src/main_gtk_window.py:203
 #: src/main_gtk_window.py:208 src/main_gtk_window.py:151
 #: src/main_gtk_window.py:207 src/main_gtk_window.py:212
+#: src/main_gtk_window.py:209 src/main_gtk_window.py:214
 msgid "Open Files"
 msgstr "Open Files"
 
@@ -502,6 +505,7 @@ msgstr "Open Files"
 #: src/main_gtk_window.py:216 src/main_gtk_window.py:149
 #: src/main_gtk_window.py:152 src/main_gtk_window.py:218
 #: src/main_gtk_window.py:156 src/main_gtk_window.py:222
+#: src/main_gtk_window.py:224
 msgid "Advanced Open"
 msgstr "Advanced Open"
 
@@ -511,6 +515,7 @@ msgstr "Advanced Open"
 #: src/main_gtk_window.py:157 src/main_gtk_window.py:330
 #: src/main_gtk_window.py:352 src/main_gtk_window.py:161
 #: src/main_gtk_window.py:333 src/main_gtk_window.py:355
+#: src/main_gtk_window.py:335 src/main_gtk_window.py:357
 msgid "Save"
 msgstr "Save"
 
@@ -521,51 +526,61 @@ msgstr "Save Tab"
 
 #: src/main_gtk_window.py:208 src/main_gtk_window.py:209
 #: src/main_gtk_window.py:211 src/main_gtk_window.py:215
+#: src/main_gtk_window.py:217
 msgid "Open Folders"
 msgstr "Open Folders"
 
 #: src/main_gtk_window.py:221 src/main_gtk_window.py:222
 #: src/main_gtk_window.py:224 src/main_gtk_window.py:228
+#: src/main_gtk_window.py:230
 msgid "Add Files"
 msgstr "Add Files"
 
 #: src/main_gtk_window.py:223 src/main_gtk_window.py:224
 #: src/main_gtk_window.py:226 src/main_gtk_window.py:230
+#: src/main_gtk_window.py:232
 msgid "Add Folders"
 msgstr "Add Folders"
 
 #: src/main_gtk_window.py:250 src/main_gtk_window.py:251
 #: src/main_gtk_window.py:253 src/main_gtk_window.py:257
+#: src/main_gtk_window.py:259
 msgid "use LUFS units"
 msgstr "use LUFS units"
 
 #: src/main_gtk_window.py:254 src/main_gtk_window.py:255
 #: src/main_gtk_window.py:257 src/main_gtk_window.py:261
+#: src/main_gtk_window.py:263
 msgid "recursive (search sub-folders)"
 msgstr "recursive (search sub-folders)"
 
 #: src/main_gtk_window.py:260 src/main_gtk_window.py:261
 #: src/main_gtk_window.py:263 src/main_gtk_window.py:267
+#: src/main_gtk_window.py:269
 msgid "overview mode"
 msgstr "overview mode"
 
 #: src/main_gtk_window.py:270 src/main_gtk_window.py:271
 #: src/main_gtk_window.py:273 src/main_gtk_window.py:277
+#: src/main_gtk_window.py:279
 msgid "Open"
 msgstr "Open"
 
 #: src/main_gtk_window.py:295 src/main_gtk_window.py:296
 #: src/main_gtk_window.py:298 src/main_gtk_window.py:302
+#: src/main_gtk_window.py:304
 msgid "Failed Open"
 msgstr "Failed Open"
 
 #: src/main_gtk_window.py:328 src/main_gtk_window.py:329
 #: src/main_gtk_window.py:331 src/main_gtk_window.py:334
+#: src/main_gtk_window.py:336
 msgid "Save in Folder"
 msgstr "Save in Folder"
 
 #: src/main_gtk_window.py:350 src/main_gtk_window.py:351
 #: src/main_gtk_window.py:353 src/main_gtk_window.py:356
+#: src/main_gtk_window.py:358
 msgid "Save All in Folder"
 msgstr "Save All in Folder"
 
@@ -579,6 +594,7 @@ msgstr "No Supported Formats"
 
 #: src/main_gtk_window.py:451 src/main_gtk_window.py:452
 #: src/main_gtk_window.py:483 src/main_gtk_window.py:657
+#: src/main_gtk_window.py:667
 msgid "Original PyMasVis module development."
 msgstr "Original PyMasVis module development."
 
@@ -592,6 +608,7 @@ msgstr "Scale to Window Width"
 
 #: src/main_gtk_window.py:453 src/main_gtk_window.py:454
 #: src/main_gtk_window.py:485 src/main_gtk_window.py:659
+#: src/main_gtk_window.py:669
 msgid "GTK application, originally based on PyMasVis commit #657196."
 msgstr "GTK application, originally based on PyMasVis commit #657196."
 
@@ -608,8 +625,9 @@ msgid "Dynamic Range"
 msgstr "Dynamic Range"
 
 #: src/gtk/help-overlay.ui:50 src/gtk/help-overlay.ui:51
+#: src/gtk/help-overlay.ui:56
 msgid "Show File Information"
-msgstr ""
+msgstr "Show File Information"
 
 #: src/main.py:400 src/main.py:409
 msgid "This file is not an audio file."
@@ -621,14 +639,17 @@ msgstr "Processing"
 
 #: src/main_gtk_window.py:125 src/main_gtk_window.py:415
 #: src/main_gtk_window.py:128 src/main_gtk_window.py:417
+#: src/main_gtk_window.py:419
 msgid "File Information"
 msgstr "File Information"
 
 #: src/main_gtk_window.py:438 src/main_gtk_window.py:612
+#: src/main_gtk_window.py:622
 msgid "FFMPEG Formats"
 msgstr "FFMPEG Formats"
 
 #: src/main_gtk_window.py:438 src/main_gtk_window.py:612
+#: src/main_gtk_window.py:622
 msgid "No FFMPEG Formats"
 msgstr "No FFMPEG Formats"
 
@@ -636,11 +657,12 @@ msgstr "No FFMPEG Formats"
 msgid "One audio plot width in comparison window."
 msgstr "One audio plot width in comparison window."
 
-#: src/gtk/help-overlay.ui:70
+#: src/gtk/help-overlay.ui:70 src/gtk/help-overlay.ui:75
 msgid "Tab Actions"
 msgstr "Tab Actions"
 
 #: src/gtk/help-overlay.ui:75 src/main_gtk_window.py:444
+#: src/gtk/help-overlay.ui:80 src/main_gtk_window.py:446
 msgid "Compare Tabs"
 msgstr "Compare Tabs"
 
@@ -653,22 +675,44 @@ msgid "Go Compare"
 msgstr "Go Compare"
 
 #: src/main_gtk_window.py:438 src/main_gtk_window.py:461
-#: src/main_gtk_window.py:522
+#: src/main_gtk_window.py:522 src/main_gtk_window.py:440
+#: src/main_gtk_window.py:463 src/main_gtk_window.py:532
 msgid "Cannot Compare"
 msgstr "Cannot Compare"
 
-#: src/main_gtk_window.py:438
+#: src/main_gtk_window.py:438 src/main_gtk_window.py:440
 msgid "No tabs."
 msgstr "No tabs."
 
 #: src/main_gtk_window.py:461 src/main_gtk_window.py:522
+#: src/main_gtk_window.py:463 src/main_gtk_window.py:532
 msgid "Too few tabs."
 msgstr "Too few tabs."
 
-#: src/main_gtk_window.py:474
+#: src/main_gtk_window.py:474 src/main_gtk_window.py:476
 msgid "Go!"
 msgstr "Go!"
 
-#: src/main_gtk_window.py:531
+#: src/main_gtk_window.py:531 src/main_gtk_window.py:541
 msgid "Comparison #"
 msgstr "Comparison #"
+
+#: src/gtk/help-overlay.ui:27
+msgid "Fullscreen/Unfullscreen"
+msgstr "Fullscreen/Unfullscreen"
+
+#: src/gtk/help-overlay.ui:33
+msgid "Unfullscreen"
+msgstr "Unfullscreen"
+
+#: src/main_gtk_window.py:476
+msgid "Compare tabs in separate window"
+msgstr "Compare tabs in separate window"
+
+#: src/main_gtk_window.py:479
+msgid "☑ All!"
+msgstr "☑ All!"
+
+#: src/main_gtk_window.py:479
+msgid "Compare ALL tabs in separate window"
+msgstr "Compare ALL tabs in separate window"
