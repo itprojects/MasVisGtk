@@ -33,7 +33,7 @@ from .utils import Steps, Timer
 
 DEBUG = False
 
-log = logging.getLogger('pymasvis')
+log = logging.getLogger('masvisgtk')
 lh = logging.StreamHandler(sys.stdout)
 lh.setFormatter(logging.Formatter("%(message)s"))
 log.addHandler(lh)
@@ -63,7 +63,7 @@ def run(
         loader_args = [infile]
         if not outfile:
             filename = os.path.basename(infile)
-            filename = "%s-pymasvis.%s" % (filename, fmt)
+            filename = "%s-masvisgtk.%s" % (filename, fmt)
             outfile = os.path.join(destdir, filename)
         if os.path.isfile(outfile):
             if update == 'no':
@@ -85,7 +85,7 @@ def run(
     track = loader(*loader_args)
     if type(track) is int:
         return
-    # Minimum track duratio => 3 seconds.
+    # Minimum track duration => 3 seconds.
     if track['duration'] < 3:
         err_duration = f'The minimum file duration is 3 seconds.\n[{infile}]'
         log.warning('Unable to open input %s', infile)
@@ -128,14 +128,12 @@ def main_pymasvis():
     import argparse
     from functools import reduce
 
-    parser = argparse.ArgumentParser(description="Analyze audio file or Spotify URI.")
+    parser = argparse.ArgumentParser(description="Analyze audio file.")
     parser.add_argument(
-        '--version', action='version', version="PyMasVis " + __version__
+        '--version', action='version', version="MasVisGtk " + __version__
     )
     parser.add_argument('-v', '--verbose', action='store_true', help="verbose messages")
     parser.add_argument('-d', '--debug', action='store_true', help="debug info")
-    parser.add_argument('-u', '--username', metavar='username', help="Spotify username")
-    parser.add_argument('-p', '--password', metavar='password', help="Spotify password")
     parser.add_argument(
         '-r',
         '--recursive',
@@ -166,7 +164,7 @@ def main_pymasvis():
     parser.add_argument(
         '--overview',
         action='store_const',
-        const='overview-pymasvis',
+        const='overview-masvisgtk',
         help="generate overview",
     )
     parser.add_argument(
@@ -193,7 +191,7 @@ def main_pymasvis():
         type=str,
         nargs='+',
         help=(
-            'a file, directory or Spotify URI (track, album or playlist) ' 'to analyze'
+            'a file, directory ' 'to analyze'
         ),
     )
     args = parser.parse_args()

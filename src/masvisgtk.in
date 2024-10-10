@@ -43,10 +43,9 @@ if __name__ == '__main__':
 
     # Discover user-set language setting and apply, before main application start.
     SETTINGS = Gio.SettingsSchemaSource.get_default().lookup('io.github.itprojects.MasVisGtk', True)
-    if SETTINGS:
-        SETTINGS = Gio.Settings.new('io.github.itprojects.MasVisGtk')
-        locale = SETTINGS.get_string('language-locale')
-        os.environ['LC_ALL'] = locale
+    SETTINGS = Gio.Settings.new('io.github.itprojects.MasVisGtk')
+    locale = SETTINGS.get_string('language-locale')
+    os.environ['LC_ALL'] = locale
 
     # allows translations _(...)
     gettext.install('masvisgtk', localedir)

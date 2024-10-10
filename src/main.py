@@ -39,11 +39,11 @@ from .async_render import *
 from .main_gtk_window import *
 from .main_original import main_pymasvis # original module for cli
 from .analysis import analyze
-from .input import file_formats, load_file
+from .input import load_file
 from .output_gtk import list_styles, render, save_figure
 from .utils import Steps, Timer
 
-log = logging.getLogger('pymasvis')
+log = logging.getLogger('masvisgtk')
 lh = logging.StreamHandler(sys.stdout)
 lh.setFormatter(logging.Formatter('%(message)s'))
 log.addHandler(lh)
@@ -56,6 +56,9 @@ class MasVisGtk(Adw.Application):
 
     app_name = _('MasVisGtk')
     win = None
+
+    # Supported formats.
+    formats = 'wav, flac, mp3, m4a, ogg, opus, aac, ac3, aiff, amr, alac, pcm, wma'
 
     # Translations widget preferences.
     language_dict = {
@@ -76,6 +79,7 @@ class MasVisGtk(Adw.Application):
     pref_custom_background_value = GObject.Property(type=str, default='#FDF6E3')
     pref_custom_font = GObject.Property(type=bool, default=False)
     pref_custom_font_value = GObject.Property(type=str, default='FreeMono Bold 16')
+    pref_open_other_files = GObject.Property(type=bool, default=False)
     pref_save_format = GObject.Property(type=int, default=0) # 0=png, 1=jpeg, 2=svg, 3=webp, 4=tiff, 5=pdf, 6=eps
     pref_dpi_application = GObject.Property(type=int, default=100)
     pref_dpi_image = GObject.Property(type=int, default=200)
@@ -89,7 +93,6 @@ class MasVisGtk(Adw.Application):
 
     infiles = None
     bad_inputs = None
-    formats = None
     r128_unit = None
     overview_mode = None
     recursive_scan = False
@@ -102,47 +105,49 @@ class MasVisGtk(Adw.Application):
             **kwargs
         )
 
+        self.set_version(VERSION)
+
         # Override defaults with user preferences.
-        if SETTINGS_in:
-            self.settings = SETTINGS_in
-            self.settings = Gio.Settings.new('io.github.itprojects.MasVisGtk')
+        self.settings = SETTINGS_in
 
-            self.pref_language_locale = self.settings.get_string('language-locale')
-            self.pref_custom_background = self.settings.get_boolean('custom-background')
-            self.pref_custom_background_value = self.settings.get_string('custom-background-value')
-            self.pref_app_style = self.settings.get_enum('app-style')
-            self.pref_matplotlib_style = self.settings.get_string('matplotlib-style')
-            self.pref_custom_font = self.settings.get_boolean('custom-font')
-            self.pref_custom_font_value = self.settings.get_string('custom-font-value')
-            self.pref_save_format = self.settings.get_enum('save-format')
-            self.pref_dpi_application = self.settings.get_int('dpi-application')
-            self.pref_dpi_image = self.settings.get_int('dpi-image')
-            self.pref_comparison_plot_width = self.settings.get_int('comparison-plot-width')
+        self.pref_language_locale = self.settings.get_string('language-locale')
+        self.pref_custom_background = self.settings.get_boolean('custom-background')
+        self.pref_custom_background_value = self.settings.get_string('custom-background-value')
+        self.pref_app_style = self.settings.get_enum('app-style')
+        self.pref_matplotlib_style = self.settings.get_string('matplotlib-style')
+        self.pref_custom_font = self.settings.get_boolean('custom-font')
+        self.pref_custom_font_value = self.settings.get_string('custom-font-value')
+        self.pref_open_other_files = self.settings.get_boolean('open-other-files')
+        self.pref_save_format = self.settings.get_enum('save-format')
+        self.pref_dpi_application = self.settings.get_int('dpi-application')
+        self.pref_dpi_image = self.settings.get_int('dpi-image')
+        self.pref_comparison_plot_width = self.settings.get_int('comparison-plot-width')
 
-            self.settings.bind('language-locale', self, 'pref_language_locale', Gio.SettingsBindFlags.DEFAULT)
-            self.settings.bind('matplotlib-style', self, 'pref_matplotlib_style', Gio.SettingsBindFlags.DEFAULT)
-            self.settings.bind('custom-background', self, 'pref_custom_background', Gio.SettingsBindFlags.DEFAULT)
-            self.settings.bind('custom-background-value', self, 'pref_custom_background_value', Gio.SettingsBindFlags.DEFAULT)
-            self.settings.bind('custom-font', self, 'pref_custom_font', Gio.SettingsBindFlags.DEFAULT)
-            self.settings.bind('custom-font-value', self, 'pref_custom_font_value', Gio.SettingsBindFlags.DEFAULT)
-            self.settings.bind('dpi-application', self, 'pref_dpi_application', Gio.SettingsBindFlags.DEFAULT)
-            self.settings.bind('dpi-image', self, 'pref_dpi_image', Gio.SettingsBindFlags.DEFAULT)
-            self.settings.bind('comparison-plot-width', self, 'pref_comparison_plot_width', Gio.SettingsBindFlags.DEFAULT)
+        # app-style, save-format are not bound
+        self.settings.bind('language-locale', self, 'pref_language_locale', Gio.SettingsBindFlags.DEFAULT)
+        self.settings.bind('matplotlib-style', self, 'pref_matplotlib_style', Gio.SettingsBindFlags.DEFAULT)
+        self.settings.bind('custom-background', self, 'pref_custom_background', Gio.SettingsBindFlags.DEFAULT)
+        self.settings.bind('custom-background-value', self, 'pref_custom_background_value', Gio.SettingsBindFlags.DEFAULT)
+        self.settings.bind('custom-font', self, 'pref_custom_font', Gio.SettingsBindFlags.DEFAULT)
+        self.settings.bind('custom-font-value', self, 'pref_custom_font_value', Gio.SettingsBindFlags.DEFAULT)
+        self.settings.bind('open-other-files', self, 'pref_open_other_files', Gio.SettingsBindFlags.DEFAULT)
+        self.settings.bind('dpi-application', self, 'pref_dpi_application', Gio.SettingsBindFlags.DEFAULT)
+        self.settings.bind('dpi-image', self, 'pref_dpi_image', Gio.SettingsBindFlags.DEFAULT)
+        self.settings.bind('comparison-plot-width', self, 'pref_comparison_plot_width', Gio.SettingsBindFlags.DEFAULT)
 
-            # Debug information.
-            log.debug(f'schema language-locale: { self.pref_language_locale }')
-            log.debug(f'schema custom-background: { self.pref_custom_background }')
-            log.debug(f'schema custom-background-value: { self.pref_custom_background_value }')
-            log.debug(f'schema app-style: { self.pref_app_style }')
-            log.debug(f'schema matplotlib-style: { self.pref_matplotlib_style }')
-            log.debug(f'schema custom-font: { self.pref_custom_font }')
-            log.debug(f'schema custom-font-value: { self.pref_custom_font_value }')
-            log.debug(f'schema save-format: { self.pref_save_format }')
-            log.debug(f'schema dpi-application: { self.pref_dpi_application }')
-            log.debug(f'schema dpi-image: { self.pref_dpi_image }')
-            log.debug(f'schema comparison-plot-width: { self.pref_comparison_plot_width }')
-        else:
-            print(_('No gschema file for preferences. Using defaults.'))
+        # Debug information.
+        log.debug(f'schema language-locale: { self.pref_language_locale }')
+        log.debug(f'schema custom-background: { self.pref_custom_background }')
+        log.debug(f'schema custom-background-value: { self.pref_custom_background_value }')
+        log.debug(f'schema app-style: { self.pref_app_style }')
+        log.debug(f'schema matplotlib-style: { self.pref_matplotlib_style }')
+        log.debug(f'schema custom-font: { self.pref_custom_font }')
+        log.debug(f'schema custom-font-value: { self.pref_custom_font_value }')
+        log.debug(f'schema open-other-files: { self.pref_open_other_files }')
+        log.debug(f'schema save-format: { self.pref_save_format }')
+        log.debug(f'schema dpi-application: { self.pref_dpi_application }')
+        log.debug(f'schema dpi-image: { self.pref_dpi_image }')
+        log.debug(f'schema comparison-plot-width: { self.pref_comparison_plot_width }')
 
         # Set custom application language/locale.
         try:
@@ -151,7 +156,6 @@ class MasVisGtk(Adw.Application):
             # System package is required.
             log.warning(_('Cannot set locale ' + str(ll)) + ' ' + str(self.pref_language_locale))
 
-        self.set_version(VERSION)
         self.set_option_context_parameter_string(_('FILES/FOLDERS'))
         self.set_option_context_summary(
             _('  FILE(S) and/or FOLDER(S) paths to process inside the application\n\n  MasVisGtk is an audio file analysis application.')
@@ -193,7 +197,7 @@ class MasVisGtk(Adw.Application):
             ord('f'),
             GLib.OptionFlags.NONE,
             GLib.OptionArg.NONE,
-            _('Show Supported [FFMPEG] Formats.'),
+            _('Show Supported Formats.'),
             None,
         )
 
@@ -341,7 +345,6 @@ class MasVisGtk(Adw.Application):
         options = options.end().unpack()
 
         recursive_scan = False
-        self.formats = None
 
         if 'version' in options:
             print(_('MasVisGtk Version ') + str(VERSION))
@@ -352,8 +355,7 @@ class MasVisGtk(Adw.Application):
             self.DEBUG = True
             log.setLevel(logging.DEBUG)
         if 'formats' in options:
-            self.formats = file_formats()
-            print(_('FFMPEG Formats: ') + str(self.formats))
+            print(_('Supported Formats: ') + formats)
             return 0
         if 'LU' in options:
             self.r128_unit = 'LU'
@@ -401,22 +403,19 @@ class MasVisGtk(Adw.Application):
                         if not os.access(f, os.R_OK):
                             log.warning(_(f'Bad permisions for file. ') + f'[{f}]')
                             continue
-                        # Check audio, video mimetype.
-                        list_file_mimetype = self.guess_mimetype(f)
-                        if not list_file_mimetype:
-                            continue
-                        if not list_file_mimetype.lower().startswith('audio/'):
-                            error = str(list_file_mimetype) + '\n' + _('This file is not an audio file.') + f'\n[{f}]'
-                            log.warning(error)
-                            self.on_error_dialog(_('Cannot process file.'), error)
-                            continue
-                        infiles.append(f)
+                        # Check audio mimetype.
+                        mimetype_probed_file = self.guess_mimetype(f)
+                        if mimetype_probed_file:
+                            infiles.append(f)
                         continue
                     if os.path.isdir(f):
                         for root, dirs, files in os.walk(f):
-                            for name in files:
-                                if os.path.splitext(name)[1][1:] in self.formats:
-                                    infiles.append(os.path.join(root, name))
+                            for f_name in files:
+                                mimetype_probed_file = self.guess_mimetype(os.path.join(root, f_name))
+                                if mimetype_probed_file:
+                                    infiles.append(mimetype_probed_file)
+                                else:
+                                    continue
                             if not self.recursive_scan:
                                 del dirs[:]
                     else:
@@ -436,9 +435,7 @@ class MasVisGtk(Adw.Application):
             return
         n_infiles = len(self.infiles)
         if self.infiles == None or n_infiles < 1:
-            error = _('No valid files found!')
-            log.warning(error)
-            self.on_error_dialog(_('No Files'), error)
+            self.on_error_dialog(_('No Files'), _('No valid files found!'))
             return
 
         # Begin processing audio. Plot asynchronously, not blocking UI.
@@ -454,15 +451,18 @@ class MasVisGtk(Adw.Application):
         async_worker.start()
 
     # Blocking IO to find file mimetype consistently.
+    # Return file_path, if proper detection.
     def guess_mimetype(self, file_path):
         file = Gio.File.new_for_path(file_path)
         try:
             info = file.query_info('standard::content-type', Gio.FileQueryInfoFlags.NONE, None)
-            mime_type = info.get_content_type()
-            return mime_type
+            mimetype = info.get_content_type()
+            if mimetype.lower().startswith('audio/') or self.pref_open_other_files:
+                return file_path
+            else:
+                return None
         except Exception as e:
-            log.warning(_('Unknown mimetype: ') + f'{e}')
-            self.on_error_dialog(_('Unknown Mimetype'), _('Skipping file: ') + f'{file_path}')
+            self.on_error_dialog(_('Unsupported MimeType'), _('Skipping file: ') + f'{file_path}')
             return None
 
     # Starts spinning dialog.
@@ -531,7 +531,7 @@ class MasVisGtk(Adw.Application):
                             if list_file == dialog.list_store_paths.get_item(i).path:
                                 log.debug(_('Duplicate path: ') + f'{list_file}')
                                 continue
-                        dialog.list_store_paths.insert(0, StringPath(list_file.get_path(), list_file.get_basename()))
+                        dialog.list_store_paths.append(StringPath(list_file.get_path(), list_file.get_basename()))
         except GLib.GError:
             pass # Ignore cancel: 'gtk-dialog-error-quark: Dismissed by user'
         except Exception as e:
@@ -702,6 +702,7 @@ class MasVisGtk(Adw.Application):
         obj.get_object('dropdown_language').set_selected(language_index)
         obj.get_object('dropdown_language').connect('notify::selected', self.on_schema_changed_language_locale)
 
+        # Set application style.
         obj.get_object('dropdown_app_style').set_selected(self.pref_app_style)
         obj.get_object('dropdown_app_style').connect('notify::selected', self.on_schema_changed_app_style)
 
@@ -741,6 +742,9 @@ class MasVisGtk(Adw.Application):
 
         obj.get_object('font_button_switch').set_active(self.pref_custom_font)
         obj.get_object('font_button_switch').connect('notify::active', self.on_schema_changed_custom_font)
+
+        obj.get_object('open_other_files').set_active(self.pref_open_other_files)
+        obj.get_object('open_other_files').connect('notify::active', self.on_schema_changed_open_other_files)
 
         obj.get_object('dropdown_format').set_selected(self.pref_save_format)
         obj.get_object('dropdown_format').connect('notify::selected', self.on_schema_changed_save_format)
@@ -790,6 +794,11 @@ class MasVisGtk(Adw.Application):
         self.settings.set_boolean('custom-font', value)
         self.pref_custom_font = value
 
+    def on_schema_changed_open_other_files(self, adw_switchrow, param):
+        value = adw_switchrow.get_active()
+        self.settings.set_boolean('open-other-files', value)
+        self.pref_open_other_files = value
+
     def on_schema_changed_save_format(self, gtk_dropdown, param):
         value = gtk_dropdown.get_selected()
         self.settings.set_enum('save-format', value)
@@ -835,7 +844,7 @@ class MasVisGtk(Adw.Application):
                 case 70: # save all tabs
                     self.on_save_multiple_init()
                 case 80: # formats
-                    self.win.on_show_formats_dialog()
+                    self.win.on_show_formats_dialog(self.formats)
                 case 90: # about
                     self.win.on_show_about_dialog()
                 case 100: # file information
@@ -867,6 +876,9 @@ class MasVisGtk(Adw.Application):
             dirs = []
             files = []
 
+            # Sort and remove duplicates.
+            self.infiles = sorted(list(dict.fromkeys(self.infiles)))
+
             # Prepare files for processing.
             for infile in self.infiles:
                 files.append(FileDetails(infile, os.path.basename(infile), os.path.dirname(infile), self.r128_unit))
@@ -877,7 +889,7 @@ class MasVisGtk(Adw.Application):
             else: # 'dir'
                 # Collect unique dirs.
                 dirs = [f.file_parent_folder for f in files]
-                dirs = list(set(dirs))
+                dirs = list(dict.fromkeys(dirs)) # remove duplicates
 
             tab = None
             n_th_file = 0
@@ -948,7 +960,7 @@ class MasVisGtk(Adw.Application):
         if type(track) is int:
             return
 
-        # Minimum track duratio => 3 seconds.
+        # Minimum track duration => 3 seconds.
         if track['duration'] < 3:
             err_duration = _('The minimum file duration is 3 seconds.') + f'\n[{audio_file.file_path}]'
             log.warning(_('Unable to open input '), audio_file.file_path)

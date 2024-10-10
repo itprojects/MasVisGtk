@@ -11,20 +11,20 @@ Open a file, make analysis, save file (if you want to).
 
 Based on `pymasvis` python app/module, using `numpy`, `scipy`, `pyplot` (`matplotlib`).
 
-* Waveform plotting
+* **Waveform** plotting
 * Overview of files (*by-folder* support)
 * **Frequency** plot
 * Dynamic Range (**DR**) estimation
 * **Peak** estimation
 * **Crest Factor** estimation
 * **Histogram** plot
-* **Peak** vs. RMS plot
+* **Peak** vs. **RMS** plot
 * **Loudness** analysis, **EBU R128** plot
 * Multi-channel audio support
 
 Local installation of **FFMPEG and FFPROBE is required**.
 
-Supported formats **WAV**, **FLAC**, **MP3**, **M4A**, **OGG**, **OPUS**, **AAC**, **AC3**, **AIFF**, **AMR**, **ALAC**, **PCM**, **WMA**.
+Supported formats **wav**, **flac**, **mp3**, **m4a**, **ogg**, **opus**, **aac**, **ac3**, **aiff**, **amr**, **alac**, **pcm**, **wma**.
 
 Minimum System Requirements – 2 physical CPU cores, 4 threads, 8 GB RAM.
 
@@ -171,14 +171,15 @@ usage: masvisgtk [-h] [--version] [-v] [-d] [-u username] [-p password] [-r] [--
 Known Issues
 ------------
 
+The application is intended for UTF-8 systems.
+
 Minimum audio duration is 3 seconds. Smaller samples cause crashes.
 
 `DR: ??` means that the application has too few samples, for dynamic range estimation.
 
-The application is intended for UTF-8 systems.
-
 Saving in `PostScript`, `PGF code for LaTeX`, `Raw RGBA bitmap` (Adobe Photoshop Color swatch) is only possible through the in-app matplotlib toolbar.
 
+Opening video files, or unsupported files, is only sometimes possible; use the option in the preferences to test.
 
 The application is RAM hungry.
 

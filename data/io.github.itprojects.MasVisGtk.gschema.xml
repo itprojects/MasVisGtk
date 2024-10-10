@@ -52,12 +52,18 @@
     <key name="custom-font-value" type="s">
       <default>'FreeMono Bold 16'</default>
       <summary>Custom font.</summary>
-      <description>Custom font preferences, by using the font button.</description>
+      <description>Custom font preferences, using the font button.</description>
     </key>
 
     <key name="save-format" enum="io.github.itprojects.MasVisGtk.ImageFormats">
       <default>'PNG'</default>
       <summary>Save format.</summary>
+    </key>
+
+    <key name="open-other-files" type="b">
+      <default>false</default>
+      <summary>Open other files.</summary>
+      <description>Allows opeing non-audio file types, like videos. App can crash more often. Needs lots of free RAM.</description>
     </key>
 
     <key name="dpi-application" type="i">

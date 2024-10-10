@@ -183,7 +183,7 @@ def render(
         fig_d.text(
             pos['right'],
             pos['footer_y'],
-            ('PyMasVis %s' % (VERSION)),
+            ('MasVisGtk %s' % (VERSION)),
             fontsize='small',
             va='bottom',
             ha='right',

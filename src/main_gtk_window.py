@@ -15,12 +15,11 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 '''
 
-import gi
+import gi, os
 gi.require_version('Gtk', '4.0')
 gi.require_version('Adw', '1')
 from gi.repository import Adw, Gtk, Gdk, GdkPixbuf, GLib, GObject, Gio, Pango
 
-from .input import file_formats
 from .params import understanding_graphs
 
 import json
@@ -199,8 +198,10 @@ class PyPlotWindow(Adw.ApplicationWindow):
 
     # Change highlighting of new tabs.
     def on_attention_changed(self, tab_view, selected_page):
-        if tab_view.get_selected_page().get_needs_attention():
-            tab_view.get_selected_page().set_needs_attention(False)
+        page = tab_view.get_selected_page()
+        if page:
+            if page.get_needs_attention():
+                page.set_needs_attention(False)
 
     # Simple files open, or add to opening list.
     def on_open_dialog(self, btn_open, list_store_paths, files_or_folders):
@@ -227,9 +228,9 @@ class PyPlotWindow(Adw.ApplicationWindow):
 
         headerbar = Adw.HeaderBar()
 
-        add_files = Gtk.Button(label=_('Add Files'), icon_name='folder-music-symbolic', tooltip_text=_('Add Files'))
+        add_files = Gtk.Button(label=_('Add Files'), icon_name='folder-music-symbolic', tooltip_text=_('Add files for processing'))
         add_files.connect('clicked', self.on_open_dialog, list_store, True)
-        add_folders = Gtk.Button(label=_('Add Folders'), icon_name='folder-new-symbolic', tooltip_text=_('Add Folders'))
+        add_folders = Gtk.Button(label=_('Add Folders'), icon_name='folder-new-symbolic', tooltip_text=_('Add folders for processing'))
         add_folders.connect('clicked', self.on_open_dialog, list_store, False)
 
         headerbar.pack_start(add_files)
@@ -237,24 +238,6 @@ class PyPlotWindow(Adw.ApplicationWindow):
 
         box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
         box.append(headerbar)
-
-        # ListView for input paths.
-        listview_inputs_selction = Gtk.SingleSelection.new(list_store)
-        listview_inputs_selction.set_autoselect(False)
-        listview_factory = Gtk.SignalListItemFactory()
-        listview_factory.connect('setup', self.on_factory_setup_listview_item)
-        listview_factory.connect('bind', self.on_factory_bind_listview_item)
-        listview_inputs = Gtk.ListView.new(listview_inputs_selction, listview_factory)
-        listview_inputs.set_name('transparency')
-        listview_inputs.set_enable_rubberband(False)
-        listview_inputs.store = list_store
-
-        scrolled = Gtk.ScrolledWindow()
-        scrolled.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
-        scrolled.set_name('dialog_advanced_cb_row')
-        scrolled.set_size_request(-1, 200)
-        scrolled.set_child(listview_inputs)
-        box.append(scrolled)
 
         dialog_advanced.cb_r128_unit = Gtk.CheckButton.new_with_label(_('use LUFS units'))
         dialog_advanced.cb_r128_unit.set_name('dialog_advanced_cb_row')
@@ -276,11 +259,32 @@ class PyPlotWindow(Adw.ApplicationWindow):
         dialog_advanced.cb_dir.set_group(dialog_advanced.cb_flat)
         box_layout.append(dialog_advanced.cb_flat)
         box_layout.append(dialog_advanced.cb_dir)
-        open_advanced_start = Gtk.Button(label=_('Open'), tooltip_text=_('Open'), halign=Gtk.Align.END)
-        open_advanced_start.connect('clicked', self.on_open_advanced_btn, list_store, dialog_advanced)
-        box_layout.append(open_advanced_start)
-
         box.append(box_layout)
+
+        # ListView for input paths.
+        listview_inputs_selction = Gtk.SingleSelection.new(list_store)
+        listview_inputs_selction.set_autoselect(False)
+        listview_factory = Gtk.SignalListItemFactory()
+        listview_factory.connect('setup', self.on_factory_setup_listview_item)
+        listview_factory.connect('bind', self.on_factory_bind_listview_item)
+        listview_inputs = Gtk.ListView.new(listview_inputs_selction, listview_factory)
+        listview_inputs.set_name('transparency')
+        listview_inputs.set_enable_rubberband(False)
+        listview_inputs.store = list_store
+
+        scrolled = Gtk.ScrolledWindow()
+        scrolled.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
+        scrolled.set_name('dialog_advanced_cb_row')
+        scrolled.set_size_request(-1, 200)
+        scrolled.set_child(listview_inputs)
+
+        box.append(scrolled)
+
+        load_advanced_start = Gtk.Button(label=_('Start'), tooltip_text=_('Begin audio analysis'), halign=Gtk.Align.CENTER)
+        load_advanced_start.connect('clicked', self.on_open_advanced_btn, list_store, dialog_advanced)
+        load_advanced_start.set_name('dialog_advanced_load')
+
+        box.append(load_advanced_start)
 
         dialog_advanced.set_child(box)
         dialog_advanced.present(self)
@@ -340,12 +344,12 @@ class PyPlotWindow(Adw.ApplicationWindow):
 
         initial_name = None
         if self.tab_view.get_selected_page().get_child().overview_or_detailed: # overview
-            initial_name = 'overview-pymasvisgtk.' + file_ext
+            initial_name = 'overview-masvisgtk.' + file_ext
         else: # detailed
             initial_name = self.tab_view.get_selected_page().get_child().a_file.file_name + '-masvisgtk.' + file_ext
 
         self.on_make_filters(save_dialog)
-        save_dialog.set_initial_folder(Gio.File.new_for_path('~'))
+        save_dialog.set_initial_folder(Gio.File.new_for_path(os.path.expanduser('~')))
         save_dialog.set_initial_name(initial_name)
         save_dialog.save(self, None, self.app.on_save_one_dialog_cb) # creates UI
         self.select_format_widget(save_dialog)
@@ -357,7 +361,7 @@ class PyPlotWindow(Adw.ApplicationWindow):
         save_dialog.set_accept_label(_('Save'))
         save_dialog.set_title(_('Save All in Folder'))
         self.on_make_filters(save_dialog)
-        save_dialog.set_initial_folder(Gio.File.new_for_path('~'))
+        save_dialog.set_initial_folder(Gio.File.new_for_path(os.path.expanduser('~')))
         save_dialog.select_folder(self, None, self.app.on_save_multiple_dialog_cb)
         self.select_format_widget(save_dialog)
 
@@ -613,26 +617,12 @@ class PyPlotWindow(Adw.ApplicationWindow):
         except:
             return -2
 
-    def on_show_formats_dialog(self):
-        if self.app.formats == None:
-            self.app.formats = file_formats()
-        n_formats = 0 if not self.app.formats else len(self.app.formats)
+    def on_show_formats_dialog(self, formats):
         dialog_formats= Adw.MessageDialog(
             transient_for = self,
-            heading = _('FFMPEG Formats') + f'\n{n_formats}' if n_formats > 0 else _('No FFMPEG Formats'),
+            heading = _('Supported Formats'),
+            body = self.app.formats
         )
-
-        if n_formats > 0:
-            scrolled_textview = Gtk.ScrolledWindow()
-            scrolled_textview.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
-            text_buffer = Gtk.TextBuffer()
-            text_buffer.insert_markup(text_buffer.get_end_iter(), ',    '.join(self.app.formats), -1)
-            text_view = Gtk.TextView(buffer=text_buffer, editable=False, justification=Gtk.Justification.FILL)
-            text_view.set_name('text_view')
-            text_view.set_wrap_mode(Gtk.WrapMode.WORD)
-            scrolled_textview.set_child(text_view)
-            scrolled_textview.set_size_request(640, 480)
-            dialog_formats.set_extra_child(scrolled_textview)
 
         dialog_formats.add_response('cancel',  _('Close'))
         response = dialog_formats.present()

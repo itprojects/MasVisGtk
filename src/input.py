@@ -228,7 +228,6 @@ def load_file(infile, inbuffer=None):
     }
     return output
 
-
 def file_formats():
     foo = re.compile(r'\s+DE?\s+(\S+)\s+\S+')
     formats = []

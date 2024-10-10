@@ -57,6 +57,17 @@
   <developer_name translate="no">ITProjects</developer_name>
   <translation type="gettext">masvisgtk</translation>
   <releases>
+    <release version="3.5.0" date="2024-10-11">
+      <description translate="no">
+        <p>Added option to open non-audio files, if possible.</p>
+        <p>Updated numpy to 2.1.2.</p>
+        <p>Changed Advanced Open dialog widgets order.</p>
+        <p>Changed Advanced Open dialog opening order.</p>
+        <p>Changed gschema settings.</p>
+        <p>Changed Formats dialog to represent application supported formats.</p>
+        <p>Fixed selected page attention/highlight issue.</p>
+      </description>
+    </release>
     <release version="3.4.0" date="2024-10-04">
       <description translate="no">
         <p>Added all tabs option to comparison window.</p>
