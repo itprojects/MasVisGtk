@@ -418,10 +418,8 @@ class PyPlotWindow(Adw.ApplicationWindow):
 
         body = page.get_child().a_file.track
 
-        dialog_information = Adw.MessageDialog(
-            transient_for = self,
-            heading = _('File Information'),
-        )
+        dialog_information = Adw.AlertDialog()
+        dialog_information.set_heading(_('File Information'))
 
         scrolled_textview = Gtk.ScrolledWindow()
         scrolled_textview.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
@@ -436,7 +434,7 @@ class PyPlotWindow(Adw.ApplicationWindow):
         dialog_information.set_extra_child(scrolled_textview)
 
         dialog_information.add_response('cancel',  _('Close'))
-        dialog_information.present()
+        dialog_information.present(self)
 
     # Prepare tab comparison.
     def on_go_compare_init(self):
@@ -618,14 +616,11 @@ class PyPlotWindow(Adw.ApplicationWindow):
             return -2
 
     def on_show_formats_dialog(self, formats):
-        dialog_formats= Adw.MessageDialog(
-            transient_for = self,
-            heading = _('Supported Formats'),
-            body = self.app.formats
-        )
-
-        dialog_formats.add_response('cancel',  _('Close'))
-        response = dialog_formats.present()
+        dialog_formats = Adw.AlertDialog()
+        dialog_formats.set_heading(_('Supported Formats'))
+        dialog_formats.set_body(self.app.formats)
+        dialog_formats.add_response('cancel', _('Close'))
+        response = dialog_formats.present(self)
 
     def on_show_manual_dialog(self):
         builder = Gtk.Builder()
@@ -633,8 +628,7 @@ class PyPlotWindow(Adw.ApplicationWindow):
         dialog_manual = obj.get_object('manual_overlay')
         text_buffer = obj.get_object('text_buffer')
         text_buffer.insert_markup(text_buffer.get_end_iter(), understanding_graphs, -1)
-        dialog_manual.set_transient_for(self)
-        response = dialog_manual.present()
+        response = dialog_manual.present(self)
         dialog_manual.add_response('cancel',  _('Close'))
 
     def on_open_menu(self):

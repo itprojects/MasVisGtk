@@ -729,7 +729,7 @@ def render(
         scale.set_size_request(100, -1)
         scale.set_tooltip_text('⇤ 1080 ⇥')
 
-        scale.connect("value-changed", on_value_changed)
+        scale.connect('value-changed', on_value_changed)
 
         # Resize button to scale canvas to window width.
         btn_scale_to_win = Gtk.Button(label='⇤ ⇥', tooltip_text=_('Scale to Window Width'))
@@ -767,7 +767,7 @@ def render(
 
         match dr_val:
             case 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7:
-                btn_dr.add_css_class("dr_style07")
+                btn_dr.add_css_class('dr_style07')
             case 8:
                 btn_dr.add_css_class('dr_style08')
             case 9:

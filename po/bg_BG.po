@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: masvisgtk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-11 00:33+0300\n"
+"POT-Creation-Date: 2024-12-24 01:36+0200\n"
 "PO-Revision-Date: 2024-08-29 21:08+0300\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -195,6 +195,7 @@ msgid "Tab Actions"
 msgstr "Разделови Действия"
 
 #: src/gtk/help-overlay.ui:80 src/main_gtk_window.py:450
+#: src/main_gtk_window.py:448
 msgid "Compare Tabs"
 msgstr "Сравни Раздели"
 
@@ -424,35 +425,37 @@ msgid " is not writeable."
 msgstr " не може да се записва."
 
 #: src/main.py:867 src/main_gtk_window.py:438 src/main_gtk_window.py:627
-#: src/main_gtk_window.py:638
+#: src/main_gtk_window.py:638 src/main.py:865 src/main_gtk_window.py:436
+#: src/main_gtk_window.py:622 src/main_gtk_window.py:632
 msgid "Close"
 msgstr "Затвори"
 
-#: src/main.py:937
+#: src/main.py:937 src/main.py:935
 msgid "Opening File Error"
 msgstr "Грешка при отваряне"
 
-#: src/main.py:939
+#: src/main.py:939 src/main.py:937
 msgid "Errors in Processing!"
 msgstr "Грешка при отваряне"
 
-#: src/main.py:955 src/main.py:966
+#: src/main.py:955 src/main.py:966 src/main.py:953 src/main.py:964
 msgid "Unable to open input "
 msgstr "Не могат да се отворят данни "
 
-#: src/main.py:956
+#: src/main.py:956 src/main.py:954
 msgid "Cannot Open File"
 msgstr "Не може да се отвори"
 
-#: src/main.py:965
+#: src/main.py:965 src/main.py:963
 msgid "The minimum file duration is 3 seconds."
 msgstr "Най-малката продължителност е 3 секунди."
 
-#: src/main.py:967
+#: src/main.py:967 src/main.py:965
 msgid "File Error"
 msgstr "Файлова Грешка"
 
 #: src/main_gtk_window.py:127 src/main_gtk_window.py:423
+#: src/main_gtk_window.py:422
 msgid "File Information"
 msgstr "Файлови Сведения"
 
@@ -555,47 +558,49 @@ msgid "Save All in Folder"
 msgstr "Запази Всички в Папка"
 
 #: src/main_gtk_window.py:444 src/main_gtk_window.py:467
-#: src/main_gtk_window.py:536
+#: src/main_gtk_window.py:536 src/main_gtk_window.py:442
+#: src/main_gtk_window.py:465 src/main_gtk_window.py:534
 msgid "Cannot Compare"
 msgstr "Не може да се сравни"
 
-#: src/main_gtk_window.py:444
+#: src/main_gtk_window.py:444 src/main_gtk_window.py:442
 msgid "No tabs."
 msgstr "Няма раздели."
 
 #: src/main_gtk_window.py:467 src/main_gtk_window.py:536
+#: src/main_gtk_window.py:465 src/main_gtk_window.py:534
 msgid "Too few tabs."
 msgstr "Твърде малко раздели."
 
-#: src/main_gtk_window.py:480
+#: src/main_gtk_window.py:480 src/main_gtk_window.py:478
 msgid "Go!"
 msgstr "Действай!"
 
-#: src/main_gtk_window.py:480
+#: src/main_gtk_window.py:480 src/main_gtk_window.py:478
 msgid "Compare tabs in separate window"
 msgstr "Сравни раздели и отделен прозорец"
 
-#: src/main_gtk_window.py:483
+#: src/main_gtk_window.py:483 src/main_gtk_window.py:481
 msgid "☑ All!"
 msgstr "☑ Всички!"
 
-#: src/main_gtk_window.py:483
+#: src/main_gtk_window.py:483 src/main_gtk_window.py:481
 msgid "Compare ALL tabs in separate window"
 msgstr "Сравни ВСИЧКИ раздели в отделен прозорец"
 
-#: src/main_gtk_window.py:545
+#: src/main_gtk_window.py:545 src/main_gtk_window.py:543
 msgid "Comparison #"
 msgstr "Съпоставка #"
 
-#: src/main_gtk_window.py:623
+#: src/main_gtk_window.py:623 src/main_gtk_window.py:620
 msgid "Supported Formats"
 msgstr "Поддържани Формати"
 
-#: src/main_gtk_window.py:657
+#: src/main_gtk_window.py:657 src/main_gtk_window.py:651
 msgid "Original PyMasVis module development."
 msgstr "Първоначално разработване на пайМасВис модул."
 
-#: src/main_gtk_window.py:659
+#: src/main_gtk_window.py:659 src/main_gtk_window.py:653
 msgid "GTK application, originally based on PyMasVis commit #657196."
 msgstr "ГТК приложение, първоначално основана на ПайМасВис #657196."
 

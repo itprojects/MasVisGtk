@@ -168,6 +168,13 @@ usage: masvisgtk [-h] [--version] [-v] [-d] [-u username] [-p password] [-r] [--
                  input [input ...]
 ```
 
+What is a good Dynamic Range?
+-----------------------------
+
+![Dynamic Range Chart](./img/10.png)
+
+The dynamic range chart is taken form a [post](forums.stevehoffman.tv), in a public forum.
+
 Known Issues
 ------------
 

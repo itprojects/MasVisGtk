@@ -1,0 +1,114 @@
+<svg width="320" height="550" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Title -->
+  <rect x="0" y="0" width="320" height="720" fill="transparent" />
+  <text x="160" y="30" font-size="18" fill="white" text-anchor="middle">Dynamic Range Chart</text>
+
+  <!-- Table Headers -->
+  <text x="85" y="60" font-size="14" fill="white" text-anchor="start" font-weight="bold">Synth</text>
+  <text x="85" y="77" font-size="14" fill="white" text-anchor="start">Goa</text>
+  <text x="85" y="90" font-size="14" fill="white" text-anchor="start">Disco</text>
+  <text x="85" y="105" font-size="14" fill="white" text-anchor="start">Trance</text>
+  <text x="85" y="120" font-size="14" fill="white" text-anchor="start">Electro</text>
+  <text x="85" y="135" font-size="14" fill="white" text-anchor="start">House</text>
+  <text x="85" y="150" font-size="14" fill="white" text-anchor="start">Techno</text>
+
+  <text x="160" y="60" font-size="14" fill="white" text-anchor="start" font-weight="bold">Radio</text>
+  <text x="160" y="75" font-size="14" fill="white" text-anchor="start">Pop</text>
+  <text x="160" y="90" font-size="14" fill="white" text-anchor="start">Rock</text>
+  <text x="160" y="105" font-size="14" fill="white" text-anchor="start">RnB</text>
+  <text x="160" y="120" font-size="14" fill="white" text-anchor="start">Blues</text>
+  <text x="160" y="135" font-size="14" fill="white" text-anchor="start">Hip-Hop</text>
+  <text x="160" y="150" font-size="14" fill="white" text-anchor="start">Hard Rock</text>
+
+  <text x="240" y="60" font-size="14" fill="white" text-anchor="start" font-weight="bold">Acoustic</text>
+  <text x="240" y="75" font-size="14" fill="white" text-anchor="start">Jazz</text>
+  <text x="240" y="90" font-size="14" fill="white" text-anchor="start">Folk</text>
+  <text x="240" y="105" font-size="14" fill="white" text-anchor="start">Country</text>
+  <text x="240" y="120" font-size="14" fill="white" text-anchor="start">Classic</text>
+  <text x="240" y="135" font-size="14" fill="white" text-anchor="start">Chill-out</text>
+  <text x="240" y="150" font-size="14" fill="white" text-anchor="start">Relax</text>
+
+  <!-- Table Rows -->
+  <rect x="20" y="160" width="275" height="30" fill="transparent" />
+  <text x="75" y="180" font-family="Arial" font-size="14" fill="white" text-anchor="end">DR 04</text>
+
+  <rect x="85" y="160" width="70" height="30" fill="red" stroke="black" stroke-width="1" />
+  <rect x="155" y="160" width="70" height="30" fill="red" stroke="black" stroke-width="1" />
+  <rect x="225" y="160" width="70" height="30" fill="red" stroke="black" stroke-width="1" />
+
+  <rect x="20" y="190" width="275" height="30" fill="transparent" />
+  <text x="75" y="210" font-family="Arial" font-size="14" fill="white" text-anchor="end">DR 05</text>
+
+  <rect x="85" y="190" width="70" height="30" fill="red" stroke="black" stroke-width="1" />
+  <rect x="155" y="190" width="70" height="30" fill="red" stroke="black" stroke-width="1" />
+  <rect x="225" y="190" width="70" height="30" fill="red" stroke="black" stroke-width="1" />
+
+  <rect x="20" y="220" width="275" height="30" fill="transparent" />
+  <text x="75" y="240" font-family="Arial" font-size="14" fill="white" text-anchor="end">DR 06</text>
+
+  <rect x="85" y="220" width="70" height="30" fill="yellow" stroke="black" stroke-width="1" />
+  <rect x="155" y="220" width="70" height="30" fill="red" stroke="black" stroke-width="1" />
+  <rect x="225" y="220" width="70" height="30" fill="red" stroke="black" stroke-width="1" />
+
+  <rect x="20" y="250" width="275" height="30" fill="transparent" />
+  <text x="75" y="270" font-family="Arial" font-size="14" fill="white" text-anchor="end">DR 07</text>
+
+  <rect x="85" y="250" width="70" height="30" fill="yellow" stroke="black" stroke-width="1" />
+  <rect x="155" y="250" width="70" height="30" fill="red" stroke="black" stroke-width="1" />
+  <rect x="225" y="250" width="70" height="30" fill="red" stroke="black" stroke-width="1" />
+
+  <rect x="20" y="280" width="275" height="30" fill="transparent" />
+  <text x="75" y="300" font-family="Arial" font-size="14" fill="white" text-anchor="end">DR 08</text>
+
+  <rect x="85" y="280" width="70" height="30" fill="green" stroke="black" stroke-width="1" />
+  <rect x="155" y="280" width="70" height="30" fill="yellow" stroke="black" stroke-width="1" />
+  <rect x="225" y="280" width="70" height="30" fill="red" stroke="black" stroke-width="1" />
+
+  <rect x="20" y="310" width="275" height="30" fill="transparent" />
+  <text x="75" y="330" font-family="Arial" font-size="14" fill="white" text-anchor="end">DR 09</text>
+
+  <rect x="85" y="310" width="70" height="30" fill="green" stroke="black" stroke-width="1" />
+  <rect x="155" y="310" width="70" height="30" fill="yellow" stroke="black" stroke-width="1" />
+  <rect x="225" y="310" width="70" height="30" fill="red" stroke="black" stroke-width="1" />
+
+  <rect x="20" y="340" width="275" height="30" fill="transparent" />
+  <text x="75" y="360" font-family="Arial" font-size="14" fill="white" text-anchor="end">DR 10</text>
+
+  <rect x="85" y="340" width="70" height="30" fill="green" stroke="black" stroke-width="1" />
+  <rect x="155" y="340" width="70" height="30" fill="green" stroke="black" stroke-width="1" />
+  <rect x="225" y="340" width="70" height="30" fill="yellow" stroke="black" stroke-width="1" />
+
+  <rect x="20" y="370" width="275" height="30" fill="transparent" />
+  <text x="75" y="390" font-family="Arial" font-size="14" fill="white" text-anchor="end">DR 11</text>
+
+  <rect x="85" y="370" width="70" height="30" fill="green" stroke="black" stroke-width="1" />
+  <rect x="155" y="370" width="70" height="30" fill="green" stroke="black" stroke-width="1" />
+  <rect x="225" y="370" width="70" height="30" fill="yellow" stroke="black" stroke-width="1" />
+
+  <rect x="20" y="400" width="275" height="30" fill="transparent" />
+  <text x="75" y="420" font-family="Arial" font-size="14" fill="white" text-anchor="end">DR 12</text>
+
+  <rect x="85" y="400" width="70" height="30" fill="green" stroke="black" stroke-width="1" />
+  <rect x="155" y="400" width="70" height="30" fill="green" stroke="black" stroke-width="1" />
+  <rect x="225" y="400" width="70" height="30" fill="green" stroke="black" stroke-width="1" />
+
+  <rect x="20" y="430" width="275" height="30" fill="transparent" />
+  <text x="75" y="450" font-family="Arial" font-size="14" fill="white" text-anchor="end">DR 13</text>
+
+  <rect x="85" y="430" width="70" height="30" fill="green" stroke="black" stroke-width="1" />
+  <rect x="155" y="430" width="70" height="30" fill="green" stroke="black" stroke-width="1" />
+  <rect x="225" y="430" width="70" height="30" fill="green" stroke="black" stroke-width="1" />
+
+  <rect x="20" y="460" width="275" height="30" fill="transparent" />
+  <text x="75" y="480" font-family="Arial" font-size="14" fill="white" text-anchor="end">&#8805; DR 14</text>
+
+  <rect x="85" y="460" width="70" height="30" fill="green" stroke="black" stroke-width="1" />
+  <rect x="155" y="460" width="70" height="30" fill="green" stroke="black" stroke-width="1" />
+  <rect x="225" y="460" width="70" height="30" fill="green" stroke="black" stroke-width="1" />
+
+  <text x="85" y="510" font-family="Arial" font-size="10" fill="white" text-anchor="start">OVERCOMPRESSED, UNPLEASANT (RED)</text>
+  <text x="85" y="520" font-family="Arial" font-size="10" fill="white" text-anchor="start">TRANSITIONAL (YELLOW)</text>
+  <text x="85" y="530" font-family="Arial" font-size="10" fill="white" text-anchor="start">DYNAMIC, PLEASANT (GREEN)</text>
+
+</svg>

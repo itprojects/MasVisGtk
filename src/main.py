@@ -154,7 +154,7 @@ class MasVisGtk(Adw.Application):
             locale.setlocale(locale.LC_ALL, self.pref_language_locale)
         except locale.Error as ll:
             # System package is required.
-            log.warning(_('Cannot set locale ' + str(ll)) + ' ' + str(self.pref_language_locale))
+            log.warning(_('Cannot set locale ') + str(ll) + ' ' + str(self.pref_language_locale))
 
         self.set_option_context_parameter_string(_('FILES/FOLDERS'))
         self.set_option_context_summary(
@@ -859,13 +859,11 @@ class MasVisGtk(Adw.Application):
         GLib.idle_add(self.on_error_dialog_present, heading, body)
 
     def on_error_dialog_present(self, heading, body):
-        dialog_err = Adw.MessageDialog(
-            transient_for = self.win,
-            heading = heading,
-            body = f'{body}'
-        )
+        dialog_err = Adw.AlertDialog()
+        dialog_err.set_heading(heading)
+        dialog_err.set_body(body)
         dialog_err.add_response('cancel',  _('Close'))
-        dialog_err.present()
+        dialog_err.present(self.win)
 
     def on_close_request(self, action, *args):
         self.quit()

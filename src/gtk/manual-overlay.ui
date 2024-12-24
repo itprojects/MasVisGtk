@@ -1,20 +1,33 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <interface>
-  <object class="AdwMessageDialog" id="manual_overlay">
+  <object class="AdwAlertDialog" id="manual_overlay">
     <property name="heading" translatable="yes">Understanding Graphs</property>
     <property name="extra_child">
       <object class="GtkScrolledWindow">
         <property name="min-content-width">640</property>
         <property name="min-content-height">480</property>
         <child>
-          <object class="GtkTextView">
-            <property name="name">manual_text_view</property>
-            <property name="editable">false</property>
-            <property name="justification">fill</property>
-            <property name="wrap-mode">word</property>
-            <property name="buffer">
-              <object class="GtkTextBuffer" id="text_buffer"/>
-            </property>
+          <object class="GtkBox">
+            <property name="orientation">vertical</property>
+            <child>
+              <object class="GtkImage">
+                <property name="width-request">320</property>
+                <property name="height-request">550</property>
+                <property name="name">manual_image</property>
+                <property name="halign">center</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkTextView">
+                <property name="name">manual_text_view</property>
+                <property name="editable">false</property>
+                <property name="justification">fill</property>
+                <property name="wrap-mode">word</property>
+                <property name="buffer">
+                  <object class="GtkTextBuffer" id="text_buffer"/>
+                </property>
+              </object>
+            </child>
           </object>
         </child>
       </object>
