@@ -41,8 +41,8 @@ msgid ""
 "Detect audio mastering defects. Based on pymasvis app/module, using numpy, "
 "scipy, pyplot (matplotlib)."
 msgstr ""
-"Detecte defeitos de masterização de áudio. Baseado no aplicativo/módulo "
-"Pymasvis, usando Numpy, Scipy, Pyplot (Matplotlib)."
+"Detectar defeitos de masterização de áudio. Baseado no aplicativo/módulo "
+"pymasvis, utilizando numpy, scipy, pyplot (matplotlib)."
 
 #: data/io.github.itprojects.MasVisGtk.metainfo.xml.in:11
 msgid "Waveform plotting"
