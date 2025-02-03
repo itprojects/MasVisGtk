@@ -195,75 +195,75 @@ c_color = ['blue', 'red', 'green', 'deepskyblue', 'cyan', 'magenta', 'forestgree
 # { key='NAME' : value='DECOMPOSITION'}
 channel_layouts_names = {
     'mono':
-        ['Mono'],
+        [_('Mono')],
     'stereo':
-        ['Left', 'Right'],
+        [_('Left'), _('Right')],
     'downmix':
-        ['Downmix Left', 'Downmix Right'],
+        [_('Downmix Left'), _('Downmix Right')],
     '2.1':
-        ['Front Left', 'Front Right', 'Low Frequency'],
+        [_('Front Left'), _('Front Right'), _('Low Frequency')],
     '3.0':
-        ['Front Left', 'Front Right', 'Front Center'],
+        [_('Front Left'), _('Front Right'), _('Front Center')],
     '3.0(back)':
-        ['Front Left', 'Front Right', 'Back Center'],
+        [_('Front Left'), _('Front Right'), _('Back Center')],
     '4.0':
-        ['Front Left', 'Front Right', 'Front Center', 'Back Center'],
+        [_('Front Left'), _('Front Right'), _('Front Center'), _('Back Center')],
     'quad':
-        ['Front Left', 'Front Right', 'Back Left', 'Back Right'],
+        [_('Front Left'), _('Front Right'), _('Back Left'), _('Back Right')],
     'quad(side)':
-        ['Front Left', 'Front Right', 'Side Left', 'Side Right'],
+        [_('Front Left'), _('Front Right'), _('Side Left'), _('Side Right')],
     '3.1':
-        ['Front Left', 'Front Right', 'Front Center', 'Low Frequency'],
+        [_('Front Left'), _('Front Right'), _('Front Center'), _('Low Frequency')],
     '5.0':
-        ['Front Left', 'Front Right', 'Front Center', 'Back Left', 'Back Right'],
+        [_('Front Left'), _('Front Right'), _('Front Center'), _('Back Left'), _('Back Right')],
     '5.0(side)':
-        ['Front Left', 'Front Right', 'Front Center', 'Side Left', 'Side Right'],
+        [_('Front Left'), _('Front Right'), _('Front Center'), _('Side Left'), _('Side Right')],
     '4.1':
-        ['Front Left', 'Front Right', 'Front Center', 'Low Frequency', 'Back Center'],
+        [_('Front Left'), _('Front Right'), _('Front Center'), _('Low Frequency'), _('Back Center')],
     '5.1':
-        ['Front Left', 'Front Right', 'Front Center', 'Low Frequency', 'Back Left', 'Back Right'],
+        [_('Front Left'), _('Front Right'), _('Front Center'), _('Low Frequency'), _('Back Left'), _('Back Right')],
     '5.1(side)':
-        ['Front Left', 'Front Right', 'Front Center', 'Low Frequency', 'Side Left', 'Side Right'],
+        [_('Front Left'), _('Front Right'), _('Front Center'), _('Low Frequency'), _('Side Left'), _('Side Right')],
     '6.0':
-        ['Front Left', 'Front Right', 'Front Center', 'Back Center', 'Side Left', 'Side Right'],
+        [_('Front Left'), _('Front Right'), _('Front Center'), _('Back Center'), _('Side Left'), _('Side Right')],
     '6.0(front)':
-        ['Front Left', 'Front Right', 'Front Left-of-Center', 'Front Right-of-Center', 'Side Left', 'Side Right'],
+        [_('Front Left'), _('Front Right'), _('Front Left-of-Center'), _('Front Right-of-Center'), _('Side Left'), _('Side Right')],
     '3.1.2':
-        ['Front Left', 'Front Right', 'Front Center', 'Low Frequency', 'Top Front Left', 'Top Front Right'],
+        [_('Front Left'), _('Front Right'), _('Front Center'), _('Low Frequency'), _('Top Front Left'), _('Top Front Right')],
     'hexagonal':
-        ['Front Left', 'Front Right', 'Front Center', 'Back Left', 'Back Right', 'Back Center'],
+        [_('Front Left'), _('Front Right'), _('Front Center'), _('Back Left'), _('Back Right'), _('Back Center')],
     '6.1':
-        ['Front Left', 'Front Right', 'Front Center', 'Low Frequency', 'Back Center', 'Side Left', 'Side Right'],
+        [_('Front Left'), _('Front Right'), _('Front Center'), _('Low Frequency'), _('Back Center'), _('Side Left'), _('Side Right')],
     '6.1(back)':
-        ['Front Left', 'Front Right', 'Front Center', 'Low Frequency', 'Back Left', 'Back Right', 'Back Center'],
+        [_('Front Left'), _('Front Right'), _('Front Center'), _('Low Frequency'), _('Back Left'), _('Back Right'), _('Back Center')],
     '6.1(front)':
-        ['Front Left', 'Front Right', 'Low Frequency', 'Front Left-of-Center', 'Front Right-of-Center', 'Side Left', 'Side Right'],
+        [_('Front Left'), _('Front Right'), _('Low Frequency'), _('Front Left-of-Center'), _('Front Right-of-Center'), _('Side Left'), _('Side Right')],
     '7.0':
-        ['Front Left', 'Front Right', 'Front Center', 'Back Left', 'Back Right', 'Side Left', 'Side Right'],
+        [_('Front Left'), _('Front Right'), _('Front Center'), _('Back Left'), _('Back Right'), _('Side Left'), _('Side Right')],
     '7.0(front)':
-        ['Front Left', 'Front Right', 'Front Center', 'Front Left-of-Center', 'Front Right-of-Center', 'Side Left', 'Side Right'],
+        [_('Front Left'), _('Front Right'), _('Front Center'), _('Front Left-of-Center'), _('Front Right-of-Center'), _('Side Left'), _('Side Right')],
     '7.1':
-        ['Front Left', 'Front Right', 'Front Center', 'Low Frequency', 'Back Left', 'Back Right', 'Side Left', 'Side Right'],
+        [_('Front Left'), _('Front Right'), _('Front Center'), _('Low Frequency'), _('Back Left'), _('Back Right'), _('Side Left'), _('Side Right')],
     '7.1(wide)':
-        ['Front Left', 'Front Right', 'Front Center', 'Low Frequency', 'Back Left', 'Back Right', 'Front Left-of-Center', 'Front Right-of-Center'],
+        [_('Front Left'), _('Front Right'), _('Front Center'), _('Low Frequency'), _('Back Left'), _('Back Right'), _('Front Left-of-Center'), _('Front Right-of-Center')],
     '7.1(wide-side)':
-        ['Front Left', 'Front Right', 'Front Center', 'Low Frequency', 'Front Left-of-Center', 'Front Right-of-Center', 'Side Left', 'Side Right'],
+        [_('Front Left'), _('Front Right'), _('Front Center'), _('Low Frequency'), _('Front Left-of-Center'), _('Front Right-of-Center'), _('Side Left'), _('Side Right')],
     '5.1.2':
-        ['Front Left', 'Front Right', 'Front Center', 'Low Frequency', 'Back Left', 'Back Right', 'Top Front Left', 'Top Front Right'],
+        [_('Front Left'), _('Front Right'), _('Front Center'), _('Low Frequency'), _('Back Left'), _('Back Right'), _('Top Front Left'), _('Top Front Right')],
     'octagonal':
-        ['Front Left', 'Front Right', 'Front Center', 'Back Left', 'Back Right', 'Back Center', 'Side Left', 'Side Right'],
+        [_('Front Left'), _('Front Right'), _('Front Center'), _('Back Left'), _('Back Right'), _('Back Center'), _('Side Left'), _('Side Right')],
     'cube':
-        ['Front Left', 'Front Right', 'Back Left', 'Back Right', 'Top Front Left', 'Top Front Right', 'Top Back Left', 'Top Back Right'],
+        [_('Front Left'), _('Front Right'), _('Back Left'), _('Back Right'), _('Top Front Left'), _('Top Front Right'), _('Top Back Left'), _('Top Back Right')],
     '5.1.4':
-        ['Front Left', 'Front Right', 'Front Center', 'Low Frequency', 'Back Left', 'Back Right', 'Top Front Left', 'Top Front Right', 'Top Back Left', 'Top Back Right'],
+        [_('Front Left'), _('Front Right'), _('Front Center'), _('Low Frequency'), _('Back Left'), _('Back Right'), _('Top Front Left'), _('Top Front Right'), _('Top Back Left'), _('Top Back Right')],
     '7.1.2':
-        ['Front Left', 'Front Right', 'Front Center', 'Low Frequency', 'Back Left', 'Back Right', 'Side Left', 'Side Right', 'Top Front Left', 'Top Front Right'],
+        [_('Front Left'), _('Front Right'), _('Front Center'), _('Low Frequency'), _('Back Left'), _('Back Right'), _('Side Left'), _('Side Right'), _('Top Front Left'), _('Top Front Right')],
     '7.1.4':
-        ['Front Left', 'Front Right', 'Front Center', 'Low Frequency', 'Back Left', 'Back Right', 'Side Left', 'Side Right', 'Top Front Left', 'Top Front Right', 'Top Back Left', 'Top Back Right'],
+        [_('Front Left'), _('Front Right'), _('Front Center'), _('Low Frequency'), _('Back Left'), _('Back Right'), _('Side Left'), _('Side Right'), _('Top Front Left'), _('Top Front Right'), _('Top Back Left'), _('Top Back Right')],
     'hexadecagonal':
-        ['Front Left', 'Front Right', 'Front Center', 'Back Left', 'Back Right', 'Back Center', 'Side Left', 'Side Right', 'Top Front Left', 'Top Front Center', 'Top Front Right', 'Top Back Left', 'Top Back Center', 'Top Back Right', 'Wide Left', 'Wide Right'],
+        [_('Front Left'), _('Front Right'), _('Front Center'), _('Back Left'), _('Back Right'), _('Back Center'), _('Side Left'), _('Side Right'), _('Top Front Left'), _('Top Front Center'), _('Top Front Right'), _('Top Back Left'), _('Top Back Center'), _('Top Back Right'), _('Wide Left'), _('Wide Right')],
     '22.2':
-        ['Front Left', 'Front Right', 'Front Center', 'Low Frequency', 'Back Left', 'Back Right', 'Front Left-of-Center', 'Front Right-of-Center', 'Back Center', 'Side Left', 'Side Right', 'Top Center', 'Top Front Left', 'Top Front Center', 'Top Front Right', 'Top Back Left', 'Top Back Center', 'Top Back Right', 'Low Frequency 2', 'Top Side Left', 'Top Side Right', 'Bottom Front Center', 'Bottom Front Left', 'Bottom Front Right']
+        [_('Front Left'), _('Front Right'), _('Front Center'), _('Low Frequency'), _('Back Left'), _('Back Right'), _('Front Left-of-Center'), _('Front Right-of-Center'), _('Back Center'), _('Side Left'), _('Side Right'), _('Top Center'), _('Top Front Left'), _('Top Front Center'), _('Top Front Right'), _('Top Back Left'), _('Top Back Center'), _('Top Back Right'), _('Low Frequency 2'), _('Top Side Left'), _('Top Side Right'), _('Bottom Front Center'), _('Bottom Front Left'), _('Bottom Front Right')]
 }
 
 
@@ -343,7 +343,7 @@ channel_layouts_params = {
 }
 
 
-understanding_graphs = '''
+understanding_graphs = _('''
 <i>See the <b>glossary at the end</b> for <b>audio terms</b> and <b>definitions</b>.</i>\n
 ## <span size="larger"><b>The Overview Graph</b></span>\n
 The overview graph is appropriate for displaying condensed information about an entire album. It shows the waveforms from the left and the right channels superimposed on each other. The left channel is shown in blue, the right in red. Parts where left and right channels overlap are shown in black. If a lot of color is shown, the channels are quite different.\n
@@ -402,4 +402,4 @@ An allpass filter lets all frequencies pass, without attenuation or amplificatio
 Checksums are used frequently to ensure the integrity of data file. Checksum algorithms produce results that are quite different, even if only a single bit is changed.  The checksum algorithm in MasVis is different, in that it remains the same if silence is added to the file.\n
 ### <span size="large"><b>Histogram</b></span>\n
 A histogram is a diagram that tells "how many of each there are". For example, a simple histogram may show how many students have passed or failed an exam. This histogram would have only two bars: pass and fail. The histogram in MasVis has 65536 bars internally, each representing one level in the 16 bit PCM format. These bars are presented in the histogram, showing if some sample levels are more common than others.
-'''
+''')

@@ -57,6 +57,13 @@
   <developer_name translate="no">ITProjects</developer_name>
   <translation type="gettext">masvisgtk</translation>
   <releases>
+    <release version="3.5.2" date="2025-02-03">
+      <description translate="no">
+        <p>Update translation pt_BR.po.</p>
+        <p>Update Numpy to 2.2.2.</p>
+        <p>Update Scipy to 1.15.1.</p>
+      </description>
+    </release>
     <release version="3.5.1" date="2024-12-24">
       <description translate="no">
         <p>Added dynamic range chart in F1 manual.</p>

@@ -176,7 +176,7 @@ def render(
     c_layout = track['channel_layout']
     if c_layout == None:
         if nc == 0: # no audio
-            str_error = f'Input file has no audio stream: {track["metadata"]["filename"]}'
+            str_error = _('Input file has no audio stream: ') + track["metadata"]["filename"]
             log.warning(str_error)
             raise Exception(str_error)
             return
@@ -216,13 +216,10 @@ def render(
 
     if overview_mode == None:# Detailed one track plot.
         with Timer('Drawing plot...', Steps.draw_plot, callback):
-            subtitle_analysis = (
-                'Crest: %.2f dB,  DR: %s,  L$_K$: %.1f %s,  ' 'LRA: %.1f LU,  PLR: %.1f LU'
-            ) % (crest_total_db, dr, l_kg + r128_offset, r128_unit, lra, plr)
-            subtitle_source = (
-                'Encoding: %s,  Channels: %d,  Layout: %s,  Bits: %d,  \n'
-                'Sample rate: %d Hz,  Bitrate: %s kbps, Duration: %s, Size: %.2f MB'
-            ) % (
+            subtitle_analysis = _('Crest: {:0.2f} dB,  DR: {},  L$_K$: {:0.1f} {},  LRA: {:0.1f} LU,  PLR: {:0.1f} LU').format(
+                float(crest_total_db), dr, l_kg + r128_offset, r128_unit, lra, plr
+            )
+            subtitle_source = _('Encoding: {},  Channels: {},  Layout: {},  Bits: {},\nSample rate: {} Hz,  Bitrate: {} kbps,  Duration: {},  Size: {:0.1f} MB').format(
                 track['metadata']['encoding'],
                 track['channels'],
                 c_layout,
@@ -230,15 +227,15 @@ def render(
                 fs,
                 int(round(track['metadata']['bps'] / 1000.0)),
                 time.strftime('%M:%S', time.gmtime(track['duration'])),
-                track['metadata']['size'] / (1024 * 1024), # MB file size
+                track["metadata"]["size"] / (1024 * 1024), # MB file size
             )
             subtitle_meta = []
             if track['metadata']['album']:
-                subtitle_meta.append('Album: %.*s' % (50, track['metadata']['album']))
+                subtitle_meta.append(_('Album') + ': %.*s' % (50, track['metadata']['album']))
             if track['metadata']['track']:
-                subtitle_meta.append('Track: %s' % track['metadata']['track'])
+                subtitle_meta.append(_('Track') + ': %s' % track['metadata']['track'])
             if track['metadata']['date']:
-                subtitle_meta.append('Date: %s' % track['metadata']['date'])
+                subtitle_meta.append(_('Date') + ': %s' % track['metadata']['date'])
             subtitle_meta = ',  '.join(subtitle_meta)
             subtitle = '\n'.join([subtitle_analysis, subtitle_source, subtitle_meta])
             win.n_figures += 1
@@ -259,7 +256,7 @@ def render(
             fig_d.text(
                 pos['left'],
                 pos['footer_y'],
-                ('Checksum (energy): %d' % checksum),
+                _('Checksum (energy): ') + str(checksum),
                 fontsize='small',
                 va='bottom',
                 ha='left',
@@ -267,7 +264,7 @@ def render(
             fig_d.text(
                 pos['right'],
                 pos['footer_y'],
-                ('MasVisGtk %s' % (VERSION)),
+                _('MasVisGtk ') + str(VERSION),
                 fontsize='small',
                 va='bottom',
                 ha='right',
@@ -313,16 +310,8 @@ def render(
                 xlim(0, round(sec))
                 ylim(-1.0, 1.0)
                 title(
-                    (
-                        u'%s:  Crest=%0.2f dB / RMS = %0.2f dBFS / Peak = %0.2f dBFS / '
-                        u'True Peak ≈ %0.2f dBTP'
-                    )
-                    % (
-                        c_name[c].capitalize(),
-                        crest_db[c],
-                        rms_dbfs[c],
-                        peak_dbfs[c],
-                        true_peak_dbtp[c],
+                    _('{}: Crest = {:0.2f} dB / RMS = {:0.2f} dBFS / Peak = {:0.2f} dBFS / True Peak ≈ {:0.2f} dBTP').format(
+                        c_name[c].capitalize(), crest_db[c], rms_dbfs[c], peak_dbfs[c], true_peak_dbtp[c]
                     ),
                     fontsize='small',
                     loc='left',
@@ -363,8 +352,9 @@ def render(
             ylim(-1.0, 1.0)
             xlim(w_max[0] / float(fs), w_max[1] / float(fs))
             title(
-                ('Loudest part (%s ch, %d samples > 95%% ' 'during 20 ms at %0.2f s)')
-                % (c_name[c_max], ns_max, s_max / float(fs)),
+                _('Loudest part ({} channel, {} samples > 95{} during 20 ms at {:0.2f} sec)').format(
+                    c_name[c_max], ns_max, '%', s_max / float(fs),
+                ),
                 fontsize='small',
                 loc='left',
             )
@@ -444,7 +434,7 @@ def render(
             ylabel('dB', fontsize='small', verticalalignment='top', rotation=0)
             xlabel('kHz', fontsize='small', horizontalalignment='right')
             title(
-                'Normalized average spectrum, %d frames' % (frames),
+                _('Normalised average spectrum, ') + str(frames) + _(' frames'),
                 fontsize='small',
                 loc='left',
             )
@@ -502,7 +492,7 @@ def render(
                 )
             ylim(0, 30)
             xlim(0.02, 20)
-            title('Allpassed crest factor', fontsize='small', loc='left')
+            title(_('Allpassed crest factor'), fontsize='small', loc='left')
             yticks(np.arange(0, 30, 5), ('', 5, 10, 15, 20, ''))
             xticks([0.1, 1, 2], (0.1, 1, 2))
             xlabel('kHz', fontsize='small')
@@ -542,7 +532,7 @@ def render(
                 (-1, -0.8, -0.6, -0.4, -0.2, 0, 0.2, 0.4, 0.6, 0.8, 1),
             )
             yticks([10, 100, 1000], (10, 100, 1000))
-            hist_title = 'Histogram, \'bits\': %s' % '/'.join(hist_title_bits)
+            hist_title = _('Histogram, \'bits\': ') + '/'.join(hist_title_bits)
             title(hist_title, fontsize='small', loc='left')
             ylabel('n', fontsize='small', rotation=0)
             axis_defaults(ax_hist)
@@ -597,7 +587,7 @@ def render(
                 )
             xlim(-50, 0)
             ylim(-50, 0)
-            title('Peak vs RMS level', fontsize='small', loc='left')
+            title(_('Peak vs RMS level'), fontsize='small', loc='left')
             xlabel('dBFS', fontsize='small')
             ylabel('dBFS', fontsize='small', rotation=0)
             xticks([-50, -40, -30, -20, -10, 0], ('', -40, -30, -20, '', ''))
@@ -628,7 +618,7 @@ def render(
             xlim(0, n_1s)
             yticks([10, 20], (10, ''))
             ax_1s.yaxis.grid(True, which='major', linestyle=':', color='k', linewidth=0.5)
-            title('Short term (1 s) crest factor', fontsize='small', loc='left')
+            title(_('Short term (1 s) crest factor'), fontsize='small', loc='left')
             xlabel(':sec', fontsize='small')
             ylabel('dB', fontsize='small', rotation=0)
             #ax_1s.xaxis.set_major_locator(MaxNLocatorMod(prune='both'))
@@ -660,8 +650,8 @@ def render(
                 [-33 + r128_offset, -23 + r128_offset, -13 + r128_offset],
                 (-33 + r128_offset, -23 + r128_offset, ''),
             )
-            title('EBU R 128 Short term loudness', fontsize='small', loc='left')
-            title('Short term PLR', fontsize='small', loc='right', color='grey')
+            title(_('EBU R 128 Short term loudness'), fontsize='small', loc='left')
+            title(_('Short term PLR'), fontsize='small', loc='right', color='grey')
             xlabel(':sec', fontsize='small')
             ylabel('%s' % r128_unit, fontsize='small', rotation=0)
             ax_ebur128.yaxis.grid(
@@ -786,7 +776,7 @@ def render(
 
         if dr_val == '??':
             btn_dr.set_label('??')
-            btn_dr.set_tooltip_text(_(f'Unknown Dynamic Range'))
+            btn_dr.set_tooltip_text(_('Unknown Dynamic Range'))
         else:
             str_dr = f'{dr_val:0>2d}'
             btn_dr.set_label(str_dr)
@@ -864,23 +854,20 @@ def render(
         plt.subplots_adjust(left=0.04, right=0.82, top=1, bottom=0)
 
         # Set Y-axis label, to display audio info.
-        info_o = (
-            u'DR = %s\nPeak = %0.1f dBFS\nCrest = %0.1f dB\n' u'L$_k$ = %.1f LU'
-        ) % (dr, peak_dbfs.max(), crest_total_db, l_kg + lufs_to_lu)
+        info_o = _('DR = {}\nPeak = {:0.1f} dBFS\nCrest = {:0.1f} dB\nL$_k$ = {:0.1f} LU').format(
+            dr, float(peak_dbfs.max()), float(crest_total_db), l_kg + lufs_to_lu
+        )
 
         ax_o.set_ylabel(info_o, fontsize='12', horizontalalignment='left', rotation=0)
         ax_o.yaxis.set_label_position("right")
         ax_o.yaxis.set_label_coords(1.01, 0.8, transform=None)
         ax_o.set_xticks([])
         ax_o.set_yticks([])
-        header_o = '%s  [%s, %d ch, %d bits, %d Hz, %d kbps]' % (
-            header,
-            track['metadata']['encoding'],
-            track['channels'],
-            track['bitdepth'],
-            fs,
-            int(round(track['metadata']['bps'] / 1000.0)),
+        header_o = _('{} [{}, {} channels, {} bits, {:0.1f} kHz, {} kbps]').format(
+            header, track['metadata']['encoding'], track['channels'], track['bitdepth'],
+            fs/1000, int(round(track['metadata']['bps'] / 1000.0))
         )
+
         ax_o.set_title(header_o, fontsize='12', loc='left')
         fig_buf = plt.figure(
             'buffer', figsize=(w_o / DPI, h_o / DPI), dpi=DPI

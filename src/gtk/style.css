@@ -1,6 +1,9 @@
 #transparency {
   background-color: transparent;
 }
+#btn_rounded {
+  border-radius: 30px;
+}
 #manual_image {
   background-image: url('dynamic_range_chart.svg');
   background-repeat: no-repeat;

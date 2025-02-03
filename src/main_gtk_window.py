@@ -189,7 +189,7 @@ class PyPlotWindow(Adw.ApplicationWindow):
             page.set_title(a_file.file_name)
             page.set_tooltip(a_file.file_path)
         elif overview_mode == 'flat':
-            page.set_title('Overview')
+            page.set_title(_('Overview'))
         else:
             page.set_title(a_file.file_name)
             page.set_tooltip(a_file.file_name + '\n\n' + a_file.file_path)
@@ -477,9 +477,11 @@ class PyPlotWindow(Adw.ApplicationWindow):
 
         btn_go = Gtk.Button(label=_('Go!'), tooltip_text=_('Compare tabs in separate window'))
         btn_go.connect('clicked', self.on_go_compare, dialog_compare, listview_canvas_selction, False)
+        btn_go.set_name('btn_rounded')
 
         btn_go_all = Gtk.Button(label=_('☑ All!'), tooltip_text=_('Compare ALL tabs in separate window'))
         btn_go_all.connect('clicked', self.on_go_compare, dialog_compare, listview_canvas_selction, True)
+        btn_go_all.set_name('btn_rounded')
 
         headerbar = Adw.HeaderBar()
         headerbar.pack_start(btn_go)

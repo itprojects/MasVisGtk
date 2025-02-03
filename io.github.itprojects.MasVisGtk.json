@@ -182,8 +182,8 @@
                     "sources": [
                         {
                             "type": "file",
-                            "url": "https://files.pythonhosted.org/packages/f2/a5/fdbf6a7871703df6160b5cf3dd774074b086d278172285c52c2758b76305/numpy-2.2.1.tar.gz",
-                            "sha256": "45681fd7128c8ad1c379f0ca0776a8b0c6583d2f69889ddac01559dfe4390918",
+                            "url": "https://files.pythonhosted.org/packages/ec/d0/c12ddfd3a02274be06ffc71f3efc6d0e457b0409c4481596881e748cb264/numpy-2.2.2.tar.gz",
+                            "sha256": "ed6906f61834d687738d25988ae117683705636936cc605be0bb208b23df4d8f",
                             "x-checker-data": {
                                 "type": "pypi",
                                 "name": "numpy"
@@ -387,8 +387,8 @@
                     "sources": [
                         {
                             "type": "file",
-                            "url": "https://files.pythonhosted.org/packages/62/11/4d44a1f274e002784e4dbdb81e0ea96d2de2d1045b2132d5af62cc31fd28/scipy-1.14.1.tar.gz",
-                            "sha256": "5a275584e726026a5699459aa72f828a610821006228e841b94275c4a7c08417",
+                            "url": "https://files.pythonhosted.org/packages/76/c6/8eb0654ba0c7d0bb1bf67bf8fbace101a8e4f250f7722371105e8b6f68fc/scipy-1.15.1.tar.gz",
+                            "sha256": "033a75ddad1463970c96a88063a1df87ccfddd526437136b6ee81ff0312ebdf6",
                             "x-checker-data": {
                                 "type": "pypi",
                                 "name": "scipy"
@@ -434,7 +434,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/itprojects/MasVisGtk.git",
-                    "tag": "v3.5.1"
+                    "tag": "v3.5.2"
                 }
             ]
         }
