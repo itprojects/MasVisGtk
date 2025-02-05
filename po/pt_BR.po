@@ -680,7 +680,7 @@ msgstr "Fator de pico de curto prazo (1 s)"
 
 #: src/output_gtk.py:653
 msgid "EBU R 128 Short term loudness"
-msgstr "Loudness de curto prazo EBU R 128"
+msgstr "Nível de intensidade sonora de curto prazo EBU R 128"
 
 #: src/output_gtk.py:654
 msgid "Short term PLR"
