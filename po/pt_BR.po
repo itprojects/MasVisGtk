@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: masvisgtk\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-02-03 11:54+0200\n"
-"PO-Revision-Date: 2025-01-30 00:54-0300\n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2025-02-04 23:11-0300\n"
+"Last-Translator: john peter <johnppetersa@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
@@ -607,6 +607,8 @@ msgid ""
 "Crest: {:0.2f} dB,  DR: {},  L$_K$: {:0.1f} {},  LRA: {:0.1f} LU,  PLR: "
 "{:0.1f} LU"
 msgstr ""
+"Crista: {:0.2f} dB, DR: {}, L$_K$: {:0.1f} {}, LRA: {:0.1f} LU, PLR: {:0.1f} "
+"LU"
 
 #: src/output_gtk.py:222
 msgid ""
@@ -718,23 +720,23 @@ msgstr "Resumo"
 
 #: src/params.py:198
 msgid "Mono"
-msgstr ""
+msgstr "Mono"
 
 #: src/params.py:200
 msgid "Left"
-msgstr ""
+msgstr "Esquerda"
 
 #: src/params.py:200
 msgid "Right"
-msgstr ""
+msgstr "Direito"
 
 #: src/params.py:202
 msgid "Downmix Left"
-msgstr ""
+msgstr "Downmix Esquerda"
 
 #: src/params.py:202
 msgid "Downmix Right"
-msgstr ""
+msgstr "Downmix Direito"
 
 #: src/params.py:204 src/params.py:206 src/params.py:208 src/params.py:210
 #: src/params.py:212 src/params.py:214 src/params.py:216 src/params.py:218
@@ -745,7 +747,7 @@ msgstr ""
 #: src/params.py:252 src/params.py:254 src/params.py:256 src/params.py:258
 #: src/params.py:260 src/params.py:262 src/params.py:264 src/params.py:266
 msgid "Front Left"
-msgstr ""
+msgstr "Frente Esquerda"
 
 #: src/params.py:204 src/params.py:206 src/params.py:208 src/params.py:210
 #: src/params.py:212 src/params.py:214 src/params.py:216 src/params.py:218
@@ -756,7 +758,7 @@ msgstr ""
 #: src/params.py:252 src/params.py:254 src/params.py:256 src/params.py:258
 #: src/params.py:260 src/params.py:262 src/params.py:264 src/params.py:266
 msgid "Front Right"
-msgstr ""
+msgstr "Frente Direito"
 
 #: src/params.py:204 src/params.py:216 src/params.py:222 src/params.py:224
 #: src/params.py:226 src/params.py:232 src/params.py:236 src/params.py:238
@@ -774,115 +776,115 @@ msgstr "Gráfico de frequência"
 #: src/params.py:258 src/params.py:260 src/params.py:262 src/params.py:264
 #: src/params.py:266
 msgid "Front Center"
-msgstr ""
+msgstr "Centro da frente"
 
 #: src/params.py:208 src/params.py:210 src/params.py:222 src/params.py:228
 #: src/params.py:234 src/params.py:236 src/params.py:238 src/params.py:254
 #: src/params.py:264 src/params.py:266
 msgid "Back Center"
-msgstr ""
+msgstr "Centro traseiro"
 
 #: src/params.py:212 src/params.py:218 src/params.py:224 src/params.py:234
 #: src/params.py:238 src/params.py:242 src/params.py:246 src/params.py:248
 #: src/params.py:252 src/params.py:254 src/params.py:256 src/params.py:258
 #: src/params.py:260 src/params.py:262 src/params.py:264 src/params.py:266
 msgid "Back Left"
-msgstr ""
+msgstr "Voltar Esquerdo"
 
 #: src/params.py:212 src/params.py:218 src/params.py:224 src/params.py:234
 #: src/params.py:238 src/params.py:242 src/params.py:246 src/params.py:248
 #: src/params.py:252 src/params.py:254 src/params.py:256 src/params.py:258
 #: src/params.py:260 src/params.py:262 src/params.py:264 src/params.py:266
 msgid "Back Right"
-msgstr ""
+msgstr "Voltar à direita"
 
 #: src/params.py:214 src/params.py:220 src/params.py:226 src/params.py:228
 #: src/params.py:230 src/params.py:236 src/params.py:240 src/params.py:242
 #: src/params.py:244 src/params.py:246 src/params.py:250 src/params.py:254
 #: src/params.py:260 src/params.py:262 src/params.py:264 src/params.py:266
 msgid "Side Left"
-msgstr ""
+msgstr "Lado esquerdo"
 
 #: src/params.py:214 src/params.py:220 src/params.py:226 src/params.py:228
 #: src/params.py:230 src/params.py:236 src/params.py:240 src/params.py:242
 #: src/params.py:244 src/params.py:246 src/params.py:250 src/params.py:254
 #: src/params.py:260 src/params.py:262 src/params.py:264 src/params.py:266
 msgid "Side Right"
-msgstr ""
+msgstr "Lado direito"
 
 #: src/params.py:230 src/params.py:240 src/params.py:244 src/params.py:248
 #: src/params.py:250 src/params.py:266
 msgid "Front Left-of-Center"
-msgstr ""
+msgstr "Frente Esquerda do Centro"
 
 #: src/params.py:230 src/params.py:240 src/params.py:244 src/params.py:248
 #: src/params.py:250 src/params.py:266
 msgid "Front Right-of-Center"
-msgstr ""
+msgstr "Frente Direita do Centro"
 
 #: src/params.py:232 src/params.py:252 src/params.py:256 src/params.py:258
 #: src/params.py:260 src/params.py:262 src/params.py:264 src/params.py:266
 msgid "Top Front Left"
-msgstr ""
+msgstr "Frente superior esquerda"
 
 #: src/params.py:232 src/params.py:252 src/params.py:256 src/params.py:258
 #: src/params.py:260 src/params.py:262 src/params.py:264 src/params.py:266
 msgid "Top Front Right"
-msgstr ""
+msgstr "Superior Frontal Direito"
 
 #: src/params.py:256 src/params.py:258 src/params.py:262 src/params.py:264
 #: src/params.py:266
 msgid "Top Back Left"
-msgstr ""
+msgstr "Topo Traseiro Esquerdo"
 
 #: src/params.py:256 src/params.py:258 src/params.py:262 src/params.py:264
 #: src/params.py:266
 msgid "Top Back Right"
-msgstr ""
+msgstr "Topo Traseiro Direito"
 
 #: src/params.py:264 src/params.py:266
 msgid "Top Front Center"
-msgstr ""
+msgstr "Centro Frontal Superior"
 
 #: src/params.py:264 src/params.py:266
 msgid "Top Back Center"
-msgstr ""
+msgstr "Centro Traseiro Superior"
 
 #: src/params.py:264
 msgid "Wide Left"
-msgstr ""
+msgstr "Esquerda Ampla"
 
 #: src/params.py:264
 msgid "Wide Right"
-msgstr ""
+msgstr "Direita Ampla"
 
 #: src/params.py:266
 msgid "Top Center"
-msgstr ""
+msgstr "Centro Superior"
 
 #: src/params.py:266
 msgid "Low Frequency 2"
-msgstr ""
+msgstr "Baixa frequência 2"
 
 #: src/params.py:266
 msgid "Top Side Left"
-msgstr ""
+msgstr "Lado superior esquerdo"
 
 #: src/params.py:266
 msgid "Top Side Right"
-msgstr ""
+msgstr "Lado superior direito"
 
 #: src/params.py:266
 msgid "Bottom Front Center"
-msgstr ""
+msgstr "Centro frontal inferior"
 
 #: src/params.py:266
 msgid "Bottom Front Left"
-msgstr ""
+msgstr "Inferior Frontal Esquerdo"
 
 #: src/params.py:266
 msgid "Bottom Front Right"
-msgstr ""
+msgstr "Inferior Frontal Direito"
 
 #: src/params.py:346
 #, python-format
@@ -961,8 +963,8 @@ msgid ""
 "Is probably the most revealing graph in MasVis. It gives an estimate of how "
 "much the crest factor has been lowered, by the processing of the 2-channel "
 "master. In the graph, there are four curves, two red for the right channel, "
-"and two blue for the left channel. The dashed line shows the crest factor, i."
-"e. the same information as above the waveform graphs. The solid line shows "
+"and two blue for the left channel. The dashed line shows the crest factor, "
+"i.e. the same information as above the waveform graphs. The solid line shows "
 "the crest factor of the signal after it has passed an allpass filter. The "
 "second crest factor is a rough, and typically underestimated value of how "
 "large the crest factor was prior to level maximation of the 2-channel "
@@ -1108,3 +1110,229 @@ msgid ""
 "in the 16 bit PCM format. These bars are presented in the histogram, showing "
 "if some sample levels are more common than others.\n"
 msgstr ""
+"\n"
+"<i>Consulte o <b>glossário no final para</b> termos e <b>definições</b> "
+"<b>de áudio</b>.</i>\n"
+"\n"
+"## <span size=\"larger\"><b>O gráfico de visão geral</b></span>\n"
+"\n"
+"O gráfico de visão geral é apropriado para exibir informações condensadas "
+"sobre um álbum inteiro. Ele mostra as formas de onda dos canais esquerdo e "
+"direito sobrepostos um ao outro. O canal esquerdo é mostrado em azul, o "
+"direito em vermelho. As partes onde os canais esquerdo e direito se "
+"sobrepõem são mostradas em preto. Se muita cor for mostrada, os canais são "
+"bem diferentes.\n"
+"\n"
+"O fator de crista e o nível do pico mais alto são mostrados à direita de "
+"cada gráfico. O valor pode ser diferente daqueles na análise detalhada, uma "
+"vez que os canais esquerdo e direito são analisados como um só.\n"
+"\n"
+"## <span size=\"larger\"><b>O gráfico de análise detalhada</b></span>\n"
+"\n"
+"O gráfico de análise detalhada mostra uma análise mais profunda de uma única "
+"faixa. Cada gráfico mostra um aspecto diferente da faixa, conforme descrito "
+"abaixo.\n"
+"\n"
+"### <span size=\"large\"><b>Esquerda e Direita</b></span>\n"
+"\n"
+"Os gráficos superiores mostram as formas de onda dos canais esquerdo e "
+"direito, como no gráfico de visão geral, mas separadamente. O fator de "
+"crista, o nível RMS e os níveis de pico dos canais aparecem acima dos "
+"gráficos.\n"
+"\n"
+"### <span size=\"large\"><b>A parte mais barulhenta</b></span>\n"
+"\n"
+"Para mostrar como a parte mais forte da faixa sobreviveu ao processamento de "
+"masterização, MasVis procura uma parte forte da faixa e amplia isso. Ao "
+"redor da parte selecionada, uma janela de 100 milissegundos é mostrada. A "
+"limitação de recorte e/ou parede de tijolos é normalmente revelada aqui.\n"
+"\n"
+"A apresentação de peças não é selecionável pelo usuário, de acordo com a "
+"ideia de que os gráficos MasVis devem ter a mesma aparência, "
+"independentemente de quem faz a análise. A seleção é feita automaticamente, "
+"pela MasVis, da seguinte forma:\n"
+"\n"
+"1. Encontre o valor de amostra mais alto no arquivo de som\n"
+"\n"
+"2. Aplicar um limiar de 95 % do valor mais elevado da amostra\n"
+"\n"
+"3. Para cada lugar que o sinal excede o limite, conte quantas amostras "
+"excedem o limite\n"
+"\n"
+"4. Selecione o local onde ocorre o maior número de amostras que excedem o "
+"limite\n"
+"\n"
+"A contagem de amostras, para a peça selecionada, é exibida acima do "
+"gráfico.\n"
+"\n"
+"### <span size=\"large\"><b>Segmento médio normalizado</b></span>\n"
+"\n"
+"Este gráfico mostra o espectro médio do sinal. O gráfico é feito pela média "
+"de janelas Blackman de 1 segundo do sinal. Este gráfico pode ser usado para "
+"identificar propriedades tímbricas do sinal. As linhas sólidas inclinadas "
+"caem 6dB / oitava e podem servir como referência para julgar o conteúdo "
+"espectral da faixa.\n"
+"\n"
+"Embora este gráfico não diferencie entre o processamento de masterização e o "
+"resto da produção, incluindo os instrumentos, é muito útil, para comparar "
+"diferentes lançamentos do mesmo álbum. Versões \"remasterizadas\" de álbuns "
+"geralmente vêm com várias mudanças espectrais, e estas são reveladas no "
+"gráfico de espectro com bastante clareza, ao alternar entre as duas "
+"versões.\n"
+"\n"
+"O gráfico de espectro é normalizado, ou seja, o nível RMS do sinal não afeta "
+"o gráfico de forma alguma.\n"
+"\n"
+"### <span size=\"large\"><b>Fator de crista ultrapassado</b></span>\n"
+"\n"
+"É provavelmente o gráfico mais revelador em MasVis. Ele fornece uma "
+"estimativa de quanto o fator de crista foi reduzido, pelo processamento do "
+"mestre de 2 canais. No gráfico, há quatro curvas, duas vermelhas para o "
+"canal direito e duas azuis para o canal esquerdo. A linha tracejada mostra o "
+"fator de crista, ou seja, as mesmas informações acima dos gráficos de forma "
+"de onda. A linha sólida mostra o fator de crista do sinal depois de passar "
+"por um filtro passa-tudo. O segundo fator de crista é um valor aproximado e "
+"normalmente subestimado de quão grande era o fator de crista antes da "
+"maximização do nível do mestre de 2 canais.\n"
+"\n"
+"A princípio, pode parecer impossível fazer tal estimativa, mas a experiência "
+"mostra que o método funciona. Claro, ele não fornece um valor exato do fator "
+"de crista original, mas é bom o suficiente para dizer quando a faixa foi "
+"submetida à maximização de volume destrutiva.\n"
+"\n"
+"A diferença entre o máximo na linha sólida e a linha tracejada se "
+"correlaciona muito bem com a quantidade de perda do fator de crista que é "
+"resultado da maximização do nível da mixagem de 2 canais.\n"
+"\n"
+"Aqui está o método que MasVis usa para fazer o gráfico:\n"
+"\n"
+"1. Desenhe uma linha tracejada, no fator de crista da faixa\n"
+"\n"
+"2. Passe a trilha por sete filtros allpass de primeira ordem diferentes em "
+"20, 60, 200, 600, 2000, 6000 e 20000 Hz\n"
+"\n"
+"3. Para cada um dos sete sinais filtrados, calcule um novo valor de fator de "
+"crista\n"
+"\n"
+"4. Trace uma linha sólida, representando os fatores de crista dos sete "
+"sinais, como uma função da frequência do filtro\n"
+"\n"
+"### <span size=\"large\"><b>Histograma</b></span>\n"
+"\n"
+"Em áudio de 16 bits, como em um CD, a forma de onda é representada por "
+"números de 16 bits, dando um intervalo de -32768 a +32727 para os valores de "
+"amostra. Alguns valores são mais comuns do que outros. Se, por exemplo, as "
+"faixas estiverem completamente silenciosas, ou seja, todos os valores de "
+"amostra forem 0, o valor de amostra 0 se tornará muito comum. Se houver um "
+"som fraco, pequenos valores de amostra se tornarão comuns, e se o sinal for "
+"extremamente alto e cortado, os valores de amostra extremos se tornarão "
+"comuns.\n"
+"\n"
+"O histograma mostra o número de amostras para cada valor de amostra. Uma "
+"trilha que contém silêncio completo mostrará um pico próximo a 0, e uma "
+"trilha que contém recorte mostrará picos nas extremidades alta e/ou baixa do "
+"histograma.\n"
+"\n"
+"Pode ser mostrado por análise estatística que a soma de muitos sinais com "
+"uma amplitude razoavelmente constante ao longo do tempo, resultará em uma "
+"\"distribuição normal\". Tal distribuição assume a forma de uma parábola se "
+"o eixo y for logarítmico (como em MasVis). Se os sinais não tiverem "
+"amplitudes constantes, mas amplitudes que variam ao longo do tempo, a forma "
+"se torna mais parecida com uma pirâmide, com inclinações aproximadamente "
+"lineares.\n"
+"\n"
+"No entanto, o histograma da soma de muitos sinais não correlacionados nunca "
+"tem finais abruptos. Essas terminações abruptas só ocorrem se os sinais "
+"estiverem correlacionados (o que quase nunca são) ou se a mixagem de 2 "
+"canais tiver sido adulterada.\n"
+"\n"
+"Seria de se esperar um histograma com inclinações suaves para qualquer "
+"combinação de vários sinais, a menos que a mixagem de 2 canais tenha sido "
+"submetida a recorte ou limitação de parede de tijolos. Assim, o histograma é "
+"útil para revelar recorte e limitação.\n"
+"\n"
+"O número de \"bits\", acima do histograma, indica quantos dos níveis 65536 "
+"ocorrem pelo menos uma vez no arquivo de som. Se todos os 65536 níveis de "
+"amostra ocorrerem no arquivo de som, o número de bits será mostrado como "
+"16,0. Se apenas metade deles for usada (ou seja, 32768), então 15,0 é "
+"mostrado. Em termos matemáticos, o número mostrado é o logaritmo 2 do número "
+"de níveis de amostra usados. Um tanto contra-intuitivo, as gravações que "
+"foram submetidas ao processamento de masterização normalmente chegam perto "
+"de 16,0 \"bits\", enquanto as gravações não processadas em escala real "
+"normalmente atingem 14-15 \"bits\".\n"
+"\n"
+"### <span size=\"large\"><b>Pico vs. nível RMS</b></span>\n"
+"\n"
+"Este gráfico é útil para mostrar a dinâmica da pista. Se um sinal for "
+"amplificado, o círculo se move para a direita, pois tanto o pico quanto o "
+"RMS aumentam na mesma quantidade. Quando os círculos atingem o topo, um "
+"aumento adicional de RMS só é possível se o fator de crista for reduzido.\n"
+"\n"
+"Muitas produções modernas estão muito lotadas no canto superior direito.\n"
+"\n"
+"### <span size=\"large\"><b>Fator de crista de curto prazo</b></span>\n"
+"\n"
+"Cada um dos círculos no gráfico Pico vs. RMS também aparece no gráfico de "
+"fator de crista de curto prazo. Aqui, o fator de crista das janelas de 1 "
+"segundo é exibido em relação ao tempo. É benéfico comparar este gráfico com "
+"os gráficos de forma de onda.\n"
+"\n"
+"Para sons naturais e não processados, o fator de crista normalmente aumenta "
+"um pouco, quando o som é mais alto. O som alto é normalmente associado a um "
+"espectro mais rico e a um número maior de fontes sonoras. Ambos os fatores "
+"aumentam o fator de crista. No entanto, se a mixagem de 2 canais tiver sido "
+"submetida a corte ou limitação, o fator de crista é normalmente reduzido, "
+"quando o som se torna alto.\n"
+"\n"
+"## <span size=\"larger\"><b>Glossário</b></span>\n"
+"\n"
+"### <span size=\"large\"><b>Fator de crista</b></span>\n"
+"\n"
+"O fator de crista é a razão entre o valor de pico e o valor RMS durante um "
+"quadro. O fator de crista é expresso principalmente em decibéis [dB] e, em "
+"caso afirmativo, é a diferença entre o nível de pico [dB] e o nível RMS "
+"[dB]. O fator de crista nunca é negativo. Um sinusóide tem um fator de "
+"crista de 3 dB e uma onda quadrada de 0 dB.\n"
+"\n"
+"### <span size=\"large\"><b>Spectrum</b></span>\n"
+"\n"
+"Um gráfico de sepctrum é o resultado de uma transformada de Fourier (FFT) e "
+"mostra como a energia (em um sinal) é distribuída em diferentes "
+"frequências.\n"
+"\n"
+"### <span size=\"large\"><b>Valores de pico e RMS</b></span>\n"
+"\n"
+"O valor RMS (raiz quadrada média) é proporcional à potência média de um "
+"sinal visto ao longo de algum tempo. O valor de pico é o valor absoluto "
+"máximo dentro desse período de tempo.\n"
+"\n"
+"### <span size=\"large\"><b>Frame</b></span>\n"
+"\n"
+"Um quadro é uma parte curta ou longa do sinal sonoro. No MasVis, os quadros "
+"de 1 segundo são usados para gerar o espectro e o gráfico do fator de crista "
+"de curto prazo.\n"
+"\n"
+"### <span size=\"large\"><b>Filtro Allpass</b></span>\n"
+"\n"
+"Um filtro passa-tudo permite que todas as frequências passem, sem atenuação "
+"ou amplificação. No entanto, as fases de diferentes frequências são "
+"deslocadas de forma diferente. O resultado é um sinal que soa muito "
+"semelhante ao sinal original, mas com uma forma de onda diferente.\n"
+"\n"
+"### <span size=\"large\"><b>Soma de verificação</b></span>\n"
+"\n"
+"As somas de verificação são usadas com frequência para garantir a "
+"integridade do arquivo de dados. Os algoritmos de soma de verificação "
+"produzem resultados bem diferentes, mesmo que apenas um único bit seja "
+"alterado. O algoritmo de soma de verificação no MasVis é diferente, pois "
+"permanece o mesmo se o silêncio for adicionado ao arquivo.\n"
+"\n"
+"### <span size=\"large\"><b>Histograma</b></span>\n"
+"\n"
+"Um histograma é um diagrama que informa \"quantos de cada um existem\". Por "
+"exemplo, um histograma simples pode mostrar quantos alunos foram aprovados "
+"ou reprovados em um exame. Este histograma teria apenas duas barras: "
+"aprovação e reprovação. O histograma no MasVis tem 65536 barras "
+"internamente, cada uma representando um nível no formato PCM de 16 bits. "
+"Essas barras são apresentadas no histograma, mostrando se alguns níveis de "
+"amostra são mais comuns do que outros.\n"
