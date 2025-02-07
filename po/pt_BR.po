@@ -1336,3 +1336,4 @@ msgstr ""
 "internamente, cada uma representando um nível no formato PCM de 16 bits. "
 "Essas barras são apresentadas no histograma, mostrando se alguns níveis de "
 "amostra são mais comuns do que outros.\n"
+

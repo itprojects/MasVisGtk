@@ -703,7 +703,7 @@ msgstr ""
 
 #: src/main_gtk_window.py:192
 msgid "Overview"
-msgstr "overview mode"
+msgstr "Overview"
 
 #: src/params.py:198
 msgid "Mono"

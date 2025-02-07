@@ -176,7 +176,7 @@ def render(
     c_layout = track['channel_layout']
     if c_layout == None:
         if nc == 0: # no audio
-            str_error = _('Input file has no audio stream: ') + track["metadata"]["filename"]
+            str_error = _('Input file has no audio stream: ') + track['metadata']['filename']
             log.warning(str_error)
             raise Exception(str_error)
             return
@@ -227,7 +227,7 @@ def render(
                 fs,
                 int(round(track['metadata']['bps'] / 1000.0)),
                 time.strftime('%M:%S', time.gmtime(track['duration'])),
-                track["metadata"]["size"] / (1024 * 1024), # MB file size
+                track['metadata']['size'] / (1024 * 1024), # MB file size
             )
             subtitle_meta = []
             if track['metadata']['album']:
@@ -1016,3 +1016,4 @@ def axis_defaults(ax):
     ax.xaxis.get_label().set_va('top')
     ax.yaxis.get_label().set_ha('right')
     ax.yaxis.get_label().set_va('top')
+

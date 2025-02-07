@@ -57,6 +57,11 @@
   <developer_name translate="no">ITProjects</developer_name>
   <translation type="gettext">masvisgtk</translation>
   <releases>
+    <release version="3.5.3" date="2025-02-07">
+      <description translate="no">
+        <p>Update translation pt_BR.po, bg_BG.po.</p>
+      </description>
+    </release>
     <release version="3.5.2" date="2025-02-03">
       <description translate="no">
         <p>Update translation pt_BR.po.</p>

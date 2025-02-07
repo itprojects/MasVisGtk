@@ -644,7 +644,7 @@ class PyPlotWindow(Adw.ApplicationWindow):
 
     def on_show_about_dialog(self):
         about = Adw.AboutDialog()
-        about.set_translator_credits('ITProjects')
+        about.set_translator_credits('ITProjects, John Peter SA')
         about.set_developers(['ITProjects (2024–)', 'Joakim Fors (2022)'])
         about.set_copyright('Copyright 2024 ITProjects\nCopyright 2022 Joakim Fors')
         about.set_license_type(Gtk.License.GPL_2_0)
