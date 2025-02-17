@@ -81,5 +81,10 @@
       <summary>One audio plot width in comparison window.</summary>
     </key>
 
+    <key name="animation-duration" type="i">
+      <default>3000</default>
+      <summary>Animation duration in milliseconds.</summary>
+    </key>
+
   </schema>
 </schemalist>

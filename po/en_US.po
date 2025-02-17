@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: masvisgtk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-03 11:54+0200\n"
+"POT-Creation-Date: 2025-02-17 14:33+0200\n"
 "PO-Revision-Date: 2024-08-29 21:08+0300\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -20,675 +20,673 @@ msgstr ""
 
 #: data/io.github.itprojects.MasVisGtk.desktop.in:3 src/main.py:57
 msgid "MasVisGtk"
-msgstr "MasVisGtk"
+msgstr ""
 
 #: data/io.github.itprojects.MasVisGtk.desktop.in:9
 msgid "Audio analysis"
-msgstr "Audio analysis"
+msgstr ""
 
 #: data/io.github.itprojects.MasVisGtk.desktop.in:10
 #: data/io.github.itprojects.MasVisGtk.metainfo.xml.in:7
 msgid "Audio analysis tool for your music"
-msgstr "Audio analysis tool for your music"
+msgstr ""
 
 #: data/io.github.itprojects.MasVisGtk.desktop.in:12
 msgid "Audio;Loudness;Analysis;Music;Media;"
-msgstr "Audio;Loudness;Analysis;Music;Media;"
+msgstr ""
 
 #: data/io.github.itprojects.MasVisGtk.metainfo.xml.in:9
 msgid ""
 "Detect audio mastering defects. Based on pymasvis app/module, using numpy, "
 "scipy, pyplot (matplotlib)."
 msgstr ""
-"Detect audio mastering defects. Based on pymasvis app/module, using numpy, "
-"scipy, pyplot (matplotlib)."
 
 #: data/io.github.itprojects.MasVisGtk.metainfo.xml.in:11
 msgid "Waveform plotting"
-msgstr "Waveform plotting"
+msgstr ""
 
 #: data/io.github.itprojects.MasVisGtk.metainfo.xml.in:12
 msgid "Overview of files (by-folder support)"
-msgstr "Overview of files (by-folder support)"
+msgstr ""
 
 #: data/io.github.itprojects.MasVisGtk.metainfo.xml.in:13
 msgid "Frequency plot"
-msgstr "Frequency plot"
+msgstr ""
 
 #: data/io.github.itprojects.MasVisGtk.metainfo.xml.in:14
 msgid "Dynamic Range estimation"
-msgstr "Dynamic Range estimation"
+msgstr ""
 
 #: data/io.github.itprojects.MasVisGtk.metainfo.xml.in:15
 msgid "Peak estimation"
-msgstr "Peak estimation"
+msgstr ""
 
 #: data/io.github.itprojects.MasVisGtk.metainfo.xml.in:16
 msgid "Crest Factor estimation"
-msgstr "Crest Factor estimation"
+msgstr ""
 
 #: data/io.github.itprojects.MasVisGtk.metainfo.xml.in:17
 msgid "Histogram plot"
-msgstr "Histogram plot"
+msgstr ""
 
 #: data/io.github.itprojects.MasVisGtk.metainfo.xml.in:18
 msgid "Peak vs. RMS plot"
-msgstr "Peak vs. RMS plot"
+msgstr ""
 
 #: data/io.github.itprojects.MasVisGtk.metainfo.xml.in:19
 msgid "Loudness analysis, EBU R128 plot"
-msgstr "Loudness analysis, EBU R128 plot"
+msgstr ""
 
 #: data/io.github.itprojects.MasVisGtk.metainfo.xml.in:20
 msgid "Multi-channel audio support"
-msgstr "Multi-channel audio support"
+msgstr ""
 
 #: data/io.github.itprojects.MasVisGtk.gschema.xml:24
 msgid "Language of the application."
-msgstr "Language of the application."
+msgstr ""
 
 #: data/io.github.itprojects.MasVisGtk.gschema.xml:25
 msgid "The language of the application, if the translation exists."
-msgstr "The language of the application, if the translation exists."
+msgstr ""
 
 #: data/io.github.itprojects.MasVisGtk.gschema.xml:38
 msgid "Application style."
-msgstr "Application style."
+msgstr ""
 
 #: data/io.github.itprojects.MasVisGtk.gschema.xml:39
 msgid "Application style, follow system 0, light 1, dark 2."
-msgstr "Application style, follow system 0, light 1, dark 2."
+msgstr ""
 
 #: data/io.github.itprojects.MasVisGtk.gschema.xml:44
 msgid "Matplotlib style."
-msgstr "Matplotlib style."
+msgstr ""
 
 #: data/io.github.itprojects.MasVisGtk.gschema.xml:45
 msgid ""
 "Matplotlib visual style. 'Solarize_Light2', 'bmh', 'classic', "
 "'dark_background', 'fast', 'fivethirtyeight', 'ggplot', 'grayscale'"
 msgstr ""
-"Matplotlib visual style. 'Solarize_Light2', 'bmh', 'classic', "
-"'dark_background', 'fast', 'fivethirtyeight', 'ggplot', 'grayscale'"
 
 #: data/io.github.itprojects.MasVisGtk.gschema.xml:54
 msgid "Custom font."
-msgstr "Custom font."
+msgstr ""
 
 #: data/io.github.itprojects.MasVisGtk.gschema.xml:55
 msgid "Custom font preferences, using the font button."
-msgstr "Custom font preferences, using the font button."
+msgstr ""
 
 #: data/io.github.itprojects.MasVisGtk.gschema.xml:60
 msgid "Save format."
-msgstr "Save format."
+msgstr ""
 
 #: data/io.github.itprojects.MasVisGtk.gschema.xml:65
 msgid "Open other files."
-msgstr "Open other files."
+msgstr ""
 
 #: data/io.github.itprojects.MasVisGtk.gschema.xml:66
 msgid ""
 "Allows opeing non-audio file types, like videos. App can crash more often. "
 "Needs lots of free RAM."
 msgstr ""
-"Allows opeing non-audio file types, like videos. App can crash more often. "
-"Needs lots of free RAM."
 
 #: data/io.github.itprojects.MasVisGtk.gschema.xml:71
 msgid "DPI for plots."
-msgstr "DPI for plots."
+msgstr ""
 
 #: data/io.github.itprojects.MasVisGtk.gschema.xml:76
 msgid "DPI for saved images."
-msgstr "DPI for saved images."
+msgstr ""
 
 #: data/io.github.itprojects.MasVisGtk.gschema.xml:81
 msgid "One audio plot width in comparison window."
-msgstr "One audio plot width in comparison window."
+msgstr ""
 
 #: src/gtk/help-overlay.ui:11
 msgid "Window Actions"
-msgstr "Window Actions"
+msgstr ""
 
 #: src/gtk/help-overlay.ui:15
 msgid "Help Manual"
-msgstr "Help Manual"
+msgstr ""
 
 #: src/gtk/help-overlay.ui:21
 msgid "Open Menu"
-msgstr "Open Menu"
+msgstr ""
 
 #: src/gtk/help-overlay.ui:27
 msgid "Fullscreen/Unfullscreen"
-msgstr "Fullscreen/Unfullscreen"
+msgstr ""
 
 #: src/gtk/help-overlay.ui:33
 msgid "Unfullscreen"
-msgstr "Unfullscreen"
+msgstr ""
 
 #: src/gtk/help-overlay.ui:39
 msgid "Shortcuts"
-msgstr "Shortcuts"
+msgstr ""
 
 #: src/gtk/help-overlay.ui:45
 msgid "Quit"
-msgstr "Quit"
+msgstr ""
 
 #: src/gtk/help-overlay.ui:52
 msgid "File Actions"
-msgstr "File Actions"
+msgstr ""
 
 #: src/gtk/help-overlay.ui:56
 msgid "Show File Information"
-msgstr "Show File Information"
+msgstr ""
 
 #: src/gtk/help-overlay.ui:62
 msgid "Simple File(s) Open"
-msgstr "Simple File(s) Open"
+msgstr ""
 
 #: src/gtk/help-overlay.ui:68
 msgid "Advance Open / Overview"
-msgstr "Advance Open / Overview"
+msgstr ""
 
 #: src/gtk/help-overlay.ui:75
 msgid "Tab Actions"
-msgstr "Tab Actions"
+msgstr ""
 
 #: src/gtk/help-overlay.ui:80 src/main_gtk_window.py:448
+#: src/gtk/help-overlay.ui:85 src/main_gtk_window.py:468
 msgid "Compare Tabs"
-msgstr "Compare Tabs"
+msgstr ""
 
-#: src/gtk/help-overlay.ui:86
+#: src/gtk/help-overlay.ui:86 src/gtk/help-overlay.ui:91
 msgid "Save Current Tab"
-msgstr "Save Current Tab"
+msgstr ""
 
-#: src/gtk/help-overlay.ui:92
+#: src/gtk/help-overlay.ui:92 src/gtk/help-overlay.ui:97
 msgid "Save All Tabs"
-msgstr "Save All Tabs"
+msgstr ""
 
 #: src/gtk/manual-overlay.ui:4
 msgid "Understanding Graphs"
-msgstr "Understanding Graphs"
+msgstr ""
 
 #: src/gtk/preferences-overlay.ui:9
 msgid "Language"
-msgstr "Language"
+msgstr ""
 
 #: src/gtk/preferences-overlay.ui:12
 msgid "Language and locale"
-msgstr "Language and locale"
+msgstr ""
 
 #: src/gtk/preferences-overlay.ui:74
 msgid "Theme and Style"
-msgstr "Theme and Style"
+msgstr ""
 
 #: src/gtk/preferences-overlay.ui:77
 msgid "Application style"
-msgstr "Application style"
+msgstr ""
 
 #: src/gtk/preferences-overlay.ui:97
 msgid "Matplotlib built-in style"
-msgstr "Matplotlib built-in style"
+msgstr ""
 
 #: src/gtk/preferences-overlay.ui:108
 msgid "Matplotlib custom background"
-msgstr "Matplotlib custom background"
+msgstr ""
 
 #: src/gtk/preferences-overlay.ui:132
 msgid "Matplotlib custom font"
-msgstr "Matplotlib custom font"
+msgstr ""
 
 #: src/gtk/preferences-overlay.ui:158
 msgid "Files"
-msgstr "Files"
+msgstr ""
 
 #: src/gtk/preferences-overlay.ui:161
 msgid "Default saved image format"
-msgstr "Default saved image format"
+msgstr ""
 
 #: src/gtk/preferences-overlay.ui:185
 msgid "Open other (video) files. Needs more free RAM."
-msgstr "Open other (video) files. Needs more free RAM."
+msgstr ""
 
 #: src/gtk/preferences-overlay.ui:192
 msgid "Visual Quality"
-msgstr "Visual Quality"
+msgstr ""
 
 #: src/gtk/preferences-overlay.ui:195
 msgid "DPI of plots"
-msgstr "DPI of plots"
+msgstr ""
 
 #: src/gtk/preferences-overlay.ui:214
 msgid "DPI of saved files"
-msgstr "DPI of saved files"
+msgstr ""
 
 #: src/gtk/preferences-overlay.ui:233
 msgid "One audio plot width in comparison window"
-msgstr "One audio plot width in comparison window"
+msgstr ""
 
-#: src/main.py:157
+#: src/main.py:157 src/main.py:161
 msgid "Cannot set locale "
-msgstr "Cannot set locale "
+msgstr ""
 
-#: src/main.py:159
+#: src/main.py:159 src/main.py:163
 msgid "FILES/FOLDERS"
-msgstr "FILES/FOLDERS"
+msgstr ""
 
-#: src/main.py:161
+#: src/main.py:161 src/main.py:165
 msgid ""
 "  FILE(S) and/or FOLDER(S) paths to process inside the application\n"
 "\n"
 "  MasVisGtk is an audio file analysis application."
 msgstr ""
-"  FILE(S) and/or FOLDER(S) paths to process inside the application\n"
-"\n"
-"  MasVisGtk is an audio file analysis application."
 
-#: src/main.py:164
+#: src/main.py:164 src/main.py:168
 msgid ""
 "The original python module is also available with this package.\n"
 "The command line options are different from the original.\n"
 "Large file are always slow to render."
 msgstr ""
-"The original python module is also available with this package.\n"
-"The command line options are different from the original.\n"
-"Large file are always slow to render."
 
-#: src/main.py:173
+#: src/main.py:173 src/main.py:177
 msgid "Version of MasVisGtk."
-msgstr "Version of MasVisGtk."
+msgstr ""
 
-#: src/main.py:182
+#: src/main.py:182 src/main.py:186
 msgid "Show Verbose Messages."
-msgstr "Show Verbose Messages."
+msgstr ""
 
-#: src/main.py:191
+#: src/main.py:191 src/main.py:195
 msgid "Show Debug Messages."
-msgstr "Show Debug Messages."
+msgstr ""
 
-#: src/main.py:200
+#: src/main.py:200 src/main.py:204
 msgid "Show Supported Formats."
-msgstr "Show Supported Formats."
+msgstr ""
 
-#: src/main.py:209
+#: src/main.py:209 src/main.py:213
 msgid ""
 "Use [LU], instead of [LUFS], when displaying R128 values, (default: LUFS)."
 msgstr ""
-"Use [LU], instead of [LUFS], when displaying R128 values, (default: LUFS)."
 
-#: src/main.py:218
+#: src/main.py:218 src/main.py:222
 msgid ""
 "flat, generate one overview tab for all, or dir, for one tab for folders, "
 "(default: flat)."
 msgstr ""
-"flat, generate one overview tab for all, or dir, for one tab for folders, "
-"(default: flat)."
 
-#: src/main.py:227
+#: src/main.py:227 src/main.py:231
 msgid "If input is a folder, process subfolders, too."
-msgstr "If input is a folder, process subfolders, too."
+msgstr ""
 
-#: src/main.py:236
+#: src/main.py:236 src/main.py:240
 msgid "FILE(S) or FOLDER(S)"
-msgstr "FILE(S) or FOLDER(S)"
+msgstr ""
 
-#: src/main.py:350
+#: src/main.py:350 src/main.py:359
 msgid "MasVisGtk Version "
-msgstr "MasVisGtk Version "
+msgstr ""
 
-#: src/main.py:358
+#: src/main.py:358 src/main.py:367
 msgid "Supported Formats: "
-msgstr "Supported Formats: "
+msgstr ""
 
-#: src/main.py:369
+#: src/main.py:369 src/main.py:378
 msgid "is not possible with option -o. Try dir or flat."
-msgstr "is not possible with option -o. Try dir or flat."
+msgstr ""
 
-#: src/main.py:390
+#: src/main.py:390 src/main.py:399
 msgid "No input files or folders supplied."
-msgstr "No input files or folders supplied."
+msgstr ""
 
-#: src/main.py:404
+#: src/main.py:404 src/main.py:413
 msgid "Bad permisions for file. "
-msgstr "Bad permisions for file. "
+msgstr ""
 
-#: src/main.py:422
+#: src/main.py:422 src/main.py:431
 msgid "Bad input: "
-msgstr "Bad input: "
+msgstr ""
 
-#: src/main.py:425
+#: src/main.py:425 src/main.py:434
 msgid "Error processing files: "
-msgstr "Error processing files: "
+msgstr ""
 
-#: src/main.py:432
+#: src/main.py:432 src/main.py:441
 msgid "Bad input files: "
-msgstr "Bad input files: "
+msgstr ""
 
-#: src/main.py:434
+#: src/main.py:434 src/main.py:443
 msgid "Problem Files"
-msgstr "Problem Files"
+msgstr ""
 
-#: src/main.py:434
+#: src/main.py:434 src/main.py:443
 msgid "Ignoring bad input files:"
-msgstr "Ignoring bad input files:"
+msgstr ""
 
-#: src/main.py:438
+#: src/main.py:438 src/main.py:447
 msgid "No Files"
-msgstr "No Files"
+msgstr ""
 
-#: src/main.py:438
+#: src/main.py:438 src/main.py:447
 msgid "No valid files found!"
-msgstr "No valid files found!"
+msgstr ""
 
-#: src/main.py:465
+#: src/main.py:465 src/main.py:474
 msgid "Unsupported MimeType"
-msgstr "Unsupported MimeType"
+msgstr ""
 
-#: src/main.py:465
+#: src/main.py:465 src/main.py:474
 msgid "Skipping file: "
-msgstr "Skipping file: "
+msgstr ""
 
-#: src/main.py:472
+#: src/main.py:472 src/main.py:481
 msgid "Processing"
-msgstr "Processing"
+msgstr ""
 
-#: src/main.py:504
+#: src/main.py:504 src/main.py:513
 msgid "AsyncWorkerError"
-msgstr "AsyncWorkerError"
+msgstr ""
 
-#: src/main.py:532
+#: src/main.py:532 src/main.py:541
 msgid "Duplicate path: "
-msgstr "Duplicate path: "
+msgstr ""
 
-#: src/main.py:538
+#: src/main.py:538 src/main.py:547
 msgid "Error in Opening"
-msgstr "Error in Opening"
+msgstr ""
 
-#: src/main.py:554 src/main.py:590
+#: src/main.py:554 src/main.py:590 src/main.py:563 src/main.py:599
 msgid "Cannot detect save file format, defaulting to png."
-msgstr "Cannot detect save file format, defaulting to png."
+msgstr ""
 
-#: src/main.py:561
+#: src/main.py:561 src/main.py:570 src/main.py:699
 msgid "is not writeable."
-msgstr "is not writeable."
+msgstr ""
 
-#: src/main.py:563 src/main.py:599
+#: src/main.py:563 src/main.py:599 src/main.py:572 src/main.py:608
+#: src/main.py:701
 msgid "Permissions"
-msgstr "Permissions"
+msgstr ""
 
-#: src/main.py:597
+#: src/main.py:597 src/main.py:606
 msgid " is not writeable."
-msgstr " is not writeable."
+msgstr ""
 
 #: src/main.py:865 src/main_gtk_window.py:436 src/main_gtk_window.py:624
-#: src/main_gtk_window.py:634
+#: src/main_gtk_window.py:634 src/main.py:915 src/main_gtk_window.py:456
+#: src/main_gtk_window.py:806 src/main_gtk_window.py:816
 msgid "Close"
-msgstr "Close"
+msgstr ""
 
-#: src/main.py:935
+#: src/main.py:935 src/main.py:985
 msgid "Opening File Error"
-msgstr "Opening File Error"
+msgstr ""
 
-#: src/main.py:937
+#: src/main.py:937 src/main.py:987
 msgid "Errors in Processing!"
-msgstr "Errors in Processing!"
+msgstr ""
 
-#: src/main.py:953 src/main.py:964
+#: src/main.py:953 src/main.py:964 src/main.py:1003 src/main.py:1014
 msgid "Unable to open input "
-msgstr "Unable to open input "
+msgstr ""
 
-#: src/main.py:954
+#: src/main.py:954 src/main.py:1004
 msgid "Cannot Open File"
-msgstr "Cannot Open File"
+msgstr ""
 
-#: src/main.py:963
+#: src/main.py:963 src/main.py:1013
 msgid "The minimum file duration is 3 seconds."
-msgstr "The minimum file duration is 3 seconds."
+msgstr ""
 
-#: src/main.py:965
+#: src/main.py:965 src/main.py:1015
 msgid "File Error"
-msgstr "File Error"
+msgstr ""
 
 #: src/main_gtk_window.py:127 src/main_gtk_window.py:422
+#: src/main_gtk_window.py:133 src/main_gtk_window.py:442
 msgid "File Information"
-msgstr "File Information"
+msgstr ""
 
-#: src/main_gtk_window.py:128
+#: src/main_gtk_window.py:128 src/main_gtk_window.py:135
 msgid "Go Compare"
-msgstr "Go Compare"
+msgstr ""
 
-#: src/main_gtk_window.py:129
+#: src/main_gtk_window.py:129 src/main_gtk_window.py:136
 msgid "Save All"
-msgstr "Save All"
+msgstr ""
 
-#: src/main_gtk_window.py:133
+#: src/main_gtk_window.py:133 src/main_gtk_window.py:140
 msgid "Preferences"
-msgstr "Preferences"
+msgstr ""
 
-#: src/main_gtk_window.py:134
+#: src/main_gtk_window.py:134 src/main_gtk_window.py:141
 msgid "Formats"
-msgstr "Formats"
+msgstr ""
 
-#: src/main_gtk_window.py:135
+#: src/main_gtk_window.py:135 src/main_gtk_window.py:142
 msgid "Keyboard Shortcuts"
-msgstr "Keyboard Shortcuts"
+msgstr ""
 
-#: src/main_gtk_window.py:136
+#: src/main_gtk_window.py:136 src/main_gtk_window.py:143
 msgid "Help"
-msgstr "Help"
+msgstr ""
 
-#: src/main_gtk_window.py:137
+#: src/main_gtk_window.py:137 src/main_gtk_window.py:144
 msgid "About"
-msgstr "About"
+msgstr ""
 
 #: src/main_gtk_window.py:150 src/main_gtk_window.py:210
-#: src/main_gtk_window.py:215
+#: src/main_gtk_window.py:215 src/main_gtk_window.py:157
+#: src/main_gtk_window.py:217 src/main_gtk_window.py:222
 msgid "Open Files"
-msgstr "Open Files"
+msgstr ""
 
 #: src/main_gtk_window.py:155 src/main_gtk_window.py:225
+#: src/main_gtk_window.py:162 src/main_gtk_window.py:232
 msgid "Advanced Open"
-msgstr "Advanced Open"
+msgstr ""
 
 #: src/main_gtk_window.py:160 src/main_gtk_window.py:339
-#: src/main_gtk_window.py:361
+#: src/main_gtk_window.py:361 src/main_gtk_window.py:167
+#: src/main_gtk_window.py:346 src/main_gtk_window.py:368
+#: src/main_gtk_window.py:427
 msgid "Save"
-msgstr "Save"
+msgstr ""
 
-#: src/main_gtk_window.py:160
+#: src/main_gtk_window.py:160 src/main_gtk_window.py:167
 msgid "Save Tab"
-msgstr "Save Tab"
+msgstr ""
 
-#: src/main_gtk_window.py:218
+#: src/main_gtk_window.py:218 src/main_gtk_window.py:225
 msgid "Open Folders"
-msgstr "Open Folders"
+msgstr ""
 
-#: src/main_gtk_window.py:231
+#: src/main_gtk_window.py:231 src/main_gtk_window.py:238
 msgid "Add Files"
-msgstr "Add Files"
+msgstr ""
 
-#: src/main_gtk_window.py:231
+#: src/main_gtk_window.py:231 src/main_gtk_window.py:238
 msgid "Add files for processing"
-msgstr "Add files for processing"
+msgstr ""
 
-#: src/main_gtk_window.py:233
+#: src/main_gtk_window.py:233 src/main_gtk_window.py:240
 msgid "Add Folders"
-msgstr "Add Folders"
+msgstr ""
 
-#: src/main_gtk_window.py:233
+#: src/main_gtk_window.py:233 src/main_gtk_window.py:240
 msgid "Add folders for processing"
-msgstr "Add folders for processing"
+msgstr ""
 
-#: src/main_gtk_window.py:242
+#: src/main_gtk_window.py:242 src/main_gtk_window.py:249
 msgid "use LUFS units"
-msgstr "use LUFS units"
+msgstr ""
 
-#: src/main_gtk_window.py:246
+#: src/main_gtk_window.py:246 src/main_gtk_window.py:253
 msgid "recursive (search sub-folders)"
-msgstr "recursive (search sub-folders)"
+msgstr ""
 
-#: src/main_gtk_window.py:252
+#: src/main_gtk_window.py:252 src/main_gtk_window.py:259
 msgid "overview mode"
-msgstr "overview mode"
+msgstr ""
 
-#: src/main_gtk_window.py:283
+#: src/main_gtk_window.py:283 src/main_gtk_window.py:290
 msgid "Start"
-msgstr "Start"
+msgstr ""
 
-#: src/main_gtk_window.py:283
+#: src/main_gtk_window.py:283 src/main_gtk_window.py:290
 msgid "Begin audio analysis"
-msgstr "Start audio analysis"
+msgstr ""
 
-#: src/main_gtk_window.py:308
+#: src/main_gtk_window.py:308 src/main_gtk_window.py:315
 msgid "Failed Open"
-msgstr "Failed Open"
+msgstr ""
 
-#: src/main_gtk_window.py:340
+#: src/main_gtk_window.py:340 src/main_gtk_window.py:347
 msgid "Save in Folder"
-msgstr "Save in Folder"
+msgstr ""
 
-#: src/main_gtk_window.py:362
+#: src/main_gtk_window.py:362 src/main_gtk_window.py:369
 msgid "Save All in Folder"
-msgstr "Save All in Folder"
+msgstr ""
 
 #: src/main_gtk_window.py:442 src/main_gtk_window.py:465
-#: src/main_gtk_window.py:536
+#: src/main_gtk_window.py:536 src/main_gtk_window.py:462
+#: src/main_gtk_window.py:485 src/main_gtk_window.py:556
 msgid "Cannot Compare"
-msgstr "Cannot Compare"
+msgstr ""
 
-#: src/main_gtk_window.py:442
+#: src/main_gtk_window.py:442 src/main_gtk_window.py:462
 msgid "No tabs."
-msgstr "No tabs."
+msgstr ""
 
 #: src/main_gtk_window.py:465 src/main_gtk_window.py:536
+#: src/main_gtk_window.py:485 src/main_gtk_window.py:556
+#: src/main_gtk_window.py:626 src/main_gtk_window.py:649
+#: src/main_gtk_window.py:697
 msgid "Too few tabs."
-msgstr "Too few tabs."
+msgstr ""
 
-#: src/main_gtk_window.py:478
+#: src/main_gtk_window.py:478 src/main_gtk_window.py:498
 msgid "Go!"
-msgstr "Go!"
+msgstr ""
 
-#: src/main_gtk_window.py:478
+#: src/main_gtk_window.py:478 src/main_gtk_window.py:498
 msgid "Compare tabs in separate window"
-msgstr "Compare tabs in separate window"
+msgstr ""
 
-#: src/main_gtk_window.py:482
+#: src/main_gtk_window.py:482 src/main_gtk_window.py:502
+#: src/main_gtk_window.py:666
 msgid "☑ All!"
-msgstr "☑ All!"
+msgstr ""
 
-#: src/main_gtk_window.py:482
+#: src/main_gtk_window.py:482 src/main_gtk_window.py:502
 msgid "Compare ALL tabs in separate window"
-msgstr "Compare ALL tabs in separate window"
+msgstr ""
 
-#: src/main_gtk_window.py:545
+#: src/main_gtk_window.py:545 src/main_gtk_window.py:565
 msgid "Comparison #"
-msgstr "Comparison #"
+msgstr ""
 
-#: src/main_gtk_window.py:622
+#: src/main_gtk_window.py:622 src/main_gtk_window.py:804
 msgid "Supported Formats"
-msgstr "Supported Formats"
+msgstr ""
 
-#: src/main_gtk_window.py:653
+#: src/main_gtk_window.py:653 src/main_gtk_window.py:835
 msgid "Original PyMasVis module development."
-msgstr "Original PyMasVis module development."
+msgstr""
 
-#: src/main_gtk_window.py:655
+#: src/main_gtk_window.py:655 src/main_gtk_window.py:837
 msgid "GTK application, originally based on PyMasVis commit #657196."
-msgstr "GTK application, originally based on PyMasVis commit #657196."
+msgstr ""
 
-#: src/output_gtk.py:179
+#: src/output_gtk.py:179 src/output_gtk.py:181
 msgid "Input file has no audio stream: "
 msgstr ""
 
-#: src/output_gtk.py:219
+#: src/output_gtk.py:219 src/output_gtk.py:221
 msgid ""
 "Crest: {:0.2f} dB,  DR: {},  L$_K$: {:0.1f} {},  LRA: {:0.1f} LU,  PLR: "
 "{:0.1f} LU"
 msgstr ""
 
-#: src/output_gtk.py:222
+#: src/output_gtk.py:222 src/output_gtk.py:224
 msgid ""
 "Encoding: {},  Channels: {},  Layout: {},  Bits: {},\n"
 "Sample rate: {} Hz,  Bitrate: {} kbps,  Duration: {},  Size: {:0.1f} MB"
 msgstr ""
 
-#: src/output_gtk.py:234
+#: src/output_gtk.py:234 src/output_gtk.py:236
 msgid "Album"
 msgstr ""
 
-#: src/output_gtk.py:236
+#: src/output_gtk.py:236 src/output_gtk.py:238
 msgid "Track"
 msgstr ""
 
-#: src/output_gtk.py:238
+#: src/output_gtk.py:238 src/output_gtk.py:240
 msgid "Date"
 msgstr ""
 
-#: src/output_gtk.py:259
+#: src/output_gtk.py:259 src/output_gtk.py:267
 msgid "Checksum (energy): "
 msgstr ""
 
-#: src/output_gtk.py:267
+#: src/output_gtk.py:267 src/output_gtk.py:275
 msgid "MasVisGtk "
-msgstr "MasVisGtk "
+msgstr ""
 
-#: src/output_gtk.py:313
+#: src/output_gtk.py:313 src/output_gtk.py:325
 msgid ""
 "{}: Crest = {:0.2f} dB / RMS = {:0.2f} dBFS / Peak = {:0.2f} dBFS / True "
 "Peak ≈ {:0.2f} dBTP"
 msgstr ""
 
-#: src/output_gtk.py:355
+#: src/output_gtk.py:355 src/output_gtk.py:369
 msgid ""
 "Loudest part ({} channel, {} samples > 95{} during 20 ms at {:0.2f} sec)"
 msgstr ""
 
-#: src/output_gtk.py:437
+#: src/output_gtk.py:437 src/output_gtk.py:455
 msgid "Normalised average spectrum, "
 msgstr ""
 
-#: src/output_gtk.py:437
+#: src/output_gtk.py:437 src/output_gtk.py:455
 msgid " frames"
 msgstr ""
 
-#: src/output_gtk.py:495
+#: src/output_gtk.py:495 src/output_gtk.py:515
 msgid "Allpassed crest factor"
 msgstr ""
 
-#: src/output_gtk.py:535
+#: src/output_gtk.py:535 src/output_gtk.py:561
 msgid "Histogram, 'bits': "
-msgstr "Histogram, 'bits': "
+msgstr ""
 
-#: src/output_gtk.py:590
+#: src/output_gtk.py:590 src/output_gtk.py:622
 msgid "Peak vs RMS level"
-msgstr "Peak vs. RMS level"
+msgstr ""
 
-#: src/output_gtk.py:621
+#: src/output_gtk.py:621 src/output_gtk.py:660
 msgid "Short term (1 s) crest factor"
 msgstr ""
 
-#: src/output_gtk.py:653
+#: src/output_gtk.py:653 src/output_gtk.py:699
 msgid "EBU R 128 Short term loudness"
 msgstr ""
 
-#: src/output_gtk.py:654
+#: src/output_gtk.py:654 src/output_gtk.py:705
 msgid "Short term PLR"
 msgstr ""
 
-#: src/output_gtk.py:725
+#: src/output_gtk.py:725 src/output_gtk.py:800
 msgid "Scale to Window Width"
-msgstr "Scale to Window Width"
+msgstr ""
 
-#: src/output_gtk.py:779
+#: src/output_gtk.py:779 src/output_gtk.py:859
 msgid "Unknown Dynamic Range"
-msgstr "Unknown Dynamic Range"
+msgstr ""
 
-#: src/output_gtk.py:783
+#: src/output_gtk.py:783 src/output_gtk.py:863
 msgid "Dynamic Range"
-msgstr "Dynamic Range"
+msgstr ""
 
-#: src/output_gtk.py:857
+#: src/output_gtk.py:857 src/output_gtk.py:932
 msgid ""
 "DR = {}\n"
 "Peak = {:0.1f} dBFS\n"
@@ -696,13 +694,13 @@ msgid ""
 "L$_k$ = {:0.1f} LU"
 msgstr ""
 
-#: src/output_gtk.py:866
+#: src/output_gtk.py:866 src/output_gtk.py:941
 msgid "{} [{}, {} channels, {} bits, {:0.1f} kHz, {} kbps]"
 msgstr ""
 
-#: src/main_gtk_window.py:192
+#: src/main_gtk_window.py:192 src/main_gtk_window.py:199
 msgid "Overview"
-msgstr "Overview"
+msgstr ""
 
 #: src/params.py:198
 msgid "Mono"
@@ -850,7 +848,7 @@ msgstr ""
 
 #: src/params.py:266
 msgid "Low Frequency 2"
-msgstr "Low Frequency 2"
+msgstr ""
 
 #: src/params.py:266
 msgid "Top Side Left"
@@ -870,6 +868,102 @@ msgstr ""
 
 #: src/params.py:266
 msgid "Bottom Front Right"
+msgstr ""
+
+#: data/io.github.itprojects.MasVisGtk.gschema.xml:86
+msgid "Animation duration in milliseconds."
+msgstr ""
+
+#: src/gtk/help-overlay.ui:79 src/main_gtk_window.py:134
+#: src/main_gtk_window.py:632
+msgid "Animate Tabs"
+msgstr ""
+
+#: src/gtk/preferences-overlay.ui:252
+msgid "Set animation duration [ms]"
+msgstr ""
+
+#: src/main_gtk_window.py:428
+msgid "Save Animation"
+msgstr ""
+
+#: src/main_gtk_window.py:626 src/main_gtk_window.py:649
+#: src/main_gtk_window.py:697
+msgid "Cannot Animate"
+msgstr ""
+
+#: src/main_gtk_window.py:662
+msgid "Animate"
+msgstr ""
+
+#: src/main_gtk_window.py:662
+msgid "Animate tabs in separate window"
+msgstr ""
+
+#: src/main_gtk_window.py:666
+msgid "Animate ALL tabs in separate window"
+msgstr ""
+
+#: src/main_gtk_window.py:707
+msgid "Animation #"
+msgstr ""
+
+#: src/main_gtk_window.py:722
+msgid "Save tabs to animated gif image"
+msgstr ""
+
+#: src/main_gtk_window.py:765
+msgid "Processing images."
+msgstr ""
+
+#: src/main_gtk_window.py:772
+msgid "Animated image ready for saving."
+msgstr ""
+
+#: src/main_gtk_window.py:775
+msgid "Animation Error"
+msgstr ""
+
+#: src/main_gtk_window.py:776
+msgid ""
+"Cannot create animation.\n"
+"Plotting canvas cannot be made into image.\n"
+msgstr ""
+
+#: src/output_gtk.py:770
+msgid "Reset original view"
+msgstr ""
+
+#: src/output_gtk.py:772
+msgid "Back to previous view"
+msgstr ""
+
+#: src/output_gtk.py:774
+msgid "Forward to next view"
+msgstr ""
+
+#: src/output_gtk.py:776
+msgid ""
+"Left button pans, Right button zooms\n"
+"x/y fixes axis, CTRL fixes aspect"
+msgstr ""
+
+#: src/output_gtk.py:778
+msgid ""
+"Zoom to rectangle\n"
+"x/y fixes axis"
+msgstr ""
+
+#: src/output_gtk.py:782
+msgid "Save the figure"
+msgstr ""
+
+#: src/output_gtk.py:789
+msgid "Zoom Level [px]"
+msgstr ""
+
+#: src/output_gtk.py:795
+msgid "Resotre original dimensions"
 msgstr ""
 
 #: src/params.py:346
@@ -916,7 +1010,7 @@ msgid ""
 "\n"
 "1. Find the highest sample value in the sound file\n"
 "\n"
-"2. Apply a threshold of 95 % of the highest sample value\n"
+"2. Apply a threshold of 95 percent of the highest sample value\n"
 "\n"
 "3. For every place, that the signal exceeds the threshold, count how many "
 "samples exceed the threshold\n"

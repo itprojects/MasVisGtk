@@ -20,6 +20,8 @@ gi.require_version('Gtk', '4.0')
 gi.require_version('Adw', '1')
 from gi.repository import Adw, Gtk, Gdk, GdkPixbuf, GLib, GObject, Gio, Pango
 
+from PIL import Image
+
 from .params import understanding_graphs
 
 import json
@@ -36,8 +38,8 @@ class StringPath(GObject.GObject):
         super().__init__()
         self.path = path
         self.name = name
-        self.canvas = canvas # canvas for comparison
-        self.checked = checked # enabled/disabled state for comparison 
+        self.canvas = canvas # canvas
+        self.checked = checked # enabled/disabled state
 
 class FileDetails:
 
@@ -86,13 +88,17 @@ class SpinBox(Gtk.Box):
 class PyPlotWindow(Adw.ApplicationWindow):
 
     app = None
+
     box = None
     tab_bar = None
     tab_view = None
     n_figures = 0 # each figue MUST have a different number, else drawn overlapping
+    n_th_animation = 0 # distinguish tab animations
     n_th_comparison = 0 # distinguish tab comparisons
     w_width = 1080 # default window width
     w_height = 720 # default window height
+
+    animated_pil_images = [] # animated gif PIL images
 
     save_formats = [
         ('*.png', 'Portable Network Graphics (*.png)'),
@@ -125,6 +131,7 @@ class PyPlotWindow(Adw.ApplicationWindow):
         menu = Gio.Menu.new()
         submenu_general = Gio.Menu.new()
         submenu_general.append(_('File Information'), 'app.file_information_action')
+        submenu_general.append(_('Animate Tabs'), 'app.animate_tabs_action')
         submenu_general.append(_('Go Compare'), 'app.go_compare_action')
         submenu_general.append(_('Save All'), 'app.save_all_action')
         menu.append_section(None, submenu_general)
@@ -411,6 +418,19 @@ class PyPlotWindow(Adw.ApplicationWindow):
         save_dialog.set_filters(filters_store)
         save_dialog.set_default_filter(filters_store.get_item(self.app.pref_save_format))
 
+    # Save gif animation dialog.
+    def on_save_animation_dialog(self, btn_save, dialog_animation_save):
+        dialog_animation_save.close() # close previous dialog
+
+        save_dialog = Gtk.FileDialog()
+        save_dialog.set_modal(True)
+        save_dialog.set_accept_label(_('Save'))
+        save_dialog.set_title(_('Save Animation'))
+
+        save_dialog.set_initial_folder(Gio.File.new_for_path(os.path.expanduser('~')))
+        save_dialog.set_initial_name('animation.gif')
+        save_dialog.save(self, None, self.app.on_save_animation_dialog_cb) # creates UI
+
     def on_file_information(self):
         page = self.tab_view.get_selected_page()
         if not page:
@@ -514,14 +534,14 @@ class PyPlotWindow(Adw.ApplicationWindow):
         box.get_last_child().set_text(data_item.name)
 
     # Handles Gtk.CheckButton to add item to comparison.
-    def on_listview_compare_item_checked(self, button, data_item):
+    def on_listview_compare_item_checked(self, btn, data_item):
         if data_item.checked == None:
             data_item.checked = True
         else:
             data_item.checked = not data_item.checked
 
     # Start tabs' comparision.
-    def on_go_compare(self, button, dialog_compare, listview_canvas_selction, all):
+    def on_go_compare(self, btn, dialog_compare, listview_canvas_selction, all):
         # Create and check selection of data to compare.
         comparable_items = []
         if all:
@@ -595,11 +615,173 @@ class PyPlotWindow(Adw.ApplicationWindow):
 
         # Shortcut key actions, F11, ESC.
         key_controller = Gtk.EventControllerKey.new()
-        key_controller.connect("key-pressed", self.fullscreen_comparison_window, win)
+        key_controller.connect('key-pressed', self.fullscreen_comparison_window, win)
         win.add_controller(key_controller)
 
         win.set_content(box)
         win.present()
+
+    def on_animate_tabs_init(self):
+        if self.tab_view.get_n_pages() < 2:
+            self.app.on_error_dialog(_('Cannot Animate'), _('Too few tabs.'))
+            return
+
+        dialog_animate = Adw.Dialog()
+        dialog_animate.set_size_request(480, 360)
+        dialog_animate.set_follows_content_size(True) # Adw size problems.
+        dialog_animate.set_title(_('Animate Tabs'))
+
+        list_store = Gio.ListStore.new(StringPath)
+
+        # Process the list of tabs.
+        for tab in self.tab_view.get_pages():
+            try:
+                list_store.append(StringPath(
+                        tab.get_child().a_file.file_path,
+                        tab.get_child().a_file.file_name,
+                        tab.get_child().scrolled.get_child().get_child().get_child() # canvas
+                    )
+                )
+            except Exception as e:
+                continue
+
+        if list_store.get_n_items() < 2:
+            self.app.on_error_dialog(_('Cannot Animate'), _('Too few tabs.'))
+            return
+
+        # ListView of tab canvas.
+        listview_canvas_selction = Gtk.NoSelection.new(list_store)
+        listview_factory = Gtk.SignalListItemFactory()
+        listview_factory.connect('setup', self.on_factory_setup_listview_compare_item)
+        listview_factory.connect('bind', self.on_factory_bind_listview_compare_item)
+        listview_canvas = Gtk.ListView.new(listview_canvas_selction, listview_factory)
+        listview_canvas.set_vexpand(True)
+        listview_canvas.set_name('dialog_compare_listview')
+        listview_canvas.set_enable_rubberband(False)
+
+        btn_animate = Gtk.Button(label=_('Animate'), tooltip_text=_('Animate tabs in separate window'))
+        btn_animate.connect('clicked', self.on_animate_tabs, dialog_animate, listview_canvas_selction, False)
+        btn_animate.set_name('btn_rounded')
+
+        btn_animate_all = Gtk.Button(label=_('☑ All!'), tooltip_text=_('Animate ALL tabs in separate window'))
+        btn_animate_all.connect('clicked', self.on_animate_tabs, dialog_animate, listview_canvas_selction, True)
+        btn_animate_all.set_name('btn_rounded')
+
+        headerbar = Adw.HeaderBar()
+        headerbar.pack_start(btn_animate)
+        headerbar.pack_end(btn_animate_all)
+        box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
+        box.append(headerbar)
+
+        scrolled = Gtk.ScrolledWindow()
+        scrolled.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
+        scrolled.set_name('dialog_compare_scrolled')
+        scrolled.set_child(listview_canvas)
+        box.append(scrolled)
+
+        dialog_animate.set_child(box)
+        dialog_animate.present(self)
+
+    def on_animate_tabs(self, btn, dialog_animate, listview_canvas_selction, all):
+        # Create and check selection of data to compare.
+        comparable_items = []
+        if all:
+            for item in listview_canvas_selction.get_model():
+                comparable_items.append(item)
+        else:
+            for item in listview_canvas_selction.get_model():
+                if item.checked:
+                    comparable_items.append(item)
+
+        if len(comparable_items) < 2:
+            self.app.on_error_dialog(_('Cannot Animate'), _('Too few tabs.'))
+            return
+
+        dialog_animate.close()
+
+        self.n_th_animation += 1
+
+        # Comparison dialog.
+        dialog_animation_save = Adw.Dialog()
+        dialog_animation_save.set_follows_content_size(True) # Adw size problems.
+        dialog_animation_save.set_title(_('Animation #' ) + str(self.n_th_animation))
+
+        # Calculate initial window width.
+        pic_section_width = 1080
+        proposed_width = 2 * pic_section_width + 10
+
+        scr_width = self.screen_width()
+        if proposed_width > scr_width:
+            dialog_animation_save.set_size_request(240, 120)
+        else:
+            dialog_animation_save.set_size_request(proposed_width, self.w_height)
+
+        dialog_animation_save.spinner_animate_save = Gtk.Spinner()
+        dialog_animation_save.spinner_animate_save.set_name('spinng_box_spinner')
+
+        btn_animate_save = Gtk.Button(label='Save', tooltip_text=_('Save tabs to animated gif image'))
+        btn_animate_save.connect('clicked', self.on_save_animation_dialog, dialog_animation_save)
+        btn_animate_save.set_name('btn_animate_save')
+        btn_animate_save.set_halign(Gtk.Align.CENTER)
+        btn_animate_save.set_valign(Gtk.Align.CENTER)
+        btn_animate_save.set_sensitive(False)
+
+        dialog_animation_save.btn_animate_save = btn_animate_save
+
+        label_animation_status = Gtk.Label(hexpand=True, ellipsize=Pango.EllipsizeMode.END)
+        label_animation_status.set_name('label_animation_status')
+
+        headerbar = Adw.HeaderBar()
+        headerbar.pack_start(dialog_animation_save.spinner_animate_save)
+
+        box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
+        box.append(headerbar)
+
+        box_status_info = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, hexpand=True, vexpand=True)
+        box_status_info.set_halign(Gtk.Align.CENTER)
+        box_status_info.append(label_animation_status)
+        box_status_info.append(btn_animate_save)
+
+        box.append(box_status_info)
+
+        # Shortcut key actions, ESC.
+        key_controller = Gtk.EventControllerKey.new()
+        key_controller.connect('key-pressed', self.close_dialog_animation_save, dialog_animation_save)
+        dialog_animation_save.add_controller(key_controller)
+
+        dialog_animation_save.comparable_items = comparable_items
+        dialog_animation_save.label_animation_status = label_animation_status
+
+        dialog_animation_save.set_child(box)
+        dialog_animation_save.present(self)
+
+        dialog_animation_save.spinner_animate_save.start()
+
+        # Indirect call, protecting UI.
+        GLib.idle_add(self.on_animate_tabs_process, dialog_animation_save)
+
+    # Convert canvas into RGBA Image array.
+    def on_animate_tabs_process(self, dialog_animation_save):
+        dialog_animation_save.label_animation_status.set_label(_('Processing images.'))
+        try:
+            self.animated_pil_images = []
+            for item in dialog_animation_save.comparable_items:
+                buff_w, buff_h = item.canvas.get_width_height()
+                aspect_ratio = buff_w/buff_h
+                self.animated_pil_images.append(Image.frombytes('RGBA', (buff_w, buff_h), item.canvas.buffer_rgba().tobytes()))
+                dialog_animation_save.label_animation_status.set_label(_('Animated image ready for saving.'))
+        except Exception as e:
+            self.app.on_error_dialog(
+                _('Animation Error'),
+                _('Cannot create animation.\nPlotting canvas cannot be made into image.\n')
+                + str(e)
+            )
+        dialog_animation_save.spinner_animate_save.stop()
+        dialog_animation_save.btn_animate_save.set_sensitive(True)
+
+    def close_dialog_animation_save(self, event_controller_key, keyval, keycode, state, dialog):
+        if keyval == Gdk.KEY_Escape:
+            dialog.close()
 
     def fullscreen_comparison_window(self, event_controller_key, keyval, keycode, state, win):
         if keyval == Gdk.KEY_F11:

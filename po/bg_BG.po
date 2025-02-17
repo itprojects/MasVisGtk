@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: masvisgtk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-03 11:54+0200\n"
-"PO-Revision-Date: 2024-08-29 21:08+0300\n"
+"POT-Creation-Date: 2025-02-17 14:33+0200\n"
+"PO-Revision-Date: 2025-02-17 11:57+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: bg\n"
@@ -18,6 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.4.4\n"
 
 #: data/io.github.itprojects.MasVisGtk.desktop.in:3 src/main.py:57
 msgid "MasVisGtk"
@@ -34,7 +35,7 @@ msgstr "Звуко-анализиращ прибор за вашата музи�
 
 #: data/io.github.itprojects.MasVisGtk.desktop.in:12
 msgid "Audio;Loudness;Analysis;Music;Media;"
-msgstr "Звук;Шумност;Анализ;Музика;Медия"
+msgstr "Звук;Шумност;Анализ;Музика;Медия;"
 
 #: data/io.github.itprojects.MasVisGtk.metainfo.xml.in:9
 msgid ""
@@ -122,11 +123,11 @@ msgstr "Предпочитание за персонализиран фонт, �
 
 #: data/io.github.itprojects.MasVisGtk.gschema.xml:60
 msgid "Save format."
-msgstr "Формат за запазване"
+msgstr "Формат за запазване."
 
 #: data/io.github.itprojects.MasVisGtk.gschema.xml:65
 msgid "Open other files."
-msgstr "Отвори други файлове"
+msgstr "Отвори други файлове."
 
 #: data/io.github.itprojects.MasVisGtk.gschema.xml:66
 msgid ""
@@ -139,11 +140,11 @@ msgstr ""
 
 #: data/io.github.itprojects.MasVisGtk.gschema.xml:71
 msgid "DPI for plots."
-msgstr "DPI за чертежи"
+msgstr "DPI за чертежи."
 
 #: data/io.github.itprojects.MasVisGtk.gschema.xml:76
 msgid "DPI for saved images."
-msgstr "DPI за запазени изображения"
+msgstr "DPI за запазени изображения."
 
 #: data/io.github.itprojects.MasVisGtk.gschema.xml:81
 msgid "One audio plot width in comparison window."
@@ -198,14 +199,15 @@ msgid "Tab Actions"
 msgstr "Разделови Действия"
 
 #: src/gtk/help-overlay.ui:80 src/main_gtk_window.py:448
+#: src/gtk/help-overlay.ui:85 src/main_gtk_window.py:468
 msgid "Compare Tabs"
 msgstr "Сравни Раздели"
 
-#: src/gtk/help-overlay.ui:86
+#: src/gtk/help-overlay.ui:86 src/gtk/help-overlay.ui:91
 msgid "Save Current Tab"
 msgstr "Запази Видимия Раздел"
 
-#: src/gtk/help-overlay.ui:92
+#: src/gtk/help-overlay.ui:92 src/gtk/help-overlay.ui:97
 msgid "Save All Tabs"
 msgstr "Запази Всички Раздели"
 
@@ -231,7 +233,7 @@ msgstr "Външният вид на приложението"
 
 #: src/gtk/preferences-overlay.ui:97
 msgid "Matplotlib built-in style"
-msgstr "Вграден външният вид на Матплотлиб."
+msgstr "Вграден външният вид на Матплотлиб"
 
 #: src/gtk/preferences-overlay.ui:108
 msgid "Matplotlib custom background"
@@ -269,15 +271,15 @@ msgstr "DPI за запазени фаилове"
 msgid "One audio plot width in comparison window"
 msgstr "Единична чертежна дължина в прозореца за сравнение"
 
-#: src/main.py:157
+#: src/main.py:157 src/main.py:161
 msgid "Cannot set locale "
 msgstr "Не може да се приложи език "
 
-#: src/main.py:159
+#: src/main.py:159 src/main.py:163
 msgid "FILES/FOLDERS"
 msgstr "ФАЙЛОВЕ/ПАПКИ"
 
-#: src/main.py:161
+#: src/main.py:161 src/main.py:165
 msgid ""
 "  FILE(S) and/or FOLDER(S) paths to process inside the application\n"
 "\n"
@@ -287,7 +289,7 @@ msgstr ""
 "\n"
 "  МасВисГтк е приложение за звуков анализ."
 
-#: src/main.py:164
+#: src/main.py:164 src/main.py:168
 msgid ""
 "The original python module is also available with this package.\n"
 "The command line options are different from the original.\n"
@@ -297,30 +299,30 @@ msgstr ""
 "Командите са различни от първоначалния.\n"
 "Големите файлове винаги са бавни за изобразяване."
 
-#: src/main.py:173
+#: src/main.py:173 src/main.py:177
 msgid "Version of MasVisGtk."
-msgstr "Версия на МасВисГтк"
+msgstr "Версия на МасВисГтк."
 
-#: src/main.py:182
+#: src/main.py:182 src/main.py:186
 msgid "Show Verbose Messages."
 msgstr "Покажи Mногословените Надписи."
 
-#: src/main.py:191
+#: src/main.py:191 src/main.py:195
 msgid "Show Debug Messages."
 msgstr "Покажи Mногословените Надписи."
 
-#: src/main.py:200
+#: src/main.py:200 src/main.py:204
 msgid "Show Supported Formats."
 msgstr "Няма Поддържани Формати."
 
-#: src/main.py:209
+#: src/main.py:209 src/main.py:213
 msgid ""
 "Use [LU], instead of [LUFS], when displaying R128 values, (default: LUFS)."
 msgstr ""
 "Ползвай [LU] единици, вместо [LUFS], когато показваш R128 стойности, (по "
 "подразбиране: LUFS)."
 
-#: src/main.py:218
+#: src/main.py:218 src/main.py:222
 msgid ""
 "flat, generate one overview tab for all, or dir, for one tab for folders, "
 "(default: flat)."
@@ -328,291 +330,303 @@ msgstr ""
 "flat, създай един прегледен раздел за всички, или dir, един раздел на папка, "
 "(по подразбиране: dir)."
 
-#: src/main.py:227
+#: src/main.py:227 src/main.py:231
 msgid "If input is a folder, process subfolders, too."
 msgstr "Ако входните данни са папка, обработи и под-папките, също."
 
-#: src/main.py:236
+#: src/main.py:236 src/main.py:240
 msgid "FILE(S) or FOLDER(S)"
 msgstr "ФАЙЛ(ОВЕ) или ПАПКИ"
 
-#: src/main.py:350
+#: src/main.py:350 src/main.py:359
 msgid "MasVisGtk Version "
 msgstr "МасВисГтк Версия "
 
-#: src/main.py:358
+#: src/main.py:358 src/main.py:367
 msgid "Supported Formats: "
 msgstr "Поддържани Формати: "
 
-#: src/main.py:369
+#: src/main.py:369 src/main.py:378
 msgid "is not possible with option -o. Try dir or flat."
 msgstr "не е възможен с -o. Пробвайте dir или flat."
 
-#: src/main.py:390
+#: src/main.py:390 src/main.py:399
 msgid "No input files or folders supplied."
 msgstr "Няма входни файлове или папки."
 
-#: src/main.py:404
+#: src/main.py:404 src/main.py:413
 msgid "Bad permisions for file. "
 msgstr "Неприемливи разрешения за файл. "
 
-#: src/main.py:422
+#: src/main.py:422 src/main.py:431
 msgid "Bad input: "
 msgstr "Лоши входни данни: "
 
-#: src/main.py:425
+#: src/main.py:425 src/main.py:434
 msgid "Error processing files: "
 msgstr "Грешка при отваряне: "
 
-#: src/main.py:432
+#: src/main.py:432 src/main.py:441
 msgid "Bad input files: "
 msgstr "Лоши входни данни: "
 
-#: src/main.py:434
+#: src/main.py:434 src/main.py:443
 msgid "Problem Files"
 msgstr "Проблемни Файлове"
 
-#: src/main.py:434
+#: src/main.py:434 src/main.py:443
 msgid "Ignoring bad input files:"
 msgstr "Пренебрегваме лошите входни файлове:"
 
-#: src/main.py:438
+#: src/main.py:438 src/main.py:447
 msgid "No Files"
 msgstr "Няма Файлове"
 
-#: src/main.py:438
+#: src/main.py:438 src/main.py:447
 msgid "No valid files found!"
 msgstr "Няма намерени действителни файлове!"
 
-#: src/main.py:465
+#: src/main.py:465 src/main.py:474
 msgid "Unsupported MimeType"
 msgstr "Неизвестен файлов вид"
 
-#: src/main.py:465
+#: src/main.py:465 src/main.py:474
 msgid "Skipping file: "
 msgstr "Пропускаме файл: "
 
-#: src/main.py:472
+#: src/main.py:472 src/main.py:481
 msgid "Processing"
 msgstr "Обработване"
 
-#: src/main.py:504
+#: src/main.py:504 src/main.py:513
 msgid "AsyncWorkerError"
 msgstr "АсинхроннаРаботнаГрешка"
 
-#: src/main.py:532
+#: src/main.py:532 src/main.py:541
 msgid "Duplicate path: "
 msgstr "Повторено местоположение: "
 
-#: src/main.py:538
+#: src/main.py:538 src/main.py:547
 msgid "Error in Opening"
 msgstr "Грешка при отваряне"
 
-#: src/main.py:554 src/main.py:590
+#: src/main.py:554 src/main.py:590 src/main.py:563 src/main.py:599
 msgid "Cannot detect save file format, defaulting to png."
 msgstr ""
 "Не е възможно да се засече формата за записване на файлове, използване по "
 "подразбиране png."
 
-#: src/main.py:561
+#: src/main.py:561 src/main.py:570 src/main.py:699
 msgid "is not writeable."
 msgstr "не може да се записва."
 
-#: src/main.py:563 src/main.py:599
+#: src/main.py:563 src/main.py:599 src/main.py:572 src/main.py:608
+#: src/main.py:701
 msgid "Permissions"
 msgstr "Разрешения"
 
-#: src/main.py:597
+#: src/main.py:597 src/main.py:606
 msgid " is not writeable."
 msgstr " не може да се записва."
 
 #: src/main.py:865 src/main_gtk_window.py:436 src/main_gtk_window.py:624
-#: src/main_gtk_window.py:634
+#: src/main_gtk_window.py:634 src/main.py:915 src/main_gtk_window.py:456
+#: src/main_gtk_window.py:806 src/main_gtk_window.py:816
 msgid "Close"
 msgstr "Затвори"
 
-#: src/main.py:935
+#: src/main.py:935 src/main.py:985
 msgid "Opening File Error"
 msgstr "Грешка при отваряне"
 
-#: src/main.py:937
+#: src/main.py:937 src/main.py:987
 msgid "Errors in Processing!"
-msgstr "Грешка при отваряне"
+msgstr "Грешка при отваряне!"
 
-#: src/main.py:953 src/main.py:964
+#: src/main.py:953 src/main.py:964 src/main.py:1003 src/main.py:1014
 msgid "Unable to open input "
 msgstr "Не могат да се отворят данни "
 
-#: src/main.py:954
+#: src/main.py:954 src/main.py:1004
 msgid "Cannot Open File"
 msgstr "Не може да се отвори"
 
-#: src/main.py:963
+#: src/main.py:963 src/main.py:1013
 msgid "The minimum file duration is 3 seconds."
 msgstr "Най-малката продължителност е 3 секунди."
 
-#: src/main.py:965
+#: src/main.py:965 src/main.py:1015
 msgid "File Error"
 msgstr "Файлова Грешка"
 
 #: src/main_gtk_window.py:127 src/main_gtk_window.py:422
+#: src/main_gtk_window.py:133 src/main_gtk_window.py:442
 msgid "File Information"
 msgstr "Файлови Сведения"
 
-#: src/main_gtk_window.py:128
+#: src/main_gtk_window.py:128 src/main_gtk_window.py:135
 msgid "Go Compare"
 msgstr "Направи Съпоставка"
 
-#: src/main_gtk_window.py:129
+#: src/main_gtk_window.py:129 src/main_gtk_window.py:136
 msgid "Save All"
 msgstr "Запази Всички"
 
-#: src/main_gtk_window.py:133
+#: src/main_gtk_window.py:133 src/main_gtk_window.py:140
 msgid "Preferences"
 msgstr "Предпочитания"
 
-#: src/main_gtk_window.py:134
+#: src/main_gtk_window.py:134 src/main_gtk_window.py:141
 msgid "Formats"
 msgstr "Формати"
 
-#: src/main_gtk_window.py:135
+#: src/main_gtk_window.py:135 src/main_gtk_window.py:142
 msgid "Keyboard Shortcuts"
 msgstr "Клавишни Комбинации"
 
-#: src/main_gtk_window.py:136
+#: src/main_gtk_window.py:136 src/main_gtk_window.py:143
 msgid "Help"
 msgstr "Помощ"
 
-#: src/main_gtk_window.py:137
+#: src/main_gtk_window.py:137 src/main_gtk_window.py:144
 msgid "About"
 msgstr "Относно"
 
 #: src/main_gtk_window.py:150 src/main_gtk_window.py:210
-#: src/main_gtk_window.py:215
+#: src/main_gtk_window.py:215 src/main_gtk_window.py:157
+#: src/main_gtk_window.py:217 src/main_gtk_window.py:222
 msgid "Open Files"
 msgstr "Отвори Файлове"
 
 #: src/main_gtk_window.py:155 src/main_gtk_window.py:225
+#: src/main_gtk_window.py:162 src/main_gtk_window.py:232
 msgid "Advanced Open"
 msgstr "Разширено Отваряне"
 
 #: src/main_gtk_window.py:160 src/main_gtk_window.py:339
-#: src/main_gtk_window.py:361
+#: src/main_gtk_window.py:361 src/main_gtk_window.py:167
+#: src/main_gtk_window.py:346 src/main_gtk_window.py:368
+#: src/main_gtk_window.py:427
 msgid "Save"
 msgstr "Запази"
 
-#: src/main_gtk_window.py:160
+#: src/main_gtk_window.py:160 src/main_gtk_window.py:167
 msgid "Save Tab"
 msgstr "Запази Раздел"
 
-#: src/main_gtk_window.py:218
+#: src/main_gtk_window.py:218 src/main_gtk_window.py:225
 msgid "Open Folders"
 msgstr "Отвори Папки"
 
-#: src/main_gtk_window.py:231
+#: src/main_gtk_window.py:231 src/main_gtk_window.py:238
 msgid "Add Files"
 msgstr "Добави Файлове"
 
-#: src/main_gtk_window.py:231
+#: src/main_gtk_window.py:231 src/main_gtk_window.py:238
 msgid "Add files for processing"
 msgstr "Добави файлове за обработка"
 
-#: src/main_gtk_window.py:233
+#: src/main_gtk_window.py:233 src/main_gtk_window.py:240
 msgid "Add Folders"
 msgstr "Добави Папки"
 
-#: src/main_gtk_window.py:233
+#: src/main_gtk_window.py:233 src/main_gtk_window.py:240
 msgid "Add folders for processing"
 msgstr "Фобави папки за обработка"
 
-#: src/main_gtk_window.py:242
+#: src/main_gtk_window.py:242 src/main_gtk_window.py:249
 msgid "use LUFS units"
 msgstr "ползвай LUFS единици"
 
-#: src/main_gtk_window.py:246
+#: src/main_gtk_window.py:246 src/main_gtk_window.py:253
 msgid "recursive (search sub-folders)"
 msgstr "претърси (търси в под-папки)"
 
-#: src/main_gtk_window.py:252
+#: src/main_gtk_window.py:252 src/main_gtk_window.py:259
 msgid "overview mode"
 msgstr "прегледен разадел"
 
-#: src/main_gtk_window.py:283
+#: src/main_gtk_window.py:283 src/main_gtk_window.py:290
 msgid "Start"
 msgstr "Започни"
 
-#: src/main_gtk_window.py:283
+#: src/main_gtk_window.py:283 src/main_gtk_window.py:290
 msgid "Begin audio analysis"
 msgstr "Започни звуков анализ"
 
-#: src/main_gtk_window.py:308
+#: src/main_gtk_window.py:308 src/main_gtk_window.py:315
 msgid "Failed Open"
 msgstr "Провалено отваряне"
 
-#: src/main_gtk_window.py:340
+#: src/main_gtk_window.py:340 src/main_gtk_window.py:347
 msgid "Save in Folder"
 msgstr "Запази в Папка"
 
-#: src/main_gtk_window.py:362
+#: src/main_gtk_window.py:362 src/main_gtk_window.py:369
 msgid "Save All in Folder"
 msgstr "Запази Всички в Папка"
 
 #: src/main_gtk_window.py:442 src/main_gtk_window.py:465
-#: src/main_gtk_window.py:536
+#: src/main_gtk_window.py:536 src/main_gtk_window.py:462
+#: src/main_gtk_window.py:485 src/main_gtk_window.py:556
 msgid "Cannot Compare"
 msgstr "Не може да се сравни"
 
-#: src/main_gtk_window.py:442
+#: src/main_gtk_window.py:442 src/main_gtk_window.py:462
 msgid "No tabs."
 msgstr "Няма раздели."
 
 #: src/main_gtk_window.py:465 src/main_gtk_window.py:536
+#: src/main_gtk_window.py:485 src/main_gtk_window.py:556
+#: src/main_gtk_window.py:626 src/main_gtk_window.py:649
+#: src/main_gtk_window.py:697
 msgid "Too few tabs."
 msgstr "Твърде малко раздели."
 
-#: src/main_gtk_window.py:478
+#: src/main_gtk_window.py:478 src/main_gtk_window.py:498
 msgid "Go!"
 msgstr "Действай!"
 
-#: src/main_gtk_window.py:478
+#: src/main_gtk_window.py:478 src/main_gtk_window.py:498
 msgid "Compare tabs in separate window"
 msgstr "Сравни раздели и отделен прозорец"
 
-#: src/main_gtk_window.py:482
+#: src/main_gtk_window.py:482 src/main_gtk_window.py:502
+#: src/main_gtk_window.py:666
 msgid "☑ All!"
 msgstr "☑ Всички!"
 
-#: src/main_gtk_window.py:482
+#: src/main_gtk_window.py:482 src/main_gtk_window.py:502
 msgid "Compare ALL tabs in separate window"
 msgstr "Сравни ВСИЧКИ раздели в отделен прозорец"
 
-#: src/main_gtk_window.py:545
+#: src/main_gtk_window.py:545 src/main_gtk_window.py:565
 msgid "Comparison #"
 msgstr "Съпоставка #"
 
-#: src/main_gtk_window.py:622
+#: src/main_gtk_window.py:622 src/main_gtk_window.py:804
 msgid "Supported Formats"
 msgstr "Поддържани Формати"
 
-#: src/main_gtk_window.py:653
+#: src/main_gtk_window.py:653 src/main_gtk_window.py:835
 msgid "Original PyMasVis module development."
 msgstr "Първоначално разработване на пайМасВис модул."
 
-#: src/main_gtk_window.py:655
+#: src/main_gtk_window.py:655 src/main_gtk_window.py:837
 msgid "GTK application, originally based on PyMasVis commit #657196."
 msgstr "ГТК приложение, първоначално основана на ПайМасВис #657196."
 
-#: src/output_gtk.py:179
+#: src/output_gtk.py:179 src/output_gtk.py:181
 msgid "Input file has no audio stream: "
 msgstr "Входният файл няма звукова пътечка: "
 
-#: src/output_gtk.py:219
+#: src/output_gtk.py:219 src/output_gtk.py:221
 msgid ""
 "Crest: {:0.2f} dB,  DR: {},  L$_K$: {:0.1f} {},  LRA: {:0.1f} LU,  PLR: "
 "{:0.1f} LU"
 msgstr ""
 
-#: src/output_gtk.py:222
+#: src/output_gtk.py:222 src/output_gtk.py:224
 msgid ""
 "Encoding: {},  Channels: {},  Layout: {},  Bits: {},\n"
 "Sample rate: {} Hz,  Bitrate: {} kbps,  Duration: {},  Size: {:0.1f} MB"
@@ -621,83 +635,83 @@ msgstr ""
 "Дискретизация: {} Хц,  Битове/сек: {} кб/сек,  Продължителност: {},  Размер: "
 "{:0.1f} MB"
 
-#: src/output_gtk.py:234
+#: src/output_gtk.py:234 src/output_gtk.py:236
 msgid "Album"
 msgstr "Албум"
 
-#: src/output_gtk.py:236
+#: src/output_gtk.py:236 src/output_gtk.py:238
 msgid "Track"
 msgstr "Песен"
 
-#: src/output_gtk.py:238
+#: src/output_gtk.py:238 src/output_gtk.py:240
 msgid "Date"
 msgstr "Година"
 
-#: src/output_gtk.py:259
+#: src/output_gtk.py:259 src/output_gtk.py:267
 msgid "Checksum (energy): "
 msgstr "Сметка-проверка (енергия): "
 
-#: src/output_gtk.py:267
+#: src/output_gtk.py:267 src/output_gtk.py:275
 msgid "MasVisGtk "
 msgstr "МасВисГтк "
 
-#: src/output_gtk.py:313
+#: src/output_gtk.py:313 src/output_gtk.py:325
 msgid ""
 "{}: Crest = {:0.2f} dB / RMS = {:0.2f} dBFS / Peak = {:0.2f} dBFS / True "
 "Peak ≈ {:0.2f} dBTP"
 msgstr ""
 
-#: src/output_gtk.py:355
+#: src/output_gtk.py:355 src/output_gtk.py:369
 msgid ""
 "Loudest part ({} channel, {} samples > 95{} during 20 ms at {:0.2f} sec)"
 msgstr ""
 "Най-громката част ({} канал, {} проби > 95{} през 20 мсек при {:0.2f} сек)"
 
-#: src/output_gtk.py:437
+#: src/output_gtk.py:437 src/output_gtk.py:455
 msgid "Normalised average spectrum, "
 msgstr "Нормализиран осреднен спектър, "
 
-#: src/output_gtk.py:437
+#: src/output_gtk.py:437 src/output_gtk.py:455
 msgid " frames"
 msgstr " кадър/а"
 
-#: src/output_gtk.py:495
+#: src/output_gtk.py:495 src/output_gtk.py:515
 msgid "Allpassed crest factor"
 msgstr "Цяломинаващ (crest) фактор"
 
-#: src/output_gtk.py:535
+#: src/output_gtk.py:535 src/output_gtk.py:561
 msgid "Histogram, 'bits': "
 msgstr "Хистограма, 'битове': "
 
-#: src/output_gtk.py:590
+#: src/output_gtk.py:590 src/output_gtk.py:622
 msgid "Peak vs RMS level"
 msgstr "Връх срещу RMS"
 
-#: src/output_gtk.py:621
+#: src/output_gtk.py:621 src/output_gtk.py:660
 msgid "Short term (1 s) crest factor"
 msgstr "Краткосрочен (1 сек) (crest) фактор"
 
-#: src/output_gtk.py:653
+#: src/output_gtk.py:653 src/output_gtk.py:699
 msgid "EBU R 128 Short term loudness"
 msgstr "EBU R 128 краткосрочна гръмкост"
 
-#: src/output_gtk.py:654
+#: src/output_gtk.py:654 src/output_gtk.py:705
 msgid "Short term PLR"
 msgstr "Краткосрочен PLR"
 
-#: src/output_gtk.py:725
+#: src/output_gtk.py:725 src/output_gtk.py:800
 msgid "Scale to Window Width"
 msgstr "Разшири размер до края на прозореца"
 
-#: src/output_gtk.py:779
+#: src/output_gtk.py:779 src/output_gtk.py:859
 msgid "Unknown Dynamic Range"
 msgstr "Неизвестен Динамичен Обхват"
 
-#: src/output_gtk.py:783
+#: src/output_gtk.py:783 src/output_gtk.py:863
 msgid "Dynamic Range"
 msgstr "Динамичен Обхват"
 
-#: src/output_gtk.py:857
+#: src/output_gtk.py:857 src/output_gtk.py:932
 msgid ""
 "DR = {}\n"
 "Peak = {:0.1f} dBFS\n"
@@ -705,11 +719,11 @@ msgid ""
 "L$_k$ = {:0.1f} LU"
 msgstr ""
 
-#: src/output_gtk.py:866
+#: src/output_gtk.py:866 src/output_gtk.py:941
 msgid "{} [{}, {} channels, {} bits, {:0.1f} kHz, {} kbps]"
 msgstr "{} [{}, {} канал/а, {} бита, {:0.1f} кХц, {} кб/сек]"
 
-#: src/main_gtk_window.py:192
+#: src/main_gtk_window.py:192 src/main_gtk_window.py:199
 msgid "Overview"
 msgstr "Прегледен Разадел"
 
@@ -881,6 +895,114 @@ msgstr "Долен Преден Ляв"
 msgid "Bottom Front Right"
 msgstr "Долен Преден Десен"
 
+#: data/io.github.itprojects.MasVisGtk.gschema.xml:86
+msgid "Animation duration in milliseconds."
+msgstr "Анимационна продължителност в милисекунди."
+
+#: src/gtk/help-overlay.ui:79 src/main_gtk_window.py:134
+#: src/main_gtk_window.py:632
+msgid "Animate Tabs"
+msgstr "Анимирай Раздели"
+
+#: src/gtk/preferences-overlay.ui:252
+msgid "Set animation duration [ms]"
+msgstr "Анимационна продължителност [милисек]"
+
+#: src/main_gtk_window.py:428
+msgid "Save Animation"
+msgstr "Запази Анимацията"
+
+#: src/main_gtk_window.py:626 src/main_gtk_window.py:649
+#: src/main_gtk_window.py:697
+msgid "Cannot Animate"
+msgstr "Не може да се анимира"
+
+#: src/main_gtk_window.py:662
+msgid "Animate"
+msgstr "Анимирай"
+
+#: src/main_gtk_window.py:662
+msgid "Animate tabs in separate window"
+msgstr "Анимирай разделите в отделен прозорец"
+
+#: src/main_gtk_window.py:666
+msgid "Animate ALL tabs in separate window"
+msgstr "Анимирай ВСИЧКИТЕ раздели в отделен прозорец"
+
+#: src/main_gtk_window.py:707
+msgid "Animation #"
+msgstr "Анимация #"
+
+#: src/main_gtk_window.py:722
+msgid "Save tabs to animated gif image"
+msgstr "Запази разделите в анимирана гиф снимка"
+
+#: src/main_gtk_window.py:765
+msgid "Processing images."
+msgstr "Обработване на снимки."
+
+#: src/main_gtk_window.py:772
+msgid "Animated image ready for saving."
+msgstr "Анимирай снимка преди записване."
+
+#: src/main_gtk_window.py:775
+msgid "Animation Error"
+msgstr "Анимационна Грешка"
+
+#: src/main_gtk_window.py:776
+msgid ""
+"Cannot create animation.\n"
+" Plotting canvas cannot be made into image.\n"
+msgstr ""
+"Не може да се сътвори анимацията.\n"
+"Платното на чертежът не може да се направи на снимка.\n"
+
+#: src/output_gtk.py:770
+msgid "Reset original view"
+msgstr "Възстанови първоначалният изглед"
+
+#: src/output_gtk.py:772
+msgid "Back to previous view"
+msgstr "Обратно към предишния изглед"
+
+#: src/output_gtk.py:774
+msgid "Forward to next view"
+msgstr "Напред към следващия изглед"
+
+#: src/output_gtk.py:776
+msgid ""
+"Left button pans, Right button zooms\n"
+"x/y fixes axis, CTRL fixes aspect"
+msgstr ""
+"Ляво копче премества, дясно копче увеличава,\n"
+"х/у ще поправя осите, КОНТРОЛ ще поправя аспекта"
+
+#: src/output_gtk.py:778
+msgid ""
+"Zoom to rectangle\n"
+"x/y fixes axis"
+msgstr "Увеличи до правоъгълник, х/у ще поправя осите"
+
+#: src/output_gtk.py:782
+msgid "Save the figure"
+msgstr "Запази фигурата"
+
+#: src/output_gtk.py:789
+msgid "Zoom Level [px]"
+msgstr "Ниво на Увеличение [пиксели]"
+
+#: src/output_gtk.py:795
+msgid "Resotre original dimensions"
+msgstr "Възстанови първоначалните размери"
+
+#: src/main_gtk_window.py:776
+msgid ""
+"Cannot create animation.\n"
+"Plotting canvas cannot be made into image.\n"
+msgstr ""
+"Не може да се сътвори анимацията.\n"
+"Платното на чертежът не може да се направи на снимка.\n"
+
 #: src/params.py:346
 #, python-format
 msgid ""
@@ -925,7 +1047,7 @@ msgid ""
 "\n"
 "1. Find the highest sample value in the sound file\n"
 "\n"
-"2. Apply a threshold of 95 % of the highest sample value\n"
+"2. Apply a threshold of 95 percent of the highest sample value\n"
 "\n"
 "3. For every place, that the signal exceeds the threshold, count how many "
 "samples exceed the threshold\n"
@@ -1148,7 +1270,7 @@ msgstr ""
 "\n"
 "1. Намира се стойността на най-високата проба\n"
 "\n"
-"2. Прилага се праг от 95 % от стойността на най-високата проба\n"
+"2. Прилага се праг от 95 процента от стойността на най-високата проба\n"
 "\n"
 "3. За всяко място, което сигналът е над прага, се проверява колко "
 "проби надвишават прага\n"

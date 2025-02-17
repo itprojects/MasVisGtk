@@ -48,6 +48,8 @@ WebP | WebP Image Format
 ![Comparison Tabs Dialog](./img/7.png)
 ![Comparison Tabs Window](./img/8.png)
 ![Comparison Output File](./img/9.png)
+![Comparison Output File](./img/10.png)
+![Comparison Output File](./img/11.gif)
 
 Flatpaks
 --------
@@ -171,7 +173,7 @@ usage: masvisgtk [-h] [--version] [-v] [-d] [-u username] [-p password] [-r] [--
 What is a good Dynamic Range?
 -----------------------------
 
-![Dynamic Range Chart](./img/10.png)
+![Dynamic Range Chart](./img/12.png)
 
 The dynamic range chart is taken form a [post](forums.stevehoffman.tv), in a public forum.
 

@@ -84,6 +84,7 @@ class MasVisGtk(Adw.Application):
     pref_dpi_application = GObject.Property(type=int, default=100)
     pref_dpi_image = GObject.Property(type=int, default=200)
     pref_comparison_plot_width = GObject.Property(type=int, default=606)
+    pref_animation_duration = GObject.Property(type=int, default=3000)
 
     settings = None # holds Gio.Settings for schema
 
@@ -122,6 +123,7 @@ class MasVisGtk(Adw.Application):
         self.pref_dpi_application = self.settings.get_int('dpi-application')
         self.pref_dpi_image = self.settings.get_int('dpi-image')
         self.pref_comparison_plot_width = self.settings.get_int('comparison-plot-width')
+        self.pref_animation_duration = self.settings.get_int('animation-duration')
 
         # app-style, save-format are not bound
         self.settings.bind('language-locale', self, 'pref_language_locale', Gio.SettingsBindFlags.DEFAULT)
@@ -134,6 +136,7 @@ class MasVisGtk(Adw.Application):
         self.settings.bind('dpi-application', self, 'pref_dpi_application', Gio.SettingsBindFlags.DEFAULT)
         self.settings.bind('dpi-image', self, 'pref_dpi_image', Gio.SettingsBindFlags.DEFAULT)
         self.settings.bind('comparison-plot-width', self, 'pref_comparison_plot_width', Gio.SettingsBindFlags.DEFAULT)
+        self.settings.bind('animation-duration', self, 'pref_animation_duration', Gio.SettingsBindFlags.DEFAULT)
 
         # Debug information.
         log.debug(f'schema language-locale: { self.pref_language_locale }')
@@ -148,6 +151,7 @@ class MasVisGtk(Adw.Application):
         log.debug(f'schema dpi-application: { self.pref_dpi_application }')
         log.debug(f'schema dpi-image: { self.pref_dpi_image }')
         log.debug(f'schema comparison-plot-width: { self.pref_comparison_plot_width }')
+        log.debug(f'schema animation-duration: { self.pref_animation_duration }')
 
         # Set custom application language/locale.
         try:
@@ -292,8 +296,12 @@ class MasVisGtk(Adw.Application):
         self.file_information_action.connect('activate', self.on_action_start, 100)
         self.add_action(self.file_information_action)
 
+        self.animate_tabs_action = Gio.SimpleAction.new('animate_tabs_action', None)
+        self.animate_tabs_action.connect('activate', self.on_action_start, 110)
+        self.add_action(self.animate_tabs_action)
+
         self.go_compare_action = Gio.SimpleAction.new('go_compare_action', None)
-        self.go_compare_action.connect('activate', self.on_action_start, 110)
+        self.go_compare_action.connect('activate', self.on_action_start, 120)
         self.add_action(self.go_compare_action)
 
         #
@@ -309,6 +317,7 @@ class MasVisGtk(Adw.Application):
         self.set_accels_for_action('app.save_action', ['<Control>s'])
         self.set_accels_for_action('app.save_all_action', ['<Shift>s'])
         self.set_accels_for_action('app.file_information_action', ['<Control>i'])
+        self.set_accels_for_action('app.animate_tabs_action', ['<Shift>a'])
         self.set_accels_for_action('app.go_compare_action', ['<Control>g'])
 
     def on_change_app_style(self):
@@ -679,6 +688,37 @@ class MasVisGtk(Adw.Application):
             case _:
                 return 'png' # default
 
+    # Method requires a path, where to place the animated image.
+    def on_save_animation_dialog_cb(self, dialog, response):
+        try:
+            # GLocalFile of save location.
+            save_file = dialog.save_finish(response)
+
+            # Check path writeable.
+            if not os.access(save_file.get_parent().get_path(), os.W_OK):
+                error = f'{save_file.get_path()} ' + _('is not writeable.')
+                log.warning(error)
+                self.on_error_dialog(_('Permissions'), error)
+                return
+
+            save_file = save_file.get_path()
+
+            # Save frames as a single, animated, GIF image.
+            self.win.animated_pil_images[0].save(
+                save_file, # name of prodices image
+                save_all=True,
+                append_images=self.win.animated_pil_images[1:],
+                #optimize=False,
+                lossless=True,
+                duration=self.pref_animation_duration, # default 3000 milliseconds
+                loop=0 # loop forever
+            )
+
+            # Clean.
+            self.win.animated_pil_images = []
+        except GLib.GError:
+            pass # Ignore cancel: 'gtk-dialog-error-quark: Dismissed by user'
+
     def on_show_preferences(self, action, param):
         builder = Gtk.Builder()
         obj = builder.new_from_resource('/io/github/itprojects/MasVisGtk/gtk/preferences-overlay.ui')
@@ -758,6 +798,9 @@ class MasVisGtk(Adw.Application):
         obj.get_object('comparison_plot_width').set_value(self.pref_comparison_plot_width)
         obj.get_object('comparison_plot_width').get_adjustment().connect('value-changed', self.on_schema_changed_comparison_plot_width)
 
+        obj.get_object('animation_duration').set_value(self.pref_animation_duration)
+        obj.get_object('animation_duration').get_adjustment().connect('value-changed', self.on_schema_changed_animation_duration)
+
     def on_schema_changed_language_locale(self, gtk_dropdown, param):
         value = self.language_dict[gtk_dropdown.get_selected_item().get_string()]
         self.settings.set_string('language-locale', value)
@@ -819,6 +862,11 @@ class MasVisGtk(Adw.Application):
         self.settings.set_int('comparison-plot-width', value)
         self.pref_comparison_plot_width = value
 
+    def on_schema_changed_animation_duration(self, adw_spinrow):
+        value = adw_spinrow.get_value()
+        self.settings.set_int('animation-duration', value)
+        self.pref_animation_duration = value
+
     def rgba_to_text(self, rgba):
         r = int(rgba.red * 255)
         g = int(rgba.green * 255)
@@ -849,7 +897,9 @@ class MasVisGtk(Adw.Application):
                     self.win.on_show_about_dialog()
                 case 100: # file information
                     self.win.on_file_information()
-                case 110: # go compare
+                case 110: # animate gif
+                    self.win.on_animate_tabs_init()
+                case 120: # go compare
                     self.win.on_go_compare_init()
                 case _:
                     pass
@@ -961,7 +1011,7 @@ class MasVisGtk(Adw.Application):
         # Minimum track duration => 3 seconds.
         if track['duration'] < 3:
             err_duration = _('The minimum file duration is 3 seconds.') + f'\n[{audio_file.file_path}]'
-            log.warning(_('Unable to open input '), audio_file.file_path)
+            log.warning(_('Unable to open input ') + f': {audio_file.file_path}')
             self.on_error_dialog(_('File Error'), err_duration)
             return
 

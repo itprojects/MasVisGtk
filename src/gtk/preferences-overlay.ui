@@ -247,6 +247,25 @@
                 </child>
               </object>
             </child>
+            <child>
+              <object class="AdwActionRow">
+                <property name="title" translatable="yes">Set animation duration [ms]</property>
+                <child>
+                  <object class="AdwSpinRow" id="animation_duration">
+                    <property name="vexpand">false</property>
+                    <property name="valign">center</property>
+                    <property name="adjustment">
+                      <object class="GtkAdjustment">
+                        <property name="lower">1000</property>
+                        <property name="upper">30000</property>
+                        <property name="step-increment">500</property>
+                        <property name="page-increment">500</property>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+              </object>
+            </child>
           </object>
         </child>
       </object>

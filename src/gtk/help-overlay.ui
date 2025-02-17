@@ -73,7 +73,12 @@
         <child>
           <object class="GtkShortcutsGroup">
             <property name="title" translatable="yes">Tab Actions</property>
-
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="accelerator">&lt;Shift&gt;a</property>
+                <property name="title" translatable="yes">Animate Tabs</property>
+              </object>
+            </child>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="accelerator">&lt;Control&gt;g</property>

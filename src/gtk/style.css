@@ -11,7 +11,8 @@
   border-radius: 15px;
 }
 #manual_text_view {
-  background-color: transparent; margin: 15px;
+  background-color: transparent;
+  margin: 15px;
 }
 #spinng_box {
   margin: 15px;
@@ -21,7 +22,16 @@
 }
 #spinng_box_file_label {
   margin: 15px;
-  }
+}
+#label_animation_status {
+  margin: 10px;
+}
+#btn_animate_save {
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  border-radius: 30px;
+}
 #dialog_advanced_cb_row {
   margin-left: 15px;
   margin-right: 15px;
@@ -40,7 +50,8 @@
   color: red;
 }
 #dialog_advanced_load {
-  border-radius: 30px; margin: 10px;
+  border-radius: 30px;
+  margin: 10px;
 }
 #dialog_compare_listview {
   margin-right: 15px;
@@ -53,7 +64,7 @@
 }
 #btn_scale_to_win {
   background-color: transparent;
-  margin-right: 20px;
+  margin-right: 6px;
 }
 #btn_dr {
   margin-left: 6px;

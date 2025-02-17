@@ -48,6 +48,9 @@
     <screenshot>
       <image>https://raw.githubusercontent.com/itprojects/MasVisGtk/main/img/9.png</image>
     </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/itprojects/MasVisGtk/main/img/10.png</image>
+    </screenshot>
   </screenshots>
   <launchable type="desktop-id">io.github.itprojects.MasVisGtk.desktop</launchable>
   <url type="homepage">https://github.com/itprojects/MasVisGtk</url>
@@ -57,6 +60,17 @@
   <developer_name translate="no">ITProjects</developer_name>
   <translation type="gettext">masvisgtk</translation>
   <releases>
+    <release version="4.0.0" date="2025-02-17">
+      <description translate="no">
+        <p>Added widgets to NavigationToolbar.</p>
+        <p>Inserted NavigationToolbar gettext translation.</p>
+        <p>Create Gif animations with two or more analysis tabs.</p>
+        <p>New zoom implementation.</p>
+        <p>Font scaling in zoomed canvas.</p>
+        <p>Simplified overview tabs.</p>
+        <p>Update translation pt_BR.po, bg_BG.po.</p>
+      </description>
+    </release>
     <release version="3.5.3" date="2025-02-07">
       <description translate="no">
         <p>Update translation pt_BR.po, bg_BG.po.</p>

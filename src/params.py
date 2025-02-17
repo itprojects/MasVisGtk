@@ -356,7 +356,7 @@ The top graphs show the waveforms of the left and right channels, quite like in 
 In order to show how the strongest part of the track has survived the mastering processing, MasVis looks for a strong part of the track, and zooms-in on that. Around the selected part, a window of 100 milliseconds is shown. Clipping and/or brickwall limitation is typically revealed here.\n
 The part show is not selectable by the user, in accordance with the idea that the MasVis graphs should appear the same, regardless of who does the analysis. The selection is automatically made, by MasVis, in the following way:\n
 1. Find the highest sample value in the sound file\n
-2. Apply a threshold of 95 % of the highest sample value\n
+2. Apply a threshold of 95 percent of the highest sample value\n
 3. For every place, that the signal exceeds the threshold, count how many samples exceed the threshold\n
 4. Select the place, where the highest number of samples exceeding the threshold occur\n
 The sample count, for the selected part, is displayed above the graph.\n

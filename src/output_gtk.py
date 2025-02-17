@@ -60,11 +60,13 @@ VERSION = __version__
 R128_OFFSET = 23
 STYLE = None
 FONT = False
+FONT_SMALL_SIZE = 10.0 # 'small'
+FONT_LARGE_SIZE = 14.4 # 'large'
 
 # Displays time format MM:SS
 TIME_FMT = matplotlib.ticker.FuncFormatter(lambda sec, x: time.strftime('%M:%S', time.gmtime(sec)))
 
-matplotlib.rcParams['legend.fontsize'] = 'medium'
+matplotlib.rcParams['legend.fontsize'] = 'medium' # medium = 12.0
 matplotlib.rcParams['figure.titlesize'] = 'large'
 matplotlib.rcParams['lines.linewidth'] = 1.0
 matplotlib.rcParams['lines.dashed_pattern'] = [6, 6]
@@ -240,32 +242,38 @@ def render(
             subtitle = '\n'.join([subtitle_analysis, subtitle_source, subtitle_meta])
             win.n_figures += 1
             fig_d = plt.figure(win.n_figures)
+            fig_d.dict_fontsizes = dict() # (type, font_size, obj_with_text)
             fig_d.dpi = DPI
             fig_d.figsize = (pos['w'] / DPI, pos['h'] / DPI)
             #fig_d.facecolor = 'white'
-            fig_d.suptitle(header, fontweight='bold', fontsize='large', y=pos['header_y'])
-            fig_d.text(
+            f_suptitle = fig_d.suptitle(
+                header,
+                fontweight='bold',
+                fontsize=FONT_LARGE_SIZE,
+                y=pos['header_y']
+            )
+            f_subtitle = fig_d.text(
                 0.5,
                 pos['subheader_y'],
                 subtitle,
-                fontsize='small',
+                fontsize=FONT_SMALL_SIZE,
                 horizontalalignment='center',
                 verticalalignment='top',
                 linespacing=1.6,
             )
-            fig_d.text(
+            f_checksum = fig_d.text(
                 pos['left'],
                 pos['footer_y'],
                 _('Checksum (energy): ') + str(checksum),
-                fontsize='small',
+                fontsize=FONT_SMALL_SIZE,
                 va='bottom',
                 ha='left',
             )
-            fig_d.text(
+            f_version = fig_d.text(
                 pos['right'],
                 pos['footer_y'],
                 _('MasVisGtk ') + str(VERSION),
-                fontsize='small',
+                fontsize=FONT_SMALL_SIZE,
                 va='bottom',
                 ha='right',
             )
@@ -282,6 +290,10 @@ def render(
                 bottom=pos['bottom'],
                 top=pos['top'],
             )
+            fig_d.dict_fontsizes['suptitle'] = (f_suptitle, 14.4, 'text')
+            fig_d.dict_fontsizes['subtitle'] = (f_subtitle, 10.0, 'text')
+            fig_d.dict_fontsizes['checksum'] = (f_checksum, 10.0, 'text')
+            fig_d.dict_fontsizes['version'] = (f_version, 10.0, 'text')
 
         if win.app.check_cancellations():
             return
@@ -309,13 +321,14 @@ def render(
                 plot(new_range, new_data, color=c_color[c], linestyle='-')
                 xlim(0, round(sec))
                 ylim(-1.0, 1.0)
-                title(
+                f_channel_title = title(
                     _('{}: Crest = {:0.2f} dB / RMS = {:0.2f} dBFS / Peak = {:0.2f} dBFS / True Peak ≈ {:0.2f} dBTP').format(
                         c_name[c].capitalize(), crest_db[c], rms_dbfs[c], peak_dbfs[c], true_peak_dbtp[c]
                     ),
-                    fontsize='small',
+                    fontsize=FONT_SMALL_SIZE,
                     loc='left',
                 )
+                fig_d.dict_fontsizes[f'channel_title_{c}'] = (f_channel_title, 10.0, 'text')
                 yticks([1, -0.5, 0, 0.5, 1], ('', -0.5, 0, '', ''))
                 if c_max == c:
                     mark_span(ax_ch[c], (w_max[0] / float(fs), w_max[1] / float(fs)))
@@ -323,7 +336,8 @@ def render(
                     #ax_ch[c].xaxis.set_major_locator(MaxNLocatorMod(prune='both'))
                     #ax_ch[c].xaxis.set_major_formatter(ScalarFormatter(useOffset=False))
                     ax_ch[c].xaxis.set_major_formatter(TIME_FMT)
-                    xlabel(':sec', fontsize='small')
+                    f_channel_xlabel = xlabel(':sec', fontsize=FONT_SMALL_SIZE)
+                    fig_d.dict_fontsizes[f'channel_xlabel'] = (f_channel_xlabel, 10.0, 'text')
                 else:
                     setp(ax_ch[c].get_xticklabels(), visible=False)
                 axis_defaults(ax_ch[c])
@@ -351,18 +365,20 @@ def render(
             )
             ylim(-1.0, 1.0)
             xlim(w_max[0] / float(fs), w_max[1] / float(fs))
-            title(
+            f_loudest_title = title(
                 _('Loudest part ({} channel, {} samples > 95{} during 20 ms at {:0.2f} sec)').format(
                     c_name[c_max], ns_max, '%', s_max / float(fs),
                 ),
-                fontsize='small',
+                fontsize=FONT_SMALL_SIZE,
                 loc='left',
             )
+            fig_d.dict_fontsizes['loudest_title'] = (f_loudest_title, 10.0, 'text')
             yticks([1, -0.5, 0, 0.5, 1], ('', -0.5, 0, '', ''))
             #ax_max.xaxis.set_major_locator(MaxNLocatorMod(nbins=5, prune='both'))
             #ax_max.xaxis.set_major_formatter(FormatStrFormatter('%0.2f'))
             ax_max.xaxis.set_major_formatter(TIME_FMT)
-            xlabel(':sec', fontsize='small')
+            f_loudness_xlabel = xlabel(':sec', fontsize=FONT_SMALL_SIZE)
+            fig_d.dict_fontsizes[f'loudness_xlabel'] = (f_loudness_xlabel, 10.0, 'text')
             axis_defaults(ax_max)
 
         if win.app.check_cancellations():
@@ -431,13 +447,16 @@ def render(
             xlim(0.02, 20)
             ax_norm.yaxis.grid(True, which='major', linestyle=':', color='k', linewidth=0.5)
             ax_norm.xaxis.grid(True, which='both', linestyle='-', color='k', linewidth=0.5)
-            ylabel('dB', fontsize='small', verticalalignment='top', rotation=0)
-            xlabel('kHz', fontsize='small', horizontalalignment='right')
-            title(
+            f_spectrum_ylabel = ylabel('dB', fontsize=FONT_SMALL_SIZE, verticalalignment='top', rotation=0)
+            fig_d.dict_fontsizes[f'spectrum_ylabel'] = (f_spectrum_ylabel, 10.0, 'text')
+            f_spectrum_xlabel = xlabel('kHz', fontsize=FONT_SMALL_SIZE, horizontalalignment='right')
+            fig_d.dict_fontsizes[f'spectrum_xlabel'] = (f_spectrum_xlabel, 10.0, 'text')
+            f_spectrum_title = title(
                 _('Normalised average spectrum, ') + str(frames) + _(' frames'),
-                fontsize='small',
+                fontsize=FONT_SMALL_SIZE,
                 loc='left',
             )
+            fig_d.dict_fontsizes['spectrum_title'] = (f_spectrum_title, 10.0, 'text')
             ax_norm.set_xticks([0.05, 0.1, 0.2, 0.5, 1, 2, 3, 4, 5, 7, 10, 20], minor=False)
             ax_norm.set_xticks(
                 [
@@ -492,11 +511,18 @@ def render(
                 )
             ylim(0, 30)
             xlim(0.02, 20)
-            title(_('Allpassed crest factor'), fontsize='small', loc='left')
+            f_allpass_title = title(
+                _('Allpassed crest factor'),
+                fontsize=FONT_SMALL_SIZE,
+                loc='left'
+            )
+            fig_d.dict_fontsizes['allpass_title'] = (f_allpass_title, 10.0, 'text')
             yticks(np.arange(0, 30, 5), ('', 5, 10, 15, 20, ''))
             xticks([0.1, 1, 2], (0.1, 1, 2))
-            xlabel('kHz', fontsize='small')
-            ylabel('dB', fontsize='small', rotation=0)
+            f_allpass_xlabel = xlabel('kHz', fontsize=FONT_SMALL_SIZE)
+            fig_d.dict_fontsizes['allpass_xlabel'] = (f_allpass_xlabel, 10.0, 'text')
+            f_allpass_ylabel = ylabel('dB', fontsize=FONT_SMALL_SIZE, rotation=0)
+            fig_d.dict_fontsizes['f_allpass_ylabel'] = (f_allpass_ylabel, 10.0, 'text')
             axis_defaults(ax_ap)
 
         if win.app.check_cancellations():
@@ -533,8 +559,13 @@ def render(
             )
             yticks([10, 100, 1000], (10, 100, 1000))
             hist_title = _('Histogram, \'bits\': ') + '/'.join(hist_title_bits)
-            title(hist_title, fontsize='small', loc='left')
-            ylabel('n', fontsize='small', rotation=0)
+            f_histogram_title = title(hist_title,
+                fontsize=FONT_SMALL_SIZE,
+                loc='left'
+            )
+            fig_d.dict_fontsizes['histogram_title'] = (f_histogram_title, 10.0, 'text')
+            f_histogram_ylabel = ylabel('n', fontsize=FONT_SMALL_SIZE, rotation=0)
+            fig_d.dict_fontsizes['histogram_ylabel'] = (f_histogram_ylabel, 10.0, 'text')
             axis_defaults(ax_hist)
 
         if win.app.check_cancellations():
@@ -565,7 +596,7 @@ def render(
                 'k-',
             )
             text_style = {
-                'fontsize': 'x-small',
+                'fontsize': 'small',
                 'rotation': 45,
                 'va': 'bottom',
                 'ha': 'left',
@@ -587,9 +618,16 @@ def render(
                 )
             xlim(-50, 0)
             ylim(-50, 0)
-            title(_('Peak vs RMS level'), fontsize='small', loc='left')
-            xlabel('dBFS', fontsize='small')
-            ylabel('dBFS', fontsize='small', rotation=0)
+            f_peak_title = title(
+                _('Peak vs RMS level'),
+                fontsize=FONT_SMALL_SIZE,
+                loc='left'
+            )
+            fig_d.dict_fontsizes['peak_title'] = (f_peak_title, 10.0, 'text')
+            f_peak_xlabel = xlabel('dBFS', fontsize=FONT_SMALL_SIZE)
+            fig_d.dict_fontsizes['peak_xlabel'] = (f_peak_xlabel, 10.0, 'text')
+            f_peak_ylabel = ylabel('dBFS', fontsize=FONT_SMALL_SIZE, rotation=0)
+            fig_d.dict_fontsizes['peak_ylabel'] = (f_peak_ylabel, 10.0, 'text')
             xticks([-50, -40, -30, -20, -10, 0], ('', -40, -30, -20, '', ''))
             yticks([-50, -40, -30, -20, -10, 0], ('', -40, -30, -20, -10, ''))
             axis_defaults(ax_pr)
@@ -618,9 +656,16 @@ def render(
             xlim(0, n_1s)
             yticks([10, 20], (10, ''))
             ax_1s.yaxis.grid(True, which='major', linestyle=':', color='k', linewidth=0.5)
-            title(_('Short term (1 s) crest factor'), fontsize='small', loc='left')
-            xlabel(':sec', fontsize='small')
-            ylabel('dB', fontsize='small', rotation=0)
+            f_shortterm_title = title(
+                _('Short term (1 s) crest factor'),
+                fontsize=FONT_SMALL_SIZE,
+                loc='left'
+            )
+            fig_d.dict_fontsizes['shortterm_title'] = (f_shortterm_title, 10.0, 'text')
+            f_shortterm_xlabel = xlabel(':sec', fontsize=FONT_SMALL_SIZE)
+            fig_d.dict_fontsizes['shortterm_xlabel'] = (f_shortterm_xlabel, 10.0, 'text')
+            f_shortterm_ylabel = ylabel('dB', fontsize=FONT_SMALL_SIZE, rotation=0)
+            fig_d.dict_fontsizes['shortterm_ylabel'] = (f_shortterm_ylabel, 10.0, 'text')
             #ax_1s.xaxis.set_major_locator(MaxNLocatorMod(prune='both'))
             #ax_1s.xaxis.set_major_formatter(ScalarFormatter(useOffset=False))
             ax_1s.xaxis.set_major_formatter(TIME_FMT)
@@ -650,10 +695,23 @@ def render(
                 [-33 + r128_offset, -23 + r128_offset, -13 + r128_offset],
                 (-33 + r128_offset, -23 + r128_offset, ''),
             )
-            title(_('EBU R 128 Short term loudness'), fontsize='small', loc='left')
-            title(_('Short term PLR'), fontsize='small', loc='right', color='grey')
-            xlabel(':sec', fontsize='small')
-            ylabel('%s' % r128_unit, fontsize='small', rotation=0)
+            f_ebu_short_title = title(
+                _('EBU R 128 Short term loudness'),
+                fontsize=FONT_SMALL_SIZE,
+                loc='left'
+            )
+            fig_d.dict_fontsizes['ebu_short_title'] = (f_ebu_short_title, 10.0, 'text')
+            f_short_plr_title = title(
+                _('Short term PLR'),
+                fontsize=FONT_SMALL_SIZE,
+                loc='right',
+                color='grey'
+            )
+            fig_d.dict_fontsizes['short_plr_title'] = (f_short_plr_title, 10.0, 'text')
+            f_short_plr_xlabel = xlabel(':sec', fontsize=FONT_SMALL_SIZE)
+            fig_d.dict_fontsizes['short_plr_xlabel'] = (f_short_plr_xlabel, 10.0, 'text')
+            f_short_plr_ylabel = ylabel('%s' % r128_unit, fontsize=FONT_SMALL_SIZE, rotation=0)
+            fig_d.dict_fontsizes['short_plr_ylabel'] = (f_short_plr_ylabel, 10.0, 'text')
             ax_ebur128.yaxis.grid(
                 True, which='major', linestyle=':', color='k', linewidth=0.5
             )
@@ -677,7 +735,7 @@ def render(
             axis_defaults(ax_ebur128)
             axis_defaults(ax_ebur128_stplr)
             ax_ebur128_stplr.tick_params(
-                axis='y', which='major', labelsize='xx-small', length=0
+                axis='y', which='major', labelsize=FONT_SMALL_SIZE, length=0
             )
 
         #
@@ -695,37 +753,55 @@ def render(
 
         tab_page.get_child().scrolled.set_child(aspect_frame)
 
-        top_tab_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, vexpand=False)
-        top_tab_box.append(NavigationToolbar(canvas))
+        nav_bar = NavigationToolbar(canvas)
 
-        scale_adjustment = Gtk.Adjustment(
-            value=0,
-            lower=0,
-            upper=100,
-            step_increment=1,
-            page_increment=10,
-            page_size=0
-        )
+        # Add translations to the tab NavigationToolbar.
+        nav_bar_widgets = nav_bar.observe_children()
+        for item in nav_bar_widgets:
+            if 'Configure subplots' == item.get_tooltip_text():
+                item.set_visible(False) # hide config (unused) button
 
-        # Gtk.Scale to zoom-in/rescale the plot size.
-        scale = Gtk.Scale(adjustment=scale_adjustment, orientation=Gtk.Orientation.HORIZONTAL)
+            # Prevent button stretching.
+            item.set_valign(Gtk.Align.CENTER)
 
-        scale.canvas = canvas
-        scale.aspect_ratio = aspect_ratio
+            # Translate button texts.
+            match item.get_tooltip_text():
+                case 'Reset original view':
+                    item.set_tooltip_text(_('Reset original view'))
+                case 'Back to previous view':
+                    item.set_tooltip_text(_('Back to previous view'))
+                case 'Forward to next view':
+                    item.set_tooltip_text(_('Forward to next view'))
+                case 'Left button pans, Right button zooms\nx/y fixes axis, CTRL fixes aspect':
+                    item.set_tooltip_text(_('Left button pans, Right button zooms\nx/y fixes axis, CTRL fixes aspect'))
+                case 'Zoom to rectangle\nx/y fixes axis':
+                    item.set_tooltip_text(_('Zoom to rectangle\nx/y fixes axis'))
+                #case 'Configure subplots':
+                #    item.set_tooltip_text(_('Configure subplots'))
+                case 'Save the figure':
+                    item.set_tooltip_text(_('Save the figure'))
+                case _:
+                    pass
 
-        scale.set_digits(0)
-        scale.set_has_origin(True)
-        scale.set_margin_end(20)
-        scale.set_size_request(100, -1)
-        scale.set_tooltip_text('⇤ 1080 ⇥')
+        # Gtk.SpinButton to zoom-in/rescale the plot size.
+        spin_zoom = Gtk.SpinButton.new_with_range(1080, 4096, 500) # lower, upper, step
+        spin_zoom.set_valign(Gtk.Align.CENTER)
+        spin_zoom.set_tooltip_text(_('Zoom Level [px]'))
+        spin_zoom.set_digits(0)
+        spin_zoom.canvas = canvas
+        spin_zoom.aspect_ratio = aspect_ratio
+        spin_zoom.connect('value-changed', on_value_changed)
 
-        scale.connect('value-changed', on_value_changed)
+        btn_zoom_original = Gtk.Button(icon_name='system-search-symbolic', tooltip_text=_('Resotre original dimensions'))
+        btn_zoom_original.set_valign(Gtk.Align.CENTER)
+        btn_zoom_original.connect('clicked', on_scale_to_default, spin_zoom.get_adjustment())
 
         # Resize button to scale canvas to window width.
         btn_scale_to_win = Gtk.Button(label='⇤ ⇥', tooltip_text=_('Scale to Window Width'))
         btn_scale_to_win.set_name('btn_scale_to_win')
-        btn_scale_to_win.connect('clicked', on_scale_to_win, scale_adjustment)
-        btn_scale_to_win.win = win
+        btn_scale_to_win.connect('clicked', on_scale_to_win, spin_zoom.get_adjustment(), win)
+        btn_scale_to_win.set_halign(Gtk.Align.CENTER)
+        btn_scale_to_win.set_valign(Gtk.Align.CENTER)
         btn_scale_to_win.canvas = canvas
         btn_scale_to_win.aspect_ratio = aspect_ratio
 
@@ -733,11 +809,15 @@ def render(
         btn_dr = Gtk.Button()
         btn_dr.set_name('btn_dr')
 
-        top_tab_box.prepend(btn_dr)
-        top_tab_box.append(scale)
-        top_tab_box.append(btn_scale_to_win)
+        btn_dr = Gtk.Button()
+        btn_dr.set_name('btn_dr')
 
-        tab_page.get_child().prepend(top_tab_box)
+        nav_bar.prepend(btn_dr)
+        nav_bar.append(btn_zoom_original)
+        nav_bar.append(spin_zoom)
+        nav_bar.append(btn_scale_to_win)
+
+        tab_page.get_child().prepend(nav_bar)
 
         if win.app.check_cancellations():
             return
@@ -797,6 +877,7 @@ def render(
         if overview_not_started:
             win.n_figures += 1
             fig_d = plt.figure(win.n_figures)
+            fig_d.dict_fontsizes = dict()
             fig_d.dpi = DPI
             fig_d.figsize = (w_o / DPI, h_o / DPI)
 
@@ -811,13 +892,7 @@ def render(
 
             # Feature, not bug. Prevents expansion in width.
             box_as_frame.set_halign(Gtk.Align.CENTER)
-
             tab_page.get_child().scrolled.set_child(box_as_frame)
-
-            top_tab_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, vexpand=False)
-            top_tab_box.append(NavigationToolbar(canvas))
-
-            tab_page.get_child().prepend(top_tab_box)
         else:
             # Find canvas. backend_gtk4agg.FigureCanvasGTK4Agg
             canvas = tab_page.get_child().scrolled.get_child().get_child().get_last_child()
@@ -858,7 +933,7 @@ def render(
             dr, float(peak_dbfs.max()), float(crest_total_db), l_kg + lufs_to_lu
         )
 
-        ax_o.set_ylabel(info_o, fontsize='12', horizontalalignment='left', rotation=0)
+        ax_o.set_ylabel(info_o, fontsize='small', horizontalalignment='left', rotation=0)
         ax_o.yaxis.set_label_position("right")
         ax_o.yaxis.set_label_coords(1.01, 0.8, transform=None)
         ax_o.set_xticks([])
@@ -868,10 +943,8 @@ def render(
             fs/1000, int(round(track['metadata']['bps'] / 1000.0))
         )
 
-        ax_o.set_title(header_o, fontsize='12', loc='left')
-        fig_buf = plt.figure(
-            'buffer', figsize=(w_o / DPI, h_o / DPI), dpi=DPI
-        )
+        ax_o.set_title(header_o, fontsize='small', loc='left')
+        fig_buf = plt.figure('buffer', figsize=(w_o / DPI, h_o / DPI), dpi=DPI)
         w, h = fig_buf.canvas.get_width_height()
         fig_buf.patch.set_visible(False)
         ax_buf = plt.gca()
@@ -898,9 +971,7 @@ def render(
             )
             img_buf[:, :, 0:3] = img[:, :, 0:3] * (img_buf[:, :, 0:3] / 255.0)
             img_buf[:, :, -1] = np.maximum(img[:, :, -1], img_buf[:, :, -1])
-        img_buf[:, :, 0:3] = (img_buf[:, :, 3:4] / 255.0) * img_buf[:, :, 0:3] + (
-            255 - img_buf[:, :, 3:4]
-        )
+        img_buf[:, :, 0:3] = (img_buf[:, :, 3:4] / 255.0) * img_buf[:, :, 0:3] + (255 - img_buf[:, :, 3:4])
         img_buf[:, :, -1] = 255
 
         if win.app.check_cancellations():
@@ -922,28 +993,45 @@ def save_figure(fig, path, save_format, dpi):
 
     # If params are different than canvas plot,
     # there will be a flicker, during saving.
-    plt.savefig(
-        path, format=save_format, bbox_inches='tight', dpi=dpi
-    )
+    plt.savefig(path, format=save_format, bbox_inches='tight', dpi=dpi)
 
 # Set new canvas size. [1080 px, 4096 px]
 # Maximum width is artificially set to 4096 px (4K).
-def on_value_changed(scale):
-    new_canvas_width = int((scale.get_value() * 3016 * 0.01) + 1080)
-    scale.set_tooltip_text('⇤' + str(new_canvas_width) + '⇥')
-    scale.canvas.set_size_request(new_canvas_width, new_canvas_width//scale.aspect_ratio)
+# Scale font sizes, using width.
+def on_value_changed(spin_btn):
+    new_canvas_width = spin_btn.get_value()
+    spin_btn.canvas.set_size_request(new_canvas_width, new_canvas_width//spin_btn.aspect_ratio)
+
+    # Change font sizes of axes texts.
+    scale_factor = new_canvas_width / 1080
+    for k, v in spin_btn.canvas.figure.dict_fontsizes.items():
+        if v[2] == 'text':
+            v[0].set_fontsize(round(v[1] * scale_factor))
+
+    # Change font sizes of axis ticks.
+    for ax in spin_btn.canvas.figure.get_axes():
+
+        xticklabels_ = ax.get_xticklabels()
+        for xt in xticklabels_:
+            xt.set_fontsize(round(10.0 * scale_factor))
+
+        yticklabels_ = ax.get_yticklabels()
+        for yt in yticklabels_:
+            yt.set_fontsize(round(10.0 * scale_factor))
 
 # Set new canvas size (and scale), equal to window width.
-def on_scale_to_win(btn, scale_adjustment):
-    new_canvas_width = btn.win.get_allocated_width()
-    print
+def on_scale_to_win(btn, scale_adjustment, win):
+    new_canvas_width = win.get_allocated_width()
     if new_canvas_width <= 1080: # minimum
-        scale_adjustment.set_value(0.0)
+        scale_adjustment.set_value(1080)
     elif new_canvas_width >= 4096: # maximum
-        scale_adjustment.set_value(100.0)
+        scale_adjustment.set_value(4096)
     else: # calculate exact scale change.
-        new_canvas_width = (new_canvas_width - 1080) / 30.16
         scale_adjustment.set_value(new_canvas_width)
+
+# Set new canvas size (and scale), equal (by default) to 1080 pixels.
+def on_scale_to_default(btn, scale_adjustment):
+    scale_adjustment.set_value(1080)
 
 def list_styles():
     return plt.style.available
@@ -1000,8 +1088,8 @@ def mark_span(ax, span):
 
 def axis_defaults(ax):
     ax.tick_params(direction='in', top='off', right='off')
-    ax.tick_params(axis='both', which='major', labelsize='small')
-    ax.tick_params(axis='both', which='minor', labelsize='small')
+    ax.tick_params(axis='both', which='major', labelsize=FONT_SMALL_SIZE)
+    ax.tick_params(axis='both', which='minor', labelsize=FONT_SMALL_SIZE)
     xpad = ax.xaxis.labelpad
     ypad = ax.yaxis.labelpad
     xpos = ax.transAxes.transform((1.0, 0.0))
