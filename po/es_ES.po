@@ -9,266 +9,273 @@ msgstr ""
 "Project-Id-Version: masvisgtk\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-02-17 14:33+0200\n"
-"PO-Revision-Date: 2024-08-29 21:08+0300\n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2025-02-17 12:15-0300\n"
+"Last-Translator: johnpeter19 <johnppetersa@gmail.com>\n"
 "Language-Team: none\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.5\n"
 
 #: data/io.github.itprojects.MasVisGtk.desktop.in:3 src/main.py:57
 msgid "MasVisGtk"
-msgstr ""
+msgstr "MasVisGtk"
 
 #: data/io.github.itprojects.MasVisGtk.desktop.in:9
 msgid "Audio analysis"
-msgstr ""
+msgstr "Análisis de audio"
 
 #: data/io.github.itprojects.MasVisGtk.desktop.in:10
 #: data/io.github.itprojects.MasVisGtk.metainfo.xml.in:7
 msgid "Audio analysis tool for your music"
-msgstr ""
+msgstr "Herramienta de análisis de audio para su música"
 
 #: data/io.github.itprojects.MasVisGtk.desktop.in:12
 msgid "Audio;Loudness;Analysis;Music;Media;"
-msgstr ""
+msgstr "Audio; volumen; análisis; música; medios;"
 
 #: data/io.github.itprojects.MasVisGtk.metainfo.xml.in:9
 msgid ""
 "Detect audio mastering defects. Based on pymasvis app/module, using numpy, "
 "scipy, pyplot (matplotlib)."
 msgstr ""
+"Detectar defectos de maestría de audio. Basado en la aplicación/módulo de "
+"PymaSvis, usando Numpy, Scipy, Pyplot (matplotlib)."
 
 #: data/io.github.itprojects.MasVisGtk.metainfo.xml.in:11
 msgid "Waveform plotting"
-msgstr ""
+msgstr "Trazado de forma de onda"
 
 #: data/io.github.itprojects.MasVisGtk.metainfo.xml.in:12
 msgid "Overview of files (by-folder support)"
-msgstr ""
+msgstr "Descripción general de los archivos (soporte por parte de la persona)"
 
 #: data/io.github.itprojects.MasVisGtk.metainfo.xml.in:13
 msgid "Frequency plot"
-msgstr ""
+msgstr "Gráfico de frecuencia"
 
 #: data/io.github.itprojects.MasVisGtk.metainfo.xml.in:14
 msgid "Dynamic Range estimation"
-msgstr ""
+msgstr "Estimación de rango dinámico"
 
 #: data/io.github.itprojects.MasVisGtk.metainfo.xml.in:15
 msgid "Peak estimation"
-msgstr ""
+msgstr "Estimación máxima"
 
 #: data/io.github.itprojects.MasVisGtk.metainfo.xml.in:16
 msgid "Crest Factor estimation"
-msgstr ""
+msgstr "Estimación del factor de cresta"
 
 #: data/io.github.itprojects.MasVisGtk.metainfo.xml.in:17
 msgid "Histogram plot"
-msgstr ""
+msgstr "Gráfico de histograma"
 
 #: data/io.github.itprojects.MasVisGtk.metainfo.xml.in:18
 msgid "Peak vs. RMS plot"
-msgstr ""
+msgstr "Peak vs. RMS Parcela"
 
 #: data/io.github.itprojects.MasVisGtk.metainfo.xml.in:19
 msgid "Loudness analysis, EBU R128 plot"
-msgstr ""
+msgstr "Análisis de volumen, trama EBU R128"
 
 #: data/io.github.itprojects.MasVisGtk.metainfo.xml.in:20
 msgid "Multi-channel audio support"
-msgstr ""
+msgstr "Soporte de audio multicanal"
 
 #: data/io.github.itprojects.MasVisGtk.gschema.xml:24
 msgid "Language of the application."
-msgstr ""
+msgstr "Lenguaje de la aplicación."
 
 #: data/io.github.itprojects.MasVisGtk.gschema.xml:25
 msgid "The language of the application, if the translation exists."
-msgstr ""
+msgstr "El idioma de la aplicación, si la traducción existe."
 
 #: data/io.github.itprojects.MasVisGtk.gschema.xml:38
 msgid "Application style."
-msgstr ""
+msgstr "Estilo de aplicación."
 
 #: data/io.github.itprojects.MasVisGtk.gschema.xml:39
 msgid "Application style, follow system 0, light 1, dark 2."
-msgstr ""
+msgstr "Estilo de aplicación, seguir sistema 0, claro 1, oscuro 2."
 
 #: data/io.github.itprojects.MasVisGtk.gschema.xml:44
 msgid "Matplotlib style."
-msgstr ""
+msgstr "Estilo matplotlib."
 
 #: data/io.github.itprojects.MasVisGtk.gschema.xml:45
 msgid ""
 "Matplotlib visual style. 'Solarize_Light2', 'bmh', 'classic', "
 "'dark_background', 'fast', 'fivethirtyeight', 'ggplot', 'grayscale'"
 msgstr ""
+"Matplotlib estilo visual. 'Solarize_light2', 'BMH', 'Classic', "
+"'Dark_Background', 'Fast', 'FivethirtyEight', 'GGPlot', 'Grayscale'"
 
 #: data/io.github.itprojects.MasVisGtk.gschema.xml:54
 msgid "Custom font."
-msgstr ""
+msgstr "Fuente personalizada."
 
 #: data/io.github.itprojects.MasVisGtk.gschema.xml:55
 msgid "Custom font preferences, using the font button."
-msgstr ""
+msgstr "Preferencias de fuente personalizadas, usando el botón de fuente."
 
 #: data/io.github.itprojects.MasVisGtk.gschema.xml:60
 msgid "Save format."
-msgstr ""
+msgstr "Guardar formato."
 
 #: data/io.github.itprojects.MasVisGtk.gschema.xml:65
 msgid "Open other files."
-msgstr ""
+msgstr "Abra otros archivos."
 
 #: data/io.github.itprojects.MasVisGtk.gschema.xml:66
 msgid ""
 "Allows opeing non-audio file types, like videos. App can crash more often. "
 "Needs lots of free RAM."
 msgstr ""
+"Permite abrir tipos de archivos que no son de audio, como videos. La "
+"aplicación puede bloquearse con más frecuencia. Necesita mucha RAM gratis."
 
 #: data/io.github.itprojects.MasVisGtk.gschema.xml:71
 msgid "DPI for plots."
-msgstr ""
+msgstr "DPI para tramas."
 
 #: data/io.github.itprojects.MasVisGtk.gschema.xml:76
 msgid "DPI for saved images."
-msgstr ""
+msgstr "DPI para imágenes guardadas."
 
 #: data/io.github.itprojects.MasVisGtk.gschema.xml:81
 msgid "One audio plot width in comparison window."
-msgstr ""
+msgstr "Un ancho de la trama de audio en la ventana de comparación."
 
 #: src/gtk/help-overlay.ui:11
 msgid "Window Actions"
-msgstr ""
+msgstr "Acciones de ventana"
 
 #: src/gtk/help-overlay.ui:15
 msgid "Help Manual"
-msgstr ""
+msgstr "Ayuda Manual"
 
 #: src/gtk/help-overlay.ui:21
 msgid "Open Menu"
-msgstr ""
+msgstr "Menú abierto"
 
 #: src/gtk/help-overlay.ui:27
 msgid "Fullscreen/Unfullscreen"
-msgstr ""
+msgstr "Pantalla completa/pantalla completa"
 
 #: src/gtk/help-overlay.ui:33
 msgid "Unfullscreen"
-msgstr ""
+msgstr "Pantalla completa"
 
 #: src/gtk/help-overlay.ui:39
 msgid "Shortcuts"
-msgstr ""
+msgstr "Atajos"
 
 #: src/gtk/help-overlay.ui:45
 msgid "Quit"
-msgstr ""
+msgstr "Abandonar"
 
 #: src/gtk/help-overlay.ui:52
 msgid "File Actions"
-msgstr ""
+msgstr "Acciones de archivo"
 
 #: src/gtk/help-overlay.ui:56
 msgid "Show File Information"
-msgstr ""
+msgstr "Mostrar información del archivo"
 
 #: src/gtk/help-overlay.ui:62
 msgid "Simple File(s) Open"
-msgstr ""
+msgstr "Archivo simple (IS) Abierto"
 
 #: src/gtk/help-overlay.ui:68
 msgid "Advance Open / Overview"
-msgstr ""
+msgstr "Avanzar Abrir / Descripción general"
 
 #: src/gtk/help-overlay.ui:75
 msgid "Tab Actions"
-msgstr ""
+msgstr "Acciones de pestaña"
 
 #: src/gtk/help-overlay.ui:80 src/main_gtk_window.py:448
 #: src/gtk/help-overlay.ui:85 src/main_gtk_window.py:468
 msgid "Compare Tabs"
-msgstr ""
+msgstr "Comparar pestañas"
 
 #: src/gtk/help-overlay.ui:86 src/gtk/help-overlay.ui:91
 msgid "Save Current Tab"
-msgstr ""
+msgstr "Guardar pestaña actual"
 
 #: src/gtk/help-overlay.ui:92 src/gtk/help-overlay.ui:97
 msgid "Save All Tabs"
-msgstr ""
+msgstr "Guardar todas las pestañas"
 
 #: src/gtk/manual-overlay.ui:4
 msgid "Understanding Graphs"
-msgstr ""
+msgstr "Entendiendo gráficos"
 
 #: src/gtk/preferences-overlay.ui:9
 msgid "Language"
-msgstr ""
+msgstr "Idioma"
 
 #: src/gtk/preferences-overlay.ui:12
 msgid "Language and locale"
-msgstr ""
+msgstr "Idioma y localidad"
 
 #: src/gtk/preferences-overlay.ui:74
 msgid "Theme and Style"
-msgstr ""
+msgstr "Tema y estilo"
 
 #: src/gtk/preferences-overlay.ui:77
 msgid "Application style"
-msgstr ""
+msgstr "Estilo de aplicación"
 
 #: src/gtk/preferences-overlay.ui:97
 msgid "Matplotlib built-in style"
-msgstr ""
+msgstr "Matplotlib estilo incorporado"
 
 #: src/gtk/preferences-overlay.ui:108
 msgid "Matplotlib custom background"
-msgstr ""
+msgstr "Matplotlib Fondo personalizado"
 
 #: src/gtk/preferences-overlay.ui:132
 msgid "Matplotlib custom font"
-msgstr ""
+msgstr "Matplotlib Fuente personalizada"
 
 #: src/gtk/preferences-overlay.ui:158
 msgid "Files"
-msgstr ""
+msgstr "Archivos"
 
 #: src/gtk/preferences-overlay.ui:161
 msgid "Default saved image format"
-msgstr ""
+msgstr "Formato de imagen guardado predeterminado"
 
 #: src/gtk/preferences-overlay.ui:185
 msgid "Open other (video) files. Needs more free RAM."
-msgstr ""
+msgstr "Abra otros archivos (video). Necesita más RAM gratis."
 
 #: src/gtk/preferences-overlay.ui:192
 msgid "Visual Quality"
-msgstr ""
+msgstr "Calidad visual"
 
 #: src/gtk/preferences-overlay.ui:195
 msgid "DPI of plots"
-msgstr ""
+msgstr "DPI de tramas"
 
 #: src/gtk/preferences-overlay.ui:214
 msgid "DPI of saved files"
-msgstr ""
+msgstr "DPI de archivos guardados"
 
 #: src/gtk/preferences-overlay.ui:233
 msgid "One audio plot width in comparison window"
-msgstr ""
+msgstr "Un ancho de trama de audio en la ventana de comparación"
 
 #: src/main.py:157 src/main.py:161
 msgid "Cannot set locale "
-msgstr ""
+msgstr "No se puede establecer un local"
 
 #: src/main.py:159 src/main.py:163
 msgid "FILES/FOLDERS"
-msgstr ""
+msgstr "Archivos/carpetas"
 
 #: src/main.py:161 src/main.py:165
 msgid ""
@@ -276,6 +283,9 @@ msgid ""
 "\n"
 "  MasVisGtk is an audio file analysis application."
 msgstr ""
+"Archivo (s) y/o rutas de carpetas para procesar dentro de la aplicación\n"
+"\n"
+"  MASVISGTK es una aplicación de análisis de archivos de audio."
 
 #: src/main.py:164 src/main.py:168
 msgid ""
@@ -283,211 +293,218 @@ msgid ""
 "The command line options are different from the original.\n"
 "Large file are always slow to render."
 msgstr ""
+"El módulo Python original también está disponible con este paquete.\n"
+"Las opciones de línea de comando son diferentes de la original.\n"
+"El archivo grande siempre es lento para renderizar."
 
 #: src/main.py:173 src/main.py:177
 msgid "Version of MasVisGtk."
-msgstr ""
+msgstr "Versión de Mavis GTK."
 
 #: src/main.py:182 src/main.py:186
 msgid "Show Verbose Messages."
-msgstr ""
+msgstr "Mostrar mensajes detallados."
 
 #: src/main.py:191 src/main.py:195
 msgid "Show Debug Messages."
-msgstr ""
+msgstr "Mostrar mensajes de depuración."
 
 #: src/main.py:200 src/main.py:204
 msgid "Show Supported Formats."
-msgstr ""
+msgstr "Mostrar formatos compatibles."
 
 #: src/main.py:209 src/main.py:213
 msgid ""
 "Use [LU], instead of [LUFS], when displaying R128 values, (default: LUFS)."
 msgstr ""
+"Use [Lu], en lugar de [LUFS], al mostrar los valores R128, (predeterminado: "
+"LUFS)."
 
 #: src/main.py:218 src/main.py:222
 msgid ""
 "flat, generate one overview tab for all, or dir, for one tab for folders, "
 "(default: flat)."
 msgstr ""
+"Flat, genere una pestaña Descripción general para todos, o dir, para una "
+"pestaña para carpetas, (predeterminado: plano)."
 
 #: src/main.py:227 src/main.py:231
 msgid "If input is a folder, process subfolders, too."
-msgstr ""
+msgstr "Si la entrada es una carpeta, también procese subcarpetas."
 
 #: src/main.py:236 src/main.py:240
 msgid "FILE(S) or FOLDER(S)"
-msgstr ""
+msgstr "Archivos) o carpetas)"
 
 #: src/main.py:350 src/main.py:359
 msgid "MasVisGtk Version "
-msgstr ""
+msgstr "Versión MASVIS GTK"
 
 #: src/main.py:358 src/main.py:367
 msgid "Supported Formats: "
-msgstr ""
+msgstr "Formatos compatibles:"
 
 #: src/main.py:369 src/main.py:378
 msgid "is not possible with option -o. Try dir or flat."
-msgstr ""
+msgstr "No es posible con la opción -o. Intenta con dir o flat."
 
 #: src/main.py:390 src/main.py:399
 msgid "No input files or folders supplied."
-msgstr ""
+msgstr "No se suministran archivos o carpetas de entrada."
 
 #: src/main.py:404 src/main.py:413
 msgid "Bad permisions for file. "
-msgstr ""
+msgstr "Malos permisos para el archivo."
 
 #: src/main.py:422 src/main.py:431
 msgid "Bad input: "
-msgstr ""
+msgstr "Mala entrada:"
 
 #: src/main.py:425 src/main.py:434
 msgid "Error processing files: "
-msgstr ""
+msgstr "Archivos de procesamiento de errores:"
 
 #: src/main.py:432 src/main.py:441
 msgid "Bad input files: "
-msgstr ""
+msgstr "Archivos de entrada malas:"
 
 #: src/main.py:434 src/main.py:443
 msgid "Problem Files"
-msgstr ""
+msgstr "Archivos de problemas"
 
 #: src/main.py:434 src/main.py:443
 msgid "Ignoring bad input files:"
-msgstr ""
+msgstr "Ignorando archivos de entrada malos:"
 
 #: src/main.py:438 src/main.py:447
 msgid "No Files"
-msgstr ""
+msgstr "Sin archivos"
 
 #: src/main.py:438 src/main.py:447
 msgid "No valid files found!"
-msgstr ""
+msgstr "¡No se encontraron archivos válidos!"
 
 #: src/main.py:465 src/main.py:474
 msgid "Unsupported MimeType"
-msgstr ""
+msgstr "Mimetipo no compatible"
 
 #: src/main.py:465 src/main.py:474
 msgid "Skipping file: "
-msgstr ""
+msgstr "Archivo de omisión:"
 
 #: src/main.py:472 src/main.py:481
 msgid "Processing"
-msgstr ""
+msgstr "Tratamiento"
 
 #: src/main.py:504 src/main.py:513
 msgid "AsyncWorkerError"
-msgstr ""
+msgstr "Error del trabajador asíncrono"
 
 #: src/main.py:532 src/main.py:541
 msgid "Duplicate path: "
-msgstr ""
+msgstr "Ruta duplicada:"
 
 #: src/main.py:538 src/main.py:547
 msgid "Error in Opening"
-msgstr ""
+msgstr "Error en la apertura"
 
 #: src/main.py:554 src/main.py:590 src/main.py:563 src/main.py:599
 msgid "Cannot detect save file format, defaulting to png."
-msgstr ""
+msgstr "No se puede detectar el formato de archivo Guardar, por defecto a PNG."
 
 #: src/main.py:561 src/main.py:570 src/main.py:699
 msgid "is not writeable."
-msgstr ""
+msgstr "no es escrito."
 
 #: src/main.py:563 src/main.py:599 src/main.py:572 src/main.py:608
 #: src/main.py:701
 msgid "Permissions"
-msgstr ""
+msgstr "Permisos"
 
 #: src/main.py:597 src/main.py:606
 msgid " is not writeable."
-msgstr ""
+msgstr "no es escrito."
 
 #: src/main.py:865 src/main_gtk_window.py:436 src/main_gtk_window.py:624
 #: src/main_gtk_window.py:634 src/main.py:915 src/main_gtk_window.py:456
 #: src/main_gtk_window.py:806 src/main_gtk_window.py:816
 msgid "Close"
-msgstr ""
+msgstr "Cerca"
 
 #: src/main.py:935 src/main.py:985
 msgid "Opening File Error"
-msgstr ""
+msgstr "Error de archivo de apertura"
 
 #: src/main.py:937 src/main.py:987
 msgid "Errors in Processing!"
-msgstr ""
+msgstr "¡Errores en el procesamiento!"
 
 #: src/main.py:953 src/main.py:964 src/main.py:1003 src/main.py:1014
 msgid "Unable to open input "
-msgstr ""
+msgstr "No se puede abrir la entrada"
 
 #: src/main.py:954 src/main.py:1004
 msgid "Cannot Open File"
-msgstr ""
+msgstr "No se puede abrir el archivo"
 
 #: src/main.py:963 src/main.py:1013
 msgid "The minimum file duration is 3 seconds."
-msgstr ""
+msgstr "La duración mínima del archivo es de 3 segundos."
 
 #: src/main.py:965 src/main.py:1015
 msgid "File Error"
-msgstr ""
+msgstr "Error de archivo"
 
 #: src/main_gtk_window.py:127 src/main_gtk_window.py:422
 #: src/main_gtk_window.py:133 src/main_gtk_window.py:442
 msgid "File Information"
-msgstr ""
+msgstr "Información de archivo"
 
 #: src/main_gtk_window.py:128 src/main_gtk_window.py:135
 msgid "Go Compare"
-msgstr ""
+msgstr "Ve a comparar"
 
 #: src/main_gtk_window.py:129 src/main_gtk_window.py:136
 msgid "Save All"
-msgstr ""
+msgstr "Guardar todo"
 
 #: src/main_gtk_window.py:133 src/main_gtk_window.py:140
 msgid "Preferences"
-msgstr ""
+msgstr "Preferencias"
 
 #: src/main_gtk_window.py:134 src/main_gtk_window.py:141
 msgid "Formats"
-msgstr ""
+msgstr "Formatos"
 
 #: src/main_gtk_window.py:135 src/main_gtk_window.py:142
 msgid "Keyboard Shortcuts"
-msgstr ""
+msgstr "Atajos de teclado"
 
 #: src/main_gtk_window.py:136 src/main_gtk_window.py:143
 msgid "Help"
-msgstr ""
+msgstr "Ayuda"
 
 #: src/main_gtk_window.py:137 src/main_gtk_window.py:144
 msgid "About"
-msgstr ""
+msgstr "Acerca de"
 
 #: src/main_gtk_window.py:150 src/main_gtk_window.py:210
 #: src/main_gtk_window.py:215 src/main_gtk_window.py:157
 #: src/main_gtk_window.py:217 src/main_gtk_window.py:222
 msgid "Open Files"
-msgstr ""
+msgstr "Archivos abiertos"
 
 #: src/main_gtk_window.py:155 src/main_gtk_window.py:225
 #: src/main_gtk_window.py:162 src/main_gtk_window.py:232
 msgid "Advanced Open"
-msgstr ""
+msgstr "Abierto avanzado"
 
 #: src/main_gtk_window.py:160 src/main_gtk_window.py:339
 #: src/main_gtk_window.py:361 src/main_gtk_window.py:167
 #: src/main_gtk_window.py:346 src/main_gtk_window.py:368
 #: src/main_gtk_window.py:427
 msgid "Save"
-msgstr ""
+msgstr "Ahorrar"
 
 #: src/main_gtk_window.py:160 src/main_gtk_window.py:167
 msgid "Save Tab"
@@ -1053,8 +1070,8 @@ msgid ""
 "Is probably the most revealing graph in MasVis. It gives an estimate of how "
 "much the crest factor has been lowered, by the processing of the 2-channel "
 "master. In the graph, there are four curves, two red for the right channel, "
-"and two blue for the left channel. The dashed line shows the crest factor, i."
-"e. the same information as above the waveform graphs. The solid line shows "
+"and two blue for the left channel. The dashed line shows the crest factor, "
+"i.e. the same information as above the waveform graphs. The solid line shows "
 "the crest factor of the signal after it has passed an allpass filter. The "
 "second crest factor is a rough, and typically underestimated value of how "
 "large the crest factor was prior to level maximation of the 2-channel "
