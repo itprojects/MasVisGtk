@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: masvisgtk\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-02-17 14:33+0200\n"
-"PO-Revision-Date: 2025-02-17 12:15-0300\n"
+"PO-Revision-Date: 2025-02-18 19:38-0300\n"
 "Last-Translator: johnpeter19 <johnppetersa@gmail.com>\n"
 "Language-Team: none\n"
 "Language: es\n"
@@ -508,200 +508,208 @@ msgstr "Ahorrar"
 
 #: src/main_gtk_window.py:160 src/main_gtk_window.py:167
 msgid "Save Tab"
-msgstr ""
+msgstr "Guardar pestaña"
 
 #: src/main_gtk_window.py:218 src/main_gtk_window.py:225
 msgid "Open Folders"
-msgstr ""
+msgstr "Abre carpetas"
 
 #: src/main_gtk_window.py:231 src/main_gtk_window.py:238
 msgid "Add Files"
-msgstr ""
+msgstr "Agregar archivos"
 
 #: src/main_gtk_window.py:231 src/main_gtk_window.py:238
 msgid "Add files for processing"
-msgstr ""
+msgstr "Agregar archivos para procesar"
 
 #: src/main_gtk_window.py:233 src/main_gtk_window.py:240
 msgid "Add Folders"
-msgstr ""
+msgstr "Agregar carpetas"
 
 #: src/main_gtk_window.py:233 src/main_gtk_window.py:240
 msgid "Add folders for processing"
-msgstr ""
+msgstr "Agregar carpetas para procesar"
 
 #: src/main_gtk_window.py:242 src/main_gtk_window.py:249
 msgid "use LUFS units"
-msgstr ""
+msgstr "Use unidades LUFS"
 
 #: src/main_gtk_window.py:246 src/main_gtk_window.py:253
 msgid "recursive (search sub-folders)"
-msgstr ""
+msgstr "Recursivo (Search Sub-Pleas)"
 
 #: src/main_gtk_window.py:252 src/main_gtk_window.py:259
 msgid "overview mode"
-msgstr ""
+msgstr "Modo de descripción general"
 
 #: src/main_gtk_window.py:283 src/main_gtk_window.py:290
 msgid "Start"
-msgstr ""
+msgstr "Comenzar"
 
 #: src/main_gtk_window.py:283 src/main_gtk_window.py:290
 msgid "Begin audio analysis"
-msgstr ""
+msgstr "Comenzar el análisis de audio"
 
 #: src/main_gtk_window.py:308 src/main_gtk_window.py:315
 msgid "Failed Open"
-msgstr ""
+msgstr "Fracasado abierto"
 
 #: src/main_gtk_window.py:340 src/main_gtk_window.py:347
 msgid "Save in Folder"
-msgstr ""
+msgstr "Guardar en la carpeta"
 
 #: src/main_gtk_window.py:362 src/main_gtk_window.py:369
 msgid "Save All in Folder"
-msgstr ""
+msgstr "Guardar todo en la carpeta"
 
 #: src/main_gtk_window.py:442 src/main_gtk_window.py:465
 #: src/main_gtk_window.py:536 src/main_gtk_window.py:462
 #: src/main_gtk_window.py:485 src/main_gtk_window.py:556
 msgid "Cannot Compare"
-msgstr ""
+msgstr "No se puede comparar"
 
 #: src/main_gtk_window.py:442 src/main_gtk_window.py:462
 msgid "No tabs."
-msgstr ""
+msgstr "No hay pestañas."
 
 #: src/main_gtk_window.py:465 src/main_gtk_window.py:536
 #: src/main_gtk_window.py:485 src/main_gtk_window.py:556
 #: src/main_gtk_window.py:626 src/main_gtk_window.py:649
 #: src/main_gtk_window.py:697
 msgid "Too few tabs."
-msgstr ""
+msgstr "Muy pocas pestañas."
 
 #: src/main_gtk_window.py:478 src/main_gtk_window.py:498
 msgid "Go!"
-msgstr ""
+msgstr "¡Ir!"
 
 #: src/main_gtk_window.py:478 src/main_gtk_window.py:498
 msgid "Compare tabs in separate window"
-msgstr ""
+msgstr "Compare pestañas en una ventana separada"
 
 #: src/main_gtk_window.py:482 src/main_gtk_window.py:502
 #: src/main_gtk_window.py:666
 msgid "☑ All!"
-msgstr ""
+msgstr "☑ ¡Todos!"
 
 #: src/main_gtk_window.py:482 src/main_gtk_window.py:502
 msgid "Compare ALL tabs in separate window"
-msgstr ""
+msgstr "Compare todas las pestañas en una ventana separada"
 
 #: src/main_gtk_window.py:545 src/main_gtk_window.py:565
 msgid "Comparison #"
-msgstr ""
+msgstr "Comparación #"
 
 #: src/main_gtk_window.py:622 src/main_gtk_window.py:804
 msgid "Supported Formats"
-msgstr ""
+msgstr "Formatos compatibles"
 
 #: src/main_gtk_window.py:653 src/main_gtk_window.py:835
 msgid "Original PyMasVis module development."
-msgstr ""
+msgstr "Desarrollo original del módulo de PMASVIS."
 
 #: src/main_gtk_window.py:655 src/main_gtk_window.py:837
 msgid "GTK application, originally based on PyMasVis commit #657196."
-msgstr ""
+msgstr "Aplicación GTK, originalmente basada en Pymasvis Commit #657196."
 
 #: src/output_gtk.py:179 src/output_gtk.py:181
 msgid "Input file has no audio stream: "
-msgstr ""
+msgstr "El archivo de entrada no tiene transmisión de audio:"
 
 #: src/output_gtk.py:219 src/output_gtk.py:221
 msgid ""
 "Crest: {:0.2f} dB,  DR: {},  L$_K$: {:0.1f} {},  LRA: {:0.1f} LU,  PLR: "
 "{:0.1f} LU"
 msgstr ""
+"Cresta: {:0.2f} dB,  DR: {},  L$_K$: {:0.1f} {},  LRA: {:0.1f} LU,  PLR: "
+"{:0.1f} LU"
 
 #: src/output_gtk.py:222 src/output_gtk.py:224
 msgid ""
 "Encoding: {},  Channels: {},  Layout: {},  Bits: {},\n"
 "Sample rate: {} Hz,  Bitrate: {} kbps,  Duration: {},  Size: {:0.1f} MB"
 msgstr ""
+"Codificación: {}, canales: {}, diseño: {}, bits: {},\n"
+" Velocidad de muestreo: {} Hz, BitRate: {} kbps, duración: {}, tamaño: {: "
+"0.1f} mb"
 
 #: src/output_gtk.py:234 src/output_gtk.py:236
 msgid "Album"
-msgstr ""
+msgstr "Álbum"
 
 #: src/output_gtk.py:236 src/output_gtk.py:238
 msgid "Track"
-msgstr ""
+msgstr "Pista"
 
 #: src/output_gtk.py:238 src/output_gtk.py:240
 msgid "Date"
-msgstr ""
+msgstr "Fecha"
 
 #: src/output_gtk.py:259 src/output_gtk.py:267
 msgid "Checksum (energy): "
-msgstr ""
+msgstr "Suma de verificación (energía):"
 
 #: src/output_gtk.py:267 src/output_gtk.py:275
 msgid "MasVisGtk "
-msgstr ""
+msgstr "MasVisGtk "
 
 #: src/output_gtk.py:313 src/output_gtk.py:325
 msgid ""
 "{}: Crest = {:0.2f} dB / RMS = {:0.2f} dBFS / Peak = {:0.2f} dBFS / True "
 "Peak ≈ {:0.2f} dBTP"
 msgstr ""
+"{}: Cresta = {:0.2f} dB / RMS = {:0.2f} dBFS / Pico = {:0.2f} dBFS / Pico "
+"Verdadero ≈ {:0.2f} dBTP"
 
 #: src/output_gtk.py:355 src/output_gtk.py:369
 msgid ""
 "Loudest part ({} channel, {} samples > 95{} during 20 ms at {:0.2f} sec)"
 msgstr ""
+"Parte más fuerte ({} canal, {} muestras> 95 {} durante 20 ms en {: 0.2f} Sec)"
 
 #: src/output_gtk.py:437 src/output_gtk.py:455
 msgid "Normalised average spectrum, "
-msgstr ""
+msgstr "Espectro promedio normalizado,"
 
 #: src/output_gtk.py:437 src/output_gtk.py:455
 msgid " frames"
-msgstr ""
+msgstr "marcos"
 
 #: src/output_gtk.py:495 src/output_gtk.py:515
 msgid "Allpassed crest factor"
-msgstr ""
+msgstr "Factor de cresta de AllPassed"
 
 #: src/output_gtk.py:535 src/output_gtk.py:561
 msgid "Histogram, 'bits': "
-msgstr ""
+msgstr "Histograma, 'bits':"
 
 #: src/output_gtk.py:590 src/output_gtk.py:622
 msgid "Peak vs RMS level"
-msgstr ""
+msgstr "Nivel pico vs rms"
 
 #: src/output_gtk.py:621 src/output_gtk.py:660
 msgid "Short term (1 s) crest factor"
-msgstr ""
+msgstr "Factor de cresta a corto plazo (1 s)"
 
 #: src/output_gtk.py:653 src/output_gtk.py:699
 msgid "EBU R 128 Short term loudness"
-msgstr ""
+msgstr "Ebu R 128 Voleza a corto plazo"
 
 #: src/output_gtk.py:654 src/output_gtk.py:705
 msgid "Short term PLR"
-msgstr ""
+msgstr "PLR a corto plazo"
 
 #: src/output_gtk.py:725 src/output_gtk.py:800
 msgid "Scale to Window Width"
-msgstr ""
+msgstr "Escala al ancho de la ventana"
 
 #: src/output_gtk.py:779 src/output_gtk.py:859
 msgid "Unknown Dynamic Range"
-msgstr ""
+msgstr "Rango dinámico desconocido"
 
 #: src/output_gtk.py:783 src/output_gtk.py:863
 msgid "Dynamic Range"
-msgstr ""
+msgstr "Rango dinámico"
 
 #: src/output_gtk.py:857 src/output_gtk.py:932
 msgid ""
@@ -710,34 +718,38 @@ msgid ""
 "Crest = {:0.1f} dB\n"
 "L$_k$ = {:0.1f} LU"
 msgstr ""
+"DR = {}\n"
+"Pico = {:0.1f} dBFS\n"
+"Cresta = {:0.1f} dB\n"
+"L$_k$ = {:0.1f} LU"
 
 #: src/output_gtk.py:866 src/output_gtk.py:941
 msgid "{} [{}, {} channels, {} bits, {:0.1f} kHz, {} kbps]"
-msgstr ""
+msgstr "{} [{}, {} canales, {} bits, {: 0.1f} khz, {} kbps]"
 
 #: src/main_gtk_window.py:192 src/main_gtk_window.py:199
 msgid "Overview"
-msgstr ""
+msgstr "Resumen"
 
 #: src/params.py:198
 msgid "Mono"
-msgstr ""
+msgstr "Mono"
 
 #: src/params.py:200
 msgid "Left"
-msgstr ""
+msgstr "Izquierda"
 
 #: src/params.py:200
 msgid "Right"
-msgstr ""
+msgstr "Derecha"
 
 #: src/params.py:202
 msgid "Downmix Left"
-msgstr ""
+msgstr "Downmix izquierda"
 
 #: src/params.py:202
 msgid "Downmix Right"
-msgstr ""
+msgstr "Downmix a la derecha"
 
 #: src/params.py:204 src/params.py:206 src/params.py:208 src/params.py:210
 #: src/params.py:212 src/params.py:214 src/params.py:216 src/params.py:218
@@ -748,7 +760,7 @@ msgstr ""
 #: src/params.py:252 src/params.py:254 src/params.py:256 src/params.py:258
 #: src/params.py:260 src/params.py:262 src/params.py:264 src/params.py:266
 msgid "Front Left"
-msgstr ""
+msgstr "Delantero a la izquierda"
 
 #: src/params.py:204 src/params.py:206 src/params.py:208 src/params.py:210
 #: src/params.py:212 src/params.py:214 src/params.py:216 src/params.py:218
@@ -759,7 +771,7 @@ msgstr ""
 #: src/params.py:252 src/params.py:254 src/params.py:256 src/params.py:258
 #: src/params.py:260 src/params.py:262 src/params.py:264 src/params.py:266
 msgid "Front Right"
-msgstr ""
+msgstr "Delantero a la derecha"
 
 #: src/params.py:204 src/params.py:216 src/params.py:222 src/params.py:224
 #: src/params.py:226 src/params.py:232 src/params.py:236 src/params.py:238
@@ -767,7 +779,7 @@ msgstr ""
 #: src/params.py:252 src/params.py:258 src/params.py:260 src/params.py:262
 #: src/params.py:266
 msgid "Low Frequency"
-msgstr ""
+msgstr "Baja frecuencia"
 
 #: src/params.py:206 src/params.py:210 src/params.py:216 src/params.py:218
 #: src/params.py:220 src/params.py:222 src/params.py:224 src/params.py:226
@@ -777,221 +789,229 @@ msgstr ""
 #: src/params.py:258 src/params.py:260 src/params.py:262 src/params.py:264
 #: src/params.py:266
 msgid "Front Center"
-msgstr ""
+msgstr "Centro delantero"
 
 #: src/params.py:208 src/params.py:210 src/params.py:222 src/params.py:228
 #: src/params.py:234 src/params.py:236 src/params.py:238 src/params.py:254
 #: src/params.py:264 src/params.py:266
 msgid "Back Center"
-msgstr ""
+msgstr "Centro trasero"
 
 #: src/params.py:212 src/params.py:218 src/params.py:224 src/params.py:234
 #: src/params.py:238 src/params.py:242 src/params.py:246 src/params.py:248
 #: src/params.py:252 src/params.py:254 src/params.py:256 src/params.py:258
 #: src/params.py:260 src/params.py:262 src/params.py:264 src/params.py:266
 msgid "Back Left"
-msgstr ""
+msgstr "De vuelta a la izquierda"
 
 #: src/params.py:212 src/params.py:218 src/params.py:224 src/params.py:234
 #: src/params.py:238 src/params.py:242 src/params.py:246 src/params.py:248
 #: src/params.py:252 src/params.py:254 src/params.py:256 src/params.py:258
 #: src/params.py:260 src/params.py:262 src/params.py:264 src/params.py:266
 msgid "Back Right"
-msgstr ""
+msgstr "De vuelta a la derecha"
 
 #: src/params.py:214 src/params.py:220 src/params.py:226 src/params.py:228
 #: src/params.py:230 src/params.py:236 src/params.py:240 src/params.py:242
 #: src/params.py:244 src/params.py:246 src/params.py:250 src/params.py:254
 #: src/params.py:260 src/params.py:262 src/params.py:264 src/params.py:266
 msgid "Side Left"
-msgstr ""
+msgstr "Lado a la izquierda"
 
 #: src/params.py:214 src/params.py:220 src/params.py:226 src/params.py:228
 #: src/params.py:230 src/params.py:236 src/params.py:240 src/params.py:242
 #: src/params.py:244 src/params.py:246 src/params.py:250 src/params.py:254
 #: src/params.py:260 src/params.py:262 src/params.py:264 src/params.py:266
 msgid "Side Right"
-msgstr ""
+msgstr "Lado a la derecha"
 
 #: src/params.py:230 src/params.py:240 src/params.py:244 src/params.py:248
 #: src/params.py:250 src/params.py:266
 msgid "Front Left-of-Center"
-msgstr ""
+msgstr "Delantero izquierdo de centro"
 
 #: src/params.py:230 src/params.py:240 src/params.py:244 src/params.py:248
 #: src/params.py:250 src/params.py:266
 msgid "Front Right-of-Center"
-msgstr ""
+msgstr "Derecho de centro delantero"
 
 #: src/params.py:232 src/params.py:252 src/params.py:256 src/params.py:258
 #: src/params.py:260 src/params.py:262 src/params.py:264 src/params.py:266
 msgid "Top Front Left"
-msgstr ""
+msgstr "Superior delantera izquierda"
 
 #: src/params.py:232 src/params.py:252 src/params.py:256 src/params.py:258
 #: src/params.py:260 src/params.py:262 src/params.py:264 src/params.py:266
 msgid "Top Front Right"
-msgstr ""
+msgstr "Superior delantero a la derecha"
 
 #: src/params.py:256 src/params.py:258 src/params.py:262 src/params.py:264
 #: src/params.py:266
 msgid "Top Back Left"
-msgstr ""
+msgstr "Arriba a la izquierda"
 
 #: src/params.py:256 src/params.py:258 src/params.py:262 src/params.py:264
 #: src/params.py:266
 msgid "Top Back Right"
-msgstr ""
+msgstr "Cubra a la derecha"
 
 #: src/params.py:264 src/params.py:266
 msgid "Top Front Center"
-msgstr ""
+msgstr "Centro delantero superior"
 
 #: src/params.py:264 src/params.py:266
 msgid "Top Back Center"
-msgstr ""
+msgstr "Centro Trasero Superior"
 
 #: src/params.py:264
 msgid "Wide Left"
-msgstr ""
+msgstr "A la izquierda"
 
 #: src/params.py:264
 msgid "Wide Right"
-msgstr ""
+msgstr "Amplio a la derecha"
 
 #: src/params.py:266
 msgid "Top Center"
-msgstr ""
+msgstr "Centro superior"
 
 #: src/params.py:266
 msgid "Low Frequency 2"
-msgstr ""
+msgstr "Baja frecuencia 2"
 
 #: src/params.py:266
 msgid "Top Side Left"
-msgstr ""
+msgstr "Top Side Left"
 
 #: src/params.py:266
 msgid "Top Side Right"
-msgstr ""
+msgstr "Top del lado a la derecha"
 
 #: src/params.py:266
 msgid "Bottom Front Center"
-msgstr ""
+msgstr "Centro delantero inferior"
 
 #: src/params.py:266
 msgid "Bottom Front Left"
-msgstr ""
+msgstr "Parte inferior delantera izquierda"
 
 #: src/params.py:266
 msgid "Bottom Front Right"
-msgstr ""
+msgstr "Parte inferior delantera derecha"
 
 #: data/io.github.itprojects.MasVisGtk.gschema.xml:86
 msgid "Animation duration in milliseconds."
-msgstr ""
+msgstr "Duración de animación en milisegundos."
 
 #: src/gtk/help-overlay.ui:79 src/main_gtk_window.py:134
 #: src/main_gtk_window.py:632
 msgid "Animate Tabs"
-msgstr ""
+msgstr "Pestañas animadas"
 
 #: src/gtk/preferences-overlay.ui:252
 msgid "Set animation duration [ms]"
-msgstr ""
+msgstr "Establecer la duración de la animación [MS]"
 
 #: src/main_gtk_window.py:428
 msgid "Save Animation"
-msgstr ""
+msgstr "Guardar animación"
 
 #: src/main_gtk_window.py:626 src/main_gtk_window.py:649
 #: src/main_gtk_window.py:697
 msgid "Cannot Animate"
-msgstr ""
+msgstr "No se puede animar"
 
 #: src/main_gtk_window.py:662
 msgid "Animate"
-msgstr ""
+msgstr "Animar"
 
 #: src/main_gtk_window.py:662
 msgid "Animate tabs in separate window"
-msgstr ""
+msgstr "Pestañas animadas en una ventana separada"
 
 #: src/main_gtk_window.py:666
 msgid "Animate ALL tabs in separate window"
-msgstr ""
+msgstr "Animar todas las pestañas en una ventana separada"
 
 #: src/main_gtk_window.py:707
 msgid "Animation #"
-msgstr ""
+msgstr "Animación #"
 
 #: src/main_gtk_window.py:722
 msgid "Save tabs to animated gif image"
-msgstr ""
+msgstr "Guardar pestañas a la imagen animada de gif"
 
 #: src/main_gtk_window.py:765
 msgid "Processing images."
-msgstr ""
+msgstr "Procesamiento de imágenes."
 
 #: src/main_gtk_window.py:772
 msgid "Animated image ready for saving."
-msgstr ""
+msgstr "Imagen animada lista para guardar."
 
 #: src/main_gtk_window.py:775
 msgid "Animation Error"
-msgstr ""
+msgstr "Error de animación"
 
 #: src/main_gtk_window.py:776
 msgid ""
 "Cannot create animation.\n"
 " Plotting canvas cannot be made into image.\n"
 msgstr ""
+"No se puede crear animación.\n"
+" El trazado de lienzos no se puede convertir en una imagen.\n"
 
 #: src/output_gtk.py:770
 msgid "Reset original view"
-msgstr ""
+msgstr "Restablecer la vista original"
 
 #: src/output_gtk.py:772
 msgid "Back to previous view"
-msgstr ""
+msgstr "Volver a la vista anterior"
 
 #: src/output_gtk.py:774
 msgid "Forward to next view"
-msgstr ""
+msgstr "Avance a la siguiente vista"
 
 #: src/output_gtk.py:776
 msgid ""
 "Left button pans, Right button zooms\n"
 "x/y fixes axis, CTRL fixes aspect"
 msgstr ""
+"Sartenes del botón izquierdo, zooms del botón derecho\n"
+"X/Y Corrección del eje, aspecto de correcciones CTRL"
 
 #: src/output_gtk.py:778
 msgid ""
 "Zoom to rectangle\n"
 "x/y fixes axis"
 msgstr ""
+"Zoom al rectángulo\n"
+"eje fijo x/y"
 
 #: src/output_gtk.py:780
 msgid "Configure subplots"
-msgstr ""
+msgstr "Configurar subtramas"
 
 #: src/output_gtk.py:782
 msgid "Save the figure"
-msgstr ""
+msgstr "Guardar la figura"
 
 #: src/output_gtk.py:789
 msgid "Zoom Level [px]"
-msgstr ""
+msgstr "Nivel de zoom [PX]"
 
 #: src/output_gtk.py:795
 msgid "Resotre original dimensions"
-msgstr ""
+msgstr "Restaurar dimensiones originales"
 
 #: src/main_gtk_window.py:776
 msgid ""
 "Cannot create animation.\n"
 "Plotting canvas cannot be made into image.\n"
 msgstr ""
+"No se puede crear animación.\n"
+"El trazado de lienzos no se puede convertir en una imagen.\n"
 
 #: src/params.py:346
 #, python-format
@@ -1217,3 +1237,241 @@ msgid ""
 "in the 16 bit PCM format. These bars are presented in the histogram, showing "
 "if some sample levels are more common than others.\n"
 msgstr ""
+"\n"
+"<i>Consulte el <b>glosario al final</b> para ver los <b>términos de audio</"
+"b> y las <b>definiciones</b>.</i>\n"
+"\n"
+"## <span size=\"larger\"><b>El gráfico de descripción general</b></span>\n"
+"\n"
+"El gráfico de descripción general es adecuado para mostrar información "
+"condensada sobre un álbum completo. Muestra las formas de onda de los "
+"canales izquierdo y derecho superpuestas entre sí. El canal izquierdo se "
+"muestra en azul y el derecho en rojo. Las partes en las que se superponen "
+"los canales izquierdo y derecho se muestran en negro. Si se muestra mucho "
+"color, los canales son bastante diferentes.\n"
+"\n"
+"El factor de cresta y el nivel del pico más alto se muestran a la derecha de "
+"cada gráfico. El valor puede diferir de los del análisis detallado, ya que "
+"los canales izquierdo y derecho se analizan como uno solo.\n"
+"\n"
+"## <span size=\"larger\"><b>El gráfico de análisis detallado</b></span>\n"
+"\n"
+"El gráfico de análisis detallado muestra un análisis más profundo de una "
+"sola pista. Cada gráfico muestra un aspecto diferente de la pista, como se "
+"describe a continuación.\n"
+"\n"
+"### <span size=\"large\"><b>Izquierdo y derecho</b></span>\n"
+"\n"
+"Los gráficos superiores muestran las formas de onda de los canales izquierdo "
+"y derecho, de forma muy similar al gráfico de descripción general, pero por "
+"separado. El factor de cresta, el nivel RMS y los niveles de pico de los "
+"canales aparecen sobre los gráficos.\n"
+"\n"
+"### <span size=\"large\"><b>La parte más fuerte</b></span>\n"
+"\n"
+"Para mostrar cómo la parte más fuerte de la pista ha sobrevivido al "
+"procesamiento de masterización, MasVis busca una parte fuerte de la pista y "
+"la amplía. Alrededor de la parte seleccionada, se muestra una ventana de 100 "
+"milisegundos. Aquí se revelan típicamente las limitaciones de recorte y/o de "
+"pared de ladrillo.\n"
+"\n"
+"La parte que se muestra no es seleccionable por el usuario, de acuerdo con "
+"la idea de que los gráficos de MasVis deben aparecer iguales, "
+"independientemente de quién haga el análisis. La selección se realiza "
+"automáticamente, por MasVis, de la siguiente manera:\n"
+"\n"
+"1. Busque el valor de muestra más alto en el archivo de sonido\n"
+"\n"
+"2. Aplique un umbral del 95 por ciento del valor de muestra más alto\n"
+"\n"
+"3. Para cada lugar en el que la señal supere el umbral, cuente cuántas "
+"muestras superan el umbral\n"
+"\n"
+"4. Seleccione el lugar en el que se produce la mayor cantidad de muestras "
+"que superan el umbral\n"
+"\n"
+"El recuento de muestras, para la parte seleccionada, se muestra sobre el "
+"gráfico.\n"
+"\n"
+"### <span size=\"large\"><b>Septerum promedio normalizado</b></span>\n"
+"\n"
+"Este gráfico muestra el espectro promedio de la señal. El gráfico se crea "
+"promediando ventanas de Blackman de 1 segundo de la señal. Este gráfico se "
+"puede utilizar para identificar las propiedades tímbricas de la señal. Las "
+"líneas sólidas inclinadas caen 6 dB/octava y pueden servir como referencia "
+"para juzgar el contenido espectral de la pista.\n"
+"\n"
+"Aunque este gráfico no diferencia entre el procesamiento de masterización y "
+"el resto de la producción, incluidos los instrumentos, es muy útil para "
+"comparar diferentes lanzamientos del mismo álbum. Las versiones "
+"\"remasterizadas\" de los álbumes a menudo vienen con varios cambios "
+"espectrales, y estos se revelan en el gráfico de espectro con bastante "
+"claridad, al cambiar entre las dos versiones.\n"
+"\n"
+"El gráfico de espectro está normalizado, es decir, el nivel RMS de la señal "
+"no afecta al gráfico en absoluto.\n"
+"\n"
+"### <span size=\"large\"><b>Factor de cresta de paso total</b></span>\n"
+"\n"
+"Es probablemente el gráfico más revelador de MasVis. Da una estimación de "
+"cuánto se ha reducido el factor de cresta, mediante el procesamiento del "
+"master de 2 canales. En el gráfico, hay cuatro curvas, dos rojas para el "
+"canal derecho y dos azules para el canal izquierdo. La línea discontinua "
+"muestra el factor de cresta, es decir, la misma información que los gráficos "
+"de forma de onda anteriores. La línea continua muestra el factor de cresta "
+"de la señal después de haber pasado un filtro de paso total. El segundo "
+"factor de cresta es un valor aproximado y generalmente subestimado de cuán "
+"grande era el factor de cresta antes de la maximización del nivel de la "
+"mezcla maestra de 2 canales.\n"
+"\n"
+"Al principio, puede parecer imposible hacer una estimación de este tipo, "
+"pero la experiencia demuestra que el método funciona. Por supuesto, no da un "
+"valor exacto del factor de cresta original, pero es lo suficientemente bueno "
+"para determinar cuándo la pista ha sido sometida a una maximización "
+"destructiva de la sonoridad.\n"
+"\n"
+"La diferencia entre el máximo en la línea continua y la línea discontinua se "
+"correlaciona bastante bien con la cantidad de pérdida del factor de cresta "
+"que es resultado de la maximización del nivel de la mezcla de 2 canales.\n"
+"\n"
+"Este es el método que utiliza MasVis para hacer el gráfico:\n"
+"\n"
+"1. Dibuje una línea discontinua en el factor de cresta de la pista\n"
+"\n"
+"2. Haga pasar la pista por siete filtros de paso total de primer orden "
+"diferentes a 20, 60, 200, 600, 2000, 6000 y 20000 Hz\n"
+"\n"
+"3. Para cada una de las siete señales filtradas, calcule un nuevo valor de "
+"factor de cresta\n"
+"\n"
+"4. Dibuje una línea continua que represente los factores de cresta de las "
+"siete señales en función de la frecuencia del filtro\n"
+"\n"
+"### <span size=\"large\"><b>Histograma</b></span>\n"
+"\n"
+"En audio de 16 bits, como en un CD, la forma de onda se representa con "
+"números de 16 bits, lo que da un rango de -32768 a +32727 para los valores "
+"de muestra. Algunos valores son más comunes que otros. Si, por ejemplo, la "
+"pista está completamente en silencio, es decir, todos los valores de muestra "
+"son 0, el valor de muestra 0 se vuelve muy común. Si hay un sonido débil, "
+"los valores de muestra pequeños se vuelven comunes y si la señal es e "
+"xtremadamente alto y recortado, los valores de muestra extremos se vuelven "
+"comunes en su lugar.\n"
+"\n"
+"El histograma muestra la cantidad de muestras para cada valor de muestra. "
+"Una pista que contiene silencio completo mostrará un pico cerca de 0, y una "
+"pista que contiene recorte mostrará picos en los extremos alto y/o bajo del "
+"histograma.\n"
+"\n"
+"Se puede demostrar mediante análisis estadístico que la suma de muchas "
+"señales con una amplitud razonablemente constante a lo largo del tiempo dará "
+"como resultado una \"distribución normal\". Dicha distribución toma la forma "
+"de una parábola si el eje y es logarítmico (como en MasVis). Si las señales "
+"no tienen amplitudes constantes, sino amplitudes que varían a lo largo del "
+"tiempo, la forma se vuelve más parecida a una pirámide, con pendientes "
+"aproximadamente lineales.\n"
+"\n"
+"Sin embargo, el histograma de la suma de muchas señales no correlacionadas "
+"nunca tiene finales abruptos. Tales finales abruptos solo ocurren si las "
+"señales están correlacionadas (que casi nunca lo están) o si se ha alterado "
+"la mezcla de 2 canales.\n"
+"\n"
+"Se esperaría un histograma con pendientes suaves para cualquier mezcla de "
+"varias señales, a menos que la mezcla de 2 canales haya sido sometida a "
+"recortes o limitaciones de tipo brickwall. Por lo tanto, el histograma es "
+"útil para revelar recortes y limitaciones.\n"
+"\n"
+"El número de \"bits\", sobre el histograma, indica cuántos de los 65536 "
+"niveles aparecen al menos una vez en el archivo de sonido. Si los 65536 "
+"niveles de muestra aparecen en el archivo de sonido, el número de bits se "
+"muestra como 16,0. Si solo se utiliza la mitad de ellos (es decir, 32768), "
+"se muestra 15,0. En términos matemáticos, el número que se muestra es el "
+"logaritmo bidimensional del número de niveles de muestra utilizados. Aunque "
+"parezca un tanto contraintuitivo, las grabaciones que han sido sometidas a "
+"un proceso de masterización suelen rondar los 16,0 \"bits\", mientras que "
+"las grabaciones sin procesar a escala completa suelen alcanzar los 14-15 "
+"\"bits\".\n"
+"\n"
+"### <span size=\"large\"><b>Nivel pico vs. RMS</b></span>\n"
+"\n"
+"Este gráfico se basa en fotogramas de 1 segundo de la señal, y cada uno está "
+"representado por un círculo en el diagrama. Para cada fotograma, los niveles "
+"RMS y pico también dan el factor de cresta. El factor de cresta para cada "
+"fotograma también se puede leer en el diagrama.\n"
+"\n"
+"Este gráfico es útil para mostrar la dinámica de la pista. Si se amplifica "
+"una señal, el círculo se mueve hacia arriba, hacia la derecha, ya que tanto "
+"el pico como el RMS aumentan en la misma cantidad. Cuando los círculos "
+"llegan a la parte superior, solo es posible un mayor aumento de RMS si se "
+"reduce el factor de cresta.\n"
+"\n"
+"Demasiadas producciones modernas están muy abarrotadas en la esquina "
+"superior derecha.\n"
+"\n"
+"### <span size=\"large\"><b>Factor de cresta a corto plazo</b></span>\n"
+"\n"
+"Cada uno de los círculos en el gráfico de pico vs. RMS también aparece en el "
+"gráfico de factor de cresta a corto plazo. Aquí, el factor de cresta de las "
+"ventanas de 1 segundo se muestra en función del tiempo. Es útil comparar "
+"este gráfico con los gráficos de forma de onda.\n"
+"\n"
+"Para sonidos naturales, sin procesar, el factor de cresta generalmente "
+"aumenta un poco cuando el sonido es más fuerte. El sonido fuerte "
+"generalmente se asocia con un espectro más rico y una mayor cantidad de "
+"fuentes de sonido. Ambos factores aumentan el factor de cresta. Sin embargo, "
+"si la mezcla de 2 canales ha sido sometida a recortes o limitaciones, el "
+"factor de cresta generalmente se reduce cuando el sonido se vuelve fuerte.\n"
+"\n"
+"## <span size=\"larger\"><b>Glosario</b></span>\n"
+"\n"
+"### <span size=\"large\"><b>Factor de cresta</b></span>\n"
+"\n"
+"El factor de cresta es la relación entre el valor pico y el valor RMS "
+"durante un cuadro. El factor de cresta se expresa principalmente en "
+"decibeles [dB] y, de ser así, es la diferencia entre el nivel pico [dB] y el "
+"nivel RMS [dB]. El factor de cresta nunca es negativo. Una onda sinusoidal "
+"tiene un factor de cresta de 3 dB y una onda cuadrada de 0 dB.\n"
+"\n"
+"### <span size=\"large\"><b>Espectro</b></span>\n"
+"\n"
+"Un gráfico de septo es el resultado de una transformada de Fourier (FFT) y "
+"muestra cómo se distribuye la energía (en una señal) a través de diferentes "
+"frecuencias.\n"
+"\n"
+"### <span size=\"large\"><b>Valores de pico y RMS</b></span>\n"
+"\n"
+"El valor RMS (raíz cuadrada media) es proporcional a la potencia promedio de "
+"una señal observada durante un tiempo. El valor de pico es el valor absoluto "
+"máximo dentro de ese período de tiempo.\n"
+"\n"
+"### <span size=\"large\"><b>Cuadro</b></span>\n"
+"\n"
+"Un cuadro es una parte corta o larga de la señal de sonido. En MasVis, se "
+"utilizan cuadros de 1 segundo para generar el espectro y el gráfico de "
+"factor de cresta de corto plazo.\n"
+"\n"
+"### <span size=\"large\"><b>Filtro pasa todo</b></span>\n"
+"\n"
+"Un filtro pasa todo deja pasar todas las frecuencias, sin atenuación ni "
+"amplificación. Sin embargo, las fases de las diferentes frecuencias se "
+"desplazan de forma diferente. El resultado es una señal que suena muy "
+"similar a la señal original, pero con una forma de onda diferente.\n"
+"\n"
+"### <span size=\"large\"><b>Suma de comprobación</b></span>\n"
+"\n"
+"Las sumas de comprobación se utilizan con frecuencia para garantizar la "
+"integridad de los archivos de datos. Los algoritmos de suma de comprobación "
+"producen resultados que son bastante diferentes, incluso si solo se cambia "
+"un bit. El algoritmo de suma de comprobación en MasVis es diferente, ya que "
+"permanece igual si se agrega silencio al archivo.\n"
+"\n"
+"### <span size=\"large\"><b>Histograma</b></span>\n"
+"\n"
+"Un histograma es un diagrama que indica \"cuántos de cada uno hay\". Por "
+"ejemplo, un histograma simple puede mostrar cuántos estudiantes aprobaron o "
+"reprobaron un examen. Este histograma es un diagrama que indica \"cuántos de "
+"cada uno hay\".\n"
+"El histograma tendría solo dos barras: pasa y falla. El histograma en MasVis "
+"tiene 65536 barras internamente, cada una representando un nivel en el "
+"formato PCM de 16 bits. Estas barras se presentan en el histograma, "
+"mostrando si algunos niveles de muestra son más comunes que otros.\n"
