@@ -992,7 +992,7 @@ msgid "Zoom Level [px]"
 msgstr "Ниво на Увеличение [пиксели]"
 
 #: src/output_gtk.py:795
-msgid "Resotre original dimensions"
+msgid "Restore original dimensions"
 msgstr "Възстанови първоначалните размери"
 
 #: src/main_gtk_window.py:776

@@ -963,7 +963,7 @@ msgid "Zoom Level [px]"
 msgstr ""
 
 #: src/output_gtk.py:795
-msgid "Resotre original dimensions"
+msgid "Restore original dimensions"
 msgstr ""
 
 #: src/params.py:346

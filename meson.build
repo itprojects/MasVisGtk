@@ -1,5 +1,5 @@
 project('masvisgtk',
-    version: '4.0.0',
+    version: '4.0.1',
     license: ['GPL-2.0'],
     meson_version: '>= 0.62.0',
     default_options: [ 'warning_level=2', 'werror=false', ],

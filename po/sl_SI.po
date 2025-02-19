@@ -928,7 +928,7 @@ msgstr ""
 #: src/main_gtk_window.py:776
 msgid ""
 "Cannot create animation.\n"
-" Plotting canvas cannot be made into image.\n"
+"Plotting canvas cannot be made into image.\n"
 msgstr ""
 
 #: src/output_gtk.py:770
@@ -955,10 +955,6 @@ msgid ""
 "x/y fixes axis"
 msgstr ""
 
-#: src/output_gtk.py:780
-msgid "Configure subplots"
-msgstr ""
-
 #: src/output_gtk.py:782
 msgid "Save the figure"
 msgstr ""
@@ -968,13 +964,7 @@ msgid "Zoom Level [px]"
 msgstr ""
 
 #: src/output_gtk.py:795
-msgid "Resotre original dimensions"
-msgstr ""
-
-#: src/main_gtk_window.py:776
-msgid ""
-"Cannot create animation.\n"
-"Plotting canvas cannot be made into image.\n"
+msgid "Restore original dimensions"
 msgstr ""
 
 #: src/params.py:346

@@ -34,7 +34,7 @@ msgstr "Herramienta de análisis de audio para su música"
 
 #: data/io.github.itprojects.MasVisGtk.desktop.in:12
 msgid "Audio;Loudness;Analysis;Music;Media;"
-msgstr "Audio; volumen; análisis; música; medios;"
+msgstr "Audio; Volumen; Análisis; Música; Medios;"
 
 #: data/io.github.itprojects.MasVisGtk.metainfo.xml.in:9
 msgid ""
@@ -315,10 +315,10 @@ msgstr "Mostrar formatos compatibles."
 
 #: src/main.py:209 src/main.py:213
 msgid ""
-"Use [LU], instead of [LUFS], when displaying R128 values, (default: LUFS)."
+"Use [LU], instead of [LUFS], when displaying R128 values, (default: LUFS). "
 msgstr ""
 "Use [Lu], en lugar de [LUFS], al mostrar los valores R128, (predeterminado: "
-"LUFS)."
+"LUFS). "
 
 #: src/main.py:218 src/main.py:222
 msgid ""
@@ -338,11 +338,11 @@ msgstr "Archivos) o carpetas)"
 
 #: src/main.py:350 src/main.py:359
 msgid "MasVisGtk Version "
-msgstr "Versión MASVIS GTK"
+msgstr "Versión MasVisGtk "
 
 #: src/main.py:358 src/main.py:367
 msgid "Supported Formats: "
-msgstr "Formatos compatibles:"
+msgstr "Formatos compatibles: "
 
 #: src/main.py:369 src/main.py:378
 msgid "is not possible with option -o. Try dir or flat."
@@ -354,19 +354,19 @@ msgstr "No se suministran archivos o carpetas de entrada."
 
 #: src/main.py:404 src/main.py:413
 msgid "Bad permisions for file. "
-msgstr "Malos permisos para el archivo."
+msgstr "Malos permisos para el archivo. "
 
 #: src/main.py:422 src/main.py:431
 msgid "Bad input: "
-msgstr "Mala entrada:"
+msgstr "Mala entrada: "
 
 #: src/main.py:425 src/main.py:434
 msgid "Error processing files: "
-msgstr "Archivos de procesamiento de errores:"
+msgstr "Archivos de procesamiento de errores: "
 
 #: src/main.py:432 src/main.py:441
 msgid "Bad input files: "
-msgstr "Archivos de entrada malas:"
+msgstr "Archivos de entrada malas: "
 
 #: src/main.py:434 src/main.py:443
 msgid "Problem Files"
@@ -390,7 +390,7 @@ msgstr "Mimetipo no compatible"
 
 #: src/main.py:465 src/main.py:474
 msgid "Skipping file: "
-msgstr "Archivo de omisión:"
+msgstr "Archivo de omisión: "
 
 #: src/main.py:472 src/main.py:481
 msgid "Processing"
@@ -402,7 +402,7 @@ msgstr "Error del trabajador asíncrono"
 
 #: src/main.py:532 src/main.py:541
 msgid "Duplicate path: "
-msgstr "Ruta duplicada:"
+msgstr "Ruta duplicada: "
 
 #: src/main.py:538 src/main.py:547
 msgid "Error in Opening"
@@ -441,7 +441,7 @@ msgstr "¡Errores en el procesamiento!"
 
 #: src/main.py:953 src/main.py:964 src/main.py:1003 src/main.py:1014
 msgid "Unable to open input "
-msgstr "No se puede abrir la entrada"
+msgstr "No se puede abrir la entrada "
 
 #: src/main.py:954 src/main.py:1004
 msgid "Cannot Open File"
@@ -532,15 +532,15 @@ msgstr "Agregar carpetas para procesar"
 
 #: src/main_gtk_window.py:242 src/main_gtk_window.py:249
 msgid "use LUFS units"
-msgstr "Use unidades LUFS"
+msgstr "utilizar unidades LUFS"
 
 #: src/main_gtk_window.py:246 src/main_gtk_window.py:253
 msgid "recursive (search sub-folders)"
-msgstr "Recursivo (Search Sub-Pleas)"
+msgstr "recursivo (search sub-pleas)"
 
 #: src/main_gtk_window.py:252 src/main_gtk_window.py:259
 msgid "overview mode"
-msgstr "Modo de descripción general"
+msgstr "modo de descripción general"
 
 #: src/main_gtk_window.py:283 src/main_gtk_window.py:290
 msgid "Start"
@@ -594,7 +594,7 @@ msgstr "☑ ¡Todos!"
 
 #: src/main_gtk_window.py:482 src/main_gtk_window.py:502
 msgid "Compare ALL tabs in separate window"
-msgstr "Compare todas las pestañas en una ventana separada"
+msgstr "Compare TODAS las pestañas en una ventana separada"
 
 #: src/main_gtk_window.py:545 src/main_gtk_window.py:565
 msgid "Comparison #"
@@ -606,15 +606,15 @@ msgstr "Formatos compatibles"
 
 #: src/main_gtk_window.py:653 src/main_gtk_window.py:835
 msgid "Original PyMasVis module development."
-msgstr "Desarrollo original del módulo de PMASVIS."
+msgstr "Desarrollo original del módulo de PyMasVis."
 
 #: src/main_gtk_window.py:655 src/main_gtk_window.py:837
 msgid "GTK application, originally based on PyMasVis commit #657196."
-msgstr "Aplicación GTK, originalmente basada en Pymasvis Commit #657196."
+msgstr "Aplicación GTK, originalmente basada en PyMasVis Commit #657196."
 
 #: src/output_gtk.py:179 src/output_gtk.py:181
 msgid "Input file has no audio stream: "
-msgstr "El archivo de entrada no tiene transmisión de audio:"
+msgstr "El archivo de entrada no tiene transmisión de audio: "
 
 #: src/output_gtk.py:219 src/output_gtk.py:221
 msgid ""
@@ -629,9 +629,9 @@ msgid ""
 "Encoding: {},  Channels: {},  Layout: {},  Bits: {},\n"
 "Sample rate: {} Hz,  Bitrate: {} kbps,  Duration: {},  Size: {:0.1f} MB"
 msgstr ""
-"Codificación: {}, canales: {}, diseño: {}, bits: {},\n"
-" Velocidad de muestreo: {} Hz, BitRate: {} kbps, duración: {}, tamaño: {: "
-"0.1f} mb"
+"Codificación: {},  Canales: {},  Diseño: {},  Bits: {},\n"
+"Velocidad de muestreo: {} Hz,  BitRate: {} kbps,  Duración: {},  Tamaño:"
+" {:0.1f} mb"
 
 #: src/output_gtk.py:234 src/output_gtk.py:236
 msgid "Album"
@@ -665,15 +665,16 @@ msgstr ""
 msgid ""
 "Loudest part ({} channel, {} samples > 95{} during 20 ms at {:0.2f} sec)"
 msgstr ""
-"Parte más fuerte ({} canal, {} muestras> 95 {} durante 20 ms en {: 0.2f} Sec)"
+"Parte más fuerte ({} canal, {} muestras > 95{} durante 20 ms en"
+" {:0.2f} Sec)"
 
 #: src/output_gtk.py:437 src/output_gtk.py:455
 msgid "Normalised average spectrum, "
-msgstr "Espectro promedio normalizado,"
+msgstr "Espectro promedio normalizado, "
 
 #: src/output_gtk.py:437 src/output_gtk.py:455
 msgid " frames"
-msgstr "marcos"
+msgstr " marcos"
 
 #: src/output_gtk.py:495 src/output_gtk.py:515
 msgid "Allpassed crest factor"
@@ -681,11 +682,11 @@ msgstr "Factor de cresta de AllPassed"
 
 #: src/output_gtk.py:535 src/output_gtk.py:561
 msgid "Histogram, 'bits': "
-msgstr "Histograma, 'bits':"
+msgstr "Histograma, 'bits': "
 
 #: src/output_gtk.py:590 src/output_gtk.py:622
 msgid "Peak vs RMS level"
-msgstr "Nivel pico vs rms"
+msgstr "Nivel pico vs RMS"
 
 #: src/output_gtk.py:621 src/output_gtk.py:660
 msgid "Short term (1 s) crest factor"
@@ -725,7 +726,7 @@ msgstr ""
 
 #: src/output_gtk.py:866 src/output_gtk.py:941
 msgid "{} [{}, {} channels, {} bits, {:0.1f} kHz, {} kbps]"
-msgstr "{} [{}, {} canales, {} bits, {: 0.1f} khz, {} kbps]"
+msgstr "{} [{}, {} canales, {} bits, {:0.1f} kHz, {} kbps]"
 
 #: src/main_gtk_window.py:192 src/main_gtk_window.py:199
 msgid "Overview"
@@ -931,7 +932,7 @@ msgstr "Pestañas animadas en una ventana separada"
 
 #: src/main_gtk_window.py:666
 msgid "Animate ALL tabs in separate window"
-msgstr "Animar todas las pestañas en una ventana separada"
+msgstr "Animar TODAS las pestañas en una ventana separada"
 
 #: src/main_gtk_window.py:707
 msgid "Animation #"
@@ -956,10 +957,10 @@ msgstr "Error de animación"
 #: src/main_gtk_window.py:776
 msgid ""
 "Cannot create animation.\n"
-" Plotting canvas cannot be made into image.\n"
+"Plotting canvas cannot be made into image.\n"
 msgstr ""
 "No se puede crear animación.\n"
-" El trazado de lienzos no se puede convertir en una imagen.\n"
+"El trazado de lienzos no se puede convertir en una imagen.\n"
 
 #: src/output_gtk.py:770
 msgid "Reset original view"
@@ -979,7 +980,7 @@ msgid ""
 "x/y fixes axis, CTRL fixes aspect"
 msgstr ""
 "Sartenes del botón izquierdo, zooms del botón derecho\n"
-"X/Y Corrección del eje, aspecto de correcciones CTRL"
+"x/y Corrección del eje, aspecto de correcciones CTRL"
 
 #: src/output_gtk.py:778
 msgid ""
@@ -988,10 +989,6 @@ msgid ""
 msgstr ""
 "Zoom al rectángulo\n"
 "eje fijo x/y"
-
-#: src/output_gtk.py:780
-msgid "Configure subplots"
-msgstr "Configurar subtramas"
 
 #: src/output_gtk.py:782
 msgid "Save the figure"
@@ -1002,16 +999,8 @@ msgid "Zoom Level [px]"
 msgstr "Nivel de zoom [PX]"
 
 #: src/output_gtk.py:795
-msgid "Resotre original dimensions"
+msgid "Restore original dimensions"
 msgstr "Restaurar dimensiones originales"
-
-#: src/main_gtk_window.py:776
-msgid ""
-"Cannot create animation.\n"
-"Plotting canvas cannot be made into image.\n"
-msgstr ""
-"No se puede crear animación.\n"
-"El trazado de lienzos no se puede convertir en una imagen.\n"
 
 #: src/params.py:346
 #, python-format
@@ -1090,8 +1079,8 @@ msgid ""
 "Is probably the most revealing graph in MasVis. It gives an estimate of how "
 "much the crest factor has been lowered, by the processing of the 2-channel "
 "master. In the graph, there are four curves, two red for the right channel, "
-"and two blue for the left channel. The dashed line shows the crest factor, "
-"i.e. the same information as above the waveform graphs. The solid line shows "
+"and two blue for the left channel. The dashed line shows the crest factor, i."
+"e. the same information as above the waveform graphs. The solid line shows "
 "the crest factor of the signal after it has passed an allpass filter. The "
 "second crest factor is a rough, and typically underestimated value of how "
 "large the crest factor was prior to level maximation of the 2-channel "

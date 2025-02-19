@@ -998,7 +998,7 @@ msgid "Zoom Level [px]"
 msgstr "Nível de zoom [px]"
 
 #: src/output_gtk.py:795
-msgid "Resotre original dimensions"
+msgid "Restore original dimensions"
 msgstr "Dimensões originais do Resotre"
 
 #: src/params.py:346

@@ -965,12 +965,6 @@ msgstr ""
 msgid "Resotre original dimensions"
 msgstr ""
 
-#: src/main_gtk_window.py:776
-msgid ""
-"Cannot create animation.\n"
-"Plotting canvas cannot be made into image.\n"
-msgstr ""
-
 #: src/params.py:346
 #, python-format
 msgid ""

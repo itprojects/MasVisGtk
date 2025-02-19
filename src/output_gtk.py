@@ -792,7 +792,7 @@ def render(
         spin_zoom.aspect_ratio = aspect_ratio
         spin_zoom.connect('value-changed', on_value_changed)
 
-        btn_zoom_original = Gtk.Button(icon_name='system-search-symbolic', tooltip_text=_('Resotre original dimensions'))
+        btn_zoom_original = Gtk.Button(icon_name='system-search-symbolic', tooltip_text=_('Restore original dimensions'))
         btn_zoom_original.set_valign(Gtk.Align.CENTER)
         btn_zoom_original.connect('clicked', on_scale_to_default, spin_zoom.get_adjustment())
 
