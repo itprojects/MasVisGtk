@@ -1,212 +1,299 @@
-![](./data/icons/hicolor/scalable/apps/io.github.itprojects.MasVisGtk.svg)
+# MasVisGtk
 
-MasVisGtk
-=========
+<div align="center">
+  <img src="./data/icons/hicolor/scalable/apps/io.github.itprojects.MasVisGtk.svg" alt="MasVisGtk Logo" width="128" height="128">
+  
+  **Audio loudness analysis tool for your music library, made for the GNOME desktop**
+  
+  ![License](https://img.shields.io/badge/License-GPL%20v2%2B-blue.svg)
+  ![Platform](https://img.shields.io/badge/Platform-Linux-lightgrey.svg)
+  ![Desktop](https://img.shields.io/badge/Desktop-GNOME-orange.svg)
+</div>
 
-Audio loudness analysis tool for your music library, made for the GNOME desktop.
+---
 
-Detect audio mastering defects, improve your music/library.
+## 🎵 Overview
 
-Open a file, make analysis, save file (if you want to).
+**MasVisGtk** is a comprehensive audio analysis tool designed to help you detect mastering defects and improve your music library quality. Built specifically for the GNOME desktop environment, it provides detailed insights into your audio files' technical characteristics.
 
-Based on `pymasvis` python app/module, using `numpy`, `scipy`, `pyplot` (`matplotlib`).
+**Key Features:**
+- Detect audio mastering defects
+- Analyze your entire music library
+- Save detailed analysis reports
+- Professional-grade audio metrics
 
-* **Waveform** plotting
-* Overview of files (*by-folder* support)
-* **Frequency** plot
-* Dynamic Range (**DR**) estimation
-* **Peak** estimation
-* **Crest Factor** estimation
-* **Histogram** plot
-* **Peak** vs. **RMS** plot
-* **Loudness** analysis, **EBU R128** plot
-* Multi-channel audio support
+---
 
-Local installation of **FFMPEG and FFPROBE is required**.
+## ✨ Features
 
-Supported formats **wav**, **flac**, **mp3**, **m4a**, **ogg**, **opus**, **aac**, **ac3**, **aiff**, **amr**, **alac**, **pcm**, **wma**.
+### 📊 **Analysis Capabilities**
+- **Waveform Plotting** - Visual representation of audio signals
+- **Frequency Analysis** - Detailed frequency spectrum plots  
+- **Dynamic Range (DR) Estimation** - Measure audio dynamics
+- **Peak Estimation** - Identify signal peaks
+- **Crest Factor Analysis** - Signal quality metrics
+- **Histogram Visualization** - Statistical audio data
+- **Peak vs RMS Analysis** - Loudness relationship plots
+- **EBU R128 Loudness Standards** - Professional broadcast standards
+- **Multi-channel Audio Support** - Stereo and surround sound
 
-Minimum System Requirements – 2 physical CPU cores, 4 threads, 8 GB RAM.
+### 🗂️ **File Management**
+- **Folder Overview** - Batch analysis with folder support
+- **Recursive Processing** - Analyze entire directory trees
+- **Multiple Format Support** - Wide range of audio formats
 
-You can save the analysis in the following formats:
+---
+
+## 🎧 Supported Audio Formats
+
+| Format | Extension | Description |
+|--------|-----------|-------------|
+| **WAV** | `.wav` | Uncompressed audio |
+| **FLAC** | `.flac` | Lossless compression |
+| **MP3** | `.mp3` | MPEG audio |
+| **M4A** | `.m4a` | Apple audio |
+| **OGG** | `.ogg` | Ogg Vorbis |
+| **Opus** | `.opus` | Modern codec |
+| **AAC** | `.aac` | Advanced audio coding |
+| **AC3** | `.ac3` | Dolby Digital |
+| **AIFF** | `.aiff` | Apple audio format |
+| **AMR** | `.amr` | Adaptive multi-rate |
+| **ALAC** | `.alac` | Apple lossless |
+| **PCM** | `.pcm` | Raw audio data |
+| **WMA** | `.wma` | Windows media audio |
+
+---
+
+## 💾 Export Formats
+
+Save your analysis in multiple professional formats:
+
 ```
-PNG  | Portable Network Graphics
-EPS  | Encapsultaed Postscript
-JPEG | Joint Photographic Experts Group
-PDF  | Portable Document Format
-SVG  | Scalable Vector Graphics
-TIFF | Tagged Image File Format
-WebP | WebP Image Format
+📊 PNG  - Portable Network Graphics
+📄 EPS  - Encapsulated PostScript  
+🖼️ JPEG - Joint Photographic Experts Group
+📋 PDF  - Portable Document Format
+🎨 SVG  - Scalable Vector Graphics
+🖥️ TIFF - Tagged Image File Format
+🌐 WebP - Modern web format
 ```
 
-![Detailed View Light Theme](./img/1.png)
-![Detailed View Dark Theme](./img/2.png)
-![Detailed View Dark Theme Continued](./img/3.png)
-![Advanced Options](./img/4.png)
-![Overview](./img/5.png)
-![Preferences](./img/6.png)
-![Comparison Tabs Dialog](./img/7.png)
-![Comparison Tabs Window](./img/8.png)
-![Comparison Output File](./img/9.png)
-![Comparison Output File](./img/10.png)
-![Comparison Output File](./img/11.gif)
+---
 
-Flatpaks
---------
+## 🖥️ System Requirements
 
-Flatpak from [flathub](https://flathub.org/apps/io.github.itprojects.MasVisGtk), or to build, see instructions below.
+### **Minimum Specifications**
+- **CPU:** 2 physical cores, 4 threads
+- **RAM:** 8 GB minimum
+- **Storage:** ~200 MB for Flatpak installation
+- **Dependencies:** FFMPEG and FFPROBE (locally installed)
 
+### **Recommended for Large Files**
+- **RAM:** 16 GB or more for files ≥20 minutes
+- **CPU:** Multi-core processor for faster processing
 
-Build flatpak
--------------
+---
 
-1. Pull git repository
-2. Open with Gnome-Builder, build
+## 📦 Installation
 
-   **The first build is very long!** After that *it's quick*.
-
-4. In Gnome-Builder Export, from the drop-down menu (near run button).
-5. Find flatpak
-
-`~/.var/app/org.gnome.Builder/cache/gnome-builder/projects/MasVisGtk/flatpak/staging/x86_64-main/io.github.itprojects.MasVisGtk.flatpak`
-
-5. flatpak install io.github.itprojects.MasVisGtk.flatpak
-6. flatpak run io.github.itprojects.MasVisGtk, or use the shortcut
-
-The source code is less than **1 MB**. HOWEVER, *the flatpak file is large* (>200 MB), because `openblas`, `lapack`, `numpy`, `scipy` and `pyplot` are included.
-
-Usage
------
-
-Click on **desktop shortcut**, or run from *terminal*.
-
-The original `pymasvis` is bundled within the app, in order to save analysis files directly from terminal.
-
-MasVisGtk and pymasvis have different terminal options.
-
-------------
-
-**MasVisGtk usage**
-
-Start application
+### **Option 1: Flathub (Recommended)**
+```bash
+flatpak install flathub io.github.itprojects.MasVisGtk
 ```
+
+### **Option 2: Build from Source**
+1. **Clone the repository**
+   ```bash
+   git clone [repository-url]
+   ```
+
+2. **Open with GNOME Builder**
+   - Import the project in GNOME Builder  
+   - Build the project ⚠️ *First build takes significant time*
+
+3. **Export Flatpak**
+   - Use the Export option from the dropdown menu
+   - Locate the built Flatpak at:
+   ```
+   ~/.var/app/org.gnome.Builder/cache/gnome-builder/projects/MasVisGtk/flatpak/staging/x86_64-main/io.github.itprojects.MasVisGtk.flatpak
+   ```
+
+4. **Install locally**
+   ```bash
+   flatpak install io.github.itprojects.MasVisGtk.flatpak
+   ```
+
+---
+
+## 🚀 Usage
+
+### **Launch Application**
+```bash
+# Start the GUI application
 flatpak run io.github.itprojects.MasVisGtk
 ```
 
-Open file
-```
-flatpak run io.github.itprojects.MasVisGtk /path/to/filename1.wav '/path/to/filename 2.wav'
+### **Command Line Options**
+
+#### **Basic Usage**
+```bash
+# Open single file
+flatpak run io.github.itprojects.MasVisGtk /path/to/audio.wav
+
+# Open multiple files
+flatpak run io.github.itprojects.MasVisGtk /path/to/file1.wav '/path/to/file 2.mp3'
+
+# Open files and folders
+flatpak run io.github.itprojects.MasVisGtk /path/to/file.mp3 '/path/to/music/folder'
 ```
 
-Open files and/or folders
-```
-flatpak run io.github.itprojects.MasVisGtk /path/to/file.mp3 '/path/to/folder where/other file.ogg'
-```
+#### **Advanced Options**
+```bash
+# Recursive folder processing
+flatpak run io.github.itprojects.MasVisGtk -r /path/to/music/library
 
-Overview files and/or folders
-```
-flatpak run io.github.itprojects.MasVisGtk /path/to/file.mp3 '/path/to/folder where/other file.ogg'
-```
+# Overview mode with flat structure
+flatpak run io.github.itprojects.MasVisGtk -r -o flat /path/to/music
 
-Open (recursively) files and/or folders
-```
-flatpak run io.github.itprojects.MasVisGtk -r /path/to/file.mp3 '/path/to/folder'
-```
-
-Open (recursively) files and/or folders for overview
-```
-flatpak run io.github.itprojects.MasVisGtk -r -o flat /path/to/file.mp3 '/path/to/folder'
-```
-
-```
+# Show help
 flatpak run io.github.itprojects.MasVisGtk --help
-Usage:
-  masvisgtk [OPTION…] FILES/FOLDERS
-  FILE(S) and/or FOLDER(S) paths to process inside the application
-  MasVisGtk is an audio file analysis application.
-Help Options:
-  -h, --help                 Show help options
-  --help-all                 Show all help options
-  --help-gapplication        Show GApplication options
-Application Options:
-  -v, --version              Version of MasVisGtk.
-  -b, --verbose              Show Verbose Messages.
-  -d, --debug                Show Debug Messages.
-  -f, --formats              Show Supported [FFMPEG] Formats.
-  -l, --LU                   Use [LU], instead of [LUFS], when displaying R128 values, (default: LUFS).
-  -o, --overview-mode        flat, generate one overview tab for all, or dir, for one tab for folders, (default: flat).
-  -r, --recursive            If input is a folder, process subfolders, too.
-The original python module is also available with this package.
-The command line options are different from the original.
-Large file are always slow to render.
 ```
 
-------------
+#### **Command Line Flags**
+| Flag | Description |
+|------|-------------|
+| `-v, --version` | Show version information |
+| `-b, --verbose` | Enable verbose messages |
+| `-d, --debug` | Enable debug messages |
+| `-f, --formats` | Show supported FFMPEG formats |
+| `-l, --LU` | Use LU instead of LUFS for R128 values |
+| `-o, --overview-mode` | Set overview mode: `flat` or `dir` |
+| `-r, --recursive` | Process subfolders recursively |
 
-**Original `pymasvis` module usage**
+---
 
-Detailed analysis
-```
-flatpak run io.github.itprojects.MasVisGtk --pymasvis --destdir /path/where/to/save /path/to/file/filename1.wav '/path/to/file/file name 2.wav'
-```
+## 🔬 Advanced Usage: PyMasVis Module
 
-Detailed analysis from folder, recursively opening subfolders
-```
-flatpak run io.github.itprojects.MasVisGtk --pymasvis -r --destdir /path/where/to/save '/path/to/some/folder'
-```
+The original `pymasvis` Python module is bundled for command-line analysis:
 
-Overview
-```
-flatpak run io.github.itprojects.MasVisGtk --pymasvis --overview --destdir /path/where/to/save /path/to/file/filename.wav
+### **Detailed Analysis**
+```bash
+# Single file analysis
+flatpak run io.github.itprojects.MasVisGtk --pymasvis --destdir /output/path /path/to/audio.wav
 
-flatpak run io.github.itprojects.MasVisGtk --pymasvis --overview --overview-mode flat --destdir /path/where/to/save '/path/to/some/folder'
-```
-
-Help
-```
-flatpak run io.github.itprojects.MasVisGtk --pymasvis
-usage: masvisgtk [-h] [--version] [-v] [-d] [-u username] [-p password] [-r] [--destdir destdir] [--update {yes,no,outdated}] [--format {png,jpg}] [--overview] [--overview-mode {dir,flat}]
-                 [--lu]
-                 input [input ...]
+# Batch folder analysis
+flatpak run io.github.itprojects.MasVisGtk --pymasvis -r --destdir /output/path '/path/to/folder'
 ```
 
-What is a good Dynamic Range?
------------------------------
+### **Overview Generation**
+```bash
+# File overview
+flatpak run io.github.itprojects.MasVisGtk --pymasvis --overview --destdir /output/path /path/to/file.wav
 
-![Dynamic Range Chart](./img/12.png)
+# Folder overview (flat mode)
+flatpak run io.github.itprojects.MasVisGtk --pymasvis --overview --overview-mode flat --destdir /output/path '/path/to/folder'
+```
 
-The dynamic range chart is taken form a [post](forums.stevehoffman.tv), in a public forum.
+---
 
-Known Issues
-------------
+## 📈 Understanding Dynamic Range
 
-The application is intended for UTF-8 systems.
+### **Dynamic Range Quality Chart**
 
-Minimum audio duration is 3 seconds. Smaller samples cause crashes.
+| DR Value | Quality Level | Description |
+|----------|---------------|-------------|
+| **DR1-6** | 🔴 **Poor** | Heavily compressed, "brick-walled" |
+| **DR7-10** | 🟡 **Fair** | Moderately compressed |
+| **DR11-14** | 🟢 **Good** | Well-balanced dynamics |
+| **DR15+** | 🟢 **Excellent** | Natural, uncompressed dynamics |
 
-`DR: ??` means that the application has too few samples, for dynamic range estimation.
+> **Note:** Higher DR values generally indicate better audio quality with more natural dynamics.
 
-Saving in `PostScript`, `PGF code for LaTeX`, `Raw RGBA bitmap` (Adobe Photoshop Color swatch) is only possible through the in-app matplotlib toolbar.
+---
 
-Opening video files, or unsupported files, is only sometimes possible; use the option in the preferences to test.
+## 🎨 Screenshots
 
-The application is RAM hungry.
+<details>
+<summary>📸 View Application Screenshots</summary>
 
-**DO NOT** try to open more than 10 files simulataneously on a computer with low resources (RAM>=8GB), or on a computer, where the resources are already allocated (in other applications).
+![Detailed View Light Theme](./img/1.png)
+*Light theme interface showing detailed audio analysis*
 
-**DO NOT** try to open files >=20 minutes, unless you have lots of free RAM available (RAM>=16GB). The same is valid for files that are >=100MB each.
+![Detailed View Dark Theme](./img/2.png)
+*Dark theme with comprehensive analysis plots*
 
+![Advanced Options](./img/4.png)
+*Advanced configuration options*
 
-Useful Links
-------------
+![Overview Mode](./img/5.png)
+*Batch overview of multiple audio files*
 
-[Loudness-War Site](https://dr.loudness-war.info/), **strongly recommended**, compare your music's loudness to other people's.
+![Preferences](./img/6.png)
+*Application preferences and settings*
 
-[Practical guidelines for EBU R 128 Loudness](https://tech.ebu.ch/publications/tech3343), general idea of loudness mastering.
+![Comparison Tools](./img/7.png)
+*Audio comparison dialog interface*
 
-Original `pymasvis` [source code](https://github.com/joakimfors/PyMasVis) by *Joakim Fors*. [Earlier MasVis collaboration](https://www.lts.a.se/ljudteknik/masvis).
+</details>
 
-Copyright and licensing
------------------------
+---
 
-MasVisGtk is released under the terms of the GNU General Public License, either version 2.0 or, at your option, any later version.
+## ⚠️ Known Issues & Limitations
+
+### **System Compatibility**
+- Designed for UTF-8 systems
+- Minimum audio duration: **3 seconds** (shorter files may cause crashes)
+- `DR: ??` indicates insufficient samples for analysis
+
+### **Performance Considerations**
+- **RAM Usage:** Application is memory-intensive
+- **File Limits:** 
+  - Do not open >10 files simultaneously on systems with <8GB RAM
+  - Avoid files ≥20 minutes unless you have ≥16GB RAM
+  - Large files (≥100MB each) require significant memory
+
+### **Export Limitations**
+- PostScript, PGF LaTeX, and Raw RGBA bitmap exports only available through matplotlib toolbar
+- Video file support is experimental (enable in preferences)
+
+---
+
+## 🌐 Useful Resources
+
+### **External Tools & References**
+- 🎵 **[Loudness War Database](https://dr.loudness-war.info/)** - Compare your music's loudness metrics
+- 📚 **[EBU R128 Guidelines](https://tech.ebu.ch/publications/tech3343)** - Professional loudness standards
+- 🔧 **[Original PyMasVis](https://github.com/joakimfors/PyMasVis)** - Source project by Joakim Fors
+- 🎓 **[MasVis Collaboration](https://www.lts.a.se/ljudteknik/masvis)** - Academic research background
+
+---
+
+## 📋 Technical Details
+
+### **Core Dependencies**
+- **Python Libraries:** `numpy`, `scipy`, `matplotlib`
+- **Audio Processing:** FFMPEG/FFPROBE
+- **GUI Framework:** GTK for GNOME
+- **Packaging:** Flatpak with bundled dependencies
+
+### **Source Code**
+- **Size:** <1 MB source code
+- **Flatpak Size:** >200 MB (includes `openblas`, `lapack`, `numpy`, `scipy`, `pyplot`)
+
+---
+
+## 📄 License
+
+**MasVisGtk** is released under the **GNU General Public License v2.0 or later**.
+
+You are free to use, modify, and distribute this software under the terms of the GPL.
+
+---
+
+<div align="center">
+  
+**Made with ❤️ for the GNOME desktop**
+
+*Improve your music library quality with professional audio analysis*
+
+</div>
