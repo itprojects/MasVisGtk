@@ -3,12 +3,21 @@
 <div align="center">
   <img src="./data/icons/hicolor/scalable/apps/io.github.itprojects.MasVisGtk.svg" alt="MasVisGtk Logo" width="128" height="128">
   
-  **Audio loudness analysis tool for your music library, made for the GNOME desktop**
+  <br><strong>Audio loudness analysis tool for your music library, made for the GNOME desktop</strong><br><br>
   
-  ![License](https://img.shields.io/badge/License-GPL%20v2%2B-blue.svg)
-  ![Platform](https://img.shields.io/badge/Platform-Linux-lightgrey.svg)
-  ![Desktop](https://img.shields.io/badge/Desktop-GNOME-orange.svg)
+  <a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.html" target="_blank">
+    <img src="https://img.shields.io/badge/License-GPL%20v2%2B-blue.svg" alt="License">
+  </a>
+  
+  <a href="https://www.kernel.org/" target="_blank">
+    <img src="https://img.shields.io/badge/Platform-Linux-lightgrey.svg" alt="Platform">
+  </a>
+  
+  <a href="https://www.gnome.org/" target="_blank">
+    <img src="https://img.shields.io/badge/Desktop-GNOME-orange.svg" alt="Desktop">
+  </a>
 </div>
+
 
 ---
 
