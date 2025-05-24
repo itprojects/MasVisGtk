@@ -301,6 +301,7 @@ Dynamic Range measures the difference between the loudest and quietest parts of 
 *Advanced configuration panel allowing fine-tuning of analysis parameters and export settings*
 
 ![Preferences](./img/6.png)
+
 *Application preferences window for customizing default behavior, file handling, and display options*
 
 ### **Batch Analysis & Overview**
