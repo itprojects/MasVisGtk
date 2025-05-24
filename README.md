@@ -12,35 +12,44 @@
 
 ---
 
-## 🎵 Overview
+## 🎵 What is MasVisGtk?
 
-**MasVisGtk** is a comprehensive audio analysis tool designed to help you detect mastering defects and improve your music library quality. Built specifically for the GNOME desktop environment, it provides detailed insights into your audio files' technical characteristics.
+**MasVisGtk** is a powerful and comprehensive audio analysis tool specifically designed for music enthusiasts, audio engineers, and anyone who wants to understand and improve their music library quality. Built for the GNOME desktop environment, this application helps you identify audio mastering problems and provides detailed technical insights about your audio files.
 
-**Key Features:**
-- Detect audio mastering defects
-- Analyze your entire music library
-- Save detailed analysis reports
-- Professional-grade audio metrics
+**Why Use MasVisGtk?**
+- **Detect Mastering Issues:** Identify over-compressed, "brick-walled" audio files
+- **Improve Library Quality:** Make informed decisions about audio file quality
+- **Professional Analysis:** Get broadcast-standard measurements (EBU R128)
+- **Visual Understanding:** See your audio through professional waveforms and frequency plots
+- **Batch Processing:** Analyze entire music collections efficiently
+
+**Simple Workflow:**
+1. **Open** your audio file(s) or folder(s)
+2. **Analyze** - View detailed technical measurements and visual plots
+3. **Save** results in multiple professional formats (optional)
+
+Based on the proven `pymasvis` Python module, MasVisGtk uses industry-standard libraries (`numpy`, `scipy`, `matplotlib`) to provide accurate, professional-grade audio analysis.
 
 ---
 
-## ✨ Features
+## ✨ Comprehensive Features
 
-### 📊 **Analysis Capabilities**
-- **Waveform Plotting** - Visual representation of audio signals
-- **Frequency Analysis** - Detailed frequency spectrum plots  
-- **Dynamic Range (DR) Estimation** - Measure audio dynamics
-- **Peak Estimation** - Identify signal peaks
-- **Crest Factor Analysis** - Signal quality metrics
-- **Histogram Visualization** - Statistical audio data
-- **Peak vs RMS Analysis** - Loudness relationship plots
-- **EBU R128 Loudness Standards** - Professional broadcast standards
-- **Multi-channel Audio Support** - Stereo and surround sound
+### 📊 **Professional Audio Analysis**
+- **🌊 Waveform Plotting** - Visual representation of your audio signal over time, showing amplitude variations and helping identify clipping or distortion
+- **📈 Frequency Analysis** - Detailed frequency spectrum plots revealing the tonal balance and frequency distribution of your audio
+- **📏 Dynamic Range (DR) Estimation** - Measures the difference between the loudest and quietest parts, indicating how compressed your audio is
+- **⚡ Peak Estimation** - Identifies the highest signal levels to detect potential clipping and distortion
+- **📊 Crest Factor Analysis** - Ratio between peak and RMS levels, indicating audio dynamics and compression level
+- **📈 Histogram Visualization** - Statistical distribution of audio levels showing how your audio energy is distributed
+- **📊 Peak vs RMS Analysis** - Relationship plots between instantaneous peaks and average loudness levels  
+- **🎚️ EBU R128 Loudness Standards** - Professional broadcast loudness measurements (LUFS/LU) used by streaming services and broadcasters
+- **🔊 Multi-channel Audio Support** - Analyze stereo, surround sound, and other multi-channel audio formats
 
-### 🗂️ **File Management**
-- **Folder Overview** - Batch analysis with folder support
-- **Recursive Processing** - Analyze entire directory trees
-- **Multiple Format Support** - Wide range of audio formats
+### 🗂️ **Efficient File Management**
+- **📁 Folder Overview** - Batch analysis with organized folder-based results for managing large music libraries
+- **🔄 Recursive Processing** - Automatically analyze entire directory trees including all subfolders
+- **📊 Multiple View Modes** - Choose between flat view (all files together) or directory-based organization
+- **⚡ Parallel Processing** - Efficient handling of multiple files with optimized resource usage
 
 ---
 
@@ -64,19 +73,25 @@
 
 ---
 
-## 💾 Export Formats
+## 💾 Professional Export Formats
 
-Save your analysis in multiple professional formats:
+Save your detailed analysis results in multiple industry-standard formats for documentation, reporting, or sharing:
 
 ```
-📊 PNG  - Portable Network Graphics
-📄 EPS  - Encapsulated PostScript  
-🖼️ JPEG - Joint Photographic Experts Group
-📋 PDF  - Portable Document Format
-🎨 SVG  - Scalable Vector Graphics
-🖥️ TIFF - Tagged Image File Format
-🌐 WebP - Modern web format
+📊 PNG  - Portable Network Graphics (best for web sharing and documentation)
+📄 EPS  - Encapsulated PostScript (professional printing and vector graphics)  
+🖼️ JPEG - Joint Photographic Experts Group (smaller file size, good for presentations)
+📋 PDF  - Portable Document Format (universal document sharing and archiving)
+🎨 SVG  - Scalable Vector Graphics (perfect scaling for any size, web-friendly)
+🖥️ TIFF - Tagged Image File Format (high quality, professional archiving)
+🌐 WebP - Modern web format (excellent compression with high quality)
 ```
+
+**Professional Uses:**
+- **Documentation** - Create technical reports for clients or projects
+- **Comparison** - Side-by-side analysis of different masters or versions
+- **Quality Control** - Archive analysis results for reference
+- **Education** - Teaching materials for audio engineering courses
 
 ---
 
@@ -152,8 +167,11 @@ flatpak run io.github.itprojects.MasVisGtk /path/to/file.mp3 '/path/to/music/fol
 # Recursive folder processing
 flatpak run io.github.itprojects.MasVisGtk -r /path/to/music/library
 
-# Overview mode with flat structure
-flatpak run io.github.itprojects.MasVisGtk -r -o flat /path/to/music
+# Overview files and/or folders
+flatpak run io.github.itprojects.MasVisGtk /path/to/file.mp3 '/path/to/folder where/other file.ogg'
+
+# Recursive processing for overview (flat mode)
+flatpak run io.github.itprojects.MasVisGtk -r -o flat /path/to/file.mp3 '/path/to/folder'
 
 # Show help
 flatpak run io.github.itprojects.MasVisGtk --help
@@ -169,6 +187,30 @@ flatpak run io.github.itprojects.MasVisGtk --help
 | `-l, --LU` | Use LU instead of LUFS for R128 values |
 | `-o, --overview-mode` | Set overview mode: `flat` or `dir` |
 | `-r, --recursive` | Process subfolders recursively |
+
+#### **Complete Help Output**
+```
+flatpak run io.github.itprojects.MasVisGtk --help
+Usage:
+  masvisgtk [OPTION…] FILES/FOLDERS
+  FILE(S) and/or FOLDER(S) paths to process inside the application
+  MasVisGtk is an audio file analysis application.
+Help Options:
+  -h, --help                 Show help options
+  --help-all                 Show all help options
+  --help-gapplication        Show GApplication options
+Application Options:
+  -v, --version              Version of MasVisGtk.
+  -b, --verbose              Show Verbose Messages.
+  -d, --debug                Show Debug Messages.
+  -f, --formats              Show Supported [FFMPEG] Formats.
+  -l, --LU                   Use [LU], instead of [LUFS], when displaying R128 values, (default: LUFS).
+  -o, --overview-mode        flat, generate one overview tab for all, or dir, for one tab for folders, (default: flat).
+  -r, --recursive            If input is a folder, process subfolders, too.
+The original python module is also available with this package.
+The command line options are different from the original.
+Large file are always slow to render.
+```
 
 ---
 
@@ -194,67 +236,115 @@ flatpak run io.github.itprojects.MasVisGtk --pymasvis --overview --destdir /outp
 flatpak run io.github.itprojects.MasVisGtk --pymasvis --overview --overview-mode flat --destdir /output/path '/path/to/folder'
 ```
 
----
-
-## 📈 Understanding Dynamic Range
-
-### **Dynamic Range Quality Chart**
-
-| DR Value | Quality Level | Description |
-|----------|---------------|-------------|
-| **DR1-6** | 🔴 **Poor** | Heavily compressed, "brick-walled" |
-| **DR7-10** | 🟡 **Fair** | Moderately compressed |
-| **DR11-14** | 🟢 **Good** | Well-balanced dynamics |
-| **DR15+** | 🟢 **Excellent** | Natural, uncompressed dynamics |
-
-> **Note:** Higher DR values generally indicate better audio quality with more natural dynamics.
+### **PyMasVis Help**
+```bash
+flatpak run io.github.itprojects.MasVisGtk --pymasvis
+usage: masvisgtk [-h] [--version] [-v] [-d] [-u username] [-p password] [-r] [--destdir destdir] [--update {yes,no,outdated}] [--format {png,jpg}] [--overview] [--overview-mode {dir,flat}]
+                 [--lu]
+                 input [input ...]
+```
 
 ---
 
-## 🎨 Screenshots
+## 📈 Understanding Dynamic Range - Audio Quality Guide
 
-<details>
-<summary>📸 View Application Screenshots</summary>
+### **What is Dynamic Range (DR)?**
+Dynamic Range measures the difference between the loudest and quietest parts of your audio. Higher DR values typically indicate better audio quality with more natural dynamics, while lower DR values suggest heavy compression that can make music sound "flat" or "lifeless."
 
+### **Dynamic Range Quality Assessment**
+
+| DR Value | Quality Rating | Audio Characteristics | Listening Experience |
+|----------|----------------|----------------------|---------------------|
+| **DR1-6** | 🔴 **Poor** | Heavily compressed, "brick-walled" | Fatiguing, lacks depth, sounds "squashed" |
+| **DR7-10** | 🟡 **Fair** | Moderately compressed | Acceptable but could be better |
+| **DR11-14** | 🟢 **Good** | Well-balanced dynamics | Enjoyable, good balance of loudness and dynamics |
+| **DR15+** | 🟢 **Excellent** | Natural, uncompressed dynamics | Spacious, natural, professional quality |
+
+### **Why Does This Matter?**
+- **🎵 Music Quality:** Higher DR typically means the music will sound more natural and less fatiguing
+- **🎧 Listening Fatigue:** Over-compressed audio (low DR) can cause ear fatigue during long listening sessions
+- **🔊 Loudness War:** Many modern releases are over-compressed to sound "louder" but sacrifice audio quality
+- **💿 Remastering:** Use DR analysis to compare different versions/remasters of the same album
+
+**💡 Pro Tip:** Use MasVisGtk to compare different versions of your favorite albums and choose the best-sounding masters for your collection!
+
+---
+
+## 🎨 Application Screenshots
+
+### **Interface Themes**
 ![Detailed View Light Theme](./img/1.png)
-*Light theme interface showing detailed audio analysis*
+*Light theme interface showing comprehensive audio analysis with waveform, frequency plots, and detailed metrics*
 
 ![Detailed View Dark Theme](./img/2.png)
-*Dark theme with comprehensive analysis plots*
+*Dark theme providing the same detailed analysis in a modern, eye-friendly interface*
 
+![Detailed View Dark Theme Continued](./img/3.png)
+*Extended view of dark theme showing additional analysis panels and data visualization*
+
+### **Configuration & Settings**
 ![Advanced Options](./img/4.png)
-*Advanced configuration options*
-
-![Overview Mode](./img/5.png)
-*Batch overview of multiple audio files*
+*Advanced configuration panel allowing fine-tuning of analysis parameters and export settings*
 
 ![Preferences](./img/6.png)
-*Application preferences and settings*
+*Application preferences window for customizing default behavior, file handling, and display options*
 
-![Comparison Tools](./img/7.png)
-*Audio comparison dialog interface*
+### **Batch Analysis & Overview**
+![Overview](./img/5.png)
+*Overview mode displaying batch analysis results for multiple audio files with comparative metrics*
 
-</details>
+### **Comparison Features**
+![Comparison Tabs Dialog](./img/7.png)
+*Comparison dialog interface for setting up side-by-side audio file analysis*
+
+![Comparison Tabs Window](./img/8.png)
+*Comparison window showing multiple audio files analyzed simultaneously for direct comparison*
+
+### **Export Results**
+![Comparison Output File](./img/9.png)
+*Example of exported analysis results showing detailed waveform and frequency analysis*
+
+![Comparison Output File](./img/10.png)
+*Additional export example demonstrating comprehensive audio metrics and visual representations*
+
+![Comparison Output Animation](./img/11.gif)
+*Animated demonstration of the comparison feature workflow and real-time analysis updates*
+
+### **Dynamic Range Reference Chart**
+![Dynamic Range Chart](./img/12.png)
+*Professional Dynamic Range quality reference chart for interpreting DR values and audio quality assessment*
+
+> **Chart Source:** The dynamic range chart is taken from a [post](forums.stevehoffman.tv) in a public forum.
 
 ---
 
-## ⚠️ Known Issues & Limitations
+## ⚠️ Known Issues & Important Limitations
 
 ### **System Compatibility**
-- Designed for UTF-8 systems
-- Minimum audio duration: **3 seconds** (shorter files may cause crashes)
-- `DR: ??` indicates insufficient samples for analysis
+- **UTF-8 Systems Only:** The application is designed specifically for UTF-8 systems
+- **Minimum Audio Duration:** Files must be at least **3 seconds long** - shorter samples will cause crashes
+- **Dynamic Range Display:** `DR: ??` indicates the application has too few samples for accurate dynamic range estimation
 
-### **Performance Considerations**
-- **RAM Usage:** Application is memory-intensive
-- **File Limits:** 
-  - Do not open >10 files simultaneously on systems with <8GB RAM
-  - Avoid files ≥20 minutes unless you have ≥16GB RAM
-  - Large files (≥100MB each) require significant memory
+### **Export & File Format Limitations**
+- **Special Export Formats:** PostScript, PGF code for LaTeX, and Raw RGBA bitmap (Adobe Photoshop Color swatch) exports are only available through the in-app matplotlib toolbar
+- **Video File Support:** Opening video files or unsupported formats is experimental - enable the testing option in preferences to try
 
-### **Export Limitations**
-- PostScript, PGF LaTeX, and Raw RGBA bitmap exports only available through matplotlib toolbar
-- Video file support is experimental (enable in preferences)
+### **Critical Performance Limitations**
+⚠️ **The application is very RAM-intensive. Please follow these guidelines:**
+
+**For Systems with 8GB RAM:**
+- **DO NOT** open more than **10 files simultaneously**
+- **DO NOT** open files if other applications are already using significant RAM
+
+**For Large Files (≥20 minutes OR ≥100MB each):**
+- **Requires 16GB RAM minimum**
+- Monitor your system memory usage
+- Close other applications before processing large files
+
+**General Performance Notes:**
+- Large files are always slow to render
+- First-time analysis of complex files takes longer
+- Consider processing large collections in smaller batches
 
 ---
 
