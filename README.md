@@ -312,6 +312,7 @@ Dynamic Range measures the difference between the loudest and quietest parts of 
 
 ### **Dynamic Range Reference Chart**
 ![Dynamic Range Chart](./img/12.png)
+
 *Professional Dynamic Range quality reference chart for interpreting DR values and audio quality assessment*
 
 > **Chart Source:** The dynamic range chart is taken from a [post](forums.stevehoffman.tv) in a public forum.
