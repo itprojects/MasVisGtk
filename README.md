@@ -16,7 +16,12 @@
   <a href="https://www.gnome.org/" target="_blank">
     <img src="https://img.shields.io/badge/Desktop-GNOME-orange.svg" alt="Desktop">
   </a>
+  
+  <a href="https://flathub.org/apps/io.github.itprojects.MasVisGtk" target="_blank">
+    <img src="https://img.shields.io/badge/Flatpak-Flathub-blue?logo=flatpak" alt="Flatpak">
+  </a>
 </div>
+
 
 
 ---
