@@ -983,7 +983,7 @@ def render(
 
     canvas.draw()
     canvas.flush_events()
-    del data # clean
+    #del data # clean?
 
 # Save canvas figure to image on disk.
 # Format 0=png, 1=jpeg, 2=svg, 3=webp, 4=tiff, 5=pdf, 6=eps

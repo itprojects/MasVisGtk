@@ -60,6 +60,12 @@
   <developer_name translate="no">ITProjects</developer_name>
   <translation type="gettext">masvisgtk</translation>
   <releases>
+    <release version="4.0.2" date="2025-05-28">
+      <description translate="no">
+        <p>Updated contourpy to v1.3.2, numpy to v2.2.6, scipy to v1.15.3.</p>
+        <p>Updated application icon, README.md.</p>
+      </description>
+    </release>
     <release version="4.0.1" date="2025-02-19">
       <description translate="no">
         <p>Updated numpy to v2.2.3, scipy to v1.15.2.</p>
