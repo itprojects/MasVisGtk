@@ -1,28 +1,8 @@
 # MasVisGtk
 
-<div align="center">
-  <img src="./data/icons/hicolor/scalable/apps/io.github.itprojects.MasVisGtk.svg" alt="MasVisGtk Logo" width="128" height="128">
-  
-  <br><strong>Audio loudness analysis tool for your music library, made for the GNOME desktop</strong><br><br>
-  
-  <a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.html" target="_blank">
-    <img src="https://img.shields.io/badge/License-GPL%20v2%2B-blue.svg" alt="License">
-  </a>
-  
-  <a href="https://www.kernel.org/" target="_blank">
-    <img src="https://img.shields.io/badge/Platform-Linux-lightgrey.svg" alt="Platform">
-  </a>
-  
-  <a href="https://www.gnome.org/" target="_blank">
-    <img src="https://img.shields.io/badge/Desktop-GNOME-orange.svg" alt="Desktop">
-  </a>
-  
-  <a href="https://flathub.org/apps/io.github.itprojects.MasVisGtk" target="_blank">
-    <img src="https://img.shields.io/badge/Flatpak-Flathub-blue?logo=flatpak" alt="Flatpak">
-  </a>
-</div>
+![](./data/icons/hicolor/scalable/apps/io.github.itprojects.MasVisGtk.svg)
 
-
+Audio **loudness analysis** tool for your **music library**, made for the GNOME desktop
 
 ---
 
@@ -31,18 +11,20 @@
 **MasVisGtk** is a powerful and comprehensive audio analysis tool specifically designed for music enthusiasts, audio engineers, and anyone who wants to understand and improve their music library quality. Built for the GNOME desktop environment, this application helps you identify audio mastering problems and provides detailed technical insights about your audio files.
 
 **Why Use MasVisGtk?**
+
 - **Detect Mastering Issues:** Identify over-compressed, "brick-walled" audio files
 - **Improve Library Quality:** Make informed decisions about audio file quality
 - **Professional Analysis:** Get broadcast-standard measurements (EBU R128)
 - **Visual Understanding:** See your audio through professional waveforms and frequency plots
-- **Batch Processing:** Analyze entire music collections efficiently
+- **Batch Processing:** Analyse entire music collections efficiently
 
 **Simple Workflow:**
+
 1. **Open** your audio file(s) or folder(s)
-2. **Analyze** - View detailed technical measurements and visual plots
+2. **Analyse**, viewing detailed technical measurements and visual plots
 3. **Save** results in multiple professional formats (optional)
 
-Based on the proven `pymasvis` Python module, MasVisGtk uses industry-standard libraries (`numpy`, `scipy`, `matplotlib`) to provide accurate, professional-grade audio analysis.
+Based on the proven `pymasvis` Python module, MasVisGtk uses standard libraries (`numpy`, `scipy`, `matplotlib`) to provide accurate audio analysis.
 
 ---
 
@@ -54,16 +36,16 @@ Based on the proven `pymasvis` Python module, MasVisGtk uses industry-standard l
 - **📏 Dynamic Range (DR) Estimation** - Measures the difference between the loudest and quietest parts, indicating how compressed your audio is
 - **⚡ Peak Estimation** - Identifies the highest signal levels to detect potential clipping and distortion
 - **📊 Crest Factor Analysis** - Ratio between peak and RMS levels, indicating audio dynamics and compression level
-- **📈 Histogram Visualization** - Statistical distribution of audio levels showing how your audio energy is distributed
+- **📈 Histogram Visualisation** - Statistical distribution of audio levels showing how your audio energy is distributed
 - **📊 Peak vs RMS Analysis** - Relationship plots between instantaneous peaks and average loudness levels  
 - **🎚️ EBU R128 Loudness Standards** - Professional broadcast loudness measurements (LUFS/LU) used by streaming services and broadcasters
-- **🔊 Multi-channel Audio Support** - Analyze stereo, surround sound, and other multi-channel audio formats
+- **🔊 Multi-channel Audio Support** - Analyse stereo, surround sound, and other multi-channel audio formats
 
 ### 🗂️ **Efficient File Management**
-- **📁 Folder Overview** - Batch analysis with organized folder-based results for managing large music libraries
-- **🔄 Recursive Processing** - Automatically analyze entire directory trees including all subfolders
-- **📊 Multiple View Modes** - Choose between flat view (all files together) or directory-based organization
-- **⚡ Parallel Processing** - Efficient handling of multiple files with optimized resource usage
+- **📁 Folder Overview** - Batch analysis with organised folder-based results for managing large music libraries
+- **🔄 Recursive Processing** - Automatically analyse entire directory trees including all subfolders
+- **📊 Multiple View Modes** - Choose between flat view (all files together) or directory-based organisation
+- **⚡ Parallel Processing** - Efficient handling of multiple files with optimised resource usage
 
 ---
 
@@ -102,6 +84,7 @@ Save your detailed analysis results in multiple industry-standard formats for do
 ```
 
 **Professional Uses:**
+
 - **Documentation** - Create technical reports for clients or projects
 - **Comparison** - Side-by-side analysis of different masters or versions
 - **Quality Control** - Archive analysis results for reference
@@ -263,14 +246,14 @@ usage: masvisgtk [-h] [--version] [-v] [-d] [-u username] [-p password] [-r] [--
 ## 📈 Understanding Dynamic Range - Audio Quality Guide
 
 ### **What is Dynamic Range (DR)?**
-Dynamic Range measures the difference between the loudest and quietest parts of your audio. Higher DR values typically indicate better audio quality with more natural dynamics, while lower DR values suggest heavy compression that can make music sound "flat" or "lifeless."
+Dynamic Range measures the difference between the loudest and quietest parts of your audio. Higher DR values typically indicate better audio quality with more natural dynamics, while lower DR values suggest heavy compression that can make music sound "flat" or "lifeless".
 
 ### **Dynamic Range Quality Assessment**
 
 | DR Value | Quality Rating | Audio Characteristics | Listening Experience |
 |----------|----------------|----------------------|---------------------|
 | **DR1-6** | 🔴 **Poor** | Heavily compressed, "brick-walled" | Fatiguing, lacks depth, sounds "squashed" |
-| **DR7-10** | 🟡 **Fair** | Moderately compressed | Acceptable but could be better |
+| **DR7-10** | 🟡 **Fair** | Moderately compressed | Acceptable, but could be better |
 | **DR11-14** | 🟢 **Good** | Well-balanced dynamics | Enjoyable, good balance of loudness and dynamics |
 | **DR15+** | 🟢 **Excellent** | Natural, uncompressed dynamics | Spacious, natural, professional quality |
 
@@ -280,7 +263,7 @@ Dynamic Range measures the difference between the loudest and quietest parts of 
 - **🔊 Loudness War:** Many modern releases are over-compressed to sound "louder" but sacrifice audio quality
 - **💿 Remastering:** Use DR analysis to compare different versions/remasters of the same album
 
-**💡 Pro Tip:** Use MasVisGtk to compare different versions of your favorite albums and choose the best-sounding masters for your collection!
+**💡 Pro Tip:** Use MasVisGtk to compare different versions of your favourite albums and choose the best-sounding masters for your collection!
 
 ---
 
@@ -294,7 +277,7 @@ Dynamic Range measures the difference between the loudest and quietest parts of 
 *Dark theme providing the same detailed analysis in a modern, eye-friendly interface*
 
 ![Detailed View Dark Theme Continued](./img/3.png)
-*Extended view of dark theme showing additional analysis panels and data visualization*
+*Extended view of dark theme showing additional analysis panels and data visualisation*
 
 ### **Configuration & Settings**
 ![Advanced Options](./img/4.png)
@@ -302,18 +285,18 @@ Dynamic Range measures the difference between the loudest and quietest parts of 
 
 ![Preferences](./img/6.png)
 
-*Application preferences window for customizing default behavior, file handling, and display options*
+*Application preferences window for customising default behaviour, file handling, and display options*
 
 ### **Batch Analysis & Overview**
 ![Overview](./img/5.png)
 *Overview mode displaying batch analysis results for multiple audio files with comparative metrics*
 
 ### **Comparison Features**
-![Comparison Tabs Dialog](./img/7.png)
-*Comparison dialog interface for setting up side-by-side audio file analysis*
+![Comparison Tabs Dialogue](./img/7.png)
+*Comparison dialogue interface for setting up side-by-side audio file analysis*
 
 ![Comparison Tabs Window](./img/8.png)
-*Comparison window showing multiple audio files analyzed simultaneously for direct comparison*
+*Comparison window showing multiple audio files analysed simultaneously for direct comparison*
 
 ### **Export Results**
 ![Comparison Output File](./img/9.png)
@@ -349,15 +332,18 @@ Dynamic Range measures the difference between the loudest and quietest parts of 
 ⚠️ **The application is very RAM-intensive. Please follow these guidelines:**
 
 **For Systems with 8GB RAM:**
+
 - **DO NOT** open more than **10 files simultaneously**
 - **DO NOT** open files if other applications are already using significant RAM
 
 **For Large Files (≥20 minutes OR ≥100MB each):**
+
 - **Requires 16GB RAM minimum**
 - Monitor your system memory usage
 - Close other applications before processing large files
 
 **General Performance Notes:**
+
 - Large files are always slow to render
 - First-time analysis of complex files takes longer
 - Consider processing large collections in smaller batches
@@ -393,13 +379,3 @@ Dynamic Range measures the difference between the loudest and quietest parts of 
 **MasVisGtk** is released under the **GNU General Public License v2.0 or later**.
 
 You are free to use, modify, and distribute this software under the terms of the GPL.
-
----
-
-<div align="center">
-  
-**Made with ❤️ for the GNOME desktop**
-
-*Improve your music library quality with professional audio analysis*
-
-</div>
