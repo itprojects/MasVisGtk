@@ -47,6 +47,9 @@ Based on the proven `pymasvis` Python module, MasVisGtk uses standard libraries 
 - **📊 Multiple View Modes** - Choose between flat view (all files together) or directory-based organisation
 - **⚡ Parallel Processing** - Efficient handling of multiple files with optimised resource usage
 
+### 🔌 **Use as a Plugin in a DAW**
+- There is a [Windows VST3 plugin](https://github.com/itprojects/MasVisGtk/blob/plugin/MasVisGtkPlugin.vst3) version of MasVisGtk, for quick analysis [see plugin brach](https://github.com/itprojects/MasVisGtk/blob/plugin/README.md).
+
 ---
 
 ## 🎧 Supported Audio Formats
