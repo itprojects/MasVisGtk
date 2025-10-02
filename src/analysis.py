@@ -284,14 +284,17 @@ def dynamic_range(data, fs, ns, nc):
         dr_ch = -20 * np.log10(
             np.sqrt((dr_rms[:, -dr_20:] ** 2).mean(1, keepdims=True)) / dr_peak[:, [-2]]
         )
-        dr = int(round(dr_ch.mean()))
+
+        dr_channels = list(dr_ch.ravel()) # make into list
+        dr_channels = list([(lambda x: round(float(x), 2))(x) for x in dr_channels]) # round channels
+        dr = round(dr_ch.mean(), 1)
     except:
         return 0 # crash prevention
 
     if dr < 0:
-        return 0
+        return 0, None
     else:
-        return dr
+        return dr, dr_channels
 
 
 def energy_checksum(raw_data):
@@ -307,12 +310,11 @@ def analyze(track, callback=None):
     bits = track['bitdepth']
     cl = track['channel_layout']
     duration = track['duration']
-    name = track['metadata']['filename']
-    track['metadata']['extension']
+    name_ = track['metadata']['filename']
     enc = track['metadata']['encoding']
     bps = track['metadata']['bps']
 
-    log.info("Processing %s", name)
+    log.info("Processing %s", name_)
     log.debug(
         (
             "\tsample rate: %d\n\tchannels: %d\n\tframes: %d\n"
@@ -373,16 +375,18 @@ def analyze(track, callback=None):
 
     # DR
     with Timer('Calculating DR...', Steps.calc_dr, callback):
-        dr = dynamic_range(data, fs, ns, nc)
+        dr, dr_ch = dynamic_range(data, fs, ns, nc)
         if dr == 0:
-            dr = '??'
+            dr = -1
+            dr_channels = None
         else:
-            dr = str(dr)
+            dr = dr
+            dr_channels = dr_ch
 
     with Timer('Calculating checksum...', Steps.calc_csum, callback):
         checksum = energy_checksum(raw_data)
 
-    #
+    # Analysis Product
     return {
         'crest_db': crest_db,
         'crest_total_db': crest_total_db,
@@ -410,6 +414,7 @@ def analyze(track, callback=None):
         'stl': stl,
         'lra': lra,
         'dr': dr,
+        'dr_channels': dr_channels,
         'plr_lu': plr_lu,
         'stplr_lu': stplr_lu,
     }

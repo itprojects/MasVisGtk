@@ -134,7 +134,7 @@ def render(
     with Timer("Drawing plot...", Steps.draw_plot, callback):
         subtitle_analysis = (
             'Crest: %.2f dB,  DR: %s,  L$_K$: %.1f %s,  ' 'LRA: %.1f LU,  PLR: %.1f LU'
-        ) % (crest_total_db, dr, l_kg + r128_offset, r128_unit, lra, plr)
+        ) % (crest_total_db, dr if dr > 0 else "??.?", l_kg + r128_offset, r128_unit, lra, plr)
         subtitle_source = (
             'Encoding: %s,  Channels: %d,  Bits: %d,  '
             'Sample rate: %d Hz,  Bitrate: %s kbps,  '

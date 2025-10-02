@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: masvisgtk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-17 14:33+0200\n"
-"PO-Revision-Date: 2025-02-17 11:57+0200\n"
+"POT-Creation-Date: 2025-10-02 13:36+0300\n"
+"PO-Revision-Date: 2025-10-02 13:54+0300\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: bg\n"
@@ -18,22 +18,26 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.4\n"
+"X-Generator: Poedit 3.7\n"
 
 #: data/io.github.itprojects.MasVisGtk.desktop.in:3 src/main.py:57
+#: data/io.github.itprojects.MasVisGtk.desktop.in:2
 msgid "MasVisGtk"
 msgstr "МасВисГтк"
 
 #: data/io.github.itprojects.MasVisGtk.desktop.in:9
+#: data/io.github.itprojects.MasVisGtk.desktop.in:8
 msgid "Audio analysis"
 msgstr "Звуков анализ"
 
 #: data/io.github.itprojects.MasVisGtk.desktop.in:10
 #: data/io.github.itprojects.MasVisGtk.metainfo.xml.in:7
+#: data/io.github.itprojects.MasVisGtk.desktop.in:9
 msgid "Audio analysis tool for your music"
 msgstr "Звуко-анализиращ прибор за вашата музика"
 
 #: data/io.github.itprojects.MasVisGtk.desktop.in:12
+#: data/io.github.itprojects.MasVisGtk.desktop.in:11
 msgid "Audio;Loudness;Analysis;Music;Media;"
 msgstr "Звук;Шумност;Анализ;Музика;Медия;"
 
@@ -200,6 +204,7 @@ msgstr "Разделови Действия"
 
 #: src/gtk/help-overlay.ui:80 src/main_gtk_window.py:448
 #: src/gtk/help-overlay.ui:85 src/main_gtk_window.py:468
+#: src/main_gtk_window.py:827
 msgid "Compare Tabs"
 msgstr "Сравни Раздели"
 
@@ -338,281 +343,326 @@ msgstr "Ако входните данни са папка, обработи и 
 msgid "FILE(S) or FOLDER(S)"
 msgstr "ФАЙЛ(ОВЕ) или ПАПКИ"
 
-#: src/main.py:350 src/main.py:359
+#: src/main.py:350 src/main.py:359 src/main.py:366
 msgid "MasVisGtk Version "
 msgstr "МасВисГтк Версия "
 
-#: src/main.py:358 src/main.py:367
+#: src/main.py:358 src/main.py:367 src/main.py:374
 msgid "Supported Formats: "
 msgstr "Поддържани Формати: "
 
-#: src/main.py:369 src/main.py:378
+#: src/main.py:369 src/main.py:378 src/main.py:385
 msgid "is not possible with option -o. Try dir or flat."
 msgstr "не е възможен с -o. Пробвайте dir или flat."
 
-#: src/main.py:390 src/main.py:399
+#: src/main.py:390 src/main.py:399 src/main.py:406
 msgid "No input files or folders supplied."
 msgstr "Няма входни файлове или папки."
 
-#: src/main.py:404 src/main.py:413
+#: src/main.py:404 src/main.py:413 src/main.py:420
 msgid "Bad permisions for file. "
 msgstr "Неприемливи разрешения за файл. "
 
-#: src/main.py:422 src/main.py:431
+#: src/main.py:422 src/main.py:431 src/main.py:438
 msgid "Bad input: "
 msgstr "Лоши входни данни: "
 
-#: src/main.py:425 src/main.py:434
+#: src/main.py:425 src/main.py:434 src/main.py:441
 msgid "Error processing files: "
 msgstr "Грешка при отваряне: "
 
-#: src/main.py:432 src/main.py:441
+#: src/main.py:432 src/main.py:441 src/main.py:448
 msgid "Bad input files: "
 msgstr "Лоши входни данни: "
 
-#: src/main.py:434 src/main.py:443
+#: src/main.py:434 src/main.py:443 src/main.py:450
 msgid "Problem Files"
 msgstr "Проблемни Файлове"
 
-#: src/main.py:434 src/main.py:443
+#: src/main.py:434 src/main.py:443 src/main.py:450
 msgid "Ignoring bad input files:"
 msgstr "Пренебрегваме лошите входни файлове:"
 
-#: src/main.py:438 src/main.py:447
+#: src/main.py:438 src/main.py:447 src/main.py:454
 msgid "No Files"
 msgstr "Няма Файлове"
 
-#: src/main.py:438 src/main.py:447
+#: src/main.py:438 src/main.py:447 src/main.py:454
 msgid "No valid files found!"
 msgstr "Няма намерени действителни файлове!"
 
-#: src/main.py:465 src/main.py:474
+#: src/main.py:465 src/main.py:474 src/main.py:481
 msgid "Unsupported MimeType"
 msgstr "Неизвестен файлов вид"
 
-#: src/main.py:465 src/main.py:474
+#: src/main.py:465 src/main.py:474 src/main.py:481
 msgid "Skipping file: "
 msgstr "Пропускаме файл: "
 
-#: src/main.py:472 src/main.py:481
+#: src/main.py:472 src/main.py:481 src/main.py:488
 msgid "Processing"
 msgstr "Обработване"
 
-#: src/main.py:504 src/main.py:513
+#: src/main.py:504 src/main.py:513 src/main.py:520
 msgid "AsyncWorkerError"
 msgstr "АсинхроннаРаботнаГрешка"
 
-#: src/main.py:532 src/main.py:541
+#: src/main.py:532 src/main.py:541 src/main.py:548
 msgid "Duplicate path: "
 msgstr "Повторено местоположение: "
 
-#: src/main.py:538 src/main.py:547
+#: src/main.py:538 src/main.py:547 src/main.py:554
 msgid "Error in Opening"
 msgstr "Грешка при отваряне"
 
 #: src/main.py:554 src/main.py:590 src/main.py:563 src/main.py:599
+#: src/main.py:570 src/main.py:606
 msgid "Cannot detect save file format, defaulting to png."
 msgstr ""
 "Не е възможно да се засече формата за записване на файлове, използване по "
 "подразбиране png."
 
-#: src/main.py:561 src/main.py:570 src/main.py:699
+#: src/main.py:561 src/main.py:570 src/main.py:699 src/main.py:577
+#: src/main.py:706
 msgid "is not writeable."
 msgstr "не може да се записва."
 
 #: src/main.py:563 src/main.py:599 src/main.py:572 src/main.py:608
-#: src/main.py:701
+#: src/main.py:701 src/main.py:579 src/main.py:615 src/main.py:708
 msgid "Permissions"
 msgstr "Разрешения"
 
-#: src/main.py:597 src/main.py:606
+#: src/main.py:597 src/main.py:606 src/main.py:613
 msgid " is not writeable."
 msgstr " не може да се записва."
 
 #: src/main.py:865 src/main_gtk_window.py:436 src/main_gtk_window.py:624
 #: src/main_gtk_window.py:634 src/main.py:915 src/main_gtk_window.py:456
-#: src/main_gtk_window.py:806 src/main_gtk_window.py:816
+#: src/main_gtk_window.py:806 src/main_gtk_window.py:816 src/main.py:922
+#: src/main_gtk_window.py:815 src/main_gtk_window.py:1191
+#: src/main_gtk_window.py:1201
 msgid "Close"
 msgstr "Затвори"
 
-#: src/main.py:935 src/main.py:985
+#: src/main.py:935 src/main.py:985 src/main.py:993
 msgid "Opening File Error"
 msgstr "Грешка при отваряне"
 
-#: src/main.py:937 src/main.py:987
+#: src/main.py:937 src/main.py:987 src/main.py:995
 msgid "Errors in Processing!"
 msgstr "Грешка при отваряне!"
 
 #: src/main.py:953 src/main.py:964 src/main.py:1003 src/main.py:1014
+#: src/main.py:1011 src/main.py:1022
 msgid "Unable to open input "
 msgstr "Не могат да се отворят данни "
 
-#: src/main.py:954 src/main.py:1004
+#: src/main.py:954 src/main.py:1004 src/main.py:1012
 msgid "Cannot Open File"
 msgstr "Не може да се отвори"
 
-#: src/main.py:963 src/main.py:1013
+#: src/main.py:963 src/main.py:1013 src/main.py:1021
 msgid "The minimum file duration is 3 seconds."
 msgstr "Най-малката продължителност е 3 секунди."
 
-#: src/main.py:965 src/main.py:1015
+#: src/main.py:965 src/main.py:1015 src/main.py:1023
 msgid "File Error"
 msgstr "Файлова Грешка"
 
 #: src/main_gtk_window.py:127 src/main_gtk_window.py:422
 #: src/main_gtk_window.py:133 src/main_gtk_window.py:442
+#: src/main_gtk_window.py:153 src/main_gtk_window.py:797
 msgid "File Information"
 msgstr "Файлови Сведения"
 
 #: src/main_gtk_window.py:128 src/main_gtk_window.py:135
+#: src/main_gtk_window.py:155
 msgid "Go Compare"
 msgstr "Направи Съпоставка"
 
 #: src/main_gtk_window.py:129 src/main_gtk_window.py:136
+#: src/main_gtk_window.py:156
 msgid "Save All"
 msgstr "Запази Всички"
 
 #: src/main_gtk_window.py:133 src/main_gtk_window.py:140
+#: src/main_gtk_window.py:160
 msgid "Preferences"
 msgstr "Предпочитания"
 
 #: src/main_gtk_window.py:134 src/main_gtk_window.py:141
+#: src/main_gtk_window.py:161
 msgid "Formats"
 msgstr "Формати"
 
 #: src/main_gtk_window.py:135 src/main_gtk_window.py:142
+#: src/main_gtk_window.py:162
 msgid "Keyboard Shortcuts"
 msgstr "Клавишни Комбинации"
 
 #: src/main_gtk_window.py:136 src/main_gtk_window.py:143
+#: src/main_gtk_window.py:163
 msgid "Help"
 msgstr "Помощ"
 
 #: src/main_gtk_window.py:137 src/main_gtk_window.py:144
+#: src/main_gtk_window.py:164
 msgid "About"
 msgstr "Относно"
 
 #: src/main_gtk_window.py:150 src/main_gtk_window.py:210
 #: src/main_gtk_window.py:215 src/main_gtk_window.py:157
 #: src/main_gtk_window.py:217 src/main_gtk_window.py:222
+#: src/main_gtk_window.py:179 src/main_gtk_window.py:550
+#: src/main_gtk_window.py:555
 msgid "Open Files"
 msgstr "Отвори Файлове"
 
 #: src/main_gtk_window.py:155 src/main_gtk_window.py:225
 #: src/main_gtk_window.py:162 src/main_gtk_window.py:232
+#: src/main_gtk_window.py:188 src/main_gtk_window.py:565
 msgid "Advanced Open"
 msgstr "Разширено Отваряне"
 
 #: src/main_gtk_window.py:160 src/main_gtk_window.py:339
 #: src/main_gtk_window.py:361 src/main_gtk_window.py:167
 #: src/main_gtk_window.py:346 src/main_gtk_window.py:368
-#: src/main_gtk_window.py:427
+#: src/main_gtk_window.py:427 src/main_gtk_window.py:195
+#: src/main_gtk_window.py:701 src/main_gtk_window.py:723
+#: src/main_gtk_window.py:782
 msgid "Save"
 msgstr "Запази"
 
 #: src/main_gtk_window.py:160 src/main_gtk_window.py:167
+#: src/main_gtk_window.py:197
 msgid "Save Tab"
 msgstr "Запази Раздел"
 
 #: src/main_gtk_window.py:218 src/main_gtk_window.py:225
+#: src/main_gtk_window.py:558
 msgid "Open Folders"
 msgstr "Отвори Папки"
 
 #: src/main_gtk_window.py:231 src/main_gtk_window.py:238
+#: src/main_gtk_window.py:572
 msgid "Add Files"
 msgstr "Добави Файлове"
 
 #: src/main_gtk_window.py:231 src/main_gtk_window.py:238
+#: src/main_gtk_window.py:574
 msgid "Add files for processing"
 msgstr "Добави файлове за обработка"
 
 #: src/main_gtk_window.py:233 src/main_gtk_window.py:240
+#: src/main_gtk_window.py:578
 msgid "Add Folders"
 msgstr "Добави Папки"
 
 #: src/main_gtk_window.py:233 src/main_gtk_window.py:240
+#: src/main_gtk_window.py:580
 msgid "Add folders for processing"
 msgstr "Фобави папки за обработка"
 
 #: src/main_gtk_window.py:242 src/main_gtk_window.py:249
+#: src/main_gtk_window.py:590
 msgid "use LUFS units"
 msgstr "ползвай LUFS единици"
 
 #: src/main_gtk_window.py:246 src/main_gtk_window.py:253
+#: src/main_gtk_window.py:594
 msgid "recursive (search sub-folders)"
 msgstr "претърси (търси в под-папки)"
 
 #: src/main_gtk_window.py:252 src/main_gtk_window.py:259
+#: src/main_gtk_window.py:600
 msgid "overview mode"
 msgstr "прегледен разадел"
 
 #: src/main_gtk_window.py:283 src/main_gtk_window.py:290
+#: src/main_gtk_window.py:632
 msgid "Start"
 msgstr "Започни"
 
 #: src/main_gtk_window.py:283 src/main_gtk_window.py:290
+#: src/main_gtk_window.py:633
 msgid "Begin audio analysis"
 msgstr "Започни звуков анализ"
 
 #: src/main_gtk_window.py:308 src/main_gtk_window.py:315
+#: src/main_gtk_window.py:660
 msgid "Failed Open"
 msgstr "Провалено отваряне"
 
 #: src/main_gtk_window.py:340 src/main_gtk_window.py:347
+#: src/main_gtk_window.py:702
 msgid "Save in Folder"
 msgstr "Запази в Папка"
 
 #: src/main_gtk_window.py:362 src/main_gtk_window.py:369
+#: src/main_gtk_window.py:724
 msgid "Save All in Folder"
 msgstr "Запази Всички в Папка"
 
 #: src/main_gtk_window.py:442 src/main_gtk_window.py:465
 #: src/main_gtk_window.py:536 src/main_gtk_window.py:462
 #: src/main_gtk_window.py:485 src/main_gtk_window.py:556
+#: src/main_gtk_window.py:821 src/main_gtk_window.py:844
+#: src/main_gtk_window.py:931
 msgid "Cannot Compare"
 msgstr "Не може да се сравни"
 
 #: src/main_gtk_window.py:442 src/main_gtk_window.py:462
+#: src/main_gtk_window.py:821
 msgid "No tabs."
 msgstr "Няма раздели."
 
 #: src/main_gtk_window.py:465 src/main_gtk_window.py:536
 #: src/main_gtk_window.py:485 src/main_gtk_window.py:556
 #: src/main_gtk_window.py:626 src/main_gtk_window.py:649
-#: src/main_gtk_window.py:697
+#: src/main_gtk_window.py:697 src/main_gtk_window.py:844
+#: src/main_gtk_window.py:931 src/main_gtk_window.py:1001
+#: src/main_gtk_window.py:1024 src/main_gtk_window.py:1078
 msgid "Too few tabs."
 msgstr "Твърде малко раздели."
 
 #: src/main_gtk_window.py:478 src/main_gtk_window.py:498
+#: src/main_gtk_window.py:858
 msgid "Go!"
 msgstr "Действай!"
 
 #: src/main_gtk_window.py:478 src/main_gtk_window.py:498
+#: src/main_gtk_window.py:859
 msgid "Compare tabs in separate window"
 msgstr "Сравни раздели и отделен прозорец"
 
 #: src/main_gtk_window.py:482 src/main_gtk_window.py:502
-#: src/main_gtk_window.py:666
+#: src/main_gtk_window.py:666 src/main_gtk_window.py:865
+#: src/main_gtk_window.py:1045
 msgid "☑ All!"
 msgstr "☑ Всички!"
 
 #: src/main_gtk_window.py:482 src/main_gtk_window.py:502
+#: src/main_gtk_window.py:866
 msgid "Compare ALL tabs in separate window"
 msgstr "Сравни ВСИЧКИ раздели в отделен прозорец"
 
 #: src/main_gtk_window.py:545 src/main_gtk_window.py:565
+#: src/main_gtk_window.py:940
 msgid "Comparison #"
 msgstr "Съпоставка #"
 
 #: src/main_gtk_window.py:622 src/main_gtk_window.py:804
+#: src/main_gtk_window.py:1189
 msgid "Supported Formats"
 msgstr "Поддържани Формати"
 
 #: src/main_gtk_window.py:653 src/main_gtk_window.py:835
+#: src/main_gtk_window.py:1220
 msgid "Original PyMasVis module development."
 msgstr "Първоначално разработване на пайМасВис модул."
 
 #: src/main_gtk_window.py:655 src/main_gtk_window.py:837
+#: src/main_gtk_window.py:1222
 msgid "GTK application, originally based on PyMasVis commit #657196."
 msgstr "ГТК приложение, първоначално основана на ПайМасВис #657196."
 
@@ -620,13 +670,15 @@ msgstr "ГТК приложение, първоначално основана �
 msgid "Input file has no audio stream: "
 msgstr "Входният файл няма звукова пътечка: "
 
-#: src/output_gtk.py:219 src/output_gtk.py:221
+#: src/output_gtk.py:219 src/output_gtk.py:221 src/output_gtk.py:222
 msgid ""
 "Crest: {:0.2f} dB,  DR: {},  L$_K$: {:0.1f} {},  LRA: {:0.1f} LU,  PLR: "
 "{:0.1f} LU"
 msgstr ""
+"Вълнов фактор: {:0.2f} dB,  Д.О.: {},  L$_K$: {:0.1f} {},  LRA: {:0.1f} LU,  "
+"PLR: {:0.1f} LU"
 
-#: src/output_gtk.py:222 src/output_gtk.py:224
+#: src/output_gtk.py:222 src/output_gtk.py:224 src/output_gtk.py:225
 msgid ""
 "Encoding: {},  Channels: {},  Layout: {},  Bits: {},\n"
 "Sample rate: {} Hz,  Bitrate: {} kbps,  Duration: {},  Size: {:0.1f} MB"
@@ -635,95 +687,103 @@ msgstr ""
 "Дискретизация: {} Хц,  Битове/сек: {} кб/сек,  Продължителност: {},  Размер: "
 "{:0.1f} MB"
 
-#: src/output_gtk.py:234 src/output_gtk.py:236
+#: src/output_gtk.py:234 src/output_gtk.py:236 src/output_gtk.py:237
 msgid "Album"
 msgstr "Албум"
 
-#: src/output_gtk.py:236 src/output_gtk.py:238
+#: src/output_gtk.py:236 src/output_gtk.py:238 src/output_gtk.py:239
 msgid "Track"
 msgstr "Песен"
 
-#: src/output_gtk.py:238 src/output_gtk.py:240
+#: src/output_gtk.py:238 src/output_gtk.py:240 src/output_gtk.py:241
 msgid "Date"
 msgstr "Година"
 
-#: src/output_gtk.py:259 src/output_gtk.py:267
+#: src/output_gtk.py:259 src/output_gtk.py:267 src/output_gtk.py:268
 msgid "Checksum (energy): "
 msgstr "Сметка-проверка (енергия): "
 
-#: src/output_gtk.py:267 src/output_gtk.py:275
+#: src/output_gtk.py:267 src/output_gtk.py:275 src/output_gtk.py:276
 msgid "MasVisGtk "
 msgstr "МасВисГтк "
 
-#: src/output_gtk.py:313 src/output_gtk.py:325
+#: src/output_gtk.py:313 src/output_gtk.py:325 src/output_gtk.py:326
 msgid ""
 "{}: Crest = {:0.2f} dB / RMS = {:0.2f} dBFS / Peak = {:0.2f} dBFS / True "
 "Peak ≈ {:0.2f} dBTP"
 msgstr ""
+"{}: Вълнов фактор = {:0.2f} dB / RMS = {:0.2f} dBFS / Връх = {:0.2f} dBFS / "
+"Истински Връх ≈ {:0.2f} dBTP"
 
-#: src/output_gtk.py:355 src/output_gtk.py:369
+#: src/output_gtk.py:355 src/output_gtk.py:369 src/output_gtk.py:370
 msgid ""
 "Loudest part ({} channel, {} samples > 95{} during 20 ms at {:0.2f} sec)"
 msgstr ""
 "Най-громката част ({} канал, {} проби > 95{} през 20 мсек при {:0.2f} сек)"
 
-#: src/output_gtk.py:437 src/output_gtk.py:455
+#: src/output_gtk.py:437 src/output_gtk.py:455 src/output_gtk.py:456
 msgid "Normalised average spectrum, "
 msgstr "Нормализиран осреднен спектър, "
 
-#: src/output_gtk.py:437 src/output_gtk.py:455
+#: src/output_gtk.py:437 src/output_gtk.py:455 src/output_gtk.py:456
 msgid " frames"
 msgstr " кадър/а"
 
-#: src/output_gtk.py:495 src/output_gtk.py:515
+#: src/output_gtk.py:495 src/output_gtk.py:515 src/output_gtk.py:516
 msgid "Allpassed crest factor"
 msgstr "Цяломинаващ (crest) фактор"
 
-#: src/output_gtk.py:535 src/output_gtk.py:561
+#: src/output_gtk.py:535 src/output_gtk.py:561 src/output_gtk.py:562
 msgid "Histogram, 'bits': "
 msgstr "Хистограма, 'битове': "
 
-#: src/output_gtk.py:590 src/output_gtk.py:622
+#: src/output_gtk.py:590 src/output_gtk.py:622 src/output_gtk.py:623
 msgid "Peak vs RMS level"
 msgstr "Връх срещу RMS"
 
-#: src/output_gtk.py:621 src/output_gtk.py:660
+#: src/output_gtk.py:621 src/output_gtk.py:660 src/output_gtk.py:661
 msgid "Short term (1 s) crest factor"
 msgstr "Краткосрочен (1 сек) (crest) фактор"
 
-#: src/output_gtk.py:653 src/output_gtk.py:699
+#: src/output_gtk.py:653 src/output_gtk.py:699 src/output_gtk.py:700
 msgid "EBU R 128 Short term loudness"
 msgstr "EBU R 128 краткосрочна гръмкост"
 
-#: src/output_gtk.py:654 src/output_gtk.py:705
+#: src/output_gtk.py:654 src/output_gtk.py:705 src/output_gtk.py:706
 msgid "Short term PLR"
 msgstr "Краткосрочен PLR"
 
-#: src/output_gtk.py:725 src/output_gtk.py:800
+#: src/output_gtk.py:725 src/output_gtk.py:800 src/main_gtk_window.py:256
 msgid "Scale to Window Width"
 msgstr "Разшири размер до края на прозореца"
 
-#: src/output_gtk.py:779 src/output_gtk.py:859
+#: src/output_gtk.py:779 src/output_gtk.py:859 src/main_gtk_window.py:402
 msgid "Unknown Dynamic Range"
 msgstr "Неизвестен Динамичен Обхват"
 
-#: src/output_gtk.py:783 src/output_gtk.py:863
+#: src/output_gtk.py:783 src/output_gtk.py:863 src/main_gtk_window.py:205
+#: src/main_gtk_window.py:405
 msgid "Dynamic Range"
 msgstr "Динамичен Обхват"
 
-#: src/output_gtk.py:857 src/output_gtk.py:932
+#: src/output_gtk.py:857 src/output_gtk.py:932 src/output_gtk.py:847
 msgid ""
 "DR = {}\n"
 "Peak = {:0.1f} dBFS\n"
 "Crest = {:0.1f} dB\n"
 "L$_k$ = {:0.1f} LU"
 msgstr ""
+"Д.О. = {}\n"
+"Връх = {:0.1f} dBFS\n"
+"Вълнов = {:0.1f} dB\n"
+"L$_k$ = {:0.1f} LU"
 
-#: src/output_gtk.py:866 src/output_gtk.py:941
+#: src/output_gtk.py:866 src/output_gtk.py:941 src/output_gtk.py:856
 msgid "{} [{}, {} channels, {} bits, {:0.1f} kHz, {} kbps]"
 msgstr "{} [{}, {} канал/а, {} бита, {:0.1f} кХц, {} кб/сек]"
 
 #: src/main_gtk_window.py:192 src/main_gtk_window.py:199
+#: src/main_gtk_window.py:331
 msgid "Overview"
 msgstr "Прегледен Разадел"
 
@@ -900,7 +960,8 @@ msgid "Animation duration in milliseconds."
 msgstr "Анимационна продължителност в милисекунди."
 
 #: src/gtk/help-overlay.ui:79 src/main_gtk_window.py:134
-#: src/main_gtk_window.py:632
+#: src/main_gtk_window.py:632 src/main_gtk_window.py:154
+#: src/main_gtk_window.py:1007
 msgid "Animate Tabs"
 msgstr "Анимирай Раздели"
 
@@ -908,51 +969,52 @@ msgstr "Анимирай Раздели"
 msgid "Set animation duration [ms]"
 msgstr "Анимационна продължителност [милисек]"
 
-#: src/main_gtk_window.py:428
+#: src/main_gtk_window.py:428 src/main_gtk_window.py:783
 msgid "Save Animation"
 msgstr "Запази Анимацията"
 
 #: src/main_gtk_window.py:626 src/main_gtk_window.py:649
-#: src/main_gtk_window.py:697
+#: src/main_gtk_window.py:697 src/main_gtk_window.py:1001
+#: src/main_gtk_window.py:1024 src/main_gtk_window.py:1078
 msgid "Cannot Animate"
 msgstr "Не може да се анимира"
 
-#: src/main_gtk_window.py:662
+#: src/main_gtk_window.py:662 src/main_gtk_window.py:1038
 msgid "Animate"
 msgstr "Анимирай"
 
-#: src/main_gtk_window.py:662
+#: src/main_gtk_window.py:662 src/main_gtk_window.py:1039
 msgid "Animate tabs in separate window"
 msgstr "Анимирай разделите в отделен прозорец"
 
-#: src/main_gtk_window.py:666
+#: src/main_gtk_window.py:666 src/main_gtk_window.py:1046
 msgid "Animate ALL tabs in separate window"
 msgstr "Анимирай ВСИЧКИТЕ раздели в отделен прозорец"
 
-#: src/main_gtk_window.py:707
+#: src/main_gtk_window.py:707 src/main_gtk_window.py:1088
 msgid "Animation #"
 msgstr "Анимация #"
 
-#: src/main_gtk_window.py:722
+#: src/main_gtk_window.py:722 src/main_gtk_window.py:1103
 msgid "Save tabs to animated gif image"
 msgstr "Запази разделите в анимирана гиф снимка"
 
-#: src/main_gtk_window.py:765
+#: src/main_gtk_window.py:765 src/main_gtk_window.py:1150
 msgid "Processing images."
 msgstr "Обработване на снимки."
 
-#: src/main_gtk_window.py:772
+#: src/main_gtk_window.py:772 src/main_gtk_window.py:1157
 msgid "Animated image ready for saving."
 msgstr "Анимирай снимка преди записване."
 
-#: src/main_gtk_window.py:775
+#: src/main_gtk_window.py:775 src/main_gtk_window.py:1160
 msgid "Animation Error"
 msgstr "Анимационна Грешка"
 
-#: src/main_gtk_window.py:776
+#: src/main_gtk_window.py:776 src/main_gtk_window.py:1161
 msgid ""
 "Cannot create animation.\n"
-" Plotting canvas cannot be made into image.\n"
+"Plotting canvas cannot be made into image.\n"
 msgstr ""
 "Не може да се сътвори анимацията.\n"
 "Платното на чертежът не може да се направи на снимка.\n"
@@ -987,21 +1049,13 @@ msgstr "Увеличи до правоъгълник, х/у ще поправя 
 msgid "Save the figure"
 msgstr "Запази фигурата"
 
-#: src/output_gtk.py:789
+#: src/output_gtk.py:789 src/main_gtk_window.py:272
 msgid "Zoom Level [px]"
 msgstr "Ниво на Увеличение [пиксели]"
 
 #: src/output_gtk.py:795
-msgid "Restore original dimensions"
+msgid "Resotre original dimensions"
 msgstr "Възстанови първоначалните размери"
-
-#: src/main_gtk_window.py:776
-msgid ""
-"Cannot create animation.\n"
-"Plotting canvas cannot be made into image.\n"
-msgstr ""
-"Не може да се сътвори анимацията.\n"
-"Платното на чертежът не може да се направи на снимка.\n"
 
 #: src/params.py:346
 #, python-format
@@ -1080,8 +1134,8 @@ msgid ""
 "Is probably the most revealing graph in MasVis. It gives an estimate of how "
 "much the crest factor has been lowered, by the processing of the 2-channel "
 "master. In the graph, there are four curves, two red for the right channel, "
-"and two blue for the left channel. The dashed line shows the crest factor, i."
-"e. the same information as above the waveform graphs. The solid line shows "
+"and two blue for the left channel. The dashed line shows the crest factor, "
+"i.e. the same information as above the waveform graphs. The solid line shows "
 "the crest factor of the signal after it has passed an allpass filter. The "
 "second crest factor is a rough, and typically underestimated value of how "
 "large the crest factor was prior to level maximation of the 2-channel "
@@ -1232,48 +1286,46 @@ msgstr ""
 "\n"
 "## <span size=\"larger\"><b>Прегледният Раздел</b></span>\n"
 "\n"
-"Прегледният раздел е подходящ за показване на сгъстени сведения относно "
-"цял албум. Там се показва вълната на левия и денсия канал, насложени "
-"един върху друг. Левият канал е син, десният е червен. Частите, които "
-"се припокриват, са черни. Ако снимката е многоцветна, "
-"каналите са много различни.\n"
+"Прегледният раздел е подходящ за показване на сгъстени сведения относно цял "
+"албум. Там се показва вълната на левия и денсия канал, насложени един върху "
+"друг. Левият канал е син, десният е червен. Частите, които се припокриват, "
+"са черни. Ако снимката е многоцветна, каналите са много различни.\n"
 "\n"
 "Гребенният (crest) фактор, и нивото на най-високият връх, се показват "
-"отдясно на всяко изображение. Стойностите могат да имат разлики от "
-"подробния преглед, защото левият и десният канал се обработват заедно.\n"
+"отдясно на всяко изображение. Стойностите могат да имат разлики от подробния "
+"преглед, защото левият и десният канал се обработват заедно.\n"
 "\n"
 "## <span size=\"larger\"><b>Разделът с Подробен Преглед</b></span>\n"
 "\n"
 "Разделът с Подробен Преглед показва по-дълбоко обработване, за единичен "
-"звуков файл. Всяко изобразжение показва различно изложение на звука, "
-"както е описано по-долу.\n"
+"звуков файл. Всяко изобразжение показва различно изложение на звука, както е "
+"описано по-долу.\n"
 "\n"
 "### <span size=\"large\"><b>Ляв и Десен (канал)</b></span>\n"
 "\n"
-"Най-горните изображения показват вълните от левия и десния канал, "
-"подобно на прегледния раздел, но по-отделно. Гребенният (crest) "
-"фактор, средното (RMS) ниво, и стойността на върха, се показват над "
-"изображението.\n"
+"Най-горните изображения показват вълните от левия и десния канал, подобно на "
+"прегледния раздел, но по-отделно. Гребенният (crest) фактор, средното (RMS) "
+"ниво, и стойността на върха, се показват над изображението.\n"
 "\n"
 "### <span size=\"large\"><b>Най-громката част</b></span>\n"
 "\n"
-"За да покажем как най-громката част от пътечката е преживяла "
-"овладяването на обработката, МасВис търси най-силно звучащата част на "
-"пътечката, и се вглежда в нея. Около подбраната част, приложението показва "
-"прозорец от 100 милисекунди. Подрязване и/или ограничаване (brickwalling) "
-"е типично видимо в това изображение.\n"
+"За да покажем как най-громката част от пътечката е преживяла овладяването на "
+"обработката, МасВис търси най-силно звучащата част на пътечката, и се "
+"вглежда в нея. Около подбраната част, приложението показва прозорец от 100 "
+"милисекунди. Подрязване и/или ограничаване (brickwalling) е типично видимо в "
+"това изображение.\n"
 "\n"
-"Частта, която се показава не е избираема от потребителя, в "
-"съответствие с идеята, че в МасВис изображенията трябва да изглеждат "
-"същите, независимо от това, кой прави обработката. Подборът се прави "
-"самостойно, от МасВис, по следния начин:\n"
+"Частта, която се показава не е избираема от потребителя, в съответствие с "
+"идеята, че в МасВис изображенията трябва да изглеждат същите, независимо от "
+"това, кой прави обработката. Подборът се прави самостойно, от МасВис, по "
+"следния начин:\n"
 "\n"
 "1. Намира се стойността на най-високата проба\n"
 "\n"
 "2. Прилага се праг от 95 процента от стойността на най-високата проба\n"
 "\n"
-"3. За всяко място, което сигналът е над прага, се проверява колко "
-"проби надвишават прага\n"
+"3. За всяко място, което сигналът е над прага, се проверява колко проби "
+"надвишават прага\n"
 "\n"
 "4. Подбира се мястото, където се намират най-високият брой на проби "
 "превишаващи прага\n"
@@ -1282,98 +1334,92 @@ msgstr ""
 "\n"
 "### <span size=\"large\"><b>Нормализиран Осреднен Спектър</b></span>\n"
 "\n"
-"Това изображение показва осредненият спектър на сигнала. То се прави "
-"чрез осредняване на 1-секундовите Блакманови прозорци на сигнала. "
-"Наклонените линии спадат с 6дБ/октава и могат да служат при съпоставка "
-"за отсъждане на спектралното съдържание на пътечката.\n"
+"Това изображение показва осредненият спектър на сигнала. То се прави чрез "
+"осредняване на 1-секундовите Блакманови прозорци на сигнала. Наклонените "
+"линии спадат с 6дБ/октава и могат да служат при съпоставка за отсъждане на "
+"спектралното съдържание на пътечката.\n"
 "\n"
-"Въпреки, че това изображение не различава между овладяването на "
-"обработката и другите части на производството на музика, включая "
-"инструменти, все пак е много полезно, за сравнение на различните "
-"версии на същия албум. \"Ремастърд\" версиите на албумите често "
-"идват с множество спектрални (честотни) промени, и тези се виждат "
-"доста добре в спектралното изображение, при съпоставка.\n"
+"Въпреки, че това изображение не различава между овладяването на обработката "
+"и другите части на производството на музика, включая инструменти, все пак е "
+"много полезно, за сравнение на различните версии на същия албум. "
+"\"Ремастърд\" версиите на албумите често идват с множество спектрални "
+"(честотни) промени, и тези се виждат доста добре в спектралното изображение, "
+"при съпоставка.\n"
 "\n"
-"Спектралното изображение е нормализирано, тоест, че средното (RMS) "
-"ниво на сигнала въобще не влияе на изображението.\n"
+"Спектралното изображение е нормализирано, тоест, че средното (RMS) ниво на "
+"сигнала въобще не влияе на изображението.\n"
 "\n"
 "### <span size=\"large\"><b>Цяломинаващ (crest) фактор</b></span>\n"
 "\n"
-"Най-показателното изображение на МасВис. То дава преценка на това "
-"колко от гребенния (crest) фактор е занижен от обработката на "
-"2-каналния (смесен) звуков първообраз. На чертежа има четири криви, "
-"две червени за десния канал, и две сини за левия канал. Прекъснатата "
-"линия показва гребенния (crest) фактор на сигнала, след като е "
-"обработена с филтъра на цялониващия (crest) фактор. Вторият гребенен "
-"(crest) фактор е груба, и типично подценена стойност, за това колко "
-"голям е бил гребенния (crest) фактор, преди увеличаването на нивото.\n"
+"Най-показателното изображение на МасВис. То дава преценка на това колко от "
+"гребенния (crest) фактор е занижен от обработката на 2-каналния (смесен) "
+"звуков първообраз. На чертежа има четири криви, две червени за десния канал, "
+"и две сини за левия канал. Прекъснатата линия показва гребенния (crest) "
+"фактор на сигнала, след като е обработена с филтъра на цялониващия (crest) "
+"фактор. Вторият гребенен (crest) фактор е груба, и типично подценена "
+"стойност, за това колко голям е бил гребенния (crest) фактор, преди "
+"увеличаването на нивото.\n"
 "\n"
-"На пръв поглед може да изглежда, че такава преценка е невъзможна, но "
-"опитът показва, че прийомът работи. Разбира се, не дава точна стойност "
-"за първоначалния гребенен (crest) фактор, но е достатъчен, за да се "
-"каже дали пътечката е подложена на унищожително (честотно) увеличаване "
-"на громкостта.\n"
+"На пръв поглед може да изглежда, че такава преценка е невъзможна, но опитът "
+"показва, че прийомът работи. Разбира се, не дава точна стойност за "
+"първоначалния гребенен (crest) фактор, но е достатъчен, за да се каже дали "
+"пътечката е подложена на унищожително (честотно) увеличаване на громкостта.\n"
 "\n"
-"Разликата, между максимума в продължителната линия, и прекъснатата "
-"линия, се съпоставя доста добре с количеството загуба в гребенния "
-"(crest) фактор, до която е довело увеличаването на громкостта на "
-"2-канално смесената пътечка.\n"
+"Разликата, между максимума в продължителната линия, и прекъснатата линия, се "
+"съпоставя доста добре с количеството загуба в гребенния (crest) фактор, до "
+"която е довело увеличаването на громкостта на 2-канално смесената пътечка.\n"
 "\n"
 "Ето прийомът, който МасВис използва, за да направи изображението:\n"
 "\n"
-"1. Начертава прекъсната линия, при гребенния (crest) фактор на "
-"пътечката\n"
+"1. Начертава прекъсната линия, при гребенния (crest) фактор на пътечката\n"
 "\n"
-"2. Пуска пътечката през няколко различни първо-разрядни цяломинаващи "
-"филтъра при 20, 60, 200, 600, 2000, 6000, и 20000 Хц\n"
+"2. Пуска пътечката през няколко различни първо-разрядни цяломинаващи филтъра "
+"при 20, 60, 200, 600, 2000, 6000, и 20000 Хц\n"
 "\n"
-"3. За всеки от седемте филтрирани сигнала, смята стойността за нов "
-"гребенен (crest) фактор\n"
+"3. За всеки от седемте филтрирани сигнала, смята стойността за нов гребенен "
+"(crest) фактор\n"
 "\n"
-"4. Начертава продължителна линия, представляваща гребенния (crest) "
-"фактор като функция на филтъровата честота.\n"
+"4. Начертава продължителна линия, представляваща гребенния (crest) фактор "
+"като функция на филтъровата честота.\n"
 "\n"
 "### <span size=\"large\"><b>Хистограма</b></span>\n"
 "\n"
-"В 16 битов звук, както е при CD, вълната се представлява от 16-битови "
-"числа, давайки обхват от -32768 до +32727 за стойностите на пробите. "
-"Някои стойности са по-често срещани от други. Ако, за пример, пътечката "
-"е изцяло тиха, всички стойности са 0, 0-ата стойност на пробата е "
-"много често срещана. Ако има слаб звук, ниските стойности стават често "
-"срещани, а ако сигналът е крайно-громък и подрязан, тогава крайните "
-"стойности стават често срещани.\n"
+"В 16 битов звук, както е при CD, вълната се представлява от 16-битови числа, "
+"давайки обхват от -32768 до +32727 за стойностите на пробите. Някои "
+"стойности са по-често срещани от други. Ако, за пример, пътечката е изцяло "
+"тиха, всички стойности са 0, 0-ата стойност на пробата е много често "
+"срещана. Ако има слаб звук, ниските стойности стават често срещани, а ако "
+"сигналът е крайно-громък и подрязан, тогава крайните стойности стават често "
+"срещани.\n"
 "\n"
-"Хистограмата показва числото на пробите за всяка стойност. Пътечката, "
-"която съдържа пълна тишина, ще покаже връх близо до 0, а пътечка, "
-"която подрязва, ще покаже върхове при високите и ниските краища на "
-"хистограмата.\n"
+"Хистограмата показва числото на пробите за всяка стойност. Пътечката, която "
+"съдържа пълна тишина, ще покаже връх близо до 0, а пътечка, която подрязва, "
+"ще покаже върхове при високите и ниските краища на хистограмата.\n"
 "\n"
-"Може да се покаже, че сбора на множество сигнали с приблизително "
-"постоянна амплитуда във времето, ще доведе до \"нормалното "
-"разпределение\". Таково разпределение приема вид на парабола, ако "
-"отвесната ос е логаритмична (както е при МасВис). Ако сигналите нямат "
-"постоянна амплитуда, а имат такава, която се променя във времето, "
-"тогава разпределението става на пирамида, с приблизително праволинейни "
-"склонове.\n"
+"Може да се покаже, че сбора на множество сигнали с приблизително постоянна "
+"амплитуда във времето, ще доведе до \"нормалното разпределение\". Таково "
+"разпределение приема вид на парабола, ако отвесната ос е логаритмична (както "
+"е при МасВис). Ако сигналите нямат постоянна амплитуда, а имат такава, която "
+"се променя във времето, тогава разпределението става на пирамида, с "
+"приблизително праволинейни склонове.\n"
 "\n"
-"Обаче, хистограмата на сбора, на множество несвързани сигнали, не може "
-"да има внезапни краища. Такива само стават, ако сигналите са свързани "
-"(но те почти никога не са), или, ако 2-каналната смесена пътечка е "
-"била подправена (усилвана).\n"
+"Обаче, хистограмата на сбора, на множество несвързани сигнали, не може да "
+"има внезапни краища. Такива само стават, ако сигналите са свързани (но те "
+"почти никога не са), или, ако 2-каналната смесена пътечка е била подправена "
+"(усилвана).\n"
 "\n"
 "Очаква се хистограма с гладки склонове, за всяко смесване на няколко "
-"сигнала, освен ако 2-каналната смесена пътечка е подложена на "
-"подрязване или ограничаване (brickwalling).\n"
+"сигнала, освен ако 2-каналната смесена пътечка е подложена на подрязване или "
+"ограничаване (brickwalling).\n"
 "\n"
-"Числото \"битове\", над хистограмата, посочва колко, от 65536-те "
-"нива, се появяват поне веднъж във звуковия файл. Ако всички 65536 "
-"нива, се показват в звуковия файл, тогава числото се "
-"показва като 16,0. Ако само половината са използвани, (пр. 32768), "
-"тогава се показва 15,0. В математически смисъл, показаното число е "
-"2-и логаритъм на числото на ползваните пробни нива. До някъде е "
-"безсмислено. Записи, които са били овладявани след смесване, типично "
-"стигат до 16,0 \"битове\", докато неовладявани записи на пълен обхват "
-"са по-скоро 14-15 \"битове\".\n"
+"Числото \"битове\", над хистограмата, посочва колко, от 65536-те нива, се "
+"появяват поне веднъж във звуковия файл. Ако всички 65536 нива, се показват в "
+"звуковия файл, тогава числото се показва като 16,0. Ако само половината са "
+"използвани, (пр. 32768), тогава се показва 15,0. В математически смисъл, "
+"показаното число е 2-и логаритъм на числото на ползваните пробни нива. До "
+"някъде е безсмислено. Записи, които са били овладявани след смесване, "
+"типично стигат до 16,0 \"битове\", докато неовладявани записи на пълен "
+"обхват са по-скоро 14-15 \"битове\".\n"
 "\n"
 "### <span size=\"large\"><b>Връх срещу RMS</b></span>\n"
 "\n"
@@ -1382,79 +1428,105 @@ msgstr ""
 "върховната стойност дават гребенния (crest) фактор. Гребенният (crest) "
 "фактор за всеки кадър може да се прочете от чертежа.\n"
 "\n"
-"Изображението е полезно за показване на динамиката на пътечката. Ако "
-"някой сигнал е усилван, кръгчето мърда надясно, понеже и върховата, и "
-"средната стойност се повишават със същото количество. Когато кръгчето "
-"стигне до горния ъгъл, по-нататъчното увеличаване на средните (RMS) "
-"стойности е само въсможно, ако гребенния (crest) фактор е понижен.\n"
+"Изображението е полезно за показване на динамиката на пътечката. Ако някой "
+"сигнал е усилван, кръгчето мърда надясно, понеже и върховата, и средната "
+"стойност се повишават със същото количество. Когато кръгчето стигне до "
+"горния ъгъл, по-нататъчното увеличаване на средните (RMS) стойности е само "
+"въсможно, ако гребенния (crest) фактор е понижен.\n"
 "\n"
-"Твърде много съвременни произведения са много претъпкани в горния "
-"десен край.\n"
+"Твърде много съвременни произведения са много претъпкани в горния десен "
+"край.\n"
 "\n"
 "### <span size=\"large\"><b>Краткосрочен гребенен (crest) фактор</b></span>\n"
 "\n"
-"Всеки един от кръгчетата във Връх срещу RMS изображението, също "
-"се появат и в Краткосрочения чертеж. Тук, гребенния (crest) фактор "
-"от 1-секундовия прозорец е показан във времето. Добре е да се съпостави "
-"със вида на вълните (по-горе).\n"
+"Всеки един от кръгчетата във Връх срещу RMS изображението, също се появат и "
+"в Краткосрочения чертеж. Тук, гребенния (crest) фактор от 1-секундовия "
+"прозорец е показан във времето. Добре е да се съпостави със вида на вълните "
+"(по-горе).\n"
 "\n"
-"За естествени, необработени звуци, гребенния (crest) фактор нараства "
-"малко, когато квука е по-громък. Громкият звук е типично свързан с "
-"по-богат спектър и по-голям брой звукови източници. И двете повишават "
-"гребенния (crest) фактор. Обаче, ако 2-каналната смесица е "
-"била подложена на подрязване или ограничаване (brickwalling), тогава "
-"гребенния (crest) фактор е понижен, когато звука е бил увеличен "
-" (по-громък).\n"
+"За естествени, необработени звуци, гребенния (crest) фактор нараства малко, "
+"когато квука е по-громък. Громкият звук е типично свързан с по-богат спектър "
+"и по-голям брой звукови източници. И двете повишават гребенния (crest) "
+"фактор. Обаче, ако 2-каналната смесица е била подложена на подрязване или "
+"ограничаване (brickwalling), тогава гребенния (crest) фактор е понижен, "
+"когато звука е бил увеличен  (по-громък).\n"
 "\n"
 "## <span size=\"larger\"><b>Речник</b></span>\n"
 "\n"
 "### <span size=\"large\"><b>Гребенен (crest) фактор</b></span>\n"
 "\n"
-"Гребенният (crest) фактор е отношението между стойноста на върха и "
-"средната (RMS) стойност, за един кадър. Изявява се в децибели [дБ], и "
-"ако е така, това е разликата между стойноста на върха [дБ], и средната "
-"стойност (RMS) [дБ]. Гребенният (crest) фактор не може да бъде с "
-"отрицателна стойност. Синусоида има гребенен (crest) фактор 3 дБ, и "
-"квадратна вълна 0 дБ.\n"
+"Гребенният (crest) фактор е отношението между стойноста на върха и средната "
+"(RMS) стойност, за един кадър. Изявява се в децибели [дБ], и ако е така, "
+"това е разликата между стойноста на върха [дБ], и средната стойност (RMS) "
+"[дБ]. Гребенният (crest) фактор не може да бъде с отрицателна стойност. "
+"Синусоида има гребенен (crest) фактор 3 дБ, и квадратна вълна 0 дБ.\n"
 "\n"
 "### <span size=\"large\"><b>Спектър</b></span>\n"
 "\n"
-"Спектралното изображение е в следствие на преобразуване на Фурие (FFT), "
-"и показва как енергията (в сигнал) е разпределена през различните "
-"честоти.\n"
+"Спектралното изображение е в следствие на преобразуване на Фурие (FFT), и "
+"показва как енергията (в сигнал) е разпределена през различните честоти.\n"
 "\n"
 "### <span size=\"large\"><b>Връх срещу RMS</b></span>\n"
 "\n"
 "Средната стойност (RMS, root mean square) е пропорционална на средната "
-"мощност на един сиганл, видима през определено време. Върховата "
-"стойност, е най-голямата стойност, през определено време.\n"
+"мощност на един сиганл, видима през определено време. Върховата стойност, е "
+"най-голямата стойност, през определено време.\n"
 "\n"
 "### <span size=\"large\"><b>Кадър</b></span>\n"
 "\n"
-"Кадърът е част от сигнала. В МасВис, 1-секундови кадри се ползват "
-"за създаване на спектралното изображение и това на гребенния "
-"(crest) фактор.\n"
+"Кадърът е част от сигнала. В МасВис, 1-секундови кадри се ползват за "
+"създаване на спектралното изображение и това на гребенния (crest) фактор.\n"
 "\n"
 "### <span size=\"large\"><b>Цяломинаващ филтър</b></span>\n"
 "\n"
-"Цяломинаващият филтър позволява на всички честоти да минат, без "
-"отслабване или усилване. Обаче, фазите на различните честоти се "
-"отместват различно. В следствие, сигналът е подобен на първоначалния, "
-"но с различно изглеждаща вълна.\n"
+"Цяломинаващият филтър позволява на всички честоти да минат, без отслабване "
+"или усилване. Обаче, фазите на различните честоти се отместват различно. В "
+"следствие, сигналът е подобен на първоначалния, но с различно изглеждаща "
+"вълна.\n"
 "\n"
 "### <span size=\"large\"><b>Сметка-проверка</b></span>\n"
 "\n"
 "Сметките-проверки се ползват чест, за да се осигури цялостта на данните. "
 "Сметковите прийоми произвеждат различно, ако дори един бит е сменен. "
-"Сметковия прийом на МасВис е различен в това, че не се променя сметката, "
-"ако е добавена тишина.\n"
+"Сметковия прийом на МасВис е различен в това, че не се променя сметката, ако "
+"е добавена тишина.\n"
 "\n"
 "### <span size=\"large\"><b>Хистограма</b></span>\n"
 "\n"
 "Хистограмата е изображение, което казва \"колко има от всеки един вид "
-"стойности\". За пример, проста хистограма може да покаже колко ученика "
-"са минали или провалили изпита. Тази хистограма би имала само два "
-"стълба: успех и провал. Хистограмата в МасВис има 65536 стълба "
-"вътрешно, всеки представящ едно ниво в 16 битов (PCM) формат. Тези "
-"стълбове са представени и хистограмата, показващи дали някои са "
-"по-често срещани.\n"
+"стойности\". За пример, проста хистограма може да покаже колко ученика са "
+"минали или провалили изпита. Тази хистограма би имала само два стълба: успех "
+"и провал. Хистограмата в МасВис има 65536 стълба вътрешно, всеки представящ "
+"едно ниво в 16 битов (PCM) формат. Тези стълбове са представени и "
+"хистограмата, показващи дали някои са по-често срещани.\n"
+
+#: src/main_gtk_window.py:218 src/main_gtk_window.py:502
+msgid "Dynamic Range Chart"
+msgstr "Диаграма на Динамичния Обхват"
+
+#: src/main_gtk_window.py:234
+msgid "Zoom in"
+msgstr "Увеличи"
+
+#: src/main_gtk_window.py:242
+msgid "Restore original dimensions"
+msgstr "Възстанови първоначалните размери"
+
+#: src/main_gtk_window.py:264
+msgid "Zoom out"
+msgstr "Намали"
+
+#: src/main_gtk_window.py:525
+msgid "Dynamic Range of Channels"
+msgstr "Динамичен Обхват на Каналите"
+
+#: src/main_gtk_window.py:532
+msgid "Channel #"
+msgstr "Канал #"
+
+#~ msgid ""
+#~ "Cannot create animation.\n"
+#~ " Plotting canvas cannot be made into image.\n"
+#~ msgstr ""
+#~ "Не може да се сътвори анимацията.\n"
+#~ "Платното на чертежът не може да се направи на снимка.\n"

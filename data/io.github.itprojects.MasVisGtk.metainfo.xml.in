@@ -60,6 +60,19 @@
   <developer_name translate="no">ITProjects</developer_name>
   <translation type="gettext">masvisgtk</translation>
   <releases>
+    <release version="5.0.0" date="2025-10-02">
+      <description translate="no">
+        <p>Added and edited svg icons.</p>
+        <p>Edited and moved dynamic range chart to new button.</p>
+        <p>Updated canvas handling buttons.</p>
+        <p>Updated DR Meter UI.</p>
+        <p>Implemented fractional DR Meter.</p>
+        <p>Fixed segaults.</p>
+        <p>Removed NavigationToolbar.</p>
+        <p>Most dependencies updated in json build files.</p>
+        <p>Created branch for offline non-real-time Windows 64 JUCE VST3 plugin.</p>
+      </description>
+    </release>
     <release version="4.0.2" date="2025-05-28">
       <description translate="no">
         <p>Updated contourpy to v1.3.2, numpy to v2.2.6, scipy to v1.15.3.</p>

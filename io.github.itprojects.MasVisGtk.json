@@ -171,6 +171,7 @@
                             "type": "file",
                             "url": "https://files.pythonhosted.org/packages/7c/24/f7351052cf9db771fe4f32fca47fd66e6d9b53d8613b17faf7d130a9d553/cython-3.1.4-py3-none-any.whl",
                             "sha256": "d194d95e4fa029a3f6c7d46bdd16d973808c7ea4797586911fdb67cb98b1a2c6"
+                        }
                     ]
                 },
                 {
@@ -448,7 +449,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/itprojects/MasVisGtk.git",
-                    "tag": "v4.0.2"
+                    "tag": "v5.0.0"
                 }
             ]
         }

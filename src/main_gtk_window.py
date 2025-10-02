@@ -61,11 +61,17 @@ class SpinBox(Gtk.Box):
         self.win = win
         self.set_visible(False)
         self.set_name('spinng_box')
-        self.spinner = Gtk.Spinner() # Used in headerbar.
+        self.spinner = Gtk.Spinner()
         self.spinner.set_name('spinng_box_spinner')
-        self.spin_counter = Gtk.Label(use_markup=True, hexpand=True)
+        self.spin_counter = Gtk.Label(
+            use_markup=True,
+            hexpand=True
+        )
         self.append(self.spin_counter)
-        self.spin_file_label = Gtk.Label(hexpand=True, ellipsize=Pango.EllipsizeMode.END)
+        self.spin_file_label = Gtk.Label(
+            hexpand=True,
+            ellipsize=Pango.EllipsizeMode.END
+        )
         self.spin_file_label.set_name('spinng_box_file_label')
         self.append(self.spin_file_label)
 
@@ -92,6 +98,20 @@ class PyPlotWindow(Adw.ApplicationWindow):
     box = None
     tab_bar = None
     tab_view = None
+
+    # Zoom widgets.
+    box_view_buttons = None
+    int_zoom_scale = 1080 # lower 1080, upper 4096, step 100 px
+    btn_zoom_out = None
+    btn_zoom_original = None
+    btn_zoom_indicator = None
+    btn_zoom_best_fit = None
+    btn_zoom_in = None
+
+    popover_zoom_indicator = None
+    spin_zoom = None
+
+    btn_dr = None
     n_figures = 0 # each figue MUST have a different number, else drawn overlapping
     n_th_animation = 0 # distinguish tab animations
     n_th_comparison = 0 # distinguish tab comparisons
@@ -154,32 +174,143 @@ class PyPlotWindow(Adw.ApplicationWindow):
         header.pack_end(self.menu_button)
 
         # MasVis open files.
-        self.btn_open_files = Gtk.Button(label=_('Open Files'), icon_name='folder-music-symbolic', tooltip_text=_('Open Files'))
+        self.btn_open_files = Gtk.Button(
+            icon_name='io.github.itprojects.MasVisGtk-symbolic',
+            tooltip_text=_('Open Files')
+        )
+        self.btn_open_files.set_name('btn_open_files')
         self.btn_open_files.connect('clicked', self.on_open_dialog, None, True)
         header.pack_start(self.btn_open_files)
 
         # MasVis advanced open, or overview.
-        self.btn_open_folders = Gtk.Button(label=_('Advanced Open'), icon_name='folder-symbolic', tooltip_text=_('Advanced Open'))
+        self.btn_open_folders = Gtk.Button(
+            icon_name='advanced-open-symbolic',
+            tooltip_text=_('Advanced Open')
+        )
         self.btn_open_folders.connect('clicked', self.on_open_advanced_dialog)
         header.pack_start(self.btn_open_folders)
 
         # MasVis save tab to image.
-        self.btn_save = Gtk.Button(label=_('Save'), icon_name='document-save-symbolic', tooltip_text=_('Save Tab'))
+        self.btn_save = Gtk.Button(
+            label=_('Save'),
+            icon_name='document-save-symbolic',
+            tooltip_text=_('Save Tab')
+        )
         self.btn_save.connect('clicked', self.on_save_dialog)
-        header.pack_end(self.btn_save)
+        header.pack_start(self.btn_save)
 
-        self.box = Gtk.Box()
-        self.box.props.orientation = Gtk.Orientation.VERTICAL
+        # Dynamic Range indicator widget.
+        self.btn_dr = Gtk.Button(
+            label='00.0',
+            tooltip_text=_('Dynamic Range')
+        )
+        self.btn_dr.set_name('btn_dr_dark')
+        self.btn_dr.set_halign(Gtk.Align.START)
+        self.btn_dr.set_valign(Gtk.Align.CENTER)
+        self.btn_dr.set_hexpand(True)
+        self.btn_dr.connect('clicked', self.on_show_dynamic_range_channels)
+        self.btn_dr.last_class = ''
+        self.dr_change_css('dr_style00')
+        header.pack_end(self.btn_dr)
+
+        btn_dr_chart = Gtk.Button(
+            icon_name='info',
+            tooltip_text=_('Dynamic Range Chart')
+        )
+        btn_dr_chart.connect('clicked', self.on_show_dynamic_range_chart)
+        header.pack_end(btn_dr_chart)
+
+        self.box_view_buttons = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
+        self.box_view_buttons.set_name('box_view_buttons')
+        self.box_view_buttons.set_hexpand(False)
+        self.box_view_buttons.set_vexpand(False)
+        self.box_view_buttons.set_halign(Gtk.Align.CENTER)
+        self.box_view_buttons.set_valign(Gtk.Align.END)
+        self.box_view_buttons.set_visible(False)
+
+        # Less zoom.
+        self.btn_zoom_out = Gtk.Button(
+            icon_name='zoom-out-symbolic',
+            tooltip_text=_('Zoom in')
+        )
+        self.btn_zoom_out.connect('clicked', self.on_scale_to_value, -1)
+        self.box_view_buttons.append(self.btn_zoom_out)
+
+        # Original zoom.
+        self.btn_zoom_original = Gtk.Button(
+            icon_name='zoom-original-symbolic',
+            tooltip_text=_('Restore original dimensions')
+        )
+        self.btn_zoom_original.connect('clicked', self.on_scale_to_value, 1080)
+        self.box_view_buttons.append(self.btn_zoom_original)
+
+        # Indicator of zoom.
+        self.btn_zoom_indicator = Gtk.MenuButton(label='1080')
+        self.btn_zoom_indicator.set_always_show_arrow(False)
+        self.btn_zoom_indicator.set_direction(Gtk.ArrowType.NONE)
+        self.box_view_buttons.append(self.btn_zoom_indicator)
+
+        # Resize button to scale canvas to window width.
+        self.btn_zoom_best_fit = Gtk.Button(
+            icon_name='zoom-fit-best-symbolic',
+            tooltip_text=_('Scale to Window Width')
+        )
+        self.btn_zoom_best_fit.connect('clicked', self.on_scale_to_value, 66)
+        self.box_view_buttons.append(self.btn_zoom_best_fit)
+
+        # More zoom.
+        self.btn_zoom_in = Gtk.Button(
+            icon_name='zoom-in-symbolic',
+            tooltip_text=_('Zoom out')
+        )
+        self.btn_zoom_in.connect('clicked', self.on_scale_to_value, 1)
+        self.box_view_buttons.append(self.btn_zoom_in)
+
+        # Gtk.SpinButton to zoom-in/re-scale the canvas size.
+        self.spin_zoom = Gtk.SpinButton.new_with_range(1080, 4096, 500) # lower, upper, step
+        self.spin_zoom.set_valign(Gtk.Align.CENTER)
+        self.spin_zoom.set_tooltip_text(_('Zoom Level [px]'))
+        self.spin_zoom.set_digits(0)
+        self.spin_zoom.connect('value-changed', self.on_spin_zoom_value_changed)
+
+        # Gtk.Popover for manual entry of zoom level in [px].
+        self.popover_zoom_indicator = Gtk.Popover.new()
+        self.popover_zoom_indicator.set_autohide(True)
+        self.popover_zoom_indicator.set_has_arrow(True)
+        self.popover_zoom_indicator.set_child(self.spin_zoom)
+        self.popover_zoom_indicator.set_default_widget(self.spin_zoom)
+        self.popover_zoom_indicator.set_position(Gtk.PositionType.TOP)
+        self.btn_zoom_indicator.set_popover(self.popover_zoom_indicator)
+
+        # Set initial app style to buttons.
+        self.dark_light_css(Adw.StyleManager.get_for_display(Gdk.Display.get_default()).get_dark())
+
+        self.box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
         self.box.append(header)
 
         # Holds tabs.
-        self.tab_bar = Adw.TabBar.new()
-        self.tab_view = Adw.TabView.new()
-        self.tab_bar.set_autohide(False) # Don't hide TabBar.
-        self.tab_bar.set_view(self.tab_view)
-        self.box.append(self.tab_bar)
-        self.box.append(self.tab_view)
+        box_tabs = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
 
+        self.tab_bar = Adw.TabBar.new()
+        self.tab_bar.set_autohide(True) # Hide TabBar.
+
+        self.tab_view = Adw.TabView.new()
+        self.tab_bar.set_view(self.tab_view)
+
+        # Called after changes in selected pages,
+        # to show or hide DR Meter and zoom widgets.
+        self.tab_view.connect("notify::selected-page", self.on_tab_changed)
+
+        box_tabs.append(self.tab_bar)
+        box_tabs.append(self.tab_view)
+
+        # Overlay for zoom controls.
+        overlay = Gtk.Overlay()
+        overlay.set_vexpand(True)
+        overlay.set_child(box_tabs)
+        overlay.add_overlay(self.box_view_buttons)
+
+        self.box.append(overlay)
         self.set_content(self.box)
 
     def add_tab(self, a_file, overview_mode):
@@ -191,6 +322,7 @@ class PyPlotWindow(Adw.ApplicationWindow):
         tabbox.append(tabbox.scrolled)
 
         page = self.tab_view.append(tabbox)
+        page.tabbox = tabbox
 
         if overview_mode == 'dir':
             page.set_title(a_file.file_name)
@@ -209,6 +341,207 @@ class PyPlotWindow(Adw.ApplicationWindow):
         if page:
             if page.get_needs_attention():
                 page.set_needs_attention(False)
+
+    def on_tab_changed(self, tab_view, item):
+        tabbox = tab_view.get_selected_page().get_child()
+
+        # Change DR Meter.
+        self.dr_change(tabbox)
+
+        # Change canvas scale indicator.
+        if hasattr(tabbox, 'canvas_width'):
+            self.int_zoom_scale = tabbox.canvas_width
+            self.btn_zoom_indicator.set_label(str(self.int_zoom_scale))
+
+    # Set style light or dark.
+    def dark_light_css(self, dark_or_light):
+        if dark_or_light:
+            self.btn_dr.set_name('btn_dr_dark')
+            self.btn_zoom_out.set_name('btn_zoom_out_dark')
+            self.btn_zoom_original.set_name('btn_zoom_original_dark')
+            self.btn_zoom_indicator.set_name('btn_zoom_indicator_dark')
+            self.btn_zoom_best_fit.set_name('btn_zoom_best_fit_dark')
+            self.btn_zoom_in.set_name('btn_zoom_in_dark')
+        else:
+            self.btn_dr.set_name('btn_dr_light')
+            self.btn_zoom_out.set_name('btn_zoom_out_light')
+            self.btn_zoom_original.set_name('btn_zoom_original_light')
+            self.btn_zoom_indicator.set_name('btn_zoom_indicator_light')
+            self.btn_zoom_best_fit.set_name('btn_zoom_best_fit_light')
+            self.btn_zoom_in.set_name('btn_zoom_in_light')
+
+    def dr_change_css(self, str_style):
+        if str_style == self.btn_dr.last_class:
+            return
+
+        if len(self.btn_dr.last_class) > 0:
+            self.btn_dr.remove_css_class(self.btn_dr.last_class)
+
+        self.btn_dr.last_class = str_style
+        self.btn_dr.add_css_class(str_style)
+
+    # Changes DR Meter button.
+    def dr_change(self, tabbox):
+        if hasattr(tabbox, 'dr_val'):
+            if not self.btn_dr.get_visible():
+                self.btn_dr.set_visible(True)
+
+            if not self.box_view_buttons.get_visible():
+                self.box_view_buttons.set_visible(True)
+        else:
+            # overview or empty
+            if self.btn_dr.get_visible():
+                self.btn_dr.set_visible(False)
+
+            if self.box_view_buttons.get_visible():
+                self.box_view_buttons.set_visible(False)
+            return
+
+        self.btn_dr.set_label(str(tabbox.dr_val))
+        if tabbox.int_dr == -1:
+            self.btn_dr.set_tooltip_text(_('Unknown Dynamic Range'))
+            self.dr_change_css('dr_style00')
+        else:
+            self.btn_dr.set_tooltip_text(_('Dynamic Range'))
+            match tabbox.int_dr:
+                case 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7:
+                    self.dr_change_css('dr_style07')
+                case 8:
+                    self.dr_change_css('dr_style08')
+                case 9:
+                    self.dr_change_css('dr_style09')
+                case 10:
+                    self.dr_change_css('dr_style10')
+                case 11:
+                    self.dr_change_css('dr_style11')
+                case 12:
+                    self.dr_change_css('dr_style12')
+                case 13:
+                    self.dr_change_css('dr_style13')
+                case _:
+                    if tabbox.int_dr > 13:
+                        self.dr_change_css('dr_style14')
+
+    def on_scroll_over_canvas(self, event):
+        page = self.tab_view.get_selected_page()
+        if page != None:
+            tabbox = page.get_child()
+            if tabbox:
+                v = tabbox.scrolled.get_vadjustment()
+                step = 50
+                if event.button == 'down':
+                    v.set_value(max(v.get_value() - step, 0))
+                else:
+                    v.set_value(min(v.get_value() + step, v.get_upper() - v.get_page_size()))
+
+    def on_spin_zoom_value_changed(self, btn):
+        self.on_scale_to_value(None, 99)
+
+    # Set new canvas size. [1080 px, 4096 px]
+    # Maximum width is artificially set to 4096 px (4K).
+    # Scale font sizes, using width.
+    def on_scale_to_value(self, btn, which_option):
+        page = self.tab_view.get_selected_page()
+        if page != None:
+            tabbox = page.get_child()
+            if tabbox and not tabbox.overview_or_detailed:
+                # Direct towards specific option.
+                new_canvas_width = None
+                if which_option == 66: # Best fit zoom.
+                    new_canvas_width = self.get_allocated_width()
+                elif which_option == -1: # Less zoom.
+                    new_canvas_width = self.int_zoom_scale - 100
+                elif which_option == 1: # More zoom.
+                    new_canvas_width = self.int_zoom_scale + 100
+                elif which_option == 99:
+                    new_canvas_width = int(self.spin_zoom.get_value())
+                else: # Original zoom. 1080
+                    new_canvas_width = 1080
+
+                # Check value is new.
+                if new_canvas_width == self.int_zoom_scale:
+                    return
+
+                # Check value is possible.
+                if new_canvas_width <= 1080: # minimum
+                    self.int_zoom_scale = 1080
+                elif new_canvas_width >= 4096: # maximum
+                    self.int_zoom_scale = 4096
+
+                # Assign and keep value.
+                self.int_zoom_scale = new_canvas_width
+                self.btn_zoom_indicator.set_label(str(self.int_zoom_scale))
+                tabbox.canvas_width = new_canvas_width
+
+                # Set new canvas dimensions.
+                tabbox.canvas.set_size_request(
+                    new_canvas_width,
+                    new_canvas_width//tabbox.aspect_ratio
+                )
+
+                # Change font sizes of axes texts.
+                scale_factor = new_canvas_width / 1080
+                for k, v in tabbox.canvas.figure.dict_fontsizes.items():
+                    if v[2] == 'text':
+                        v[0].set_fontsize(round(v[1] * scale_factor))
+
+                # Change font sizes of axis ticks.
+                for ax in tabbox.canvas.figure.get_axes():
+
+                    xticklabels_ = ax.get_xticklabels()
+                    for xt in xticklabels_:
+                        xt.set_fontsize(round(10.0 * scale_factor))
+
+                    yticklabels_ = ax.get_yticklabels()
+                    for yt in yticklabels_:
+                        yt.set_fontsize(round(10.0 * scale_factor))
+
+    def on_show_dynamic_range_chart(self, btn):
+        dialog = Adw.Dialog()
+        dialog.set_follows_content_size(True) # Adw size problems.
+        dialog.set_title(_('Dynamic Range Chart'))
+        dialog.set_size_request(320, 500)
+
+        headerbar = Adw.HeaderBar()
+        picture_dr_chart = Gtk.Picture.new_for_resource('/io/github/itprojects/MasVisGtk/dynamic-range-chart.svg')
+        picture_dr_chart.set_content_fit(Gtk.ContentFit.SCALE_DOWN)
+        picture_dr_chart.set_name('picture_dr_chart')
+
+        box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
+        box.append(headerbar)
+        box.append(picture_dr_chart)
+
+        dialog.set_child(box)
+        dialog.present(self)
+
+    def on_show_dynamic_range_channels(self, btn):
+        page = self.tab_view.get_selected_page()
+        if page != None:
+            tabbox = page.get_child()
+            if not tabbox.overview_or_detailed:
+                if hasattr(tabbox, 'dr_channels'):
+                    dialog = Adw.Dialog()
+                    dialog.set_follows_content_size(True) # Adw size problems.
+                    dialog.set_title(_('Dynamic Range of Channels'))
+
+                    headerbar = Adw.HeaderBar()
+
+                    text = tabbox.c_layout if tabbox.c_layout else ''
+                    text = text.title()
+                    for i in range(len(tabbox.dr_channels)):
+                        text += '\n' + _('Channel #') + f'{i+1} ' + str(tabbox.dr_channels[i])
+
+                    label_channels = Gtk.Label(label='test')
+                    label_channels.set_name('label_channels')
+                    label_channels.set_justify(Gtk.Justification.CENTER)
+                    label_channels.set_text(text)
+
+                    box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
+                    box.append(headerbar)
+                    box.append(label_channels)
+
+                    dialog.set_child(box)
+                    dialog.present(self)
 
     # Simple files open, or add to opening list.
     def on_open_dialog(self, btn_open, list_store_paths, files_or_folders):
@@ -235,9 +568,17 @@ class PyPlotWindow(Adw.ApplicationWindow):
 
         headerbar = Adw.HeaderBar()
 
-        add_files = Gtk.Button(label=_('Add Files'), icon_name='folder-music-symbolic', tooltip_text=_('Add files for processing'))
+        add_files = Gtk.Button(
+            label=_('Add Files'),
+            icon_name='io.github.itprojects.MasVisGtk-symbolic',
+            tooltip_text=_('Add files for processing')
+        )
         add_files.connect('clicked', self.on_open_dialog, list_store, True)
-        add_folders = Gtk.Button(label=_('Add Folders'), icon_name='folder-new-symbolic', tooltip_text=_('Add folders for processing'))
+        add_folders = Gtk.Button(
+            label=_('Add Folders'),
+            icon_name='folder-new-symbolic',
+            tooltip_text=_('Add folders for processing')
+        )
         add_folders.connect('clicked', self.on_open_dialog, list_store, False)
 
         headerbar.pack_start(add_files)
@@ -287,7 +628,11 @@ class PyPlotWindow(Adw.ApplicationWindow):
 
         box.append(scrolled)
 
-        load_advanced_start = Gtk.Button(label=_('Start'), tooltip_text=_('Begin audio analysis'), halign=Gtk.Align.CENTER)
+        load_advanced_start = Gtk.Button(
+            label=_('Start'),
+            tooltip_text=_('Begin audio analysis'),
+            halign=Gtk.Align.CENTER
+        )
         load_advanced_start.connect('clicked', self.on_open_advanced_btn, list_store, dialog_advanced)
         load_advanced_start.set_name('dialog_advanced_load')
 
@@ -318,11 +663,21 @@ class PyPlotWindow(Adw.ApplicationWindow):
         box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
         box.set_focus_on_click(True)
         box.set_size_request(-1, 30)
-        btn_remove = Gtk.Button(icon_name='window-close-symbolic', halign=Gtk.Align.START, margin_start=5)
+        btn_remove = Gtk.Button(
+            icon_name='window-close-symbolic',
+            halign=Gtk.Align.START,
+            margin_start=5
+        )
         btn_remove.connect('clicked', self.on_remove_list_item, list_item, factory)
         btn_remove.set_name('dialog_advanced_round_delete')
         box.append(btn_remove)
-        label = Gtk.Label(ellipsize=Pango.EllipsizeMode.END, hexpand=True, halign=Gtk.Align.START, margin_start=5, margin_end=5)
+        label = Gtk.Label(
+            ellipsize=Pango.EllipsizeMode.END,
+            hexpand=True,
+            halign=Gtk.Align.START,
+            margin_start=5,
+            margin_end=5
+        )
         label.set_name('listview_item')
         box.append(label)
         list_item.set_child(box)
@@ -445,7 +800,11 @@ class PyPlotWindow(Adw.ApplicationWindow):
         scrolled_textview.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
         text_buffer = Gtk.TextBuffer()
         text_buffer.insert_markup(text_buffer.get_end_iter(), body, -1)
-        text_view = Gtk.TextView(buffer=text_buffer, editable=False, justification=Gtk.Justification.FILL)
+        text_view = Gtk.TextView(
+            buffer=text_buffer,
+            editable=False,
+            justification=Gtk.Justification.FILL
+        )
         text_view.set_name('text_view')
         text_view.set_wrap_mode(Gtk.WrapMode.WORD)
         text_view.set_name('transparency')
@@ -495,11 +854,17 @@ class PyPlotWindow(Adw.ApplicationWindow):
         listview_canvas.set_name('dialog_compare_listview')
         listview_canvas.set_enable_rubberband(False)
 
-        btn_go = Gtk.Button(label=_('Go!'), tooltip_text=_('Compare tabs in separate window'))
+        btn_go = Gtk.Button(
+            label=_('Go!'),
+            tooltip_text=_('Compare tabs in separate window')
+        )
         btn_go.connect('clicked', self.on_go_compare, dialog_compare, listview_canvas_selction, False)
         btn_go.set_name('btn_rounded')
 
-        btn_go_all = Gtk.Button(label=_('☑ All!'), tooltip_text=_('Compare ALL tabs in separate window'))
+        btn_go_all = Gtk.Button(
+            label=_('☑ All!'),
+            tooltip_text=_('Compare ALL tabs in separate window')
+        )
         btn_go_all.connect('clicked', self.on_go_compare, dialog_compare, listview_canvas_selction, True)
         btn_go_all.set_name('btn_rounded')
 
@@ -520,9 +885,19 @@ class PyPlotWindow(Adw.ApplicationWindow):
 
     def on_factory_setup_listview_compare_item(self, factory, list_item):
         box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
-        btn_check = Gtk.CheckButton(halign=Gtk.Align.START, margin_start=5, margin_end=5)
+        btn_check = Gtk.CheckButton(
+            halign=Gtk.Align.START,
+            margin_start=5,
+            margin_end=5
+        )
         box.append(btn_check)
-        label = Gtk.Label(ellipsize=Pango.EllipsizeMode.END, hexpand=True, halign=Gtk.Align.START, margin_start=5, margin_end=5)
+        label = Gtk.Label(
+            ellipsize=Pango.EllipsizeMode.END,
+            hexpand=True,
+            halign=Gtk.Align.START,
+            margin_start=5,
+            margin_end=5
+        )
         box.append(label)
         list_item.set_child(box)
 
@@ -659,11 +1034,17 @@ class PyPlotWindow(Adw.ApplicationWindow):
         listview_canvas.set_name('dialog_compare_listview')
         listview_canvas.set_enable_rubberband(False)
 
-        btn_animate = Gtk.Button(label=_('Animate'), tooltip_text=_('Animate tabs in separate window'))
+        btn_animate = Gtk.Button(
+            label=_('Animate'),
+            tooltip_text=_('Animate tabs in separate window')
+        )
         btn_animate.connect('clicked', self.on_animate_tabs, dialog_animate, listview_canvas_selction, False)
         btn_animate.set_name('btn_rounded')
 
-        btn_animate_all = Gtk.Button(label=_('☑ All!'), tooltip_text=_('Animate ALL tabs in separate window'))
+        btn_animate_all = Gtk.Button(
+            label=_('☑ All!'),
+            tooltip_text=_('Animate ALL tabs in separate window')
+        )
         btn_animate_all.connect('clicked', self.on_animate_tabs, dialog_animate, listview_canvas_selction, True)
         btn_animate_all.set_name('btn_rounded')
 
@@ -737,7 +1118,11 @@ class PyPlotWindow(Adw.ApplicationWindow):
         box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
         box.append(headerbar)
 
-        box_status_info = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, hexpand=True, vexpand=True)
+        box_status_info = Gtk.Box(
+            orientation=Gtk.Orientation.VERTICAL,
+            hexpand=True,
+            vexpand=True
+        )
         box_status_info.set_halign(Gtk.Align.CENTER)
         box_status_info.append(label_animation_status)
         box_status_info.append(btn_animate_save)

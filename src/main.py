@@ -329,6 +329,12 @@ class MasVisGtk(Adw.Application):
             case _: # (0) follow system
                 Adw.StyleManager.get_default().set_color_scheme(Adw.ColorScheme.DEFAULT)
 
+        # Switch app style in specific buttons.
+        if self.win:
+            self.win.dark_light_css(
+                Adw.StyleManager.get_for_display(Gdk.Display.get_default()).get_dark()
+            )
+
     def do_activate(self):
         self.on_change_app_style()
         self.win = self.props.active_window
@@ -347,6 +353,7 @@ class MasVisGtk(Adw.Application):
             key_controller = Gtk.EventControllerKey.new()
             key_controller.connect("key-pressed", self.win.fullscreen_comparison_window, self.win)
             self.win.add_controller(key_controller)
+            #icon_theme = Gtk.IconTheme.get_for_display(Gdk.Display.get_default())
         self.win.present()
 
     def do_command_line(self, command_line):
@@ -973,7 +980,8 @@ class MasVisGtk(Adw.Application):
                     self.masvis_process_file(audio_file, self.r128_unit, overview_mode, tab)
 
             # Remove attention/highlighting from selected (already visible) tab.
-            self.win.tab_view.get_selected_page().set_needs_attention(False)
+            if self.win.tab_view.get_selected_page():
+                self.win.tab_view.get_selected_page().set_needs_attention(False)
         except Exception as e:
             trace = traceback.format_exc()
             error = f'{e}\n{infile}\n{trace}'
@@ -997,7 +1005,7 @@ class MasVisGtk(Adw.Application):
 
         if os.path.isfile(audio_file.file_path):
             log.debug('Selecting file loader')
-            loader = load_file
+            loader = load_file # load_file function
             loader_args = [audio_file.file_path]
         else:
             log.warning(_('Unable to open input ') + audio_file.file_path)
@@ -1037,12 +1045,13 @@ class MasVisGtk(Adw.Application):
                     win=self.win,
                 )
         Steps.report()
-        gc.collect() # free RAM
 
         # Required, otherwise risks low-resolution image, or not tab.
         self.win.tab_view.set_selected_page(tab)
         tab.set_needs_attention(True) # new tabs need attention
         self.win.tab_view.connect_after("notify::selected-page", self.win.on_attention_changed)
+
+        gc.collect() # free RAM
 
 def main(VERSION, SETTINGS_in):
     if len(sys.argv) > 1 and sys.argv[1] == '--pymasvis':

@@ -1,9 +1,10 @@
-<svg width="320" height="550" xmlns="http://www.w3.org/2000/svg">
+<svg width="320" height="500" xmlns="http://www.w3.org/2000/svg">
 
-  <!-- Title -->
-  <rect x="0" y="0" width="320" height="720" fill="transparent" />
-  <text x="160" y="30" font-size="18" fill="white" text-anchor="middle">Dynamic Range Chart</text>
-
+  <!-- Legend -->
+  <text x="85" y="20" font-family="Arial" font-size="10" fill="white" text-anchor="start">OVERCOMPRESSED, UNPLEASANT (RED)</text>
+  <text x="85" y="30" font-family="Arial" font-size="10" fill="white" text-anchor="start">TRANSITIONAL (YELLOW)</text>
+  <text x="85" y="40" font-family="Arial" font-size="10" fill="white" text-anchor="start">DYNAMIC, PLEASANT (GREEN)</text>
+  
   <!-- Table Headers -->
   <text x="85" y="60" font-size="14" fill="white" text-anchor="start" font-weight="bold">Synth</text>
   <text x="85" y="77" font-size="14" fill="white" text-anchor="start">Goa</text>
@@ -106,9 +107,5 @@
   <rect x="85" y="460" width="70" height="30" fill="green" stroke="black" stroke-width="1" />
   <rect x="155" y="460" width="70" height="30" fill="green" stroke="black" stroke-width="1" />
   <rect x="225" y="460" width="70" height="30" fill="green" stroke="black" stroke-width="1" />
-
-  <text x="85" y="510" font-family="Arial" font-size="10" fill="white" text-anchor="start">OVERCOMPRESSED, UNPLEASANT (RED)</text>
-  <text x="85" y="520" font-family="Arial" font-size="10" fill="white" text-anchor="start">TRANSITIONAL (YELLOW)</text>
-  <text x="85" y="530" font-family="Arial" font-size="10" fill="white" text-anchor="start">DYNAMIC, PLEASANT (GREEN)</text>
 
 </svg>

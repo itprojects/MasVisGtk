@@ -10,14 +10,6 @@
           <object class="GtkBox">
             <property name="orientation">vertical</property>
             <child>
-              <object class="GtkImage">
-                <property name="width-request">320</property>
-                <property name="height-request">550</property>
-                <property name="name">manual_image</property>
-                <property name="halign">center</property>
-              </object>
-            </child>
-            <child>
               <object class="GtkTextView">
                 <property name="name">manual_text_view</property>
                 <property name="editable">false</property>

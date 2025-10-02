@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100.06725" height="99.947037">
+  <defs>
+    <linearGradient id="a">
+      <stop offset="0" stop-color="#0645ad"/>
+      <stop offset="1" stop-color="#398fea"/>
+    </linearGradient>
+    <linearGradient xlink:href="#a" id="b" x1="117.05355" x2="116.83034" y1="83.525589" y2="62.245369" gradientUnits="userSpaceOnUse"/>
+    <linearGradient xlink:href="#a" id="c" x1="117.05355" x2="116.83034" y1="83.525589" y2="62.245369" gradientUnits="userSpaceOnUse"/>
+  </defs>
+  <g transform="translate(-245.36448 -335.58716)">
+    <path fill="url(#b)" stroke="url(#c)" stroke-linecap="round" stroke-width="1.93733549" d="M126.875 72.920212a9.9776783 9.9776783 0 1 1-19.95535 0 9.9776783 9.9776783 0 1 1 19.95535 0z" transform="matrix(4.56798 0 0 4.56249 -238.5556 52.855392)"/>
+    <path fill="#fff" stroke="#fff" stroke-width="3.53775477" d="m277.2878 360.81916-.33251.33167 1.33428 6.66299 3.00199.33168c15.96053-19.24912 32.85575-.70752 17.05131 14.94242-5.27871 5.22696-6.63016 10.83884-6.67107 17.65699 0 .61085 2.3028 1.3327 3.00198 1.3327.69918 0 2.66848-.72252 2.66848-1.3327-.88719-5.92497 1.93321-10.25348 5.33679-13.65923 11.07525-11.08209 16.17721-22.35535 6.4104-30.42962-6.91416-5.71596-19.99521-6.66515-31.8014 4.16177zm17.25239 49.85507c-2.75331 1.08552-4.036 2.58372-4.97786 4.97186v.27667c.79669 3.03949 2.00721 4.32069 4.97786 4.97195h.55335c2.60848-.65168 3.96359-2.00479 4.97795-4.97195v-.27667c-.94194-2.60523-2.29714-4.03109-4.97795-4.97186z" font-family="Linux Biolinum O" font-size="8.1874342" font-weight="700" letter-spacing=".37215605" style="line-height:125%;-inkscape-font-specification:Linux Biolinum O Bold" word-spacing="0"/>
+  </g>
+</svg>

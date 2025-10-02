@@ -199,6 +199,7 @@ def render(
     crest_db = analysis['crest_db']
     crest_total_db = analysis['crest_total_db']
     dr = analysis['dr']
+    dr_channels = analysis['dr_channels']
     l_kg = analysis['l_kg']
     lra = analysis['lra']
     plr = analysis['plr_lu']
@@ -219,7 +220,7 @@ def render(
     if overview_mode == None:# Detailed one track plot.
         with Timer('Drawing plot...', Steps.draw_plot, callback):
             subtitle_analysis = _('Crest: {:0.2f} dB,  DR: {},  L$_K$: {:0.1f} {},  LRA: {:0.1f} LU,  PLR: {:0.1f} LU').format(
-                float(crest_total_db), dr, l_kg + r128_offset, r128_unit, lra, plr
+                float(crest_total_db), dr if dr > 0 else "??.?", l_kg + r128_offset, r128_unit, lra, plr
             )
             subtitle_source = _('Encoding: {},  Channels: {},  Layout: {},  Bits: {},\nSample rate: {} Hz,  Bitrate: {} kbps,  Duration: {},  Size: {:0.1f} MB').format(
                 track['metadata']['encoding'],
@@ -753,71 +754,8 @@ def render(
 
         tab_page.get_child().scrolled.set_child(aspect_frame)
 
-        nav_bar = NavigationToolbar(canvas)
-
-        # Add translations to the tab NavigationToolbar.
-        nav_bar_widgets = nav_bar.observe_children()
-        for item in nav_bar_widgets:
-            if 'Configure subplots' == item.get_tooltip_text():
-                item.set_visible(False) # hide config (unused) button
-
-            # Prevent button stretching.
-            item.set_valign(Gtk.Align.CENTER)
-
-            # Translate button texts.
-            match item.get_tooltip_text():
-                case 'Reset original view':
-                    item.set_tooltip_text(_('Reset original view'))
-                case 'Back to previous view':
-                    item.set_tooltip_text(_('Back to previous view'))
-                case 'Forward to next view':
-                    item.set_tooltip_text(_('Forward to next view'))
-                case 'Left button pans, Right button zooms\nx/y fixes axis, CTRL fixes aspect':
-                    item.set_tooltip_text(_('Left button pans, Right button zooms\nx/y fixes axis, CTRL fixes aspect'))
-                case 'Zoom to rectangle\nx/y fixes axis':
-                    item.set_tooltip_text(_('Zoom to rectangle\nx/y fixes axis'))
-                #case 'Configure subplots':
-                #    item.set_tooltip_text(_('Configure subplots'))
-                case 'Save the figure':
-                    item.set_tooltip_text(_('Save the figure'))
-                case _:
-                    pass
-
-        # Gtk.SpinButton to zoom-in/rescale the plot size.
-        spin_zoom = Gtk.SpinButton.new_with_range(1080, 4096, 500) # lower, upper, step
-        spin_zoom.set_valign(Gtk.Align.CENTER)
-        spin_zoom.set_tooltip_text(_('Zoom Level [px]'))
-        spin_zoom.set_digits(0)
-        spin_zoom.canvas = canvas
-        spin_zoom.aspect_ratio = aspect_ratio
-        spin_zoom.connect('value-changed', on_value_changed)
-
-        btn_zoom_original = Gtk.Button(icon_name='system-search-symbolic', tooltip_text=_('Restore original dimensions'))
-        btn_zoom_original.set_valign(Gtk.Align.CENTER)
-        btn_zoom_original.connect('clicked', on_scale_to_default, spin_zoom.get_adjustment())
-
-        # Resize button to scale canvas to window width.
-        btn_scale_to_win = Gtk.Button(label='⇤ ⇥', tooltip_text=_('Scale to Window Width'))
-        btn_scale_to_win.set_name('btn_scale_to_win')
-        btn_scale_to_win.connect('clicked', on_scale_to_win, spin_zoom.get_adjustment(), win)
-        btn_scale_to_win.set_halign(Gtk.Align.CENTER)
-        btn_scale_to_win.set_valign(Gtk.Align.CENTER)
-        btn_scale_to_win.canvas = canvas
-        btn_scale_to_win.aspect_ratio = aspect_ratio
-
-        # Dynamic Range indicator widget.
-        btn_dr = Gtk.Button()
-        btn_dr.set_name('btn_dr')
-
-        btn_dr = Gtk.Button()
-        btn_dr.set_name('btn_dr')
-
-        nav_bar.prepend(btn_dr)
-        nav_bar.append(btn_zoom_original)
-        nav_bar.append(spin_zoom)
-        nav_bar.append(btn_scale_to_win)
-
-        tab_page.get_child().prepend(nav_bar)
+        tab_page.tabbox.aspect_ratio = aspect_ratio
+        tab_page.tabbox.canvas = canvas
 
         if win.app.check_cancellations():
             return
@@ -825,42 +763,19 @@ def render(
         # Set initial canvas size to be window width.
         new_canvas_width = 1080
         canvas.set_size_request(new_canvas_width, new_canvas_width//aspect_ratio)
+        tab_page.tabbox.canvas_width = 1080
 
-        # Paint the Dynamic Range widget.
-        dr_val = None
-        try:
-            dr_val = int(dr)
-            if dr_val < 0:
-                dr_val = '??'
-        except:
-            dr_val = '??'
-
-        match dr_val:
-            case 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7:
-                btn_dr.add_css_class('dr_style07')
-            case 8:
-                btn_dr.add_css_class('dr_style08')
-            case 9:
-                btn_dr.add_css_class('dr_style09')
-            case 10:
-                btn_dr.add_css_class('dr_style10')
-            case 11:
-                btn_dr.add_css_class('dr_style11')
-            case 12:
-                btn_dr.add_css_class('dr_style12')
-            case 13:
-                btn_dr.add_css_class('dr_style13')
-            case _:
-                if dr_val != '??' and dr_val > 13:
-                    btn_dr.add_css_class('dr_style14')
-
-        if dr_val == '??':
-            btn_dr.set_label('??')
-            btn_dr.set_tooltip_text(_('Unknown Dynamic Range'))
+        # Style DR Meter widget.
+        if dr < 0:
+            tab_page.tabbox.int_dr = -1
+            tab_page.tabbox.dr_val = '??.?'
         else:
-            str_dr = f'{dr_val:0>2d}'
-            btn_dr.set_label(str_dr)
-            btn_dr.set_tooltip_text(_('Dynamic Range'))
+            tab_page.tabbox.int_dr = int(dr)
+            tab_page.tabbox.dr_val = str(dr) if dr > 10 else f'0{str(dr)}' # padding
+            tab_page.tabbox.dr_channels = dr_channels
+            tab_page.tabbox.c_layout = c_layout
+
+        win.dr_change(tab_page.tabbox)
     else:# Overview plot.
         w_o = 1212 # originally 606
         h_o = 128 # originally 64
@@ -981,9 +896,11 @@ def render(
         plt.imshow(img_buf, aspect='1', interpolation='none')
         plt.close(fig_buf) # close buffer
 
+    # Move canvas on scroll event.
+    canvas.mpl_connect('scroll_event', win.on_scroll_over_canvas)
+
     canvas.draw()
     canvas.flush_events()
-    #del data # clean?
 
 # Save canvas figure to image on disk.
 # Format 0=png, 1=jpeg, 2=svg, 3=webp, 4=tiff, 5=pdf, 6=eps
@@ -994,44 +911,6 @@ def save_figure(fig, path, save_format, dpi):
     # If params are different than canvas plot,
     # there will be a flicker, during saving.
     plt.savefig(path, format=save_format, bbox_inches='tight', dpi=dpi)
-
-# Set new canvas size. [1080 px, 4096 px]
-# Maximum width is artificially set to 4096 px (4K).
-# Scale font sizes, using width.
-def on_value_changed(spin_btn):
-    new_canvas_width = spin_btn.get_value()
-    spin_btn.canvas.set_size_request(new_canvas_width, new_canvas_width//spin_btn.aspect_ratio)
-
-    # Change font sizes of axes texts.
-    scale_factor = new_canvas_width / 1080
-    for k, v in spin_btn.canvas.figure.dict_fontsizes.items():
-        if v[2] == 'text':
-            v[0].set_fontsize(round(v[1] * scale_factor))
-
-    # Change font sizes of axis ticks.
-    for ax in spin_btn.canvas.figure.get_axes():
-
-        xticklabels_ = ax.get_xticklabels()
-        for xt in xticklabels_:
-            xt.set_fontsize(round(10.0 * scale_factor))
-
-        yticklabels_ = ax.get_yticklabels()
-        for yt in yticklabels_:
-            yt.set_fontsize(round(10.0 * scale_factor))
-
-# Set new canvas size (and scale), equal to window width.
-def on_scale_to_win(btn, scale_adjustment, win):
-    new_canvas_width = win.get_allocated_width()
-    if new_canvas_width <= 1080: # minimum
-        scale_adjustment.set_value(1080)
-    elif new_canvas_width >= 4096: # maximum
-        scale_adjustment.set_value(4096)
-    else: # calculate exact scale change.
-        scale_adjustment.set_value(new_canvas_width)
-
-# Set new canvas size (and scale), equal (by default) to 1080 pixels.
-def on_scale_to_default(btn, scale_adjustment):
-    scale_adjustment.set_value(1080)
 
 def list_styles():
     return plt.style.available
