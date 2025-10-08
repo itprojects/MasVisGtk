@@ -1,0 +1,48 @@
+{
+  "Name": "MasVisGtkPlugin",
+  "Version": "1.0.0",
+  "Factory Info": {
+    "Vendor": "ITProjects",
+    "URL": "https://github.com/itprojects/MasVisGtk",
+    "E-Mail": "",
+    "Flags": {
+      "Unicode": true,
+      "Classes Discardable": false,
+      "Component Non Discardable": false,
+    },
+  },
+  "Classes": [
+    {
+      "CID": "ABCDEF019182FAEB4D616E7548636632",
+      "Category": "Audio Module Class",
+      "Name": "MasVisGtkPlugin",
+      "Vendor": "ITProjects",
+      "Version": "1.0.0",
+      "SDKVersion": "VST 3.7.12",
+      "Sub Categories": [
+        "Fx",
+        "OnlyOfflineProcess",
+      ],
+      "Class Flags": 0,
+      "Cardinality": 2147483647,
+      "Snapshots": [
+      ],
+    },
+    {
+      "CID": "ABCDEF011234ABCD4D616E7548636632",
+      "Category": "Component Controller Class",
+      "Name": "MasVisGtkPlugin",
+      "Vendor": "ITProjects",
+      "Version": "1.0.0",
+      "SDKVersion": "VST 3.7.12",
+      "Sub Categories": [
+        "Fx",
+        "OnlyOfflineProcess",
+      ],
+      "Class Flags": 0,
+      "Cardinality": 2147483647,
+      "Snapshots": [
+      ],
+    },
+  ],
+}
