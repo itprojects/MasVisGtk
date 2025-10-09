@@ -15,8 +15,6 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#pragma once
-
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
 
@@ -58,6 +56,7 @@ MasVisGtkPluginAudioProcessorEditor::MasVisGtkPluginAudioProcessorEditor(MasVisG
     button_reset.setImages(drawable_normal_reset.get(), drawable_highlight_reset.get());
     button_reset.onClick = [this]() {
         audioProcessor.clear();
+        audioProcessor.prepare_params();
         audioProcessor.ready_to_paint = true;
         repaint();
     };

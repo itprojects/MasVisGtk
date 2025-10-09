@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <JUCERPROJECT id="HcF2vA" name="MasVisGtkPlugin" projectType="audioplug" useAppConfig="0"
-              addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1" version="1.0.0"
+              addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1" version="1.1.0"
               companyCopyright="ITProjects" companyName="ITProjects" companyWebsite="https://github.com/itprojects/MasVisGtk"
               pluginVST3Category="OnlyOfflineProcess" pluginVSTCategory="kPlugCategOfflineProcess"
               cppLanguageStandard="20" pluginManufacturer="ITProjects" pluginName="MasVisGtkPlugin"

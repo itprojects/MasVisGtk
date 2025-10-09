@@ -15,8 +15,6 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#pragma once
-
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
 #include <cmath>
@@ -107,7 +105,8 @@ double MasVisGtkPluginAudioProcessor::getTailLengthSeconds() const
 
 int MasVisGtkPluginAudioProcessor::getNumPrograms()
 {
-    return 1;   // NB: some hosts don't cope very well if you tell them there are 0 programs,
+    return 1;
+    // NB: some hosts don't cope very well if you tell them there are 0 programs,
     // so this should be at least 1, even if you're not really implementing programs.
 }
 
@@ -145,18 +144,16 @@ void MasVisGtkPluginAudioProcessor::processBlock(juce::AudioBuffer<float>& buffe
 {
     if (is_plugin_enabled)
     {
-
-        juce::ScopedNoDenormals noDenormals;
         auto totalNumInputChannels = getTotalNumInputChannels();
         auto totalNumOutputChannels = getTotalNumOutputChannels();
 
         if (do_init)
         {
+            do_init = false;
             nc = totalNumInputChannels;//number of channels in audio
             total_samples = 0;
             clear();
             prepare_params();
-            do_init = false;
         }
 
         for (auto i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
