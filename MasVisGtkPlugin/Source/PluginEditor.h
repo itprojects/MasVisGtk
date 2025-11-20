@@ -1,5 +1,5 @@
 /*
-Copyright 2024 ITProjects
+Copyright 2025 ITProjects
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -22,6 +22,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "DynamicRangeByChannel.h"
 #include "DynamicRangeChart.h"
 #include "TableComponent.h"
+#include "TableWindow.h"
 
 class MasVisGtkPluginAudioProcessorEditor : public juce::AudioProcessorEditor, public juce::ChangeListener
 {
@@ -29,6 +30,7 @@ public:
     MasVisGtkPluginAudioProcessorEditor(MasVisGtkPluginAudioProcessor&);
     ~MasVisGtkPluginAudioProcessorEditor() override;
     void paint(juce::Graphics&) override;
+    void clear();
     void resized() override;
     void changeListenerCallback(juce::ChangeBroadcaster* source) override;
 
@@ -68,17 +70,22 @@ private:
     TableComponent table_crest_factor;
 
     //allpass crest factor scale markings
-    juce::Path allpass_crest_factor_hmark_1;//horizontal mark 1   60 Hz
-    juce::Path allpass_crest_factor_hmark_2;//horizontal mark 2  200 Hz
-    juce::Path allpass_crest_factor_hmark_3;//horizontal mark 3  600 Hz
-    juce::Path allpass_crest_factor_hmark_4;//horizontal mark 4 2000 Hz
-    juce::Path allpass_crest_factor_hmark_5;//horizontal mark 5 6000 Hz
+    juce::Path allpass_crest_factor_hmark_1;//horizontal mark 1     1 Hz
+    juce::Path allpass_crest_factor_hmark_2;//horizontal mark 2    10 Hz
+    juce::Path allpass_crest_factor_hmark_3;//horizontal mark 3   100 Hz
+    juce::Path allpass_crest_factor_hmark_4;//horizontal mark 4  1000 Hz
+    juce::Path allpass_crest_factor_hmark_5;//horizontal mark 5 10000 Hz
+    juce::Path allpass_crest_factor_hmark_6;//horizontal mark 6 20000 Hz
 
-    juce::Path allpass_crest_factor_vmark_1;//vertical mark 1 25 dB
-    juce::Path allpass_crest_factor_vmark_2;//vertical mark 2 20 dB
-    juce::Path allpass_crest_factor_vmark_3;//vertical mark 3 15 dB
-    juce::Path allpass_crest_factor_vmark_4;//vertical mark 4 10 dB
-    juce::Path allpass_crest_factor_vmark_5;//vertical mark 5  5 dB
+    juce::Path allpass_crest_factor_vmark_1;//vertical mark 1   20 dB
+    juce::Path allpass_crest_factor_vmark_2;//vertical mark 2   15 dB
+    juce::Path allpass_crest_factor_vmark_3;//vertical mark 3   10 dB
+    juce::Path allpass_crest_factor_vmark_4;//vertical mark 4    5 dB
+    juce::Path allpass_crest_factor_vmark_5;//vertical mark 5    0 dB
+    juce::Path allpass_crest_factor_vmark_6;//vertical mark 6   -5 dB
+    juce::Path allpass_crest_factor_vmark_7;//vertical mark 7  -10 dB
+    juce::Path allpass_crest_factor_vmark_8;//vertical mark 8  -15 dB
+    juce::Path allpass_crest_factor_vmark_9;//vertical mark 9  -20 dB
 
     const float dash_lengths[2] = { 10, 5 };//painting histogram
 
@@ -119,10 +126,27 @@ private:
     const char* svg_string_highlight_info = R"(
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
             <ellipse style="fill: rgb(50, 62, 68); stroke: rgb(255, 255, 255); stroke-opacity: 0;" cx="100" cy="100" rx="100.0" ry="100.0"/>
-            <path  style="fill: rgb(255, 0, 0); text-wrap-mode: nowrap;" d="M 94 107.2 Q 94 103.4 94.75 100.65 Q 95.5 97.9 97.35 95.4 Q 99.2 92.9 102.4 90.2 Q 106.3 86.9 108.45 84.7 Q 110.6 82.5 111.5 80.4 Q 112.4 78.3 112.4 75.3 Q 112.4 70.5 109.3 67.9 Q 106.2 65.3 100.3 65.3 Q 95.4 65.3 91.6 66.55 Q 87.8 67.8 84.3 69.5 L 81.2 62.5 Q 85.2 60.4 90.05 59 Q 94.9 57.6 100.9 57.6 Q 110.4 57.6 115.6 62.3 Q 120.8 67 120.8 75.1 Q 120.8 79.6 119.35 82.75 Q 117.9 85.9 115.25 88.55 Q 112.6 91.2 109 94.2 Q 105.7 97 103.95 99.1 Q 102.2 101.2 101.6 103.25 Q 101 105.3 101 108.2 L 101 109.9 L 94 109.9 Z M 91.7 124.6 Q 91.7 120.9 93.45 119.4 Q 95.2 117.9 97.9 117.9 Q 100.4 117.9 102.2 119.4 Q 104 120.9 104 124.6 Q 104 128.2 102.2 129.8 Q 100.4 131.4 97.9 131.4 Q 95.2 131.4 93.45 129.8 Q 91.7 128.2 91.7 124.6 Z"/>
+            <path  style="fill: #9bc0d3; text-wrap-mode: nowrap;" d="M 94 107.2 Q 94 103.4 94.75 100.65 Q 95.5 97.9 97.35 95.4 Q 99.2 92.9 102.4 90.2 Q 106.3 86.9 108.45 84.7 Q 110.6 82.5 111.5 80.4 Q 112.4 78.3 112.4 75.3 Q 112.4 70.5 109.3 67.9 Q 106.2 65.3 100.3 65.3 Q 95.4 65.3 91.6 66.55 Q 87.8 67.8 84.3 69.5 L 81.2 62.5 Q 85.2 60.4 90.05 59 Q 94.9 57.6 100.9 57.6 Q 110.4 57.6 115.6 62.3 Q 120.8 67 120.8 75.1 Q 120.8 79.6 119.35 82.75 Q 117.9 85.9 115.25 88.55 Q 112.6 91.2 109 94.2 Q 105.7 97 103.95 99.1 Q 102.2 101.2 101.6 103.25 Q 101 105.3 101 108.2 L 101 109.9 L 94 109.9 Z M 91.7 124.6 Q 91.7 120.9 93.45 119.4 Q 95.2 117.9 97.9 117.9 Q 100.4 117.9 102.2 119.4 Q 104 120.9 104 124.6 Q 104 128.2 102.2 129.8 Q 100.4 131.4 97.9 131.4 Q 95.2 131.4 93.45 129.8 Q 91.7 128.2 91.7 124.6 Z"/>
         </svg>
     )";
     std::unique_ptr<juce::Drawable> drawable_highlight_info;
+
+    const char* svg_string_normal_copy_params = R"(
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+            <path fill="#4F646B" d="m 0 3 c 0 -1.644531 1.355469 -3 3 -3 h 5 c 1.644531 0 3 1.355469 3 3 c 0 0.550781 -0.449219 1 -1 1 s -1 -0.449219 -1 -1 c 0 -0.570312 -0.429688 -1 -1 -1 h -5 c -0.570312 0 -1 0.429688 -1 1 v 5 c 0 0.570312 0.429688 1 1 1 c 0.550781 0 1 0.449219 1 1 s -0.449219 1 -1 1 c -1.644531 0 -3 -1.355469 -3 -3 z m 5 5 c 0 -1.644531 1.355469 -3 3 -3 h 5 c 1.644531 0 3 1.355469 3 3 v 5 c 0 1.644531 -1.355469 3 -3 3 h -5 c -1.644531 0 -3 -1.355469 -3 -3 z m 2 0 v 5 c 0 0.570312 0.429688 1 1 1 h 5 c 0.570312 0 1 -0.429688 1 -1 v -5 c 0 -0.570312 -0.429688 -1 -1 -1 h -5 c -0.570312 0 -1 0.429688 -1 1 z m 0 0" />
+        </svg>
+    )";
+    std::unique_ptr<juce::Drawable> drawable_normal_copy_params;
+
+    const char* svg_string_highlight_copy_params = R"(
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+            <path fill="#9bc0d3" d="m 0 3 c 0 -1.644531 1.355469 -3 3 -3 h 5 c 1.644531 0 3 1.355469 3 3 c 0 0.550781 -0.449219 1 -1 1 s -1 -0.449219 -1 -1 c 0 -0.570312 -0.429688 -1 -1 -1 h -5 c -0.570312 0 -1 0.429688 -1 1 v 5 c 0 0.570312 0.429688 1 1 1 c 0.550781 0 1 0.449219 1 1 s -0.449219 1 -1 1 c -1.644531 0 -3 -1.355469 -3 -3 z m 5 5 c 0 -1.644531 1.355469 -3 3 -3 h 5 c 1.644531 0 3 1.355469 3 3 v 5 c 0 1.644531 -1.355469 3 -3 3 h -5 c -1.644531 0 -3 -1.355469 -3 -3 z m 2 0 v 5 c 0 0.570312 0.429688 1 1 1 h 5 c 0.570312 0 1 -0.429688 1 -1 v -5 c 0 -0.570312 -0.429688 -1 -1 -1 h -5 c -0.570312 0 -1 0.429688 -1 1 z m 0 0" />
+        </svg>
+    )";
+    std::unique_ptr<juce::Drawable> drawable_highlight_copy_params;
+
+    //opens window to show and allow copying of parameters
+    juce::DrawableButton button_copy_params{ "Peak Fit", juce::DrawableButton::ImageFitted };
 
     const char* svg_string_dynamic_range_chart = R"(
         <svg width="320" height="550" xmlns="http://www.w3.org/2000/svg">
@@ -247,7 +271,11 @@ private:
 
     juce::DrawableButton button_enable_disable_operations{ "Enable or disable", juce::DrawableButton::ImageFitted };
 
+    juce::ToggleButton button_invert_plot{ "Invert Plot" };
+
     juce::TextButton button_dr_meter;
+
+    juce::ComboBox crest_plot_type;
 
     juce::TooltipWindow tooltip_window{ this };//to show tooltips
 

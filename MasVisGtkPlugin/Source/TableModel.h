@@ -1,5 +1,5 @@
 /*
-Copyright 2024 ITProjects
+Copyright 2025 ITProjects
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -22,7 +22,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 class TableModel : public juce::TableListBoxModel
 {
 public:
-    TableModel() {}
+    TableModel()
+    {
+    }
 
     int getNumRows() override
     {
@@ -49,20 +51,35 @@ public:
             //label column font colours
             g.setColour(juce::Colours::bisque);
             g.drawText(
-                data->at(rowNumber)[columnId - 1],
+                juce::String("Diff ") + juce::String(rowNumber + 1),
                 2, 0, width - 4, height,
-                juce::Justification::centredRight
+                juce::Justification::centred
             );
         }
         else
         {
-            //font colour as per channel colour
-            g.setColour((*audio_colours)[columnId - 2]);
+            bool to_be_bold = (columnId - 2 == ap_peak_index->at(rowNumber));
+            if (to_be_bold)
+            {
+                g.setColour(juce::Colours::bisque);
+                g.setFont(bold_font);
+            }
+            else
+            {
+                //font colour as per channel colour
+                g.setColour((*audio_colours)[rowNumber]);
+            }
+
             g.drawText(
                 data->at(rowNumber)[columnId - 1],
                 2, 0, width - 4, height,
                 juce::Justification::centred
             );
+
+            if (to_be_bold)
+            {
+                g.setFont(plain_font);
+            }
         }
     }
 
@@ -72,6 +89,10 @@ public:
     juce::Colour shade_colour1;
     juce::Colour shade_colour2;
 
+    juce::Font bold_font = juce::Font(juce::FontOptions(14.0f, juce::Font::bold));
+    juce::Font plain_font = juce::Font(juce::FontOptions(14.0f, juce::Font::plain));
+
     std::vector<juce::Colour>* audio_colours;
     std::vector<std::vector<juce::String>>* data;
+    std::vector<int>* ap_peak_index;
 };

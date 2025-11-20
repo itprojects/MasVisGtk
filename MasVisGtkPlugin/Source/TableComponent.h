@@ -1,5 +1,5 @@
 /*
-Copyright 2024 ITProjects
+Copyright 2025 ITProjects
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -30,18 +30,18 @@ public:
         ++n_columns;
         table.setModel(&model);
         addAndMakeVisible(table);
-        setSize(160, 260);//change to make larger (with scrollbars)
+        setSize(600, 85);//change to make larger (with scrollbars)
     }
 
     //reset columns, if files have changed (mono, stereo, etc.)
-    void reset_columns(int n_channels)
+    void reset_columns(size_t n_freqs, std::vector<float> ap_freqs)
     {
-        if (n_columns != n_channels)
+        if (n_columns != n_freqs)
         {
             table.getHeader().removeAllColumns();
             table.getHeader().addColumn("Hz", 1, 50);
-            for (int i = 0;i < n_channels; ++i) {
-                table.getHeader().addColumn(juce::String("Diff ") + juce::String(i + 1), 2 + i, 50);
+            for (int i = 0;i < n_freqs; ++i) {
+                table.getHeader().addColumn(juce::String(ap_freqs[i]), 2 + i, 50);
             }
         }
     }

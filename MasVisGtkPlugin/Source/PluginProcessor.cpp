@@ -1,5 +1,5 @@
 /*
-Copyright 2024 ITProjects
+Copyright 2025 ITProjects
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -33,7 +33,7 @@ MasVisGtkPluginAudioProcessor::MasVisGtkPluginAudioProcessor()
 {
     //debugging to file as DAW plugin
     //log_file.open("C:\\Users\\tester\\masvisgtk_log.txt", std::ios::out | std::ios::app | std::ios::binary);
-    //log_file << "Writing in the log file." << std::endl;
+    //log_file << "debug message" << std::endl;
 }
 
 MasVisGtkPluginAudioProcessor::~MasVisGtkPluginAudioProcessor()
@@ -290,8 +290,6 @@ void MasVisGtkPluginAudioProcessor::releaseResources()
                                 if (!array_has_values)
                                     array_has_values = true;
 
-                                histogram_bins[channel][i] = log2(histogram_bins[channel][i]);//log2 scaling of data
-
                                 //find minimum and maximum (log2) per channel
                                 if (histogram_bins[channel][i] < histogram_channel_minimums[channel])
                                     histogram_channel_minimums[channel] = histogram_bins[channel][i];//minimum
@@ -303,18 +301,25 @@ void MasVisGtkPluginAudioProcessor::releaseResources()
 
                         if (array_has_values)
                         {
+                            //histogram fitting parameters
+                            float log10_min = 0.001f;
+                            if (histogram_channel_minimums[channel] > 0)
+                            {
+                                log10_min = log10(histogram_channel_minimums[channel]);
+                            }
+                            float log10_max = log10(histogram_channel_maximums[channel]);
+                            float param_log10 = log10_max - log10_min;
+                            float px_min = 5;
+                            //float px_max = y_offset;//304, range of 299 pixels
+                            float param_px = y_offset - px_min;
+
                             for (int i = -300; i < 301; ++i)
                             {
                                 if (histogram_bins[channel][i] > 0)
                                 {
-                                    //min-max peak scaling, width:height 600 3:2 ratio, 200 for peak
-                                    float rescaled = 200 * (
-                                        (histogram_bins[channel][i] - histogram_channel_minimums[channel]) /
-                                        (histogram_channel_maximums[channel] - histogram_channel_minimums[channel])
-                                        );
+                                    float rescaled = param_px * ((log10(histogram_bins[channel][i]) - log10_min) / (param_log10));
 
-                                    if (rescaled > 0)
-                                        histogram_bins[channel][i] = std::roundf(y_offset - rescaled);//ints for pixels
+                                    histogram_bins[channel][i] = -rescaled + y_offset;
                                 }
                                 else
                                 {
@@ -326,7 +331,7 @@ void MasVisGtkPluginAudioProcessor::releaseResources()
                                 {
                                     histogram_paths[channel].startNewSubPath
                                     (
-                                        (float)(x_offset_hist + i + 300),
+                                        (float)(x_y_offset_hist + i + 300),
                                         y_offset
                                     );
                                 }
@@ -335,7 +340,7 @@ void MasVisGtkPluginAudioProcessor::releaseResources()
                                     //add points to path
                                     histogram_paths[channel].lineTo
                                     (
-                                        (float)(x_offset_hist + i + 300),
+                                        (float)(x_y_offset_hist + i + 300),
                                         histogram_bins[channel][i]
                                     );
                                 }
@@ -354,18 +359,38 @@ void MasVisGtkPluginAudioProcessor::releaseResources()
                             //prepare allpass crest factor paths
                             if (j == 0)//renew path(s) at first index
                             {
-                                allpass_crest_factor_paths[i].startNewSubPath(
-                                    x_offset_ap + (50 * j),
-                                    std::roundf(y_offset - (10 * ap_crest[i][j]))
-                                );
+                                if (invert_cf_plot)
+                                {
+                                    allpass_crest_factor_paths[i].startNewSubPath(
+                                        ap_freq_px_locations[j],
+                                        std::roundf(y_offset_ap + (y_scale_ap * ap_crest[i][j]))
+                                    );
+                                }
+                                else
+                                {
+                                    allpass_crest_factor_paths[i].startNewSubPath(
+                                        ap_freq_px_locations[j],
+                                        std::roundf(y_offset_ap - (y_scale_ap * ap_crest[i][j]))
+                                    );
+                                }
                             }
                             else
                             {
                                 //add points to path
-                                allpass_crest_factor_paths[i].lineTo(
-                                    x_offset_ap + (50 * j),//50 pixels separation at 300 px horizontal width
-                                    std::roundf(y_offset - (10 * ap_crest[i][j]))
-                                );
+                                if (invert_cf_plot)
+                                {
+                                    allpass_crest_factor_paths[i].lineTo(
+                                        ap_freq_px_locations[j],
+                                        std::roundf(y_offset_ap + (y_scale_ap * ap_crest[i][j]))
+                                    );
+                                }
+                                else
+                                {
+                                    allpass_crest_factor_paths[i].lineTo(
+                                        ap_freq_px_locations[j],
+                                        std::roundf(y_offset_ap - (y_scale_ap * ap_crest[i][j]))
+                                    );
+                                }
                             }
                         }
                     }
@@ -376,7 +401,15 @@ void MasVisGtkPluginAudioProcessor::releaseResources()
                         total_peak_rms_cf[channel][2] = db(total_peak_rms_cf[channel][0], total_peak_rms_cf[channel][1]);
 
                         //make crest factor lines
-                        float y_dimension = y_offset - (10 * total_peak_rms_cf[channel][2]);
+                        float y_dimension;
+                        if (invert_cf_plot)
+                        {
+                            y_dimension = y_offset_ap + (y_scale_ap * total_peak_rms_cf[channel][2]);
+                        }
+                        else
+                        {
+                            y_dimension = y_offset_ap - (y_scale_ap * total_peak_rms_cf[channel][2]);
+                        }
                         cf_lines.push_back
                         (
                             juce::Line<float>((float)x_offset_ap, y_dimension, (float)x_offset_ap + 300, y_dimension)
@@ -480,23 +513,28 @@ void MasVisGtkPluginAudioProcessor::releaseResources()
                     dr_channel_block_tail_rms.clear();
                     dr_blocks = 0;
 
+                    //place for keep absolute crest factor params
+                    ap_crest_strings.clear();
+                    ap_crest_strings.resize(nc);
+
                     //calculate differences between specific frequency
                     //crest factor and overall crest factor
-                    table_crest_factor_params[0][0] = juce::String("20 ");//label column values
-                    table_crest_factor_params[1][0] = juce::String("60 ");
-                    table_crest_factor_params[2][0] = juce::String("200 ");
-                    table_crest_factor_params[3][0] = juce::String("600 ");
-                    table_crest_factor_params[4][0] = juce::String("2000 ");
-                    table_crest_factor_params[5][0] = juce::String("6000 ");
-                    table_crest_factor_params[6][0] = juce::String("20000 ");
                     for (int i = 0; i < nc; ++i)
                     {
+                        float cf_value_ = 0.0f;
+                        int cf_value_index = 0;
                         for (int j = 0; j < len_ap_freq; ++j)
                         {
-                            table_crest_factor_params[j][i + 1] = juce::String::formatted(
-                                "%+.2f", ap_crest[i][j] - total_peak_rms_cf[i][2]
-                            );
+                            ap_crest_strings[i].push_back(juce::String(ap_crest[i][j]));
+                            float cf_value = ap_crest[i][j] - total_peak_rms_cf[i][2];
+                            table_crest_factor_params[i][j + 1] = juce::String::formatted("%+.2f", cf_value);
+                            if (cf_value > cf_value_)
+                            {
+                                cf_value_ = cf_value;
+                                cf_value_index = j;
+                            }
                         }
+                        ap_peak_index[i] = cf_value_index;
                     }
                 }
                 else
@@ -546,6 +584,7 @@ void MasVisGtkPluginAudioProcessor::clear()
     cf_lines.clear();
 
     ap_ba.clear();
+    ap_peak_index.clear();
     ap_peak.clear();
     ap_rms.clear();
     ap_crest.clear();
@@ -567,20 +606,22 @@ void MasVisGtkPluginAudioProcessor::prepare_params()
         histogram_bins.push_back(std::unordered_map<int, float>());
         histogram_paths.push_back(juce::Path());
 
-        ap_peak.push_back(std::vector<float>{ 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f });
-        ap_rms.push_back(std::vector<float>{ 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f });
-        ap_crest.push_back(std::vector<float>{ 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f });
+        ap_peak_index.push_back(0);
 
-        current_samples.push_back(std::vector<int>{ 0, 0, 0, 0, 0, 0, 0 });
-        last_sample_caches.push_back(std::vector<float>{ 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f });
-        previous_y_sample_caches.push_back(std::vector<float>{ 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f });
+        ap_peak.push_back(std::vector<float>(len_ap_freq, 0.0f));
+        ap_rms.push_back(std::vector<float>(len_ap_freq, 0.0f));
+        ap_crest.push_back(std::vector<float>(len_ap_freq, 0.0f));
+
+        current_samples.push_back(std::vector<int>(len_ap_freq, 0));
+        last_sample_caches.push_back(std::vector<float>(len_ap_freq, 0.0f));
+        previous_y_sample_caches.push_back(std::vector<float>(len_ap_freq, 0.0f));
 
         total_peak_rms_cf.push_back(std::vector<float>{ 0.0f, 0.0f, 0.0f });
 
         allpass_crest_factor_paths.push_back(juce::Path());
-
-        table_crest_factor_params = std::vector<std::vector<juce::String>>(len_ap_freq, std::vector<juce::String>(nc + 1));
     }
+
+    table_crest_factor_params = std::vector<std::vector<juce::String>>(nc, std::vector<juce::String>(len_ap_freq + 1));
 
     //produce parameters from crest factor analysis
     for (int i = 0; i < len_ap_freq; ++i)
@@ -606,6 +647,62 @@ float MasVisGtkPluginAudioProcessor::db(float a, float b)
 float MasVisGtkPluginAudioProcessor::rms(float mean, int total_samples_)
 {
     return std::sqrt(mean / total_samples_);
+}
+
+//copy array values into ap_freq, assign ap_freq_px_locations
+void MasVisGtkPluginAudioProcessor::set_ap_freqs(int index)
+{
+    crest_plot_type_choice = index;
+    switch (index)
+    {
+        case 3:
+            ap_freqs.clear();
+            ap_freqs.assign
+            (
+                ap_freqs_31_octave,
+                ap_freqs_31_octave + sizeof(ap_freqs_31_octave) / sizeof(ap_freqs_31_octave[0])
+            );
+            ap_freq_px_locations.clear();
+            ap_freq_px_locations.assign
+            (
+                ap_freq_px_locations_31_octave,
+                ap_freq_px_locations_31_octave +
+                sizeof(ap_freq_px_locations_31_octave) / sizeof(ap_freq_px_locations_31_octave[0])
+            );
+            break;
+        case 2:
+            ap_freqs.clear();
+            ap_freqs.assign
+            (
+                ap_freqs_10_octave,
+                ap_freqs_10_octave + sizeof(ap_freqs_10_octave) / sizeof(ap_freqs_10_octave[0])
+            );
+            ap_freq_px_locations.clear();
+            ap_freq_px_locations.assign
+            (
+                ap_freq_px_locations_10_octave,
+                ap_freq_px_locations_10_octave +
+                sizeof(ap_freq_px_locations_10_octave) / sizeof(ap_freq_px_locations_10_octave[0])
+            );
+            break;
+        case 1:
+        default:
+            ap_freqs.clear();
+            ap_freqs.assign
+            (
+                ap_freqs_default,
+                ap_freqs_default + sizeof(ap_freqs_default) / sizeof(ap_freqs_default[0])
+            );
+            ap_freq_px_locations.clear();
+            ap_freq_px_locations.assign
+            (
+                ap_freq_px_locations_default,
+                ap_freq_px_locations_default +
+                sizeof(ap_freq_px_locations_default) / sizeof(ap_freq_px_locations_default[0])
+            );
+            break;
+    }
+    len_ap_freq = ap_freqs.size();
 }
 
 bool MasVisGtkPluginAudioProcessor::hasEditor() const

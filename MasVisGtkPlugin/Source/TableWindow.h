@@ -19,20 +19,19 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <JuceHeader.h>
 
-class DynamicRangeByChannel : public juce::DialogWindow
+class TableWindow : public juce::DialogWindow
 {
 public:
-    DynamicRangeByChannel(std::string name, juce::Colour colour, bool escapeCloses, juce::String& dynamic_ranges)
+    TableWindow(std::string name, juce::Colour colour, bool escapeCloses, juce::String allpass_cf_parameters)
         : DialogWindow(name, colour, escapeCloses)
     {
-        setSize(320, 160);
+        setSize(640, 240);
 
-        label.setText(dynamic_ranges, juce::dontSendNotification);
-        label.setJustificationType(juce::Justification::centred);
-        label.setFont(juce::Font(juce::FontOptions(16.0f)));
-        label.setColour(juce::Label::textColourId, juce::Colours::bisque);
+        text_editor.setText(allpass_cf_parameters, juce::dontSendNotification);
+        text_editor.setFont(juce::Font(juce::FontOptions(16.0f)));
+        text_editor.setColour(juce::Label::textColourId, juce::Colours::bisque);
 
-        setContentOwned(&label, false);//content owned flag false because label is member
+        setContentOwned(&text_editor, false);//content owned flag false because text_editor is member
         centreWithSize(getWidth(), getHeight());
         setResizable(true, true);
     }
@@ -42,5 +41,5 @@ public:
         delete this;
     }
 
-    juce::Label label;
+    juce::TextEditor text_editor;
 };
