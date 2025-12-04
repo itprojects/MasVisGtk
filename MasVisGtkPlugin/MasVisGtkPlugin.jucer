@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <JUCERPROJECT id="HcF2vA" name="MasVisGtkPlugin" projectType="audioplug" useAppConfig="0"
-              addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1" version="2.0.0"
+              addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1" version="2.1.0"
               companyCopyright="ITProjects" companyName="ITProjects" companyWebsite="https://github.com/itprojects/MasVisGtk"
               pluginVST3Category="OnlyOfflineProcess" pluginVSTCategory="kPlugCategOfflineProcess"
               cppLanguageStandard="20" pluginManufacturer="ITProjects" pluginName="MasVisGtkPlugin"
@@ -10,6 +10,10 @@
               pluginFormats="buildVST3">
   <MAINGROUP id="hSex3k" name="MasVisGtkPlugin">
     <GROUP id="{E39819A2-E9F1-7F4B-8C78-05B6F1B04EFB}" name="Source">
+      <FILE id="fedK7x" name="AllpassCrestFactorComponenet.h" compile="0"
+            resource="0" file="Source/AllpassCrestFactorComponenet.h"/>
+      <FILE id="Spcgsv" name="HistogramComponenet.h" compile="0" resource="0"
+            file="Source/HistogramComponenet.h"/>
       <FILE id="AXfPBm" name="TableWindow.h" compile="0" resource="0" file="Source/TableWindow.h"/>
       <FILE id="JKj5Cr" name="DynamicRangeByChannel.h" compile="0" resource="0"
             file="Source/DynamicRangeByChannel.h"/>

@@ -26,7 +26,11 @@ MasVisGtkPluginAudioProcessorEditor::MasVisGtkPluginAudioProcessorEditor(MasVisG
     //listens for signals to GUI to repaint()
     audioProcessor.addChangeListener(this);
 
-    button_invert_plot.setToggleState(false, juce::sendNotification);
+    addAndMakeVisible(hist_component);
+    addAndMakeVisible(ap_cf_component);
+
+    button_invert_plot.setTooltip("Plot paths upside-down");
+    button_invert_plot.setToggleState(audioProcessor.invert_cf_plot, juce::sendNotification);
     button_invert_plot.setColour(juce::ToggleButton::textColourId, main_text_colour);
     button_invert_plot.onClick = [this]() {
         audioProcessor.invert_cf_plot = button_invert_plot.getToggleState();
@@ -64,19 +68,17 @@ MasVisGtkPluginAudioProcessorEditor::MasVisGtkPluginAudioProcessorEditor(MasVisG
     button_copy_params.setTooltip("Show Measurements as Text");
     button_copy_params.setImages(drawable_normal_copy_params.get(), drawable_highlight_copy_params.get());
     button_copy_params.onClick = [this]() {
-        auto freq_header = juce::String();
+        auto parameters = juce::String("Frequencies [Hz], Delta N-th Channel Gains [dB]\n===============================================\n");
         for (int i = 0; i < audioProcessor.len_ap_freq;++i)
         {
-            freq_header += juce::String(audioProcessor.ap_freqs[i]);
+            parameters += juce::String(audioProcessor.ap_freqs[i]);
             if (i == audioProcessor.len_ap_freq - 1)
                 continue;
             else
-                freq_header += juce::String(", ");
+                parameters += juce::String(", ");
         }
         
-        freq_header += juce::String("\n");
-
-        auto parameters = juce::String("==============================================\nDeltas [dB]\n") + freq_header;
+        parameters << juce::String("\n");
 
         for (int i = 0; i < audioProcessor.table_crest_factor_params.size();++i)
         {
@@ -84,21 +86,6 @@ MasVisGtkPluginAudioProcessorEditor::MasVisGtkPluginAudioProcessorEditor(MasVisG
             for (int j = 1; j < loop_size;++j)
             {
                 parameters += audioProcessor.table_crest_factor_params[i][j];
-                if (j == loop_size - 1)
-                    continue;
-                else
-                    parameters += juce::String(", ");
-            }
-            parameters += juce::String("\n");
-        }
-
-        parameters += juce::String("==============================================\nAbsolute [dB]\n") + freq_header;
-        for (int i = 0; i < audioProcessor.ap_crest_strings.size(); ++i)
-        {
-            size_t loop_size = audioProcessor.ap_crest_strings[i].size();
-            for (int j = 0; j < loop_size; ++j)
-            {
-                parameters += juce::String(audioProcessor.ap_crest_strings[i][j]);
                 if (j == loop_size - 1)
                     continue;
                 else
@@ -187,7 +174,7 @@ MasVisGtkPluginAudioProcessorEditor::MasVisGtkPluginAudioProcessorEditor(MasVisG
 
     crest_plot_type.setTooltip("Bands for Allpass Crest Factor Plot");
     crest_plot_type.setColour(juce::ComboBox::textColourId, main_text_colour);
-    crest_plot_type.addItem("7 QUICK", 1);
+    crest_plot_type.addItem("7 QUICK OCTAVES", 1);
     crest_plot_type.addItem("10 ISO 266", 2);
     crest_plot_type.addItem("31 1/3 OCTAVES", 3);
     crest_plot_type.onChange = [this] {
@@ -208,50 +195,6 @@ MasVisGtkPluginAudioProcessorEditor::MasVisGtkPluginAudioProcessorEditor(MasVisG
     table_crest_factor.model.shade_colour2 = shade_colour_look_and_feel1.brighter(0.2f);
     addAndMakeVisible(table_crest_factor);
 
-    //conversions to log10 scale
-    //same procedure as ap_freq_px_log10_locations...
-    //log10(1)      0             | 635.000
-    //log10(10)     1             | 704.751
-    //log10(100)    2             | 774.501
-    //log10(1000)   3             | 844.252
-    //log10(10000)  4             | 914.003
-    //log10(20000)  4.301029996   | 935.000
-
-    //allpass crest factor log10 horizonal markings
-    allpass_crest_factor_hmark_1.startNewSubPath(636.000f, 305);
-    allpass_crest_factor_hmark_1.lineTo(636.000f, 302);
-    allpass_crest_factor_hmark_2.startNewSubPath(704.000f, 305);
-    allpass_crest_factor_hmark_2.lineTo(704.000f, 302);
-    allpass_crest_factor_hmark_3.startNewSubPath(774.000f, 305);
-    allpass_crest_factor_hmark_3.lineTo(774.000f, 302);
-    allpass_crest_factor_hmark_4.startNewSubPath(844.000f, 305);
-    allpass_crest_factor_hmark_4.lineTo(844.000f, 302);
-    allpass_crest_factor_hmark_5.startNewSubPath(914.000f, 305);
-    allpass_crest_factor_hmark_5.lineTo(914.000f, 302);
-    allpass_crest_factor_hmark_6.startNewSubPath(933.000f, 305);
-    allpass_crest_factor_hmark_6.lineTo(933.000f, 302);
-
-    //allpass crest factor linear vertical markings
-    float y_unit = 30;//height of division ex. 0 to 5 dB, 150/5
-    allpass_crest_factor_vmark_1.startNewSubPath(635, 155 - 4 * y_unit);
-    allpass_crest_factor_vmark_1.lineTo(638, 155 - 4 * y_unit);
-    allpass_crest_factor_vmark_2.startNewSubPath(635, 155 - 3 * y_unit);
-    allpass_crest_factor_vmark_2.lineTo(638, 155 - 3 * y_unit);
-    allpass_crest_factor_vmark_3.startNewSubPath(635, 155 - 2 * y_unit);
-    allpass_crest_factor_vmark_3.lineTo(638, 155 - 2 * y_unit);
-    allpass_crest_factor_vmark_4.startNewSubPath(635, 155 - 1 * y_unit);
-    allpass_crest_factor_vmark_4.lineTo(638, 155 - 1 * y_unit);
-    allpass_crest_factor_vmark_5.startNewSubPath(635, 155);//0th
-    allpass_crest_factor_vmark_5.lineTo(638, 155);
-    allpass_crest_factor_vmark_6.startNewSubPath(635, 155 + 1 * y_unit);
-    allpass_crest_factor_vmark_6.lineTo(638, 155 + 1 * y_unit);
-    allpass_crest_factor_vmark_7.startNewSubPath(635, 155 + 2 * y_unit);
-    allpass_crest_factor_vmark_7.lineTo(638, 155 + 2 * y_unit);
-    allpass_crest_factor_vmark_8.startNewSubPath(635, 155 + 3 * y_unit);
-    allpass_crest_factor_vmark_8.lineTo(638, 155 + 3 * y_unit);
-    allpass_crest_factor_vmark_9.startNewSubPath(635, 155 + 4 * y_unit);
-    allpass_crest_factor_vmark_9.lineTo(638, 155 + 4 * y_unit);
-
     setSize(956, 412);//window size, 5px pading
     setResizable(false, false);
 }
@@ -270,116 +213,8 @@ void MasVisGtkPluginAudioProcessorEditor::paint(juce::Graphics& g)
         //fill the background with a solid colour
         g.fillAll(juce::Colours::black);
 
-        //histogram background
-        g.setColour(shade_colour_look_and_feel1);
-        g.fillRect(5, 5, 600, 300);
-
-        //labels of Histogram
-        g.setColour(main_text_colour);
-        g.setFont(juce::FontOptions(12.0f));
-        g.drawText("-100", 5, 300, 30, 20, juce::Justification::bottomLeft, false);
-        g.drawText("-50", 155, 300, 30, 20, juce::Justification::centredBottom, false);
-        g.drawText("0", 306, 300, 30, 20, juce::Justification::centredBottom, false);
-        g.drawText("+50", 455, 300, 30, 20, juce::Justification::centredBottom, false);
-        g.drawText("+100", 575, 300, 30, 20, juce::Justification::bottomRight, false);
-
-        //allpass crest factor region backgrounds
-        g.setColour(shade_colour_look_and_feel1);
-        g.fillRect(635, 5, 70, 300);
-        g.setColour(shade_colour_look_and_feel2);
-        g.fillRect(704, 5, 70, 300);
-        g.setColour(shade_colour_look_and_feel1);
-        g.fillRect(774, 5, 70, 300);
-        g.setColour(shade_colour_look_and_feel2);
-        g.fillRect(844, 5, 70, 300);
-        g.setColour(shade_colour_look_and_feel1);
-        g.fillRect(914, 5, 20, 300);
-
-        //allpass crest factor log10 horizonal markings
-        g.setColour(juce::Colours::grey);
-        g.strokePath(allpass_crest_factor_hmark_1, juce::PathStrokeType(2.0f));
-        g.strokePath(allpass_crest_factor_hmark_2, juce::PathStrokeType(2.0f));
-        g.strokePath(allpass_crest_factor_hmark_3, juce::PathStrokeType(2.0f));
-        g.strokePath(allpass_crest_factor_hmark_4, juce::PathStrokeType(2.0f));
-        g.strokePath(allpass_crest_factor_hmark_5, juce::PathStrokeType(2.0f));
-        g.strokePath(allpass_crest_factor_hmark_6, juce::PathStrokeType(2.0f));
-
-        //allpass crest factor linear labels
-        g.setColour(main_text_colour);
-        g.setFont(juce::FontOptions(12.0f));
-        g.drawText("1", 625, 300, 20, 20, juce::Justification::centredBottom, false);
-        g.drawText("10", 694, 300, 20, 20, juce::Justification::centredBottom, false);
-        g.drawText("100", 764, 300, 20, 20, juce::Justification::centredBottom, false);
-        g.drawText("1k", 834, 300, 20, 20, juce::Justification::centredBottom, false);
-        g.drawText("10k", 904, 300, 20, 20, juce::Justification::centredBottom, false);
-        g.drawText("20k", 935, 300, 20, 20, juce::Justification::centredBottom, false);
-        g.drawText("Hz", 935, 285, 20, 20, juce::Justification::centredBottom, false);
-
-        g.setColour(juce::Colours::grey);
-        g.strokePath(allpass_crest_factor_vmark_1, juce::PathStrokeType(1.0f));
-        g.strokePath(allpass_crest_factor_vmark_2, juce::PathStrokeType(1.0f));
-        g.strokePath(allpass_crest_factor_vmark_3, juce::PathStrokeType(1.0f));
-        g.strokePath(allpass_crest_factor_vmark_4, juce::PathStrokeType(1.0f));
-        g.strokePath(allpass_crest_factor_vmark_5, juce::PathStrokeType(1.0f));        
-        g.strokePath(allpass_crest_factor_vmark_6, juce::PathStrokeType(1.0f));
-        g.strokePath(allpass_crest_factor_vmark_7, juce::PathStrokeType(1.0f));
-        g.strokePath(allpass_crest_factor_vmark_8, juce::PathStrokeType(1.0f));
-        g.strokePath(allpass_crest_factor_vmark_9, juce::PathStrokeType(1.0f));
-
-        g.setColour(main_text_colour);
-        g.drawText("dB", 610, 0, 20, 20, juce::Justification::centredRight, false);
-        g.drawText("20", 610, 25/*int(145 - 4 * 37.5)*/, 20, 20, juce::Justification::centredRight, false);
-        g.drawText("15", 610, 55, 20, 20, juce::Justification::centredRight, false);
-        g.drawText("10", 610, 85, 20, 20, juce::Justification::centredRight, false);
-        g.drawText("5", 610, 115, 20, 20, juce::Justification::centredRight, false);
-        g.drawText("0", 610, 145, 20, 20, juce::Justification::centredRight, false);
-        g.drawText("-5", 610, 175, 20, 20, juce::Justification::centredRight, false);
-        g.drawText("-10", 610, 205, 20, 20, juce::Justification::centredRight, false);
-        g.drawText("-15", 610, 235, 20, 20, juce::Justification::centredRight, false);
-        g.drawText("-20", 610, 265, 20, 20, juce::Justification::centredRight, false);
-
-        //plot audio channels' histograms (as lines)
-        int colour_index = 0;
-        if (audioProcessor.histogram_paths.size() > 0)
-        {
-            for (juce::Path histogram_path : audioProcessor.histogram_paths)
-            {
-                g.setColour(audio_colours[colour_index]);
-                g.strokePath(histogram_path, juce::PathStrokeType(1.0f));
-                ++colour_index;
-            }
-        }
-
-        //paint average crest factor level (dashed lines)
-        //horizontally from 635 to 935 px; 300 px wide
-        //vertical from 0 to 30 dB (10 px / dB on y-axis)
-        if (audioProcessor.cf_lines.size() > 0)
-        {
-            colour_index = 0;
-            for (juce::Line<float> cf_line : audioProcessor.cf_lines)
-            {
-                for (int i = 0; i < 3; ++i)
-                {
-                    g.setColour(audio_colours[colour_index]);
-                    g.drawDashedLine(cf_line, dash_lengths, 2, 1, 0);
-                }
-                ++colour_index;
-            }
-        }
-
-        //paint allpass crest factor (loudness) paths
-        if (audioProcessor.allpass_crest_factor_paths.size() > 0)
-        {
-            colour_index = 0;
-            for (juce::Path ap_path : audioProcessor.allpass_crest_factor_paths)
-            {
-                g.setColour(audio_colours[colour_index]);
-                g.strokePath(ap_path, juce::PathStrokeType(1.0f));
-                ++colour_index;
-            }
-        }
-
-        //=====================================================================
+        hist_component.repaint();
+        ap_cf_component.repaint();
 
         //reset columns, if files have changed (mono, stereo, etc.)
         table_crest_factor.reset_columns(audioProcessor.len_ap_freq, audioProcessor.ap_freqs);
@@ -476,6 +311,8 @@ void MasVisGtkPluginAudioProcessorEditor::clear()
 //size and placement
 void MasVisGtkPluginAudioProcessorEditor::resized()
 {
+    hist_component.setBounds(5, 5, 600, 315);
+    ap_cf_component.setBounds(600, 5, 356, 315);
     table_crest_factor.setBounds(5, 325, 600, 82);
     button_invert_plot.setBounds(735, 335, 100, 30);
     button_info.setBounds(635, 373, 30, 30);

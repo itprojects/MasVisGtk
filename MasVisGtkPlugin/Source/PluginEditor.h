@@ -19,10 +19,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <JuceHeader.h>
 #include "PluginProcessor.h"
-#include "DynamicRangeByChannel.h"
-#include "DynamicRangeChart.h"
+#include "AllpassCrestFactorComponenet.h"
+#include "HistogramComponenet.h"
 #include "TableComponent.h"
 #include "TableWindow.h"
+#include "DynamicRangeByChannel.h"
+#include "DynamicRangeChart.h"
 
 class MasVisGtkPluginAudioProcessorEditor : public juce::AudioProcessorEditor, public juce::ChangeListener
 {
@@ -65,29 +67,24 @@ private:
     juce::Colour dr_style13 = juce::Colour::fromRGB(72, 255, 0);//#48ff00
     juce::Colour dr_style14 = juce::Colour::fromRGB(0, 255, 0);//#00ff00
 
+    AllpassCrestFactorComponenet ap_cf_component = AllpassCrestFactorComponenet(
+        audio_colours,
+        main_text_colour,
+        shade_colour_look_and_feel1,
+        shade_colour_look_and_feel2,
+        audioProcessor.allpass_crest_factor_paths,
+        audioProcessor.cf_lines
+    );
+    HistogramComponenet hist_component = HistogramComponenet(
+        audio_colours,
+        main_text_colour,
+        shade_colour_look_and_feel1,
+        audioProcessor.histogram_paths
+    );
+
     //table for allpass crest factor data
     //differences beteen line and dashed
     TableComponent table_crest_factor;
-
-    //allpass crest factor scale markings
-    juce::Path allpass_crest_factor_hmark_1;//horizontal mark 1     1 Hz
-    juce::Path allpass_crest_factor_hmark_2;//horizontal mark 2    10 Hz
-    juce::Path allpass_crest_factor_hmark_3;//horizontal mark 3   100 Hz
-    juce::Path allpass_crest_factor_hmark_4;//horizontal mark 4  1000 Hz
-    juce::Path allpass_crest_factor_hmark_5;//horizontal mark 5 10000 Hz
-    juce::Path allpass_crest_factor_hmark_6;//horizontal mark 6 20000 Hz
-
-    juce::Path allpass_crest_factor_vmark_1;//vertical mark 1   20 dB
-    juce::Path allpass_crest_factor_vmark_2;//vertical mark 2   15 dB
-    juce::Path allpass_crest_factor_vmark_3;//vertical mark 3   10 dB
-    juce::Path allpass_crest_factor_vmark_4;//vertical mark 4    5 dB
-    juce::Path allpass_crest_factor_vmark_5;//vertical mark 5    0 dB
-    juce::Path allpass_crest_factor_vmark_6;//vertical mark 6   -5 dB
-    juce::Path allpass_crest_factor_vmark_7;//vertical mark 7  -10 dB
-    juce::Path allpass_crest_factor_vmark_8;//vertical mark 8  -15 dB
-    juce::Path allpass_crest_factor_vmark_9;//vertical mark 9  -20 dB
-
-    const float dash_lengths[2] = { 10, 5 };//painting histogram
 
     //UI buttons
     const char* svg_string_normal_reset = R"(
@@ -271,7 +268,7 @@ private:
 
     juce::DrawableButton button_enable_disable_operations{ "Enable or disable", juce::DrawableButton::ImageFitted };
 
-    juce::ToggleButton button_invert_plot{ "Invert Plot" };
+    juce::ToggleButton button_invert_plot{ "Invert paths" };
 
     juce::TextButton button_dr_meter;
 

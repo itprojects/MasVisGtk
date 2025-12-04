@@ -68,16 +68,13 @@ public:
     
     bool ready_to_paint = true;//optimal painting
 
-    bool log10_scale = true;///allpass crest factors becomes log10, (or linear)
-
     bool invert_cf_plot = false;//shows vertically flipped plot
 
     juce::String processing_error;//error recorded here
 
-    float x_y_offset_hist = 5.0f;
-    float y_offset = 304.0f;
-    float x_offset_ap = 635.0f;
-    float y_offset_ap = 154.0f;
+    float y_offset = 300.0f;
+    float x_offset_ap = 35.0f;
+    float y_offset_ap = 149.0f;
     float y_scale_ap = 5;//px/dB scale factor
 
     std::vector<float> histogram_channel_minimums;
@@ -98,8 +95,8 @@ public:
     //log10 locations by default
     std::vector<float> ap_freq_px_locations =
     {
-        635.000f, 682.712f, 735.000f, 782.712f, 835.000f,
-        882.712f, 935.000f
+        35.000f, 82.712f, 135.000f, 182.712f, 235.000f,
+        282.712f, 335.000f
     };
 
     //=========================================================================
@@ -109,8 +106,8 @@ public:
 
     float ap_freq_px_locations_default[7] =
     {
-        635.000f, 682.712f, 735.000f, 782.712f, 835.000f,
-        882.712f, 935.000f
+        35.000f, 82.712f, 135.000f, 182.712f, 235.000f,
+        282.712f, 335.000f
     };
 
     //10 ISO 266:1997(E)
@@ -119,8 +116,8 @@ public:
 
     float ap_freq_px_locations_10_octave[10] =
     {
-        635.000f, 668.341f, 701.669f, 735.004f, 768.337f,
-        801.670f, 835.004f, 868.336f, 901.669f, 935.000f
+        35.000f, 68.341f, 101.669f, 135.004f, 168.337f,
+        201.670f, 235.004f, 268.336f, 301.669f, 335.000f
     };
 
     //31 octaves
@@ -135,13 +132,13 @@ public:
 
     float ap_freq_px_locations_31_octave[31] =
     {
-        635.000f, 644.691f, 654.728f, 665.103f, 674.794f,
-        684.831f, 695.206f, 704.897f, 714.588f, 725.309f,
-        735.000f, 744.691f, 754.728f, 765.103f, 774.794f,
-        784.831f, 795.206f, 804.897f, 814.588f, 825.309f,
-        835.000f, 844.691f, 854.728f, 865.103f, 874.794f,
-        884.831f, 895.206f, 904.897f, 914.588f, 925.309f,
-        935.000f
+        35.000f, 44.691f, 54.728f, 65.103f, 74.794f,
+        84.831f, 95.206f, 104.897f, 114.588f, 125.309f,
+        135.000f, 144.691f, 154.728f, 165.103f, 174.794f,
+        184.831f, 195.206f, 204.897f, 214.588f, 225.309f,
+        235.000f, 244.691f, 254.728f, 265.103f, 274.794f,
+        284.831f, 295.206f, 304.897f, 314.588f, 325.309f,
+        335.000f
     };
 
     //=========================================================================

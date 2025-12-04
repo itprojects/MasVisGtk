@@ -331,7 +331,7 @@ void MasVisGtkPluginAudioProcessor::releaseResources()
                                 {
                                     histogram_paths[channel].startNewSubPath
                                     (
-                                        (float)(x_y_offset_hist + i + 300),
+                                        (float)(i + 300),
                                         y_offset
                                     );
                                 }
@@ -340,7 +340,7 @@ void MasVisGtkPluginAudioProcessor::releaseResources()
                                     //add points to path
                                     histogram_paths[channel].lineTo
                                     (
-                                        (float)(x_y_offset_hist + i + 300),
+                                        (float)(i + 300),
                                         histogram_bins[channel][i]
                                     );
                                 }

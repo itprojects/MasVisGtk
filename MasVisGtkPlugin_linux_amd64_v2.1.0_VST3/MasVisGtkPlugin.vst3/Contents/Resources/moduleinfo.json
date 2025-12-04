@@ -1,6 +1,6 @@
 {
   "Name": "MasVisGtkPlugin",
-  "Version": "1.1.0",
+  "Version": "2.1.0",
   "Factory Info": {
     "Vendor": "ITProjects",
     "URL": "https://github.com/itprojects/MasVisGtk",
@@ -17,8 +17,8 @@
       "Category": "Audio Module Class",
       "Name": "MasVisGtkPlugin",
       "Vendor": "ITProjects",
-      "Version": "1.1.0",
-      "SDKVersion": "VST 3.7.12",
+      "Version": "2.1.0",
+      "SDKVersion": "VST 3.8.0",
       "Sub Categories": [
         "Fx",
         "OnlyOfflineProcess",
@@ -33,8 +33,8 @@
       "Category": "Component Controller Class",
       "Name": "MasVisGtkPlugin",
       "Vendor": "ITProjects",
-      "Version": "1.1.0",
-      "SDKVersion": "VST 3.7.12",
+      "Version": "2.1.0",
+      "SDKVersion": "VST 3.8.0",
       "Sub Categories": [
         "Fx",
         "OnlyOfflineProcess",
