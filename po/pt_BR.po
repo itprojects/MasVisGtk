@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: masvisgtk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-11 17:47+0300\n"
+"POT-Creation-Date: 2026-07-09 12:58+0300\n"
 "PO-Revision-Date: 2025-10-11 16:50+0300\n"
 "Last-Translator: john peter <johnppetersa@gmail.com>\n"
 "Language-Team: none\n"
@@ -214,11 +214,13 @@ msgid "Tab Actions"
 msgstr "Ações da guia"
 
 #: src/gtk/help-overlay.ui:79 src/main_gtk_window.py:154
-#: src/main_gtk_window.py:1011
+#: src/main_gtk_window.py:1011 src/main_gtk_window.py:156
+#: src/main_gtk_window.py:1013
 msgid "Animate Tabs"
 msgstr "Animar guias"
 
 #: src/gtk/help-overlay.ui:85 src/main_gtk_window.py:831
+#: src/main_gtk_window.py:833
 msgid "Compare Tabs"
 msgstr "Compare guias"
 
@@ -449,7 +451,8 @@ msgid " is not writeable."
 msgstr " não é escrito."
 
 #: src/main.py:938 src/main_gtk_window.py:819 src/main_gtk_window.py:1195
-#: src/main_gtk_window.py:1205
+#: src/main_gtk_window.py:1205 src/main_gtk_window.py:821
+#: src/main_gtk_window.py:1197 src/main_gtk_window.py:1207
 msgid "Close"
 msgstr "Fechar"
 
@@ -478,228 +481,240 @@ msgid "File Error"
 msgstr "Erro de arquivo"
 
 #: src/main_gtk_window.py:153 src/main_gtk_window.py:801
+#: src/main_gtk_window.py:155 src/main_gtk_window.py:803
 msgid "File Information"
 msgstr "Informações do arquivo"
 
-#: src/main_gtk_window.py:155
+#: src/main_gtk_window.py:155 src/main_gtk_window.py:157
 msgid "Go Compare"
 msgstr "Vá comparar"
 
-#: src/main_gtk_window.py:156
+#: src/main_gtk_window.py:156 src/main_gtk_window.py:158
 msgid "Save All"
 msgstr "Salve tudo"
 
-#: src/main_gtk_window.py:160
+#: src/main_gtk_window.py:160 src/main_gtk_window.py:162
 msgid "Preferences"
 msgstr "Preferências"
 
-#: src/main_gtk_window.py:161
+#: src/main_gtk_window.py:161 src/main_gtk_window.py:163
 msgid "Formats"
 msgstr "Formatos"
 
-#: src/main_gtk_window.py:162
+#: src/main_gtk_window.py:162 src/main_gtk_window.py:164
 msgid "Keyboard Shortcuts"
 msgstr "Atalhos de teclado"
 
-#: src/main_gtk_window.py:163
+#: src/main_gtk_window.py:163 src/main_gtk_window.py:165
 msgid "Help"
 msgstr "Ajuda"
 
-#: src/main_gtk_window.py:164
+#: src/main_gtk_window.py:164 src/main_gtk_window.py:166
 msgid "About"
 msgstr "Sobre"
 
 #: src/main_gtk_window.py:180 src/main_gtk_window.py:554
-#: src/main_gtk_window.py:559
+#: src/main_gtk_window.py:559 src/main_gtk_window.py:182
+#: src/main_gtk_window.py:556 src/main_gtk_window.py:561
 msgid "Open Files"
 msgstr "Arquivos abertos"
 
 #: src/main_gtk_window.py:190 src/main_gtk_window.py:569
+#: src/main_gtk_window.py:192 src/main_gtk_window.py:571
 msgid "Advanced Open"
 msgstr "Abertura avançada"
 
 #: src/main_gtk_window.py:198 src/main_gtk_window.py:705
 #: src/main_gtk_window.py:727 src/main_gtk_window.py:786
+#: src/main_gtk_window.py:200 src/main_gtk_window.py:707
+#: src/main_gtk_window.py:729 src/main_gtk_window.py:788
 msgid "Save"
 msgstr "Salvar"
 
-#: src/main_gtk_window.py:200
+#: src/main_gtk_window.py:200 src/main_gtk_window.py:202
 msgid "Save Tab"
 msgstr "Guia Salvar"
 
 #: src/main_gtk_window.py:209 src/main_gtk_window.py:409
+#: src/main_gtk_window.py:211 src/main_gtk_window.py:411
 msgid "Dynamic Range"
 msgstr "Faixa dinâmica"
 
 #: src/main_gtk_window.py:221 src/main_gtk_window.py:506
+#: src/main_gtk_window.py:223 src/main_gtk_window.py:508
 msgid "Dynamic Range Chart"
 msgstr "Gráfico de faixa dinâmica"
 
-#: src/main_gtk_window.py:238
+#: src/main_gtk_window.py:238 src/main_gtk_window.py:240
 msgid "Zoom in"
 msgstr "Zoom entre"
 
-#: src/main_gtk_window.py:246
+#: src/main_gtk_window.py:246 src/main_gtk_window.py:248
 msgid "Restore original dimensions"
 msgstr "Dimensões originais do Resotre"
 
-#: src/main_gtk_window.py:260
+#: src/main_gtk_window.py:260 src/main_gtk_window.py:262
 msgid "Scale to Window Width"
 msgstr "Escala para largura da janela"
 
-#: src/main_gtk_window.py:268
+#: src/main_gtk_window.py:268 src/main_gtk_window.py:270
 msgid "Zoom out"
 msgstr "Amplie o zoom"
 
-#: src/main_gtk_window.py:276
+#: src/main_gtk_window.py:276 src/main_gtk_window.py:278
 msgid "Zoom Level [px]"
 msgstr "Nível de zoom [px]"
 
-#: src/main_gtk_window.py:335
+#: src/main_gtk_window.py:335 src/main_gtk_window.py:337
 msgid "Overview"
 msgstr "Resumo"
 
-#: src/main_gtk_window.py:406
+#: src/main_gtk_window.py:406 src/main_gtk_window.py:408
 msgid "Unknown Dynamic Range"
 msgstr "Faixa dinâmica desconhecida"
 
-#: src/main_gtk_window.py:529
+#: src/main_gtk_window.py:529 src/main_gtk_window.py:531
 msgid "Dynamic Range of Channels"
 msgstr "Faixa dinâmica de canais"
 
-#: src/main_gtk_window.py:536
+#: src/main_gtk_window.py:536 src/main_gtk_window.py:538
 msgid "Channel #"
 msgstr "Canal #"
 
-#: src/main_gtk_window.py:562
+#: src/main_gtk_window.py:562 src/main_gtk_window.py:564
 msgid "Open Folders"
 msgstr "Pastas abertas"
 
-#: src/main_gtk_window.py:576
+#: src/main_gtk_window.py:576 src/main_gtk_window.py:578
 msgid "Add Files"
 msgstr "Adicionar arquivos"
 
-#: src/main_gtk_window.py:578
+#: src/main_gtk_window.py:578 src/main_gtk_window.py:580
 msgid "Add files for processing"
 msgstr "Adicionar arquivos para processamento"
 
-#: src/main_gtk_window.py:582
+#: src/main_gtk_window.py:582 src/main_gtk_window.py:584
 msgid "Add Folders"
 msgstr "Adicione pastas"
 
-#: src/main_gtk_window.py:584
+#: src/main_gtk_window.py:584 src/main_gtk_window.py:586
 msgid "Add folders for processing"
 msgstr "Adicione pastas para processamento"
 
-#: src/main_gtk_window.py:594
+#: src/main_gtk_window.py:594 src/main_gtk_window.py:596
 msgid "use LUFS units"
 msgstr "usar unidades LUFS"
 
-#: src/main_gtk_window.py:598
+#: src/main_gtk_window.py:598 src/main_gtk_window.py:600
 msgid "recursive (search sub-folders)"
 msgstr "recursiva (sub-oscilantes de pesquisa)"
 
-#: src/main_gtk_window.py:604
+#: src/main_gtk_window.py:604 src/main_gtk_window.py:606
 msgid "overview mode"
 msgstr "modo de visão geral"
 
-#: src/main_gtk_window.py:636
+#: src/main_gtk_window.py:636 src/main_gtk_window.py:638
 msgid "Start"
 msgstr "Começar"
 
-#: src/main_gtk_window.py:637
+#: src/main_gtk_window.py:637 src/main_gtk_window.py:639
 msgid "Begin audio analysis"
 msgstr "Inicie a análise de áudio"
 
-#: src/main_gtk_window.py:664
+#: src/main_gtk_window.py:664 src/main_gtk_window.py:666
 msgid "Failed Open"
 msgstr "Falhou aberto"
 
-#: src/main_gtk_window.py:706
+#: src/main_gtk_window.py:706 src/main_gtk_window.py:708
 msgid "Save in Folder"
 msgstr "Salvar na pasta"
 
-#: src/main_gtk_window.py:728
+#: src/main_gtk_window.py:728 src/main_gtk_window.py:730
 msgid "Save All in Folder"
 msgstr "Salve tudo na pasta"
 
-#: src/main_gtk_window.py:787
+#: src/main_gtk_window.py:787 src/main_gtk_window.py:789
 msgid "Save Animation"
 msgstr "Salvar animação"
 
 #: src/main_gtk_window.py:825 src/main_gtk_window.py:848
-#: src/main_gtk_window.py:935
+#: src/main_gtk_window.py:935 src/main_gtk_window.py:827
+#: src/main_gtk_window.py:850 src/main_gtk_window.py:937
 msgid "Cannot Compare"
 msgstr "Não pode comparar"
 
-#: src/main_gtk_window.py:825
+#: src/main_gtk_window.py:825 src/main_gtk_window.py:827
 msgid "No tabs."
 msgstr "Sem guias."
 
 #: src/main_gtk_window.py:848 src/main_gtk_window.py:935
 #: src/main_gtk_window.py:1005 src/main_gtk_window.py:1028
-#: src/main_gtk_window.py:1082
+#: src/main_gtk_window.py:1082 src/main_gtk_window.py:850
+#: src/main_gtk_window.py:937 src/main_gtk_window.py:1007
+#: src/main_gtk_window.py:1030 src/main_gtk_window.py:1084
 msgid "Too few tabs."
 msgstr "Muito poucas guias."
 
-#: src/main_gtk_window.py:862
+#: src/main_gtk_window.py:862 src/main_gtk_window.py:864
 msgid "Go!"
 msgstr "Ir!"
 
-#: src/main_gtk_window.py:863
+#: src/main_gtk_window.py:863 src/main_gtk_window.py:865
 msgid "Compare tabs in separate window"
 msgstr "Compare as guias em janela separada"
 
 #: src/main_gtk_window.py:869 src/main_gtk_window.py:1049
+#: src/main_gtk_window.py:871 src/main_gtk_window.py:1051
 msgid "☑ All!"
 msgstr "☑ Todos!"
 
-#: src/main_gtk_window.py:870
+#: src/main_gtk_window.py:870 src/main_gtk_window.py:872
 msgid "Compare ALL tabs in separate window"
 msgstr "Compare todas as guias em janela separada"
 
-#: src/main_gtk_window.py:944
+#: src/main_gtk_window.py:944 src/main_gtk_window.py:946
 msgid "Comparison #"
 msgstr "Comparação #"
 
 #: src/main_gtk_window.py:1005 src/main_gtk_window.py:1028
-#: src/main_gtk_window.py:1082
+#: src/main_gtk_window.py:1082 src/main_gtk_window.py:1007
+#: src/main_gtk_window.py:1030 src/main_gtk_window.py:1084
 msgid "Cannot Animate"
 msgstr "Não é possível animar"
 
-#: src/main_gtk_window.py:1042
+#: src/main_gtk_window.py:1042 src/main_gtk_window.py:1044
 msgid "Animate"
 msgstr "Animar"
 
-#: src/main_gtk_window.py:1043
+#: src/main_gtk_window.py:1043 src/main_gtk_window.py:1045
 msgid "Animate tabs in separate window"
 msgstr "Animar guias em uma janela separada"
 
-#: src/main_gtk_window.py:1050
+#: src/main_gtk_window.py:1050 src/main_gtk_window.py:1052
 msgid "Animate ALL tabs in separate window"
 msgstr "Animar TODAS as guias em uma janela separada"
 
-#: src/main_gtk_window.py:1092
+#: src/main_gtk_window.py:1092 src/main_gtk_window.py:1094
 msgid "Animation #"
 msgstr "Animação #"
 
-#: src/main_gtk_window.py:1107
+#: src/main_gtk_window.py:1107 src/main_gtk_window.py:1109
 msgid "Save tabs to animated gif image"
 msgstr "Salvar guias em imagem gif animada"
 
-#: src/main_gtk_window.py:1154
+#: src/main_gtk_window.py:1154 src/main_gtk_window.py:1156
 msgid "Processing images."
 msgstr "Processamento de imagens."
 
-#: src/main_gtk_window.py:1161
+#: src/main_gtk_window.py:1161 src/main_gtk_window.py:1163
 msgid "Animated image ready for saving."
 msgstr "Imagem animada pronta para salvar."
 
-#: src/main_gtk_window.py:1164
+#: src/main_gtk_window.py:1164 src/main_gtk_window.py:1166
 msgid "Animation Error"
 msgstr "Erro de animação"
 
-#: src/main_gtk_window.py:1165
+#: src/main_gtk_window.py:1165 src/main_gtk_window.py:1167
 msgid ""
 "Cannot create animation.\n"
 "Plotting canvas cannot be made into image.\n"
@@ -707,23 +722,23 @@ msgstr ""
 "Não é possível criar animação.\n"
 "A tela de plotagem não pode ser transformada em imagem.\n"
 
-#: src/main_gtk_window.py:1193
+#: src/main_gtk_window.py:1193 src/main_gtk_window.py:1195
 msgid "Supported Formats"
 msgstr "Formatos suportados"
 
-#: src/main_gtk_window.py:1224
+#: src/main_gtk_window.py:1224 src/main_gtk_window.py:1226
 msgid "Original PyMasVis module development."
 msgstr "Desenvolvimento original do módulo Pymasvis."
 
-#: src/main_gtk_window.py:1226
+#: src/main_gtk_window.py:1226 src/main_gtk_window.py:1228
 msgid "GTK application, originally based on PyMasVis commit #657196."
 msgstr "Aplicativo GTK, originalmente baseado no commit pymasvis #657196."
 
-#: src/output_gtk.py:181
+#: src/output_gtk.py:181 src/output_gtk.py:153
 msgid "Input file has no audio stream: "
 msgstr "O arquivo de entrada não tem fluxo de áudio: "
 
-#: src/output_gtk.py:222
+#: src/output_gtk.py:222 src/output_gtk.py:194
 msgid ""
 "Crest: {:0.2f} dB,  DR: {},  L$_K$: {:0.1f} {},  LRA: {:0.1f} LU,  PLR: "
 "{:0.1f} LU"
@@ -731,7 +746,7 @@ msgstr ""
 "Crista: {:0.2f} dB, DR: {}, L$_K$: {:0.1f} {}, LRA: {:0.1f} LU, PLR: {:0.1f} "
 "LU"
 
-#: src/output_gtk.py:225
+#: src/output_gtk.py:225 src/output_gtk.py:197
 msgid ""
 "Encoding: {},  Channels: {},  Layout: {},  Bits: {},\n"
 "Sample rate: {} Hz,  Bitrate: {} kbps,  Duration: {},  Size: {:0.1f} MB"
@@ -740,27 +755,27 @@ msgstr ""
 "Taxa de amostragem: {} Hz,  Taxa de bits: {} kbps,  Duração: {},  Tamanho: "
 "{:0.1f} MB"
 
-#: src/output_gtk.py:237
+#: src/output_gtk.py:237 src/output_gtk.py:209
 msgid "Album"
 msgstr "Álbum"
 
-#: src/output_gtk.py:239
+#: src/output_gtk.py:239 src/output_gtk.py:211
 msgid "Track"
 msgstr "Pista"
 
-#: src/output_gtk.py:241
+#: src/output_gtk.py:241 src/output_gtk.py:213
 msgid "Date"
 msgstr "Data"
 
-#: src/output_gtk.py:268
+#: src/output_gtk.py:268 src/output_gtk.py:240
 msgid "Checksum (energy): "
 msgstr "Checksum (energia): "
 
-#: src/output_gtk.py:276
+#: src/output_gtk.py:276 src/output_gtk.py:248
 msgid "MasVisGtk "
 msgstr "MasVisGtk "
 
-#: src/output_gtk.py:326
+#: src/output_gtk.py:326 src/output_gtk.py:298
 msgid ""
 "{}: Crest = {:0.2f} dB / RMS = {:0.2f} dBFS / Peak = {:0.2f} dBFS / True "
 "Peak ≈ {:0.2f} dBTP"
@@ -768,46 +783,46 @@ msgstr ""
 "{}: Crest = {:0.2f} dB / RMS = {:0.2f} dBFS / Pico = {:0.2f} dBFS / Pico "
 "Máximo ≈ {:0.2f} dBTP"
 
-#: src/output_gtk.py:370
+#: src/output_gtk.py:370 src/output_gtk.py:342
 msgid ""
 "Loudest part ({} channel, {} samples > 95{} during 20 ms at {:0.2f} sec)"
 msgstr ""
 "Parte mais alta ({} direito, {} amostras > 95{} durante 20 ms a {:0.2f} "
 "segundo)"
 
-#: src/output_gtk.py:456
+#: src/output_gtk.py:456 src/output_gtk.py:428
 msgid "Normalised average spectrum, "
 msgstr "Espectro médio normalizado, "
 
-#: src/output_gtk.py:456
+#: src/output_gtk.py:456 src/output_gtk.py:428
 msgid " frames"
 msgstr " quadros"
 
-#: src/output_gtk.py:516
+#: src/output_gtk.py:516 src/output_gtk.py:488
 msgid "Allpassed crest factor"
 msgstr "Fator de pico de todos os canais"
 
-#: src/output_gtk.py:562
+#: src/output_gtk.py:562 src/output_gtk.py:534
 msgid "Histogram, 'bits': "
 msgstr "Histograma, 'bits': "
 
-#: src/output_gtk.py:623
+#: src/output_gtk.py:623 src/output_gtk.py:595
 msgid "Peak vs RMS level"
 msgstr "Pico vs nível RMS"
 
-#: src/output_gtk.py:661
+#: src/output_gtk.py:661 src/output_gtk.py:633
 msgid "Short term (1 s) crest factor"
 msgstr "Fator de pico de curto prazo (1 s)"
 
-#: src/output_gtk.py:700
+#: src/output_gtk.py:700 src/output_gtk.py:672
 msgid "EBU R 128 Short term loudness"
 msgstr "Nível de intensidade sonora de curto prazo EBU R 128"
 
-#: src/output_gtk.py:706
+#: src/output_gtk.py:706 src/output_gtk.py:678
 msgid "Short term PLR"
 msgstr "Curto prazo PLR"
 
-#: src/output_gtk.py:847
+#: src/output_gtk.py:847 src/output_gtk.py:819
 msgid ""
 "DR = {}\n"
 "Peak = {:0.1f} dBFS\n"
@@ -819,7 +834,7 @@ msgstr ""
 "Crest = {:0.1f} dB\n"
 "L$_k$ = {:0.1f} LU"
 
-#: src/output_gtk.py:856
+#: src/output_gtk.py:856 src/output_gtk.py:828
 msgid "{} [{}, {} channels, {} bits, {:0.1f} kHz, {} kbps]"
 msgstr "{} [{}, {} canais, {} bits, {:0.1f} kHz, {} kbps]"
 

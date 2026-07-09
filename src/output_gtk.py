@@ -133,35 +133,7 @@ def render(
             font_desc = Pango.FontDescription.from_string(win.app.pref_custom_font_value)
             matplotlib.rcParams['font.family'] = font_desc.get_family()
             matplotlib.rcParams['font.size'] = f'{int(font_desc.get_size() / Pango.SCALE)}'
-            font_weight = 'bold'
-            match font_desc.get_weight():
-                case 100:
-                    font_weight = 'thin'
-                case 200:
-                    font_weight = 'ultralight'
-                case 300:
-                    font_weight = 'light'
-                case 350:
-                    font_weight = 'semilight'
-                case 380:
-                    font_weight = 'book'
-                case 400:
-                    font_weight = 'normal'
-                case 500:
-                    font_weight = 'medium'
-                case 600:
-                    font_weight = 'semibold'
-                case 700:
-                    font_weight = 'bold'
-                case 800:
-                    font_weight = 'ultrabold'
-                case 900:
-                    font_weight = 'heavy'
-                case 100:
-                    font_weight = 'ultraheavy'
-                case _:
-                    pass
-            matplotlib.rcParams['font.weight'] = font_weight
+            matplotlib.rcParams['font.weight'] = font_desc.get_weight()
             FONT = True
 
     subplot_background_color = None
@@ -898,8 +870,8 @@ def render(
 
     # Move canvas on scroll event.
     canvas.mpl_connect('scroll_event', win.on_scroll_over_canvas)
-
     canvas.draw()
+
     canvas.flush_events()
 
 # Save canvas figure to image on disk.

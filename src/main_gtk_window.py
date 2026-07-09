@@ -29,6 +29,8 @@ import logging
 
 log = logging.getLogger(__package__)
 
+logging.getLogger('matplotlib.font_manager').disabled = True # prevent findfont error message/bug
+
 class StringPath(GObject.GObject):
 
     name = GObject.Property(type=str)
@@ -335,7 +337,7 @@ class PyPlotWindow(Adw.ApplicationWindow):
             page.set_title(_('Overview'))
         else:
             page.set_title(a_file.file_name)
-            page.set_tooltip(GLib.markup_escape_text(a_file.file_name + '\n\n' + a_file.file_path, len(a_file.file_name + '\n\n' + a_file.file_path)))
+            page.set_tooltip(a_file.file_name + '\n\n' + a_file.file_path)
 
         return page
 
@@ -477,10 +479,10 @@ class PyPlotWindow(Adw.ApplicationWindow):
                 self.btn_zoom_indicator.set_label(str(self.int_zoom_scale))
                 tabbox.canvas_width = new_canvas_width
 
-                # Set new canvas dimensions.
+                # Set new canvas dimensions. Reduce width by 2 to prevent scaling bug.
                 tabbox.canvas.set_size_request(
-                    new_canvas_width,
-                    new_canvas_width//tabbox.aspect_ratio
+                    new_canvas_width-2,
+                    (new_canvas_width-2)//tabbox.aspect_ratio
                 )
 
                 # Change font sizes of axes texts.

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: masvisgtk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-11 17:47+0300\n"
+"POT-Creation-Date: 2026-07-09 12:58+0300\n"
 "PO-Revision-Date: 2025-10-11 16:48+0300\n"
 "Last-Translator: johnpeter19 <johnppetersa@gmail.com>\n"
 "Language-Team: none\n"
@@ -214,11 +214,13 @@ msgid "Tab Actions"
 msgstr "Acciones de pestaña"
 
 #: src/gtk/help-overlay.ui:79 src/main_gtk_window.py:154
-#: src/main_gtk_window.py:1011
+#: src/main_gtk_window.py:1011 src/main_gtk_window.py:156
+#: src/main_gtk_window.py:1013
 msgid "Animate Tabs"
 msgstr "Pestañas animadas"
 
 #: src/gtk/help-overlay.ui:85 src/main_gtk_window.py:831
+#: src/main_gtk_window.py:833
 msgid "Compare Tabs"
 msgstr "Comparar pestañas"
 
@@ -450,7 +452,8 @@ msgid " is not writeable."
 msgstr " no es escrito."
 
 #: src/main.py:938 src/main_gtk_window.py:819 src/main_gtk_window.py:1195
-#: src/main_gtk_window.py:1205
+#: src/main_gtk_window.py:1205 src/main_gtk_window.py:821
+#: src/main_gtk_window.py:1197 src/main_gtk_window.py:1207
 msgid "Close"
 msgstr "Cerca"
 
@@ -479,228 +482,240 @@ msgid "File Error"
 msgstr "Error de archivo"
 
 #: src/main_gtk_window.py:153 src/main_gtk_window.py:801
+#: src/main_gtk_window.py:155 src/main_gtk_window.py:803
 msgid "File Information"
 msgstr "Información de archivo"
 
-#: src/main_gtk_window.py:155
+#: src/main_gtk_window.py:155 src/main_gtk_window.py:157
 msgid "Go Compare"
 msgstr "Ve a comparar"
 
-#: src/main_gtk_window.py:156
+#: src/main_gtk_window.py:156 src/main_gtk_window.py:158
 msgid "Save All"
 msgstr "Guardar todo"
 
-#: src/main_gtk_window.py:160
+#: src/main_gtk_window.py:160 src/main_gtk_window.py:162
 msgid "Preferences"
 msgstr "Preferencias"
 
-#: src/main_gtk_window.py:161
+#: src/main_gtk_window.py:161 src/main_gtk_window.py:163
 msgid "Formats"
 msgstr "Formatos"
 
-#: src/main_gtk_window.py:162
+#: src/main_gtk_window.py:162 src/main_gtk_window.py:164
 msgid "Keyboard Shortcuts"
 msgstr "Atajos de teclado"
 
-#: src/main_gtk_window.py:163
+#: src/main_gtk_window.py:163 src/main_gtk_window.py:165
 msgid "Help"
 msgstr "Ayuda"
 
-#: src/main_gtk_window.py:164
+#: src/main_gtk_window.py:164 src/main_gtk_window.py:166
 msgid "About"
 msgstr "Acerca de"
 
 #: src/main_gtk_window.py:180 src/main_gtk_window.py:554
-#: src/main_gtk_window.py:559
+#: src/main_gtk_window.py:559 src/main_gtk_window.py:182
+#: src/main_gtk_window.py:556 src/main_gtk_window.py:561
 msgid "Open Files"
 msgstr "Archivos abiertos"
 
 #: src/main_gtk_window.py:190 src/main_gtk_window.py:569
+#: src/main_gtk_window.py:192 src/main_gtk_window.py:571
 msgid "Advanced Open"
 msgstr "Abierto avanzado"
 
 #: src/main_gtk_window.py:198 src/main_gtk_window.py:705
 #: src/main_gtk_window.py:727 src/main_gtk_window.py:786
+#: src/main_gtk_window.py:200 src/main_gtk_window.py:707
+#: src/main_gtk_window.py:729 src/main_gtk_window.py:788
 msgid "Save"
 msgstr "Ahorrar"
 
-#: src/main_gtk_window.py:200
+#: src/main_gtk_window.py:200 src/main_gtk_window.py:202
 msgid "Save Tab"
 msgstr "Guardar pestaña"
 
 #: src/main_gtk_window.py:209 src/main_gtk_window.py:409
+#: src/main_gtk_window.py:211 src/main_gtk_window.py:411
 msgid "Dynamic Range"
 msgstr "Rango dinámico"
 
 #: src/main_gtk_window.py:221 src/main_gtk_window.py:506
+#: src/main_gtk_window.py:223 src/main_gtk_window.py:508
 msgid "Dynamic Range Chart"
 msgstr "Gráfico de rango dinámico"
 
-#: src/main_gtk_window.py:238
+#: src/main_gtk_window.py:238 src/main_gtk_window.py:240
 msgid "Zoom in"
 msgstr "Ampliar en"
 
-#: src/main_gtk_window.py:246
+#: src/main_gtk_window.py:246 src/main_gtk_window.py:248
 msgid "Restore original dimensions"
 msgstr "Restaurar dimensiones originales"
 
-#: src/main_gtk_window.py:260
+#: src/main_gtk_window.py:260 src/main_gtk_window.py:262
 msgid "Scale to Window Width"
 msgstr "Escala al ancho de la ventana"
 
-#: src/main_gtk_window.py:268
+#: src/main_gtk_window.py:268 src/main_gtk_window.py:270
 msgid "Zoom out"
 msgstr "Ampliar hacia fuera"
 
-#: src/main_gtk_window.py:276
+#: src/main_gtk_window.py:276 src/main_gtk_window.py:278
 msgid "Zoom Level [px]"
 msgstr "Nivel de zoom [PX]"
 
-#: src/main_gtk_window.py:335
+#: src/main_gtk_window.py:335 src/main_gtk_window.py:337
 msgid "Overview"
 msgstr "Resumen"
 
-#: src/main_gtk_window.py:406
+#: src/main_gtk_window.py:406 src/main_gtk_window.py:408
 msgid "Unknown Dynamic Range"
 msgstr "Rango dinámico desconocido"
 
-#: src/main_gtk_window.py:529
+#: src/main_gtk_window.py:529 src/main_gtk_window.py:531
 msgid "Dynamic Range of Channels"
 msgstr "A una gama dinámica de canales"
 
-#: src/main_gtk_window.py:536
+#: src/main_gtk_window.py:536 src/main_gtk_window.py:538
 msgid "Channel #"
 msgstr "Canal #"
 
-#: src/main_gtk_window.py:562
+#: src/main_gtk_window.py:562 src/main_gtk_window.py:564
 msgid "Open Folders"
 msgstr "Abre carpetas"
 
-#: src/main_gtk_window.py:576
+#: src/main_gtk_window.py:576 src/main_gtk_window.py:578
 msgid "Add Files"
 msgstr "Agregar archivos"
 
-#: src/main_gtk_window.py:578
+#: src/main_gtk_window.py:578 src/main_gtk_window.py:580
 msgid "Add files for processing"
 msgstr "Agregar archivos para procesar"
 
-#: src/main_gtk_window.py:582
+#: src/main_gtk_window.py:582 src/main_gtk_window.py:584
 msgid "Add Folders"
 msgstr "Agregar carpetas"
 
-#: src/main_gtk_window.py:584
+#: src/main_gtk_window.py:584 src/main_gtk_window.py:586
 msgid "Add folders for processing"
 msgstr "Agregar carpetas para procesar"
 
-#: src/main_gtk_window.py:594
+#: src/main_gtk_window.py:594 src/main_gtk_window.py:596
 msgid "use LUFS units"
 msgstr "utilizar unidades LUFS"
 
-#: src/main_gtk_window.py:598
+#: src/main_gtk_window.py:598 src/main_gtk_window.py:600
 msgid "recursive (search sub-folders)"
 msgstr "recursivo (search sub-pleas)"
 
-#: src/main_gtk_window.py:604
+#: src/main_gtk_window.py:604 src/main_gtk_window.py:606
 msgid "overview mode"
 msgstr "modo de descripción general"
 
-#: src/main_gtk_window.py:636
+#: src/main_gtk_window.py:636 src/main_gtk_window.py:638
 msgid "Start"
 msgstr "Comenzar"
 
-#: src/main_gtk_window.py:637
+#: src/main_gtk_window.py:637 src/main_gtk_window.py:639
 msgid "Begin audio analysis"
 msgstr "Comenzar el análisis de audio"
 
-#: src/main_gtk_window.py:664
+#: src/main_gtk_window.py:664 src/main_gtk_window.py:666
 msgid "Failed Open"
 msgstr "Fracasado abierto"
 
-#: src/main_gtk_window.py:706
+#: src/main_gtk_window.py:706 src/main_gtk_window.py:708
 msgid "Save in Folder"
 msgstr "Guardar en la carpeta"
 
-#: src/main_gtk_window.py:728
+#: src/main_gtk_window.py:728 src/main_gtk_window.py:730
 msgid "Save All in Folder"
 msgstr "Guardar todo en la carpeta"
 
-#: src/main_gtk_window.py:787
+#: src/main_gtk_window.py:787 src/main_gtk_window.py:789
 msgid "Save Animation"
 msgstr "Guardar animación"
 
 #: src/main_gtk_window.py:825 src/main_gtk_window.py:848
-#: src/main_gtk_window.py:935
+#: src/main_gtk_window.py:935 src/main_gtk_window.py:827
+#: src/main_gtk_window.py:850 src/main_gtk_window.py:937
 msgid "Cannot Compare"
 msgstr "No se puede comparar"
 
-#: src/main_gtk_window.py:825
+#: src/main_gtk_window.py:825 src/main_gtk_window.py:827
 msgid "No tabs."
 msgstr "No hay pestañas."
 
 #: src/main_gtk_window.py:848 src/main_gtk_window.py:935
 #: src/main_gtk_window.py:1005 src/main_gtk_window.py:1028
-#: src/main_gtk_window.py:1082
+#: src/main_gtk_window.py:1082 src/main_gtk_window.py:850
+#: src/main_gtk_window.py:937 src/main_gtk_window.py:1007
+#: src/main_gtk_window.py:1030 src/main_gtk_window.py:1084
 msgid "Too few tabs."
 msgstr "Muy pocas pestañas."
 
-#: src/main_gtk_window.py:862
+#: src/main_gtk_window.py:862 src/main_gtk_window.py:864
 msgid "Go!"
 msgstr "¡Ir!"
 
-#: src/main_gtk_window.py:863
+#: src/main_gtk_window.py:863 src/main_gtk_window.py:865
 msgid "Compare tabs in separate window"
 msgstr "Compare pestañas en una ventana separada"
 
 #: src/main_gtk_window.py:869 src/main_gtk_window.py:1049
+#: src/main_gtk_window.py:871 src/main_gtk_window.py:1051
 msgid "☑ All!"
 msgstr "☑ ¡Todos!"
 
-#: src/main_gtk_window.py:870
+#: src/main_gtk_window.py:870 src/main_gtk_window.py:872
 msgid "Compare ALL tabs in separate window"
 msgstr "Compare TODAS las pestañas en una ventana separada"
 
-#: src/main_gtk_window.py:944
+#: src/main_gtk_window.py:944 src/main_gtk_window.py:946
 msgid "Comparison #"
 msgstr "Comparación #"
 
 #: src/main_gtk_window.py:1005 src/main_gtk_window.py:1028
-#: src/main_gtk_window.py:1082
+#: src/main_gtk_window.py:1082 src/main_gtk_window.py:1007
+#: src/main_gtk_window.py:1030 src/main_gtk_window.py:1084
 msgid "Cannot Animate"
 msgstr "No se puede animar"
 
-#: src/main_gtk_window.py:1042
+#: src/main_gtk_window.py:1042 src/main_gtk_window.py:1044
 msgid "Animate"
 msgstr "Animar"
 
-#: src/main_gtk_window.py:1043
+#: src/main_gtk_window.py:1043 src/main_gtk_window.py:1045
 msgid "Animate tabs in separate window"
 msgstr "Pestañas animadas en una ventana separada"
 
-#: src/main_gtk_window.py:1050
+#: src/main_gtk_window.py:1050 src/main_gtk_window.py:1052
 msgid "Animate ALL tabs in separate window"
 msgstr "Animar TODAS las pestañas en una ventana separada"
 
-#: src/main_gtk_window.py:1092
+#: src/main_gtk_window.py:1092 src/main_gtk_window.py:1094
 msgid "Animation #"
 msgstr "Animación #"
 
-#: src/main_gtk_window.py:1107
+#: src/main_gtk_window.py:1107 src/main_gtk_window.py:1109
 msgid "Save tabs to animated gif image"
 msgstr "Guardar pestañas a la imagen animada de gif"
 
-#: src/main_gtk_window.py:1154
+#: src/main_gtk_window.py:1154 src/main_gtk_window.py:1156
 msgid "Processing images."
 msgstr "Procesamiento de imágenes."
 
-#: src/main_gtk_window.py:1161
+#: src/main_gtk_window.py:1161 src/main_gtk_window.py:1163
 msgid "Animated image ready for saving."
 msgstr "Imagen animada lista para guardar."
 
-#: src/main_gtk_window.py:1164
+#: src/main_gtk_window.py:1164 src/main_gtk_window.py:1166
 msgid "Animation Error"
 msgstr "Error de animación"
 
-#: src/main_gtk_window.py:1165
+#: src/main_gtk_window.py:1165 src/main_gtk_window.py:1167
 msgid ""
 "Cannot create animation.\n"
 "Plotting canvas cannot be made into image.\n"
@@ -708,23 +723,23 @@ msgstr ""
 "No se puede crear animación.\n"
 "El trazado de lienzos no se puede convertir en una imagen.\n"
 
-#: src/main_gtk_window.py:1193
+#: src/main_gtk_window.py:1193 src/main_gtk_window.py:1195
 msgid "Supported Formats"
 msgstr "Formatos compatibles"
 
-#: src/main_gtk_window.py:1224
+#: src/main_gtk_window.py:1224 src/main_gtk_window.py:1226
 msgid "Original PyMasVis module development."
 msgstr "Desarrollo original del módulo de PyMasVis."
 
-#: src/main_gtk_window.py:1226
+#: src/main_gtk_window.py:1226 src/main_gtk_window.py:1228
 msgid "GTK application, originally based on PyMasVis commit #657196."
 msgstr "Aplicación GTK, originalmente basada en PyMasVis Commit #657196."
 
-#: src/output_gtk.py:181
+#: src/output_gtk.py:181 src/output_gtk.py:153
 msgid "Input file has no audio stream: "
 msgstr "El archivo de entrada no tiene transmisión de audio: "
 
-#: src/output_gtk.py:222
+#: src/output_gtk.py:222 src/output_gtk.py:194
 msgid ""
 "Crest: {:0.2f} dB,  DR: {},  L$_K$: {:0.1f} {},  LRA: {:0.1f} LU,  PLR: "
 "{:0.1f} LU"
@@ -732,7 +747,7 @@ msgstr ""
 "Cresta: {:0.2f} dB,  DR: {},  L$_K$: {:0.1f} {},  LRA: {:0.1f} LU,  PLR: "
 "{:0.1f} LU"
 
-#: src/output_gtk.py:225
+#: src/output_gtk.py:225 src/output_gtk.py:197
 msgid ""
 "Encoding: {},  Channels: {},  Layout: {},  Bits: {},\n"
 "Sample rate: {} Hz,  Bitrate: {} kbps,  Duration: {},  Size: {:0.1f} MB"
@@ -741,27 +756,27 @@ msgstr ""
 "Velocidad de muestreo: {} Hz,  BitRate: {} kbps,  Duración: {},  Tamaño: "
 "{:0.1f} mb"
 
-#: src/output_gtk.py:237
+#: src/output_gtk.py:237 src/output_gtk.py:209
 msgid "Album"
 msgstr "Álbum"
 
-#: src/output_gtk.py:239
+#: src/output_gtk.py:239 src/output_gtk.py:211
 msgid "Track"
 msgstr "Pista"
 
-#: src/output_gtk.py:241
+#: src/output_gtk.py:241 src/output_gtk.py:213
 msgid "Date"
 msgstr "Fecha"
 
-#: src/output_gtk.py:268
+#: src/output_gtk.py:268 src/output_gtk.py:240
 msgid "Checksum (energy): "
 msgstr "Suma de verificación (energía): "
 
-#: src/output_gtk.py:276
+#: src/output_gtk.py:276 src/output_gtk.py:248
 msgid "MasVisGtk "
 msgstr "MasVisGtk "
 
-#: src/output_gtk.py:326
+#: src/output_gtk.py:326 src/output_gtk.py:298
 msgid ""
 "{}: Crest = {:0.2f} dB / RMS = {:0.2f} dBFS / Peak = {:0.2f} dBFS / True "
 "Peak ≈ {:0.2f} dBTP"
@@ -769,45 +784,45 @@ msgstr ""
 "{}: Cresta = {:0.2f} dB / RMS = {:0.2f} dBFS / Pico = {:0.2f} dBFS / Pico "
 "Verdadero ≈ {:0.2f} dBTP"
 
-#: src/output_gtk.py:370
+#: src/output_gtk.py:370 src/output_gtk.py:342
 msgid ""
 "Loudest part ({} channel, {} samples > 95{} during 20 ms at {:0.2f} sec)"
 msgstr ""
 "Parte más fuerte ({} canal, {} muestras > 95{} durante 20 ms en {:0.2f} Sec)"
 
-#: src/output_gtk.py:456
+#: src/output_gtk.py:456 src/output_gtk.py:428
 msgid "Normalised average spectrum, "
 msgstr "Espectro promedio normalizado, "
 
-#: src/output_gtk.py:456
+#: src/output_gtk.py:456 src/output_gtk.py:428
 msgid " frames"
 msgstr " marcos"
 
-#: src/output_gtk.py:516
+#: src/output_gtk.py:516 src/output_gtk.py:488
 msgid "Allpassed crest factor"
 msgstr "Factor de cresta de AllPassed"
 
-#: src/output_gtk.py:562
+#: src/output_gtk.py:562 src/output_gtk.py:534
 msgid "Histogram, 'bits': "
 msgstr "Histograma, 'bits': "
 
-#: src/output_gtk.py:623
+#: src/output_gtk.py:623 src/output_gtk.py:595
 msgid "Peak vs RMS level"
 msgstr "Nivel pico vs RMS"
 
-#: src/output_gtk.py:661
+#: src/output_gtk.py:661 src/output_gtk.py:633
 msgid "Short term (1 s) crest factor"
 msgstr "Factor de cresta a corto plazo (1 s)"
 
-#: src/output_gtk.py:700
+#: src/output_gtk.py:700 src/output_gtk.py:672
 msgid "EBU R 128 Short term loudness"
 msgstr "Ebu R 128 Voleza a corto plazo"
 
-#: src/output_gtk.py:706
+#: src/output_gtk.py:706 src/output_gtk.py:678
 msgid "Short term PLR"
 msgstr "PLR a corto plazo"
 
-#: src/output_gtk.py:847
+#: src/output_gtk.py:847 src/output_gtk.py:819
 msgid ""
 "DR = {}\n"
 "Peak = {:0.1f} dBFS\n"
@@ -819,7 +834,7 @@ msgstr ""
 "Cresta = {:0.1f} dB\n"
 "L$_k$ = {:0.1f} LU"
 
-#: src/output_gtk.py:856
+#: src/output_gtk.py:856 src/output_gtk.py:828
 msgid "{} [{}, {} channels, {} bits, {:0.1f} kHz, {} kbps]"
 msgstr "{} [{}, {} canales, {} bits, {:0.1f} kHz, {} kbps]"
 

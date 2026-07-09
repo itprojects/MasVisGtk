@@ -59,7 +59,15 @@
   <url type="translate">https://github.com/itprojects/MasVisGtk/pulls</url>
   <developer_name translate="no">ITProjects</developer_name>
   <translation type="gettext">masvisgtk</translation>
-  <releases>
+    <releases>
+    <release version="6.1.0" date="2026-07-10">
+      <description translate="no">
+        <p>Updated matplotlib to v3.11.0, numpy to v2.5.1, scipy to v1.18.0, pybind11 3.0.4, pythran-0.18.1.</p>
+        <p>Added libraqm and harfbuzz (as system) for matplotlib, with changed build parameters.</p>
+        <p>Fixed width bug.</p>
+        <p>Suppressed findfont messages.</p>
+      </description>
+    </release>
     <release version="6.0.2" date="2026-04-01">
       <description translate="no">
         <p>Updated Russian translation.</p>
