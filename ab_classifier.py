@@ -3,9 +3,9 @@
 '''
 AB Classifier compares two audio files.
 
-Version 1.0
+Version 2.0
 
-Copyright 2025 ITProjects
+Copyright 2025-2026 ITProjects
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -782,7 +782,7 @@ class ABClassifierWindow(Adw.ApplicationWindow):
         self.on_reset_stats(None)
         self.on_stop(None, False)
         if self.btn_blind.get_active():
-            self.btn_blind.emit("clicked") # also triggers on_blind()
+            self.btn_blind.emit('clicked') # also triggers on_blind()
 
 class PlayerPipeline(GObject.GObject):
 
@@ -847,20 +847,26 @@ class PlayerPipeline(GObject.GObject):
 
         self.filesrcA = Gst.ElementFactory.make('filesrc', 'file-source-A')
         decodebinA = Gst.ElementFactory.make('decodebin', 'decode-bin-A')
-        self.tag_injectA = Gst.ElementFactory.make("taginject", "taginject-A")
+
+        self.tag_injectA = Gst.ElementFactory.make('taginject', 'taginject-A')
+        audioconvertA_before = Gst.ElementFactory.make('audioconvert', 'audio-convert-A-before')
         self.rgvolumeA = Gst.ElementFactory.make('rgvolume', 'rgvolume-A')
         audioconvertA = Gst.ElementFactory.make('audioconvert', 'audio-convert-A')
         audioresampleA = Gst.ElementFactory.make('audioresample', 'audio-resample-A')
+        audiocapsfilterA = Gst.ElementFactory.make('capsfilter', 'audio-capsfilter-A')
         self.volumeA = Gst.ElementFactory.make('volume', 'volume-A')
         self.volumeA.set_property('mute', False)
         self.queueA = Gst.ElementFactory.make('queue', 'queue-A')
 
         self.filesrcB = Gst.ElementFactory.make('filesrc', 'file-source-B')
         decodebinB = Gst.ElementFactory.make('decodebin', 'decode-bin-B')
-        self.tag_injectB = Gst.ElementFactory.make("taginject", "taginject-B")
+
+        self.tag_injectB = Gst.ElementFactory.make('taginject', 'taginject-B')
+        audioconvertB_before = Gst.ElementFactory.make('audioconvert', 'audio-convert-B-before')
         self.rgvolumeB = Gst.ElementFactory.make('rgvolume', 'rgvolume-B')
         audioconvertB = Gst.ElementFactory.make('audioconvert', 'audio-convert-B')
         audioresampleB = Gst.ElementFactory.make('audioresample', 'audio-resample-B')
+        audiocapsfilterB = Gst.ElementFactory.make('capsfilter', 'audio-capsfilter-B')
         self.volumeB = Gst.ElementFactory.make('volume', 'volume-B')
         self.volumeB.set_property('mute', False)
         self.queueB = Gst.ElementFactory.make('queue', 'queue-B')
@@ -871,23 +877,39 @@ class PlayerPipeline(GObject.GObject):
         self.pipeline.add(self.filesrcA)
         self.pipeline.add(decodebinA)
         self.pipeline.add(self.tag_injectA)
+        self.pipeline.add(audioconvertA_before)
         self.pipeline.add(self.rgvolumeA)
         self.pipeline.add(audioconvertA)
         self.pipeline.add(audioresampleA)
+        self.pipeline.add(audiocapsfilterA)
         self.pipeline.add(self.volumeA)
         self.pipeline.add(self.queueA)
 
         self.pipeline.add(self.filesrcB)
         self.pipeline.add(decodebinB)
         self.pipeline.add(self.tag_injectB)
+        self.pipeline.add(audioconvertB_before)
         self.pipeline.add(self.rgvolumeB)
         self.pipeline.add(audioconvertB)
         self.pipeline.add(audioresampleB)
+        self.pipeline.add(audiocapsfilterB)
         self.pipeline.add(self.volumeB)
         self.pipeline.add(self.queueB)
 
         self.pipeline.add(audiomixer)
         self.pipeline.add(autoaudiosink)
+
+        # Set acceptable audio parameters.
+        # May be a problem with 24 or 32 bit audio clipping (in conversion),
+        # but without it, the available formats are too few.
+        audiocapsfilterA.set_property(
+            'caps',
+            Gst.Caps.from_string('audio/x-raw,rate=44100,channels=2,layout=interleaved'),
+        )
+        audiocapsfilterB.set_property(
+            'caps',
+            Gst.Caps.from_string('audio/x-raw,rate=44100,channels=2,layout=interleaved'),
+        )
 
         # Track A.
 
@@ -899,14 +921,20 @@ class PlayerPipeline(GObject.GObject):
 
         decodebinA.connect('pad-added', self.on_pad_added, self.tag_injectA)
 
-        if not self.tag_injectA.link(self.rgvolumeA):
+        if not self.tag_injectA.link(audioconvertA_before):
             error = 'GStreamer Pipeline Failure: Could not link tag_injectA to rgvolumeA'
             print(error)
             self.broken_pipeline = error
             return
 
+        if not audioconvertA_before.link(self.rgvolumeA):
+            error = 'GStreamer Pipeline Failure: Could not link audioconvertA_before to rgvolumeA'
+            print(error)
+            self.broken_pipeline = error
+            return
+
         if not self.rgvolumeA.link(audioconvertA):
-            error = 'GStreamer Pipeline Failure: Could not link rgvolumeA to audioconvertA'
+            error = 'GStreamer Pipeline Failure: Could not link rgvolumeA to audioconvertA_before'
             print(error)
             self.broken_pipeline = error
             return
@@ -917,8 +945,14 @@ class PlayerPipeline(GObject.GObject):
             self.broken_pipeline = error
             return
 
-        if not audioresampleA.link(self.volumeA):
-            error = 'GStreamer Pipeline Failure: Could not link audioresampleA to volumeA'
+        if not audioresampleA.link(audiocapsfilterA):
+            error = 'GStreamer Pipeline Failure: Could not link audioresampleA to audiocapsfilterA'
+            print(error)
+            self.broken_pipeline = error
+            return
+
+        if not audiocapsfilterA.link(self.volumeA):
+            error = 'GStreamer Pipeline Failure: Could not link audiocapsfilterA to volumeA'
             print(error)
             self.broken_pipeline = error
             return
@@ -945,8 +979,14 @@ class PlayerPipeline(GObject.GObject):
 
         decodebinB.connect('pad-added', self.on_pad_added, self.tag_injectB)
 
-        if not self.tag_injectB.link(self.rgvolumeB):
+        if not self.tag_injectB.link(audioconvertB_before):
             error = 'GStreamer Pipeline Failure: Could not link tag_injectB to rgvolumeB'
+            print(error)
+            self.broken_pipeline = error
+            return
+
+        if not audioconvertB_before.link(self.rgvolumeB):
+            error = 'GStreamer Pipeline Failure: Could not link audioconvertB_before to rgvolumeB'
             print(error)
             self.broken_pipeline = error
             return
@@ -963,8 +1003,14 @@ class PlayerPipeline(GObject.GObject):
             self.broken_pipeline = error
             return
 
-        if not audioresampleB.link(self.volumeB):
-            error = 'GStreamer Pipeline Failure: Could not link audioresampleB to volumeB'
+        if not audioresampleB.link(audiocapsfilterB):
+            error = 'GStreamer Pipeline Failure: Could not link audioresampleB to audiocapsfilterB'
+            print(error)
+            self.broken_pipeline = error
+            return
+
+        if not audiocapsfilterB.link(self.volumeB):
+            error = 'GStreamer Pipeline Failure: Could not link audiocapsfilterB to volumeB'
             print(error)
             self.broken_pipeline = error
             return
@@ -1008,15 +1054,15 @@ class PlayerPipeline(GObject.GObject):
         match message.type:
             #case Gst.MessageType.STATE_CHANGED:
             #    old_state, new_state, pending_state = message.parse_state_changed()
-            #    print(f"State changed from {Gst.Element.state_get_name(old_state)} to {Gst.Element.state_get_name(new_state)}")
+            #    print(f'State changed from {Gst.Element.state_get_name(old_state)} to {Gst.Element.state_get_name(new_state)}')
             #case Gst.MessageType.ELEMENT:
             #    structure = message.get_structure()
             #    if structure.get_name().startswith('rgvolume'):
             #        print(f'ReplayGain ({structure.get_name()}): {structure.get_value('gain')} dB')
             case Gst.MessageType.ERROR:
                 error, debug = message.parse_error()
-                print('Error in Gstreamer bus_callback(): ' + error.message)
-                self.emit('error-occured', 'GStreamer Bus Error', error.message)
+                print('Error in Gstreamer bus_callback(): ' + error.message + '\n' + debug)
+                self.emit('error-occured', 'GStreamer Bus Error', error.message + '\n' + '...run in terminal for more debug.')
             case Gst.MessageType.EOS:
                 self.emit('end-of-stream', True)
             case _:
@@ -1026,7 +1072,7 @@ class PlayerPipeline(GObject.GObject):
 
     def on_pad_added(self, element, pad, target_element):
         string = pad.query_caps(None).to_string()
-        if string.startswith('audio/x-raw'):
+        if string.startswith('audio/'):
             sink_pad = target_element.get_static_pad('sink')
             if not sink_pad.is_linked():
                 if pad.link(sink_pad) != Gst.PadLinkReturn.OK:
@@ -1544,5 +1590,5 @@ def main():
     app = ABClassifier()
     app.run(sys.argv)
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
