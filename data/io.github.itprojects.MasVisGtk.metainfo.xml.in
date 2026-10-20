@@ -60,6 +60,13 @@
   <developer_name translate="no">ITProjects</developer_name>
   <translation type="gettext">masvisgtk</translation>
     <releases>
+    <release version="6.2.0" date="2026-10-21">
+      <description translate="no">
+        <p>Updated contourpy to v1.4.0, numpy to v2.5.4, scipy to v1.18.1.</p>
+        <p>Fixed unescaped symbols bug (GStreamer).</p>
+        <p>Fixed bit rate bug (GStreamer).</p>
+      </description>
+    </release>
     <release version="6.1.0" date="2026-07-11">
       <description translate="no">
         <p>Updated matplotlib to v3.11.0, numpy to v2.5.1, scipy to v1.18.0, pybind11 3.0.4, pythran-0.18.1.</p>

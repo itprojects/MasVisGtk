@@ -99,7 +99,7 @@ def load_file(infile, inbuffer=None, processing_with_gst=False):
     date = None
     album = None
     track = None
-    bps = 1411000
+    bps = 0
     bits = 16
     cl = None
 
@@ -329,7 +329,8 @@ def gst_probe(audio_path):
         json_object['format']['filename'] = audio_path
 
         # Look for audio tags.
-        discoverer_info = d.discover_uri(f'file://{audio_path}')
+        uri_audio_path = Gst.filename_to_uri(audio_path)
+        discoverer_info = d.discover_uri(uri_audio_path)
 
         gstreamer_discovery_successful = False
         match discoverer_info.get_result():
@@ -408,8 +409,11 @@ def gst_probe(audio_path):
                         json_object['format']['tags']['date'] = str(value.get_year())
 
                 result, value = tags.get_uint(Gst.TAG_BITRATE)
-                if result == True:
-                    json_object['streams'][0]['bit_rate'] = str(value)
+                if result == True: # bitrate tag exists
+                    json_object['streams'][0]['bit_rate'] = value
+                else: # no bitrate tag, then estimate average bitrare
+                    avg_bit_rate = (8 * info.get_attribute_uint64(Gio.FILE_ATTRIBUTE_STANDARD_SIZE)) / ((discoverer_info.get_duration() / 1000000000))
+                    json_object['streams'][0]['bit_rate'] = avg_bit_rate
 
             break # Only process first audio stream.
 
